@@ -633,6 +633,109 @@ export default function App() {
         })}
       </div>
 
+      {/* ── MY BETS ───────────────────────────────────────────────────────── */}
+      {betDuos.length > 0 && (
+        <div style={{ background:"#120A00", border:"2px solid #92400E", borderRadius:8, padding:"10px 12px", marginBottom:12 }}>
+          {/* Title row */}
+          <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+            <span style={{ fontSize:12, fontWeight:900, color:"#FCD34D" }}>★ MY BETS</span>
+            <span style={{ fontSize:9, color:"#92400E" }}>
+              {betDuos.length} duo{betDuos.length > 1 ? "s" : ""} selected
+            </span>
+            <button
+              onClick={() => setBets(v => !v)}
+              style={{
+                ...MONO, fontSize:8, fontWeight:700, padding:"3px 9px", borderRadius:4,
+                cursor:"pointer", border:"1px solid",
+                background: betsOnly ? "#1C0A00" : "transparent",
+                borderColor: betsOnly ? "#F59E0B" : "#334155",
+                color: betsOnly ? "#FCD34D" : "#475569",
+                marginLeft:6,
+              }}
+            >
+              BETS ONLY {betsOnly ? "ON" : "OFF"}
+            </button>
+          </div>
+
+          {/* Bet pills */}
+          <div style={{ display:"flex", flexWrap:"wrap", gap:6 }}>
+            {betDuos.map(d => {
+              const tc = TIER_CFG[d.tier];
+              return (
+                <div key={d.id} style={{
+                  display:"flex", alignItems:"center", gap:6,
+                  padding:"5px 10px", background:"#1A0F00",
+                  border:`1px solid ${tc.bd}`, borderRadius:5,
+                }}>
+                  <span style={{ fontSize:9, fontWeight:800, color: TEAM_COL[d.team] || "#fff" }}>{d.team}</span>
+                  <span style={{ fontSize:11, fontWeight:700, color:"#F8FAFC" }}>{d.a} + {d.b}</span>
+                  <TierBadge tier={d.tier} />
+                  <CorrBadge corr={d.corr} />
+                  <StarBtn on={true} toggle={() => toggleBet(d.id)} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* ── FILTERS ───────────────────────────────────────────────────────── */}
+      <div style={{ marginBottom:11 }}>
+
+        {/* Row 1: Tier + Correlation */}
+        <div style={{ display:"flex", gap:5, flexWrap:"wrap", alignItems:"center", marginBottom:5 }}>
+          <span style={{ fontSize:8, color:"#334155", marginRight:2 }}>TIER:</span>
+          <Btn v="ALL"     cur={tierF} set={setTierF} />
+          <Btn v="ELITE"   cur={tierF} set={setTierF} col="#22C55E" />
+          <Btn v="STRONG"  cur={tierF} set={setTierF} col="#3B82F6" />
+          <Btn v="PP LINK" cur={tierF} set={setTierF} col="#F59E0B" />
+          <span style={{ fontSize:8, color:"#334155", margin:"0 2px 0 10px" }}>CORR:</span>
+          <Btn v="ALL"       cur={corrF} set={setCorrF} />
+          <Btn v="Strongest" cur={corrF} set={setCorrF} />
+          <Btn v="High"      cur={corrF} set={setCorrF} />
+          <Btn v="Moderate"  cur={corrF} set={setCorrF} />
+          <Btn v="Lowest"    cur={corrF} set={setCorrF} />
+        </div>
+
+        {/* Row 2: Game */}
+        <div style={{ display:"flex", gap:5, flexWrap:"wrap", alignItems:"center", marginBottom:5 }}>
+          <span style={{ fontSize:8, color:"#334155", marginRight:2 }}>GAME:</span>
+          <Btn v="ALL" cur={gameF} set={setGameF} />
+          {GAME_ORDER.map(g => <Btn key={g} v={g} cur={gameF} set={setGameF} />)}
+        </div>
+
+        {/* Row 3: Team + search + bets toggle */}
+        <div style={{ display:"flex", gap:5, flexWrap:"wrap", alignItems:"center" }}>
+          <span style={{ fontSize:8, color:"#334155", marginRight:2 }}>TEAM:</span>
+          <Btn v="ALL" cur={teamF} set={setTeamF} />
+          {teams.map(t => <Btn key={t} v={t} cur={teamF} set={setTeamF} />)}
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search player…"
+            style={{
+              ...MONO, fontSize:10, background:"#0D1117",
+              border:"1px solid #1E293B", color:"#E2E8F0",
+              padding:"4px 9px", borderRadius:4, outline:"none",
+              width:150, marginLeft:8,
+            }}
+          />
+          <button
+            onClick={() => setBets(v => !v)}
+            style={{
+              ...MONO, fontSize:8, fontWeight:700, padding:"4px 9px", borderRadius:4,
+              cursor:"pointer", border:"1px solid",
+              background: betsOnly ? "#120A00" : "transparent",
+              borderColor: betsOnly ? "#92400E" : "#1E293B",
+              color: betsOnly ? "#FCD34D" : "#475569",
+              marginLeft:4,
+            }}
+          >
+            ★ BETS ONLY{betsOnly ? " ✕" : ""}
+          </button>
+        </div>
+      </div>
+
       {/* remaining sections follow */}
     </div>
   );
