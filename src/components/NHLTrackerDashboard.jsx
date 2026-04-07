@@ -433,6 +433,99 @@ export default function App() {
     </button>
   );
 
+  // ── Row: renders a single duo entry ─────────────────────────────────────
+  const Row = ({ d }) => {
+    const on    = myBets.has(d.id);
+    const tc    = TIER_CFG[d.tier];
+    const isRec = REC.some((r) => r.id === d.id);
+
+    // Row background: invalid > cold > starred > recommended > default
+    const rowBg =
+      d.invalid ? "#1A1000" :
+      d.cold    ? "#1A0808" :
+      on        ? "#0C0800" :
+      d.rec     ? "#050E07" :
+      "transparent";
+
+    // Left border color signals state at a glance
+    const lBorder =
+      d.invalid ? "#78350F" :
+      d.cold    ? "#7F1D1D" :
+      on        ? "#92400E" :
+      isRec     ? "#16A34A" :
+      tc.bd + "33";
+
+    return (
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "30px 58px 1fr 1fr 88px 80px 96px 1fr",
+        padding: "7px 10px",
+        borderBottom: "1px solid #06080F",
+        background: rowBg,
+        borderLeft: `3px solid ${lBorder}`,
+      }}>
+        {/* Col 1: Star / warning icon */}
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"center" }}>
+          {d.invalid
+            ? <span style={{ fontSize:9, color:"#F59E0B" }}>⚠️</span>
+            : d.cold
+            ? <span style={{ fontSize:9, color:"#EF4444" }}>❄️</span>
+            : <StarBtn on={on} toggle={() => toggleBet(d.id)} />}
+        </div>
+
+        {/* Col 2: Team + recommended flag */}
+        <div style={{ display:"flex", alignItems:"center", gap:3 }}>
+          <span style={{ ...MONO, fontSize:11, fontWeight:800, color: TEAM_COL[d.team] || "#fff" }}>
+            {d.team}
+          </span>
+          {isRec && <span style={{ fontSize:9, color:"#4ADE80" }}>🎯</span>}
+        </div>
+
+        {/* Col 3: Player A + position */}
+        <div style={{ display:"flex", alignItems:"center", gap:4 }}>
+          <span style={{ ...MONO, fontSize:11, fontWeight:700, color: d.invalid || d.cold ? "#FCA5A5" : "#F8FAFC" }}>
+            {d.a}
+          </span>
+          <span style={{ fontSize:8, color:"#475569" }}>{d.aPos}</span>
+        </div>
+
+        {/* Col 4: Player B + position */}
+        <div style={{ display:"flex", alignItems:"center", gap:4 }}>
+          <span style={{ ...MONO, fontSize:11, fontWeight:700, color: d.invalid || d.cold ? "#FCA5A5" : "#F8FAFC" }}>
+            {d.b}
+          </span>
+          <span style={{ fontSize:8, color:"#475569" }}>{d.bPos}</span>
+        </div>
+
+        {/* Col 5: Tier badge */}
+        <div style={{ display:"flex", alignItems:"center" }}>
+          <TierBadge tier={d.tier} />
+        </div>
+
+        {/* Col 6: Connection type */}
+        <div style={{ display:"flex", alignItems:"center" }}>
+          <span style={{ fontSize:9, color:"#94A3B8" }}>{d.conn}</span>
+        </div>
+
+        {/* Col 7: Correlation badge */}
+        <div style={{ display:"flex", alignItems:"center" }}>
+          <CorrBadge corr={d.corr} />
+        </div>
+
+        {/* Col 8: Notes */}
+        <div style={{
+          fontSize: 9.5,
+          color: d.invalid || d.cold ? "#FCA5A5" : "#CBD5E1",
+          lineHeight: 1.45,
+          display: "flex",
+          alignItems: "center",
+        }}>
+          {d.note}
+        </div>
+      </div>
+    );
+  };
+
   // JSX markup follows in next section
   return null;
 }
