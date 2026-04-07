@@ -526,6 +526,114 @@ export default function App() {
     );
   };
 
-  // JSX markup follows in next section
-  return null;
+  // ── JSX ───────────────────────────────────────────────────────────────────
+  return (
+    <div style={{ background:"#04060C", minHeight:"100vh", color:"#E2E8F0", ...MONO, padding:"14px 12px", maxWidth:1360, margin:"0 auto" }}>
+
+      {/* ── HEADER ────────────────────────────────────────────────────────── */}
+      <div style={{ borderBottom:"2px solid #1E293B", paddingBottom:12, marginBottom:12 }}>
+        <div style={{ fontSize:8, color:"#334155", letterSpacing:3, marginBottom:3 }}>
+          NHL DUO TRACKER · ANDY FRANCES METHODOLOGY · PRE-GAME
+        </div>
+        <div style={{ fontSize:22, fontWeight:900, color:"#F8FAFC", letterSpacing:2 }}>
+          NHL DUO TRACKER APR 01 2026
+        </div>
+        <div style={{ fontSize:10, color:"#4ADE80", marginTop:3, fontStyle:"italic" }}>
+          Lines gathered at {FETCH_TIME} from Daily Faceoff
+        </div>
+        <div style={{ fontSize:10, color:"#64748B", marginTop:2 }}>
+          {GAME_ORDER.length} games · {[...new Set(DUOS.map(d => d.team))].length} teams · {DUOS.filter(d => !d.invalid && !d.cold).length} active duos · {REC.length} recommended targets
+        </div>
+
+        {/* Stat boxes */}
+        <div style={{ display:"flex", gap:8, marginTop:10, flexWrap:"wrap" }}>
+          {[
+            ["ELITE",     counts.ELITE,    "#4ADE80", "#0F3D1E", "#22C55E"],
+            ["STRONG",    counts.STRONG,   "#60A5FA", "#0C2A4A", "#3B82F6"],
+            ["PP LINK",   counts["PP LINK"],"#FBBF24","#3D2200", "#F59E0B"],
+            ["🎯 TARGETS",REC.length,      "#A3E635", "#1C2A00", "#84CC16"],
+            ["★ BETS",    myBets.size,     "#FCD34D", "#120A00", "#92400E"],
+          ].map(([label, val, tx, bg, bd]) => (
+            <div key={label} style={{ padding:"6px 12px", background:bg, border:`1px solid ${bd}`, borderRadius:6 }}>
+              <div style={{ fontSize:7, color:bd, letterSpacing:1 }}>{label}</div>
+              <div style={{ fontSize:18, fontWeight:900, color:tx }}>{val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── RECOMMENDED TARGETS ───────────────────────────────────────────── */}
+      <div style={{ background:"#030C07", border:"2px solid #16A34A", borderRadius:10, padding:"12px 14px", marginBottom:13 }}>
+
+        {/* Title row */}
+        <div style={{ display:"flex", alignItems:"center", gap:9, marginBottom:9 }}>
+          <span style={{ fontSize:14, fontWeight:900, color:"#4ADE80" }}>🎯 RECOMMENDED TARGETS</span>
+          <span style={{ fontSize:8, color:"#16A34A", background:"#052E16", padding:"2px 9px", borderRadius:4, border:"1px solid #16A34A" }}>
+            {REC.length} duos pass all 4 rules
+          </span>
+        </div>
+
+        {/* 4 rules */}
+        <div style={{ fontSize:8, color:"#4ADE80", marginBottom:9, opacity:0.75, lineHeight:1.7 }}>
+          ① ELITE or PP LINK &nbsp;·&nbsp; ② Neither player blanked last 2 games &nbsp;·&nbsp;
+          ③ Chain overlap or validated D-QB in last 3 slates &nbsp;·&nbsp; ④ Corr = Strongest or High
+        </div>
+
+        {/* Table header */}
+        <div style={{ display:"grid", gridTemplateColumns:"64px 1fr 1fr 88px 96px 1fr",
+          background:"#041409", borderBottom:"1px solid #14532D", padding:"4px 10px", borderRadius:"4px 4px 0 0" }}>
+          {["TEAM/GAME","PLAYER A","PLAYER B","TIER","CORR","REASON"].map((h, i) => (
+            <div key={i} style={{ fontSize:7, color:"#16A34A", fontWeight:700 }}>{h}</div>
+          ))}
+        </div>
+
+        {/* Target rows */}
+        {REC.map((d, i) => {
+          const [aw, hw] = d.game.split("@");
+          const on = myBets.has(d.id);
+          return (
+            <div key={d.id} style={{
+              display: "grid",
+              gridTemplateColumns: "64px 1fr 1fr 88px 96px 1fr",
+              padding: "9px 10px",
+              borderBottom: "1px solid #0A1A0A",
+              background: on ? "#0A1400" : i % 2 === 0 ? "#050E08" : "#060F09",
+              borderLeft: `3px solid ${on ? "#FCD34D" : "#16A34A"}`,
+            }}>
+              {/* Team + game */}
+              <div style={{ display:"flex", flexDirection:"column", gap:2, justifyContent:"center" }}>
+                <span style={{ fontSize:8, fontWeight:800, color: TEAM_COL[d.team] || "#fff" }}>{d.team}</span>
+                <span style={{ fontSize:7, color:"#475569" }}>{aw}@{hw}</span>
+              </div>
+              {/* Player A */}
+              <div style={{ display:"flex", alignItems:"center", gap:5 }}>
+                <span style={{ fontSize:11, fontWeight:700, color:"#F8FAFC" }}>{d.a}</span>
+                <span style={{ fontSize:8, color:"#475569" }}>{d.aPos}</span>
+                <StarBtn on={on} toggle={() => toggleBet(d.id)} />
+              </div>
+              {/* Player B */}
+              <div style={{ display:"flex", alignItems:"center", gap:5 }}>
+                <span style={{ fontSize:11, fontWeight:700, color:"#F8FAFC" }}>{d.b}</span>
+                <span style={{ fontSize:8, color:"#475569" }}>{d.bPos}</span>
+              </div>
+              {/* Tier */}
+              <div style={{ display:"flex", alignItems:"center" }}>
+                <TierBadge tier={d.tier} />
+              </div>
+              {/* Corr */}
+              <div style={{ display:"flex", alignItems:"center" }}>
+                <CorrBadge corr={d.corr} />
+              </div>
+              {/* Reason */}
+              <div style={{ fontSize:9, color:"#86EFAC", lineHeight:1.5, display:"flex", alignItems:"center" }}>
+                {d.recR}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* remaining sections follow */}
+    </div>
+  );
 }
