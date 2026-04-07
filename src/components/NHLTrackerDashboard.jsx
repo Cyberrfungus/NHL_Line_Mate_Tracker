@@ -331,3 +331,108 @@ export const REC = DUOS.filter(d => d.rec && !d.cold && !d.invalid);
 
 // Kept as alias for GAME_ORDER for backwards compatibility
 export const GAME_ORDER_LIST = GAME_ORDER;
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  APP COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
+
+export default function App() {
+
+  // ── Filter state ──────────────────────────────────────────────────────────
+  const [tierF,   setTierF]  = useState("ALL");
+  const [teamF,   setTeamF]  = useState("ALL");
+  const [gameF,   setGameF]  = useState("ALL");
+  const [corrF,   setCorrF]  = useState("ALL");
+  const [search,  setSearch] = useState("");
+  const [betsOnly, setBets]  = useState(false);
+
+  // ── Bet tracking: Set of duo IDs ──────────────────────────────────────────
+  const [myBets, setMyBets] = useState(new Set());
+
+  // ── Collapsed game blocks: keyed by game string ───────────────────────────
+  const [collapsed, setColl] = useState({
+    "VAN@COL": false,
+    "STL@LAK": true,
+    "ANA@SJS": true,
+  });
+
+  // ── Toggle helpers ────────────────────────────────────────────────────────
+  const toggleBet = (id) =>
+    setMyBets((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  const toggleCol = (game) =>
+    setColl((prev) => ({ ...prev, [game]: !prev[game] }));
+
+  // ── Derived: unique sorted team list ─────────────────────────────────────
+  const teams = useMemo(
+    () => [...new Set(DUOS.map((d) => d.team))].sort(),
+    []
+  );
+
+  // ── Derived: filtered duo list ────────────────────────────────────────────
+  const filtered = useMemo(() => {
+    return DUOS.filter((d) => {
+      if (betsOnly && !myBets.has(d.id))                          return false;
+      if (tierF !== "ALL" && d.tier !== tierF)                    return false;
+      if (teamF !== "ALL" && d.team !== teamF)                    return false;
+      if (gameF !== "ALL" && d.game !== gameF)                    return false;
+      if (corrF !== "ALL" && d.corr !== corrF)                    return false;
+      if (search) {
+        const q = search.toLowerCase();
+        if (
+          !d.a.toLowerCase().includes(q) &&
+          !d.b.toLowerCase().includes(q) &&
+          !d.team.toLowerCase().includes(q)
+        ) return false;
+      }
+      return true;
+    });
+  }, [tierF, teamF, gameF, corrF, search, betsOnly, myBets]);
+
+  // ── Derived: starred duos for My Bets panel ───────────────────────────────
+  const betDuos = DUOS.filter((d) => myBets.has(d.id));
+
+  // ── Derived: active duo counts per tier (excl. invalid + cold) ───────────
+  const counts = useMemo(() => {
+    const c = { ELITE: 0, STRONG: 0, "PP LINK": 0 };
+    DUOS.filter((d) => !d.invalid && !d.cold).forEach((d) => c[d.tier]++);
+    return c;
+  }, []);
+
+  // ── Derived: any filter active? ───────────────────────────────────────────
+  const hasFilter =
+    tierF !== "ALL" ||
+    teamF !== "ALL" ||
+    gameF !== "ALL" ||
+    corrF !== "ALL" ||
+    search !== "" ||
+    betsOnly;
+
+  // ── Btn: reusable filter toggle button ────────────────────────────────────
+  const Btn = ({ v, cur, set, col }) => (
+    <button
+      onClick={() => set((x) => (x === v ? "ALL" : v))}
+      style={{
+        ...MONO,
+        fontSize: 8,
+        fontWeight: 700,
+        padding: "4px 9px",
+        borderRadius: 4,
+        cursor: "pointer",
+        border: "1px solid",
+        background: cur === v ? (col || "#1E293B") : "transparent",
+        borderColor: cur === v ? (col || "#475569") : "#1E293B",
+        color: cur === v ? "#F8FAFC" : "#475569",
+      }}
+    >
+      {v}
+    </button>
+  );
+
+  // JSX markup follows in next section
+  return null;
+}
