@@ -736,6 +736,147 @@ export default function App() {
         </div>
       </div>
 
+      {/* ── GAME BLOCKS ───────────────────────────────────────────────────── */}
+      {GAME_ORDER_LIST.map(gid => {
+        const info   = GAME_INFO[gid];
+        const [aw, hw] = gid.split("@");
+        const allG   = DUOS.filter(d => d.game === gid);
+        const visG   = filtered.filter(d => d.game === gid);
+        const isOpen = !collapsed[gid];
+        const envC   = ENV_CFG[info.env] || ENV_CFG.MID;
+        const topG   = allG.filter(d => d.top && !d.invalid && !d.cold);
+        const recG   = REC.filter(d => d.game === gid);
+
+        // Hide game block entirely when a filter is active and nothing matches
+        if (hasFilter && gameF === "ALL" && visG.length === 0) return null;
+
+        return (
+          <div key={gid} style={{ border:"1px solid #1E293B", borderRadius:8, overflow:"hidden", marginBottom:10 }}>
+
+            {/* ── Game header (clickable) ── */}
+            <div
+              onClick={() => toggleCol(gid)}
+              style={{
+                background:"#080C12",
+                borderBottom: isOpen ? "1px solid #1E293B" : "none",
+                padding:"10px 13px", cursor:"pointer",
+                display:"flex", alignItems:"center", gap:10, flexWrap:"wrap",
+              }}
+            >
+              {/* Matchup */}
+              <span style={{ fontSize:17, fontWeight:900 }}>
+                <span style={{ color: TEAM_COL[aw] || "#fff" }}>{aw}</span>
+                <span style={{ color:"#1E293B", margin:"0 5px" }}>@</span>
+                <span style={{ color: TEAM_COL[hw] || "#fff" }}>{hw}</span>
+              </span>
+
+              {/* Time */}
+              <span style={{ fontSize:10, color:"#475569" }}>{info.time} ET</span>
+
+              {/* ENV + O/U badge */}
+              <span style={{
+                fontSize:8, fontWeight:700, color:envC.tx,
+                border:`1px solid ${envC.bd}`, padding:"2px 7px",
+                borderRadius:3, background:"#0A0E18",
+              }}>
+                {info.env} · O/U {info.ou}
+              </span>
+
+              {/* Recommended target count */}
+              {recG.length > 0 && (
+                <span style={{
+                  fontSize:8, fontWeight:700, color:"#4ADE80",
+                  background:"#052E16", border:"1px solid #16A34A",
+                  padding:"2px 7px", borderRadius:3,
+                }}>
+                  🎯 {recG.length} TARGET{recG.length > 1 ? "S" : ""}
+                </span>
+              )}
+
+              {/* Game context */}
+              <span style={{ fontSize:9, color:"#64748B", flex:1, minWidth:80 }}>{info.context}</span>
+
+              {/* Tier counts + collapse arrow */}
+              <div style={{ display:"flex", gap:4, marginLeft:"auto", alignItems:"center" }}>
+                {["ELITE","STRONG","PP LINK"].map(t => {
+                  const n  = allG.filter(d => d.tier === t && !d.cold && !d.invalid).length;
+                  const tc = TIER_CFG[t];
+                  return n > 0 ? (
+                    <span key={t} style={{
+                      fontSize:7, padding:"2px 6px",
+                      background:tc.bg, border:`1px solid ${tc.bd}`,
+                      borderRadius:3, color:tc.tx,
+                    }}>
+                      {n}
+                    </span>
+                  ) : null;
+                })}
+                <span style={{ fontSize:11, color:"#334155", marginLeft:4 }}>
+                  {isOpen ? "▲" : "▼"}
+                </span>
+              </div>
+            </div>
+
+            {/* ── Expanded content ── */}
+            {isOpen && (
+              <div>
+
+                {/* TOP plays strip */}
+                {topG.length > 0 && (
+                  <div style={{
+                    background:"#050A08", borderBottom:"1px solid #1E293B",
+                    padding:"6px 12px", display:"flex", gap:6, flexWrap:"wrap", alignItems:"center",
+                  }}>
+                    <span style={{ fontSize:8, color:"#334155", marginRight:2 }}>TOP:</span>
+                    {topG.map(d => {
+                      const on  = myBets.has(d.id);
+                      const tc  = TIER_CFG[d.tier];
+                      const ir  = REC.some(r => r.id === d.id);
+                      return (
+                        <div key={d.id} style={{
+                          display:"flex", alignItems:"center", gap:5,
+                          padding:"3px 9px", background: on ? "#1A0F00" : "#0D1117",
+                          border:`1px solid ${ir ? "#16A34A" : on ? "#92400E" : tc.bd + "66"}`,
+                          borderRadius:4,
+                        }}>
+                          {ir && <span style={{ fontSize:9, color:"#4ADE80" }}>🎯</span>}
+                          <span style={{ fontSize:9, fontWeight:700, color: TEAM_COL[d.team] || "#fff" }}>{d.team}</span>
+                          <span style={{ fontSize:10, fontWeight:700, color:"#F8FAFC" }}>{d.a}+{d.b}</span>
+                          <TierBadge tier={d.tier} />
+                          <CorrBadge corr={d.corr} />
+                          <StarBtn on={on} toggle={() => toggleBet(d.id)} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Column headers */}
+                <div style={{
+                  display:"grid",
+                  gridTemplateColumns:"30px 58px 1fr 1fr 88px 80px 96px 1fr",
+                  background:"#040608", borderBottom:"1px solid #0A0E18", padding:"4px 10px",
+                }}>
+                  {["★","TEAM","PLAYER A","PLAYER B","TIER","CONN TYPE","CORR STRENGTH","NOTES"].map((h, i) => (
+                    <div key={i} style={{ fontSize:7, color:"#1E3A5F", fontWeight:700 }}>{h}</div>
+                  ))}
+                </div>
+
+                {/* Duo rows */}
+                {(hasFilter ? visG : allG).map(d => <Row key={d.id} d={d} />)}
+
+                {/* Empty state */}
+                {hasFilter && visG.length === 0 && (
+                  <div style={{ padding:"14px", textAlign:"center", fontSize:10, color:"#334155" }}>
+                    No duos match current filters.
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
       {/* remaining sections follow */}
     </div>
   );
