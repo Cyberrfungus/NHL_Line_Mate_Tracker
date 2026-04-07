@@ -877,7 +877,105 @@ export default function App() {
         );
       })}
 
-      {/* remaining sections follow */}
+      {/* ── PRE-PUCK-DROP + SEASON STATS + COLD FLAGS ────────────────────── */}
+      <div style={{ marginTop:14, background:"#080C12", border:"1px solid #1E293B", borderRadius:8, padding:"12px 14px" }}>
+
+        {/* ── Pre-puck-drop refresh ── */}
+        <div style={{ fontSize:12, fontWeight:900, color:"#FB923C", marginBottom:9 }}>
+          🔁 PRE-PUCK-DROP REFRESH — Manual Verification Required Before 8:30 PM ET
+        </div>
+        {[
+          ["🚑 MAKAR (COL)",       "CONFIRM OUT",   "Bednar said 'not serious, will miss some time' — but coaches sometimes clear players at warmups. Check ~1hr before puck drop. If Makar plays → Toews+MacKinnon PP LINK becomes INVALID (Makar resumes PP1 QB)."],
+          ["⚠️ R.THOMAS (STL)",    "COLD FLAG",     "Thomas cold-flagged (2+ consecutive blanks). Check if STL confirms he's even in lineup tonight — if scratched, Thomas+Holloway ELITE is fully INVALID. His streak status determines all STL L1/PP1 plays."],
+          ["⚠️ COL PP1 STRUCTURE", "TOEWS QB?",     "DFO dated Mar 28 — does not reflect Makar absence. Confirm via CHN/Colorado Hockey Now before puck drop that Toews (not Burns or Malinski) is indeed taking PP1 QB tonight."],
+          ["⚠️ VAN EFFORT LEVEL",  "LOW MOTIVATION","VAN eliminated, last in NHL (50 pts). Verify VAN's lineup vs starting goalies report. If they're resting stars, all VAN duos drop in value significantly. Pettersson and Boeser may get nights off."],
+          ["⚠️ STL LINEUP (STALE)","DFO Mar 23",    "STL DFO is 9 days stale. Check today's STL lines before playing any STL duo — Kyrou's return status unknown, and multiple line shuffles possible. Use Inside The Rink or STL beat reporter for confirmation."],
+          ["✅ ANA (FRESH)",        "DFO Apr 1 TODAY","ANA DFO updated at 12:04 ET today. Freshest lines on the entire slate. J.Carlson→Carlsson PP1 chain confirmed. High confidence in ANA duos — lowest staleness risk."],
+          ["✅ SJS (NEAR-FRESH)",   "DFO Mar 31",    "SJS DFO updated yesterday from last game. High confidence in Celebrini+W.Smith and Orlov→Celebrini chains. Confirm SJS starting goalie (Askarov vs Kahkonen) for game context."],
+        ].map(([tag, status, obs], i) => {
+          const statusColor =
+            /OUT|COLD|STALE|LOW/.test(status)         ? "#FCA5A5" :
+            /FRESH|NEAR/.test(status)                  ? "#4ADE80" :
+            "#FCD34D";
+          return (
+            <div key={i} style={{
+              display:"flex", gap:10, padding:"7px 9px",
+              borderBottom:"1px solid #0A0E18",
+              background: i % 2 === 0 ? "#080C12" : "#0D1117",
+            }}>
+              <span style={{ fontSize:8, fontWeight:700, color:"#F8FAFC", minWidth:130, flexShrink:0 }}>{tag}</span>
+              <span style={{ fontSize:8, fontWeight:700, color:statusColor, minWidth:110, flexShrink:0 }}>{status}</span>
+              <span style={{ fontSize:9.5, color:"#CBD5E1" }}>{obs}</span>
+            </div>
+          );
+        })}
+
+        {/* ── Season stats ── */}
+        <div style={{ fontSize:12, fontWeight:900, color:"#FBBF24", marginBottom:9, marginTop:14 }}>
+          📊 SEASON STATS — THRU MAR 31 2026
+        </div>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(195px,1fr))", gap:8, marginBottom:10 }}>
+          {[
+            ...Object.entries(SEASON),
+            ["TOTAL", Object.values(SEASON).reduce((a, s) => ({ W: a.W + s.W, L: a.L + s.L, CW: a.CW + s.CW }), { W:0, L:0, CW:0 })],
+          ].map(([tier, s]) => {
+            const tc  = TIER_CFG[tier] || { bg:"#0D1117", bd:"#1E293B", tx:"#94A3B8" };
+            const pct = (s.W / (s.W + s.L) * 100).toFixed(1);
+            const co  = s.W > 0 ? (s.CW / s.W * 100).toFixed(1) : "0.0";
+            return (
+              <div key={tier} style={{ background:tc.bg, border:`1px solid ${tc.bd}`, borderRadius:7, padding:"10px 12px" }}>
+                <div style={{ fontSize:11, fontWeight:800, color:tc.tx, marginBottom:6 }}>{tier}</div>
+                {/* Win % bar */}
+                <div style={{ background:"#00000040", borderRadius:4, height:6, marginBottom:5, overflow:"hidden" }}>
+                  <div style={{ background:tc.tx, height:6, width:`${pct}%`, borderRadius:4 }} />
+                </div>
+                <div style={{ fontSize:11, display:"flex", gap:8, marginBottom:3 }}>
+                  <span style={{ color:"#4ADE80" }}>{s.W}W</span>
+                  <span style={{ color:"#F87171" }}>{s.L}L</span>
+                  <span style={{ color:tc.tx, fontWeight:800 }}>{pct}%</span>
+                </div>
+                <div style={{ fontSize:9, color:"#94A3B8" }}>
+                  Chain OV: <span style={{ color:tc.tx, fontWeight:700 }}>{co}%</span>
+                  <span style={{ color:"#475569" }}> ({s.CW}/{s.W}W)</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Active cold flags ── */}
+        <div style={{ fontSize:10, fontWeight:700, color:"#FBBF24", marginBottom:7 }}>
+          ❄️ ACTIVE COLD FLAGS (Season Rolling)
+        </div>
+        {[
+          ["🚑 INJURED", "Makar (C.)",    "COL", "OUT tonight — UBI. Confirm status ~1hr before puck drop."],
+          ["❄️ COLD",    "R.Thomas",      "STL", "2+ consecutive blanks. All Thomas duos EXCLUDED until he scores."],
+          ["❄️ COLD WATCH","D.Holloway",  "STL", "Thomas cold flag affects Holloway L1+PP1 duos indirectly."],
+          ["🚑 INJURED", "Draisaitl",     "EDM", "LBI. Not on tonight's slate. Season dataset cold flag remains."],
+          ["❄️ COLD",    "E.Karlsson",    "PIT", "2 consecutive blanks (Mar 30-31). Not tonight. Cold flag active."],
+          ["❄️ COLD",    "Schaefer (M.)", "NYI", "2 consecutive blanks. Not tonight. Cold flag active."],
+          ["❄️ COLD",    "Barzal",        "NYI", "2 consecutive blanks. Not tonight. Cold flag active."],
+        ].map(([tag, player, team, note], i) => (
+          <div key={i} style={{
+            display:"flex", gap:10, padding:"6px 9px",
+            borderBottom:"1px solid #0A0E18",
+            background: i % 2 === 0 ? "#080C12" : "#0D1117",
+          }}>
+            <span style={{ fontSize:8, fontWeight:700, color: tag.includes("🚑") ? "#FCD34D" : "#FCA5A5", minWidth:100, flexShrink:0 }}>
+              {tag}
+            </span>
+            <span style={{ fontSize:8, fontWeight:700, color:"#F8FAFC", minWidth:90, flexShrink:0 }}>{player}</span>
+            <span style={{ fontSize:8, color:"#475569", minWidth:36, flexShrink:0 }}>{team}</span>
+            <span style={{ fontSize:9.5, color:"#CBD5E1" }}>{note}</span>
+          </div>
+        ))}
+
+        {/* ── Footer ── */}
+        <div style={{ marginTop:10, fontSize:8, color:"#1E293B", textAlign:"center" }}>
+          Apr 1 2026 · Lines: Daily Faceoff (fetched {FETCH_TIME}) · Andy Frances methodology · For entertainment only
+        </div>
+      </div>
+
     </div>
   );
 }
