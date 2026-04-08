@@ -5,41 +5,13 @@
 
 ---
 
-## ✅ COMPLETED
+## ✅ FULLY COMPLETED
 
-### NHLTrackerDashboard.jsx — COMPLETE (981 lines)
-`src/components/NHLTrackerDashboard.jsx`
+### Repository Setup
+- `main` branch initialized with `README.md`
+- `claude/init-repo-setup-x14pg` is the active dev branch
 
-All 8 sections from original `nhl_tracker_apr01_2026.jsx` template:
-
-1. **Constants & configs** — `FETCH_TIME`, `SEASON`, `GAME_ORDER`, `GAME_INFO`, `MONO`, `TIER_CFG`, `CORR_CFG`, `ENV_CFG`, `TEAM_COL`
-2. **Helper components** — `TierBadge`, `CorrBadge`, `StarBtn`
-3. **DUOS array** — 35 duo objects across VAN@COL · STL@LAK · ANA@SJS
-4. **REC filter** — `DUOS.filter(d => d.rec && !d.cold && !d.invalid)` → 5 targets
-5. **App component state** — `tierF/teamF/gameF/corrF/search/betsOnly/myBets/collapsed`, `toggleBet`, `toggleCol`, `teams`, `filtered`, `betDuos`, `counts`, `hasFilter`, `Btn`
-6. **Row component** — 8-col duo row with state-driven bg/border colors
-7. **Header** — title, fetch time, counts, 5 stat boxes
-8. **Recommended Targets** — green box, 4 rules, REC.map() table
-9. **My Bets** — conditional gold box, bet pills, BETS ONLY toggle
-10. **Filters** — tier/corr row, game row, team row + search + bets toggle
-11. **Game Blocks** — collapsible per-game divs with TOP strip, col headers, Row components
-12. **Pre-Puck-Drop Refresh** — 7-row checklist, status color logic
-13. **Season Stats** — ELITE/STRONG/PP LINK/TOTAL cards with W% bar + chain OV%
-14. **Cold Flags** — 7-row rolling cold/injury table
-15. **Footer** — date · fetch time · methodology · disclaimer
-
-### Modular Design Rule (for Artifact-Generator)
-Daily-changing data lives at the TOP of the file in the `── DAILY DATA ──` block:
-- `FETCH_TIME` — lines fetch timestamp
-- `SEASON` — W/L/CW per tier
-- `GAME_ORDER` — ordered array of game keys
-- `GAME_INFO` — per-game time, env, O/U, context string
-- `DUOS` — full 35-object array (replace entirely each day)
-- Pre-puck-drop rows and cold flags are hardcoded inline (move to constants in future refactor)
-
-Style constants (`MONO`, `TIER_CFG`, `CORR_CFG`, `ENV_CFG`, `TEAM_COL`) are fixed — never edit daily.
-
-### Agents Defined
+### Agent Definitions (`/.claude/agents/`)
 | Agent | File |
 |---|---|
 | `NHL-GoalNHL-Scraper` | `.claude/agents/NHL-GoalNHL-Scraper.md` |
@@ -47,14 +19,40 @@ Style constants (`MONO`, `TIER_CFG`, `CORR_CFG`, `ENV_CFG`, `TEAM_COL`) are fixe
 | `Artifact-Generator` | `.claude/agents/Artifact-Generator.md` |
 | `PreGame-Prompt-Builder` | `.claude/agents/PreGame-Prompt-Builder.md` |
 
+### Dashboard — `src/components/NHLTrackerDashboard.jsx` (981 lines) ✅ COMPLETE
+All 8 sections fully written, committed, and pushed:
+1. Constants & configs (`FETCH_TIME`, `SEASON`, `GAME_ORDER`, `GAME_INFO`, `MONO`, `TIER_CFG`, `CORR_CFG`, `ENV_CFG`, `TEAM_COL`)
+2. Helper components (`TierBadge`, `CorrBadge`, `StarBtn`)
+3. DUOS array (35 duo objects — VAN@COL · STL@LAK · ANA@SJS)
+4. `REC` filter + `GAME_ORDER_LIST`
+5. App component: all state hooks, `toggleBet`, `toggleCol`, `filtered`, `betDuos`, `counts`, `hasFilter`, `Btn`
+6. `Row` component (8-col duo row, state-driven bg/border)
+7. JSX: Header · Recommended Targets · My Bets · Filters · Game Blocks · Pre-Puck-Drop · Season Stats · Cold Flags · Footer
+
+**Modular design:** Daily-changing data is at the top of the file in the `── DAILY DATA ──` block.  
+`Artifact-Generator` only needs to replace: `FETCH_TIME`, `SEASON`, `GAME_ORDER`, `GAME_INFO`, `DUOS`.  
+Style constants (`MONO`, `TIER_CFG`, etc.) are fixed — never edit daily.
+
+### Chain Data (`data/chains/`)
+| File | Contents |
+|---|---|
+| `goalnhl_complete_Mar22_Apr6_2026.csv` | 446 real goal chain records (backfill) |
+| `goalnhl_daily.csv` | Apr 7 dry-run test rows (14 rows) |
+
+### Scraper (`scripts/scrape_box_scores.py`) ✅ COMPLETE
+- Scrapes `plaintextsports.com/nhl/YYYY-MM-DD/` for all game box scores
+- Parses scorer, assist_1, assist_2, type (ES/PP/SH/OT/EN/SO), period+time
+- Appends to `data/chains/goalnhl_daily.csv`
+- `--dry-run` mode works (tested with Apr 7 mock data)
+- **Live mode blocked in this sandbox** (plaintextsports.com not in proxy allowlist)
+  → Run `python scripts/scrape_box_scores.py --date YYYY-MM-DD` from any machine with open internet
+
 ---
 
-## ⏳ NEXT
+## ⏳ NEXT OPTIONS
 
-Possible next steps (confirm with user):
-
-1. **Daily data ingestion** — wire `NHL-GoalNHL-Scraper` output (`data/chains/YYYY-MM-DD.csv`) into a processing script that rebuilds the `DUOS` array
-2. **XLSX updater** — `Artifact-Generator` updates master spreadsheet with new chain data + recommended targets
-3. **Pre-game prompt template** — `PreGame-Prompt-Builder` generates copy-paste prompt for next day
-4. **App scaffolding** — add `package.json`, Vite/CRA config so dashboard renders in browser
-5. **Refactor** — extract pre-puck-drop rows and cold flags into `DAILY DATA` block constants
+1. **Daily workflow integration** — wire scraper → chain processor → `DUOS` array rebuild
+2. **XLSX updater** — `Artifact-Generator` writes master spreadsheet
+3. **Pre-game prompt template** — `PreGame-Prompt-Builder` generates next-day copy-paste prompt
+4. **App scaffolding** — add `package.json` + Vite config so dashboard renders in browser
+5. **Refactor dashboard** — extract pre-puck-drop rows and cold flags into the `DAILY DATA` block
