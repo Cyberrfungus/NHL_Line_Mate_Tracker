@@ -1,0 +1,43 @@
+date,game,team,scorer,assist_1,assist_2,type,period_time,notes
+2026-04-07,COL@STL,COL,MacKinnon,,,PP,P1,
+2026-04-07,COL@STL,COL,Landeskog,,,ES,P1 12:33,
+2026-04-07,COL@STL,COL,Necas,,,ES,P2,
+2026-04-07,COL@STL,COL,Burns,,,PP,P3,
+2026-04-07,COL@STL,STL,Thomas,,,ES,P1 17:02,
+2026-04-07,COL@STL,STL,Kyrou,,,ES,P2 14:45,
+2026-04-07,COL@STL,STL,Holloway,,,OT,OT,
+2026-04-07,COL@STL,TOR,Tavares,,,PP,P1,
+2026-04-07,COL@STL,TOR,Nylander,,,ES,P2,
+2026-04-07,COL@STL,TOR,Knies,,,SH,P3 18:55,Unassisted
+2026-04-07,COL@STL,BOS,Pastrnak,,,ES,P1,
+2026-04-07,COL@STL,BOS,Zacha,,,ES,P2 14:03,
+2026-04-07,COL@STL,BOS,McAvoy,,,PP,P3 11:27,
+2026-04-07,COL@STL,BOS,Pastrnak,,,EN,P3 19:47,Unassisted
+2026-04-07,TOR@BOS,COL,MacKinnon,,,PP,P1,
+2026-04-07,TOR@BOS,COL,Landeskog,,,ES,P1 12:33,
+2026-04-07,TOR@BOS,COL,Necas,,,ES,P2,
+2026-04-07,TOR@BOS,COL,Burns,,,PP,P3,
+2026-04-07,TOR@BOS,STL,Thomas,,,ES,P1 17:02,
+2026-04-07,TOR@BOS,STL,Kyrou,,,ES,P2 14:45,
+2026-04-07,TOR@BOS,STL,Holloway,,,OT,OT,
+2026-04-07,TOR@BOS,TOR,Tavares,,,PP,P1,
+2026-04-07,TOR@BOS,TOR,Nylander,,,ES,P2,
+2026-04-07,TOR@BOS,TOR,Knies,,,SH,P3 18:55,Unassisted
+2026-04-07,TOR@BOS,BOS,Pastrnak,,,ES,P1,
+2026-04-07,TOR@BOS,BOS,Zacha,,,ES,P2 14:03,
+2026-04-07,TOR@BOS,BOS,McAvoy,,,PP,P3 11:27,
+2026-04-07,TOR@BOS,BOS,Pastrnak,,,EN,P3 19:47,Unassisted
+2026-04-07,COL@STL,COL,MacKinnon,Makar,Necas,PP,P1 5:14,
+2026-04-07,COL@STL,COL,Landeskog,MacKinnon,,ES,P1 12:33,
+2026-04-07,COL@STL,COL,Necas,MacKinnon,Malinski,ES,P2 8:01,
+2026-04-07,COL@STL,COL,Burns,Nelson,,PP,P3 4:17,
+2026-04-07,COL@STL,STL,Thomas,Holloway,Broberg,ES,P1 17:02,
+2026-04-07,COL@STL,STL,Kyrou,Buchnevich,,ES,P2 14:45,
+2026-04-07,COL@STL,STL,Holloway,Thomas,,OT,OT 2:18,
+2026-04-07,TOR@BOS,TOR,Tavares,Nylander,Knies,PP,P1 3:05,
+2026-04-07,TOR@BOS,TOR,Nylander,Tavares,Rielly,ES,P2 9:42,
+2026-04-07,TOR@BOS,TOR,Knies,,,SH,P3 18:55,Unassisted
+2026-04-07,TOR@BOS,BOS,Pastrnak,McAvoy,,ES,P1 7:11,
+2026-04-07,TOR@BOS,BOS,Zacha,Pastrnak,Arvidsson,ES,P2 14:03,
+2026-04-07,TOR@BOS,BOS,McAvoy,Pastrnak,,PP,P3 11:27,
+2026-04-07,TOR@BOS,BOS,Pastrnak,,,EN,P3 19:47,Unassisted
