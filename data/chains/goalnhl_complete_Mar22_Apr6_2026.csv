@@ -1,0 +1,447 @@
+date,game,team,scorer,assist_1,assist_2,type,period_time,notes
+2026-03-22,CAR vs PIT,CAR,Aho (25),,,PP,G1,47 sec in
+2026-03-22,CAR vs PIT,CAR,Ehlers,Jarvis,,PP,G2,Jarvis A1
+2026-03-22,CAR vs PIT,CAR,Chatfield (2),Chinakhov (tip),,ES,G3,
+2026-03-22,CAR vs PIT,CAR,Jarvis,Ehlers,Wotherspoon,PP,G4,Ehlers A1
+2026-03-22,CAR vs PIT,CAR,Jankowski,,,ES,G6,EN
+2026-03-22,CAR vs PIT,PIT,Chinakhov (16),Bryan Rust,,ES,G5,
+2026-03-22,COL vs WSH,COL,Landeskog (10),Necas,,ES,G2,Necas A1
+2026-03-22,COL vs WSH,COL,Roy,,,ES,G3,
+2026-03-22,COL vs WSH,COL,Nelson (32),Necas,,OT,G5-OT,OTG; Necas A1
+2026-03-22,COL vs WSH,WSH,Sourdif (14),,,ES,G1,
+2026-03-22,COL vs WSH,WSH,Ovechkin (26/923),Strome,Cole Hutson,PP,G4,1000th combined goal
+2026-03-22,WPG vs NYR,NYR,Kartye,JT Miller,,ES,G1,
+2026-03-22,WPG vs NYR,NYR,Zibanejad (30),Adam Fox,JT Miller,PP,G2,
+2026-03-22,WPG vs NYR,WPG,Lowry,Perfetti,,ES,G1,PP2 unit connection
+2026-03-22,WPG vs NYR,WPG,Vilardi (27),Kyle Connor,Josh Morrissey,PP,G2,PP1 chain
+2026-03-23,OTT vs NYR,NYR,Sheary,Kartye,,ES,G3,
+2026-03-23,OTT vs NYR,OTT,Pinto,Giroux,,PP,G1,
+2026-03-23,OTT vs NYR,OTT,Foegele (5),Eller,,ES,G2,
+2026-03-24,CAR vs MTL,CAR,Ehlers (PPG),Matheson deflection,,PP,G1,
+2026-03-24,CAR vs MTL,CAR,Staal,,,ES,G2,Unassisted
+2026-03-24,CAR vs MTL,MTL,Kapanen,Struble,,ES,G3,
+2026-03-24,CAR vs MTL,MTL,Caufield (44),Suzuki,,ES,G4,
+2026-03-24,CAR vs MTL,MTL,Slafkovsky,Caufield,Dobson,ES,G5,
+2026-03-24,CAR vs MTL,MTL,Demidov,,,ES,G6,Breakaway
+2026-03-24,CAR vs MTL,MTL,Evans,,,EN,G7,
+2026-03-24,CBJ vs PHI,CBJ,Werenski,Severson,,ES,G2,
+2026-03-24,CBJ vs PHI,CBJ,Olivier,,,ES,G3,
+2026-03-24,CBJ vs PHI,CBJ,Marchment,Marchenko,,ES,G4,Marchenko 100th assist
+2026-03-24,CBJ vs PHI,PHI,Couturier,Glendening,Ristolainen,ES,G1,Couturier return from injury
+2026-03-24,CBJ vs PHI,PHI,(2nd PHI goal),,,ES,G5,
+2026-03-24,COL vs PIT,COL,MacKinnon (46),,,ES,G1,Partial breakaway
+2026-03-24,COL vs PIT,COL,Necas (1),Makar,,ES,G3,Makar 499 pts
+2026-03-24,COL vs PIT,COL,Malinski,,,ES,G4,
+2026-03-24,COL vs PIT,COL,Parker Kelly,,,ES,G5,
+2026-03-24,COL vs PIT,COL,Necas (2),,,ES,G7,
+2026-03-24,COL vs PIT,COL,Colton,,,EN,G8,
+2026-03-24,COL vs PIT,PIT,Chinakhov (17),Girard,,ES,G2,
+2026-03-24,COL vs PIT,PIT,Rakell,Letang,,ES,G6,Letang 800 pts
+2026-03-24,EDM vs UTA,EDM,Roslovic (1),Walman,,ES,G2,
+2026-03-24,EDM vs UTA,EDM,Savoie (SHG),Bouchard,,SH,G3,
+2026-03-24,EDM vs UTA,EDM,McDavid (400),Ekholm,Bouchard,ES,G5,400th career goal; 1199th pt
+2026-03-24,EDM vs UTA,EDM,Roslovic (2),Hyman,,ES,G6,Off post rebound
+2026-03-24,EDM vs UTA,EDM,McDavid (401/EN),,,EN,G7,1200th career point
+2026-03-24,EDM vs UTA,UTA,Kerfoot,Durzi,,ES,G1,Deflected off Murphy
+2026-03-24,EDM vs UTA,UTA,Crouse (PPG),Carcone,,PP,G4,
+2026-03-24,OTT vs DET,DET,Shine,Edvinsson,DeBrincat,ES,G4,DeBrincat 7-game pt streak
+2026-03-24,OTT vs DET,DET,Larkin (PPG),,,PP,G5,Return from injury (out since Mar 6)
+2026-03-24,OTT vs DET,OTT,Tkachuk (20),Stützle,Yakemchuk,PP,G1,Yakemchuk 1st NHL point
+2026-03-24,OTT vs DET,OTT,Yakemchuk (1),,,ES,G2,NHL debut goal
+2026-03-24,OTT vs DET,OTT,Eller (4),,,ES,G3,
+2026-03-24,TOR vs BOS,BOS,E.Lindholm,,,ES,G3,
+2026-03-24,TOR vs BOS,BOS,McAvoy,,,PP,G5,
+2026-03-24,TOR vs BOS,TOR,Domi,,,ES,G1,
+2026-03-24,TOR vs BOS,TOR,Knies (1),,,SH,G2,SHG
+2026-03-24,TOR vs BOS,TOR,Nylander,Tavares,,ES,G4,Tavares 3A total
+2026-03-24,TOR vs BOS,TOR,Knies (2),,,EN-PP,G6,
+2026-03-24,WPG vs VGK,VGK,Sissons,Andersson,,PP,G4,
+2026-03-24,WPG vs VGK,WPG,Connor (32),Morrissey,Scheifele,ES,G1,
+2026-03-24,WPG vs VGK,WPG,Iafallo (12),Scheifele,,ES,G2,
+2026-03-24,WPG vs VGK,WPG,Perfetti (10),Vilardi,,ES,G3,3-on-1 saucer
+2026-03-24,WPG vs VGK,WPG,Scheifele (EN),,,EN,G5,Gordie Howe hat trick
+2026-03-25,BOS vs BUF,BOS,Pastrnak,Minten,Khusnutdinov,ES,P1 08:53,
+2026-03-25,BOS vs BUF,BOS,Arvidsson,Pastrnak,Zadorov,ES,P2 10:15,
+2026-03-25,BOS vs BUF,BOS,Mittelstadt,Aspirot,Zacha,ES,P3 06:00,tied 3-3
+2026-03-25,BOS vs BUF,BOS,Zacha (OT),Pastrnak,McAvoy,OT,OT 04:22,Pastrnak 3-pt night
+2026-03-25,BOS vs BUF,BUF,Zucker (1/PPG),Thompson,Jack Quinn,PP,P1 04:42,Lindholm penalty
+2026-03-25,BOS vs BUF,BUF,Benson,,,ES,P3 14:39,unassisted
+2026-03-25,BOS vs BUF,BUF,Zucker (2/PPG),Thompson,,PP,P3 14:06,Lohrei penalty
+2026-03-25,NYR vs TOR,NYR,Lafreniere (PPG),JT Miller,Adam Fox,PP,P1,EKL slashing penalty
+2026-03-25,NYR vs TOR,NYR,Zibanejad (1),Lafreniere,,PP,P2,EKL slashing
+2026-03-25,NYR vs TOR,NYR,Zibanejad (2),Perreault,,ES,P2,1:07 after Tavares goal
+2026-03-25,NYR vs TOR,TOR,McCabe,Maccelli,,ES,P1,Maccelli A; rebound from Maccelli shot
+2026-03-25,NYR vs TOR,TOR,Robertson,Domi,,ES,P1,Domi backhand feed
+2026-03-25,NYR vs TOR,TOR,Joshua,Maccelli,Woll,ES,P2,Woll 1st NHL point
+2026-03-25,NYR vs TOR,TOR,Tavares (26),,,ES,P3,Unassisted; 3rd-period go-ahead
+2026-03-26,ANA vs CGY,ANA,Granlund,Carlsson,,ES,G1,Hat trick G1
+2026-03-26,ANA vs CGY,ANA,Granlund,Terry,,ES,G3,Hat trick G2
+2026-03-26,ANA vs CGY,ANA,Granlund,Carlsson,,OT,G5-OT,Hat trick G3; 1s left in OT
+2026-03-26,ANA vs CGY,CGY,Coleman,Backlund,,ES,G2,
+2026-03-26,ANA vs CGY,CGY,(CGY tied),,,ES,G4,
+2026-03-26,CBJ vs MTL,CBJ,Severson,Lundestrom,Jenner,ES,G2,
+2026-03-26,CBJ vs MTL,MTL,Struble,Bolduc,Hutson,ES,G1,Bolduc A1; Hutson A2
+2026-03-26,CBJ vs MTL,MTL,Bolduc,Matheson,Evans,ES,G3,Winner in 3rd
+2026-03-26,CHI vs PHI,CHI,Bedard,Frondell,Crevier,ES,G2,Bedard 30th goal career-high
+2026-03-26,CHI vs PHI,PHI,Bump,Couturier,,ES,G1,Early goal
+2026-03-26,CHI vs PHI,PHI,Dvorak,,,ES,G3,
+2026-03-26,CHI vs PHI,PHI,Konecny,,,ES,G4,
+2026-03-26,CHI vs PHI,PHI,Zegras,,,ES,G5,
+2026-03-26,CHI vs PHI,PHI,(EN),,,EN,G6,
+2026-03-26,COL vs WPG,COL,Drury,,,ES,G1,
+2026-03-26,COL vs WPG,COL,MacKinnon,Makar,,PP,G4,Makar A1; MacKinnon PPG
+2026-03-26,COL vs WPG,COL,MacKinnon,,,ES,G5,2nd goal of night; 48 goals season
+2026-03-26,COL vs WPG,WPG,Scheifele,,,ES,G2,1st goal
+2026-03-26,COL vs WPG,WPG,Scheifele,,,ES,G3,2nd goal
+2026-03-26,DAL vs NYI,DAL,(DAL tied),,,ES,G2,
+2026-03-26,DAL vs NYI,NYI,Schaefer,Barzal,,PP,G1,Schaefer PPG rookie D
+2026-03-26,DAL vs NYI,NYI,Holmstrom,,,ES,G3,Winner
+2026-03-26,EDM vs VGK,EDM,Savoie,McDavid,,ES,G1,McDavid A (800th career assist)
+2026-03-26,EDM vs VGK,EDM,McDavid,,,ES,G3,3-on-1 rush
+2026-03-26,EDM vs VGK,EDM,Hyman,McDavid,,ES,G5,McDavid A; Hyman strip in front
+2026-03-26,EDM vs VGK,EDM,Bouchard,McDavid,,OT,G7-OT,McDavid FO draw to Bouchard
+2026-03-26,EDM vs VGK,VGK,Stone,Barbashev,,ES,G2,1st goal
+2026-03-26,EDM vs VGK,VGK,Stone,,,ES,G4,Short breakaway 2nd goal
+2026-03-26,EDM vs VGK,VGK,Barbashev,Dorofeyev,,ES,G6,Rebound rush
+2026-03-26,LAK vs VAN,LAK,Panarin,Kopitar,,ES,G1,Kuemper shutout
+2026-03-26,LAK vs VAN,LAK,Byfield,Laferriere,,ES,G2,
+2026-03-26,LAK vs VAN,LAK,(LAK G3),,,ES,G3,
+2026-03-26,LAK vs VAN,LAK,(EN),,,EN,G4,
+2026-03-26,MIN vs FLA,FLA,M.Tkachuk,,,SH,G2,Shorthanded goal
+2026-03-26,MIN vs FLA,FLA,(FLA tied),,,ES,G3,
+2026-03-26,MIN vs FLA,MIN,Foligno,,,ES,G1,First game back from injury
+2026-03-26,MIN vs FLA,MIN,ErikssonEk,,,ES,G4,Winner 4.4s left; was listed OUT
+2026-03-26,NJD vs NSH,NJD,Bratt,Hughes,,ES,G1,Redirection goal
+2026-03-26,NJD vs NSH,NJD,Hischier,Bratt,,ES,G2,Tip/screen; Bratt shot
+2026-03-26,NJD vs NSH,NJD,Hischier,Hughes,,PP,G5,Deflection; Hamilton QB'd
+2026-03-26,NJD vs NSH,NJD,Meier,,,EN,G6,
+2026-03-26,NJD vs NSH,NSH,Schaefer,Svechkov,,ES,G3,Breakaway
+2026-03-26,NJD vs NSH,NSH,Stamkos,,,ES,G4,Backhand; tied 2-2
+2026-03-26,PIT vs OTT,OTT,Batherson,Stützle,,PP,G1,Stützle 400th career pt
+2026-03-26,PIT vs OTT,OTT,Cousins,,,ES,G2,
+2026-03-26,PIT vs OTT,OTT,Batherson,,,ES,G4,2nd goal
+2026-03-26,PIT vs OTT,PIT,Rakell,Letang,,ES,G3,Crosby left P2 w/ injury
+2026-03-26,PIT vs OTT,PIT,Rakell,Karlsson,,PP,G5,Rakell 2nd goal
+2026-03-26,PIT vs OTT,PIT,Kindel,,,SO,G6,SO winner
+2026-03-26,SEA vs TBL,SEA,Savoie,McMann,,ES,G1,
+2026-03-26,SEA vs TBL,SEA,Kakko,,,ES,G3,
+2026-03-26,SEA vs TBL,SEA,McMann,Kakko,,ES,G5,
+2026-03-26,SEA vs TBL,SEA,Montour,,,OT,G7-OT,OTG
+2026-03-26,SEA vs TBL,TBL,Cirelli,,,ES,G2,
+2026-03-26,SEA vs TBL,TBL,Perry,D'Astous,,PP,G4,
+2026-03-26,SEA vs TBL,TBL,Guentzel,D'Astous,,ES,G6,Guentzel 300th career G
+2026-03-26,SJS vs STL,SJS,Wennberg,,,ES,G1,
+2026-03-26,SJS vs STL,STL,Dvorsky,Holloway,Snuggerud,ES,G2,
+2026-03-26,SJS vs STL,STL,Holloway,Thomas,,OT,G3-OT,Holloway winner 3s left
+2026-03-26,WSH vs UTA,UTA,Guenther,Keller,Sergachev,ES,G2,Keller 3A night
+2026-03-26,WSH vs UTA,UTA,Guenther,Keller,Sergachev,PP,G5,Keller+Sergachev PP chain
+2026-03-26,WSH vs UTA,UTA,Cooley,,,ES,G9,
+2026-03-26,WSH vs UTA,WSH,Ovechkin,Strome,,PP,G1,Hat trick goal 1
+2026-03-26,WSH vs UTA,WSH,Chychrun,,,PP,G10,
+2026-03-26,WSH vs UTA,WSH,Ovechkin,,,PP,G3,Hat trick goal 2
+2026-03-26,WSH vs UTA,WSH,Miroshnichenko,,,ES,G4,First 2-goal NHL game
+2026-03-26,WSH vs UTA,WSH,Ovechkin,,,ES,G6,Hat trick; 34th career
+2026-03-26,WSH vs UTA,WSH,Beauvillier,Sandin,,ES,G7,
+2026-03-26,WSH vs UTA,WSH,Miroshnichenko,,,ES,G8,2nd goal
+2026-03-27,CHI vs NYR,CHI,Lardis,Bertuzzi,Vlasic,ES,G1,Vlasic toe-drag; Bertuzzi fed Lardis across crease
+2026-03-27,CHI vs NYR,NYR,Miller,Sheary,,ES,G2,Sheary threw it in front; deflected off skate
+2026-03-27,CHI vs NYR,NYR,Robertson,Miller,,ES,G3,Miller shot stopped; Robertson rebound
+2026-03-27,CHI vs NYR,NYR,Sykora (1st NHL G),Cuylle,,ES,G4,2-on-1; Sykora wrist shot
+2026-03-27,CHI vs NYR,NYR,Brodzinski (1),,,ES,G5,One-timer left circle
+2026-03-27,CHI vs NYR,NYR,Lafreniere (PPG),Fox,,PP,G6,Redirect of Fox shot from point
+2026-03-27,CHI vs NYR,NYR,Brodzinski (2),Fortescue,,ES,G7,Fortescue NHL debut assist
+2026-03-27,DET vs BUF,BUF,Thompson (400pts),Krebs,,ES,G4,Krebs cross-ice feed; Thompson one-timer 5-hole
+2026-03-27,DET vs BUF,BUF,Dahlin,Byram,,ES,G6,Byram blocked one-timer; Dahlin loose puck
+2026-03-27,DET vs BUF,DET,DeBrincat (PPG),Seider,,PP,G1,Norris HS penalty; DeBrincat chip over Lyon
+2026-03-27,DET vs BUF,DET,Raymond (PPG),Seider,,PP,G2,Stanley interference; Seider A1 batted puck at point
+2026-03-27,DET vs BUF,DET,Kasper,Finnie,,ES,G3,Finnie 2 shots blocked; passed to Kasper
+2026-03-27,DET vs BUF,DET,Bernard-Docker,,,ES,G5,First career goal; top of left circle
+2026-03-27,DET vs BUF,DET,Kane (EN),,,EN,G7,Empty netter for 5-2 final
+2026-03-28,ANA vs EDM,ANA,Sennecke,,,ES,G2,Unassisted
+2026-03-28,ANA vs EDM,ANA,Gauthier,,,ES,G4,Unassisted
+2026-03-28,ANA vs EDM,EDM,Savoie,McDavid,,ES,G1,McDavid A1
+2026-03-28,ANA vs EDM,EDM,Hyman,McDavid,,ES,G3,McDavid A1; strip and score
+2026-03-28,ANA vs EDM,EDM,McDavid,,,ES,G5,Unassisted goal
+2026-03-28,ANA vs EDM,EDM,Roslovic,Bouchard,,ES,G6,Bouchard A1 (2A night)
+2026-03-28,DAL vs PIT,DAL,Hryckowian,,,ES,G2,Loose puck right circle
+2026-03-28,DAL vs PIT,DAL,Robertson,Rantanen,,PP,G4,Rantanen feed; Robertson 40th G
+2026-03-28,DAL vs PIT,DAL,Rantanen,Robertson,,PP,G5,Robertson cross-ice; Rantanen one-timer
+2026-03-28,DAL vs PIT,DAL,Bichsel,,,ES,G6,Point shot 4-2
+2026-03-28,DAL vs PIT,DAL,Bourque,,,EN,G8,EN 5-3
+2026-03-28,DAL vs PIT,DAL,Bourque,,,EN,G9,EN 6-3 final
+2026-03-28,DAL vs PIT,PIT,Mantha,Karlsson,,PP,G1,Karlsson point; Mantha tip
+2026-03-28,DAL vs PIT,PIT,Karlsson,,,ES,G3,Wrist shot bar-down 2-1
+2026-03-28,DAL vs PIT,PIT,Acciari,Soderblom,,PP,G7,Deflection; Soderblom shot
+2026-03-28,FLA vs NYI,FLA,M.Tkachuk,,,ES,G1,Breakaway at 8:06
+2026-03-28,FLA vs NYI,FLA,M.Tkachuk,Mayfield,,ES,G2,Between legs top-shelf; Palat/Mayfield collision
+2026-03-28,FLA vs NYI,NYI,Gatcomb,,,ES,G3,Rush; banked off Tarasov glove
+2026-03-28,FLA vs NYI,NYI,Schenn,Schaefer,,ES,G4,Breakaway glove side; Schaefer A1
+2026-03-28,FLA vs NYI,NYI,Holmstrom,Schaefer,,PP,G5,PPG screened; Schaefer A on play
+2026-03-28,FLA vs NYI,NYI,Heineman,Lee,,ES,G6,Lee cross-ice feed; Heineman one-timer
+2026-03-28,FLA vs NYI,NYI,Cizikas,Gatcomb,,ES,G7,Rebound from crease; Gatcomb A1
+2026-03-28,MIN vs BOS,BOS,Peeke,,,ES,P1 1:01,wrist right circle
+2026-03-28,MIN vs BOS,BOS,Zacha,Mittelstadt,Arvidsson,ES,P1,2-on-1; Mittelstadt A1
+2026-03-28,MIN vs BOS,BOS,Arvidsson,Pastrnak,H.Lindholm,ES,P2,Pastrnak A1; Arvidsson one-timer off crossbar
+2026-03-28,MIN vs BOS,BOS,E.Lindholm,,,ES,P3,Rebound doorstep 4-1
+2026-03-28,MIN vs BOS,BOS,Zacha,Mittelstadt,,ES,P3,Redirection; Mittelstadt A1
+2026-03-28,MIN vs BOS,BOS,E.Lindholm,,,EN,P3,EN 6-3
+2026-03-28,MIN vs BOS,MIN,Kaprizov,,,ES,P2,Snap shot left circle; 3-1 cut
+2026-03-28,MIN vs BOS,MIN,Zuccarello,Hughes,,PP,P2,5-on-3 PPG; Hughes A1
+2026-03-28,MIN vs BOS,MIN,Hartman,,,ES,P3,Batted own rebound 4-3
+2026-03-28,MTL vs NSH,MTL,Demidov,Newhook,Kapanen,ES,P1 11:34,Hits post; Newhook A1
+2026-03-28,MTL vs NSH,MTL,Caufield,Suzuki,Hutson,ES,P1,Caufield 45th G! Forced Marchessault TO; Suzuki A1
+2026-03-28,MTL vs NSH,MTL,Newhook,Demidov,Kapanen,ES,P1 16:23,Demidov A1; Kapanen A2
+2026-03-28,MTL vs NSH,NSH,L'Heureux,,,ES,P3 16:26,Lucky bounce off glass
+2026-03-28,NJD vs CAR,CAR,Ehlers,Nikishin,,PP,G2,Snap shot off bar in
+2026-03-28,NJD vs CAR,CAR,Blake,,,ES,G3,Stick-handled around Siegenthaler
+2026-03-28,NJD vs CAR,CAR,Staal,Ehlers,,ES,G4,Ehlers pass right board; Staal redirect
+2026-03-28,NJD vs CAR,CAR,Gostisbehere,Hall,Ehlers,ES,G5,Hall A1; Ehlers A2
+2026-03-28,NJD vs CAR,CAR,Jarvis,,,ES,G7,Insurance
+2026-03-28,NJD vs CAR,NJD,Meier,Hischier,Mercer,ES,G1,Mercer stretch pass; Hischier fed Meier
+2026-03-28,NJD vs CAR,NJD,Dadonov,,,ES,G6,Unassisted
+2026-03-28,OTT vs TBL,OTT,Cozens,,,ES,P1 0:18,18 seconds in; wrister five-hole
+2026-03-28,OTT vs TBL,OTT,Spence,Cousins,,ES,P1,Rebound off Vasilevskiy sprawl
+2026-03-28,OTT vs TBL,TBL,Hagel,D'Astous,,ES,P2,D'Astous dug puck goalline; Hagel chip
+2026-03-28,OTT vs TBL,TBL,D'Astous,Gourde,,ES,P2,Above hash marks; Gourde A1
+2026-03-28,OTT vs TBL,TBL,Lilleberg,Hagel,,ES,P2,3-on-2 rush backhand go-ahead
+2026-03-28,OTT vs TBL,TBL,Guentzel,Perry,,ES,P3,Breakaway; Perry start pass
+2026-03-28,SEA vs BUF,BUF,Dahlin,Thompson,Quinn,PP,G3,Dahlin 100th career G; Thompson A1; Quinn A2
+2026-03-28,SEA vs BUF,BUF,Krebs,Benson,,ES,P3 11:39,Benson stole pass; Krebs snap
+2026-03-28,SEA vs BUF,BUF,Thompson,,,SO,SO,Shootout goal 1
+2026-03-28,SEA vs BUF,BUF,Quinn,,,SO,SO,Dove over Grubauer; SO winner
+2026-03-28,SEA vs BUF,SEA,Stephenson,McMann,Kakko,ES,P1 12:42,Kakko A2; Stephenson slot
+2026-03-28,SEA vs BUF,SEA,McMann,Kakko,Stephenson,ES,P2 13:18,McMann breakaway
+2026-03-28,SJS vs CBJ,CBJ,Mateychuk,Fantilli,,ES,P1 0:31,31s in; Fantilli pass; Mateychuk walked in
+2026-03-28,SJS vs CBJ,CBJ,Sillinger,Provorov,,ES,P2,Provorov interception; Sillinger one-timer
+2026-03-28,SJS vs CBJ,SJS,Chernyshov,Smith,,ES,G2,Neutral zone steal; Smith feed
+2026-03-28,SJS vs CBJ,SJS,Celebrini,Orlov,Wennberg,PP,G4,Wennberg FO; Orlov to Celebrini one-timer
+2026-03-28,SJS vs CBJ,SJS,Chernyshov,Smith,Celebrini,ES,G5,Celebrini zone entry; Smith cross-ice; GWG
+2026-03-28,TOR vs STL,STL,Snuggerud,Thomas,,ES,G1,Thomas A1 feeds Snuggerud
+2026-03-28,TOR vs STL,STL,Suter,Parayko,,PP,G3,PPG; Parayko QB at point
+2026-03-28,TOR vs STL,STL,Holloway,Thomas,,ES,G4,Thomas A1; Holloway snap shot
+2026-03-28,TOR vs STL,STL,Broberg,,,PP,G5,PPG from D position
+2026-03-28,TOR vs STL,STL,Holl,,,ES,G6,Returning player goal
+2026-03-28,TOR vs STL,TOR,Nylander,Rielly,,ES,G2,TOR lone goal; Rielly A1
+2026-03-29,BOS@CBJ,BOS,McAvoy,Arvidsson,,ES,P3 6:29,BOS rally begins; wrist shot through screen
+2026-03-29,BOS@CBJ,BOS,Zacha,McAvoy,Arvidsson,PP,P3 8:43,McAvoy point deflected by Zacha
+2026-03-29,BOS@CBJ,BOS,Zacha,Arvidsson,,PP,P3 19:49,6-on-4; 11 sec left — tied 3-3! Pastrnak streak ends at 12
+2026-03-29,BOS@CBJ,BOS,Minten,,,SO,SO R1,SO winner
+2026-03-29,BOS@CBJ,BOS,Arvidsson,,,SO,SO,Deciding SO goal — Arvidsson wins it
+2026-03-29,BOS@CBJ,CBJ,Jenner,,,ES,P1,CBJ 1-0
+2026-03-29,BOS@CBJ,CBJ,Marchment,Marchenko,,ES,P1,CBJ 2-0; Marchenko 2A night
+2026-03-29,BOS@CBJ,CBJ,Coyle,,,PP,P1,3-0 CBJ
+2026-03-29,CHI@NJD,CHI,Bedard,,,PP,P1,Bedard PPG
+2026-03-29,CHI@NJD,CHI,Nazar,,,ES,P2,Nazar rebound
+2026-03-29,CHI@NJD,NJD,Brown,L.Hughes,,PP,P1,Brown deflects Luke Hughes shot
+2026-03-29,CHI@NJD,NJD,Hischier,,,ES,P2,Hischier ties 2-2 (8-game pt streak)
+2026-03-29,CHI@NJD,NJD,Mercer,J.Hughes,,PP,P3,Mercer PPG; Hughes A
+2026-03-29,CHI@NJD,NJD,Meier,,,ES,P3,Meier EN — NJD 4 CHI 2
+2026-03-29,DAL@PHI,DAL,Robertson,Johnston,,ES,P1/2,Robertson G41; Johnston A1
+2026-03-29,DAL@PHI,DAL,Johnston,Heiskanen,,PP,P2,Johnston PPG G41; Heiskanen D-QB A1
+2026-03-29,DAL@PHI,DAL,Rantanen,Robertson,,ES,P2,Rantanen G; Robertson A1; L1 chain overlap
+2026-03-29,DAL@PHI,DAL,Bourque,,,EN,P3,EN #1
+2026-03-29,DAL@PHI,DAL,Bourque,,,EN,P3,EN #2
+2026-03-29,DAL@PHI,PHI,Michkov,Ristolainen,,PP,P3,Michkov PPG; Ristolainen D-QB A1
+2026-03-29,FLA@NYR,FLA,Samoskevich,,,ES,P3,40.2 sec left; ended shutout bid
+2026-03-29,FLA@NYR,NYR,Sykora,Fox,Laba,ES,P3 5:10,Tip-in; Fox shot; Shesterkin shutout bid
+2026-03-29,FLA@NYR,NYR,Sheary,Miller,,SH,P3 11:14,Breakaway SHG
+2026-03-29,FLA@NYR,NYR,Fox,,,EN,P3 16:06,EN goal
+2026-03-29,MTL@CAR,CAR,Svechnikov,Jarvis,,PP,P1 8:37,One-timer right circle; Dobes 34 saves
+2026-03-29,MTL@CAR,MTL,Suzuki,Caufield,Hutson,ES,P2 6:18,Rush; Caufield stretch pass from Hutson
+2026-03-29,MTL@CAR,MTL,Caufield,Suzuki,Hutson,ES,P2 17:32,Suzuki pass → Caufield snap shot blocker side
+2026-03-29,MTL@CAR,MTL,Suzuki,,,PP,P2 19:53,Rebound at crease; Suzuki 2G+A (91 pts)
+2026-03-29,NSH@TBL,NSH,Kemell,Barron,Forsberg,ES,P2 11:29,Breakaway tripped in
+2026-03-29,NSH@TBL,NSH,Forsberg,Svechkov,Wilsby,ES,P3 15:07,Double deflection 20s after Hagel G
+2026-03-29,NSH@TBL,TBL,Guentzel,Raddysh,D'Astous,ES,P2 6:28,Raddysh point shot deflected
+2026-03-29,NSH@TBL,TBL,Hagel,Guentzel,,ES,P3 15:27,
+2026-03-29,NSH@TBL,TBL,Perry,Guentzel,Lilleberg,ES,P3 13:08,Loose puck net-front; Guentzel 3-pt game
+2026-03-30,CGY@COL,CGY,Othmann,,,ES,,Debut goal 5-1
+2026-03-30,CGY@COL,CGY,Strome,Sharangovich,,ES,,Sharangovich A1; chain overlap YES
+2026-03-30,CGY@COL,COL,Drury,Kelly,,ES,,Drury opener 1-0
+2026-03-30,CGY@COL,COL,Kadri,Makar,Nelson,PP,,Kadri PPG1; Makar QB A1; chain overlap YES
+2026-03-30,CGY@COL,COL,Kadri,Makar,,PP,,Kadri PPG2; Makar QB again 3-0; chain overlap YES
+2026-03-30,CGY@COL,COL,Kelly,Makar,,ES,,Kelly G Makar deflect
+2026-03-30,CGY@COL,COL,Landeskog,MacKinnon,Nelson,ES,,MacKinnon A1 Landeskog G; chain overlap YES
+2026-03-30,CGY@COL,COL,Lehkonen,MacKinnon,Drury,ES,,MacKinnon A1 Lehkonen G; 3rd MacKinnon assist; chain overlap YES
+2026-03-30,CGY@COL,COL,MacKinnon,Makar,,PP,,MacKinnon PPG; Makar A1 one-timer feed; PREMIER chain YES
+2026-03-30,CGY@COL,COL,Malinski,Kelly,,ES,,Malinski G Kelly A
+2026-03-30,CGY@COL,COL,Necas,MacKinnon,Lehkonen,ES,,MacKinnon A1 Necas G; MacKinnon+Necas chain overlap YES
+2026-03-30,PIT@NYI,NYI,Barzal,Ritchie,,ES,,Barzal+Schenn ELITE partial
+2026-03-30,PIT@NYI,NYI,Lee,Boqvist,Boqvist,ES,,Boqvist+Lee PP LINK WIN YES
+2026-03-30,PIT@NYI,NYI,Schenn,Barzal,Ritchie,ES,,Barzal A1 on Schenn G; ELITE chain overlap YES
+2026-03-30,PIT@NYI,PIT,Hayes,Kindel,Brazeau,ES,,Brazeau 3rd assist
+2026-03-30,PIT@NYI,PIT,Mantha,Wotherspoon,Brazeau,ES,,Mantha G1
+2026-03-30,PIT@NYI,PIT,Rakell,Mantha,,ES,,Rakell G1; Mantha A1; chain overlap YES
+2026-03-30,PIT@NYI,PIT,Rakell,Brazeau,Wotherspoon,ES,,2nd Rakell G
+2026-03-30,PIT@NYI,PIT,Rust,Crosby,Letang,ES,,Crosby 1100th assist; 8-3 final; chain overlap YES
+2026-03-30,PIT@NYI,PIT,Soderblom,Brazeau,Wotherspoon,ES,,Brazeau 3A game
+2026-03-30,STL@SJS,SJS,Celebrini,Wennberg,,PP,,Celebrini 100th point PPG; Wennberg A; mutual chain YES
+2026-03-30,STL@SJS,SJS,Celebrini,W.Smith,Toffoli,ES,,Celebrini 2nd G; W.Smith A; Celebrini+W.Smith chain YES
+2026-03-30,STL@SJS,SJS,Gaudette,Ferraro,,ES,P3 19:38,Gaudette winner; 5-4 SJS walk-off
+2026-03-30,STL@SJS,SJS,Wennberg,Celebrini,Toffoli,PP,,Wennberg PPG; Celebrini A1; mutual chain overlap YES
+2026-03-30,STL@SJS,SJS,Wennberg,Toffoli,W.Smith,PP,,Wennberg 2nd PPG; W.Smith A2 YES
+2026-03-30,STL@SJS,STL,Broberg,Mailloux,,PP,,Broberg PPG cuts to 4-3
+2026-03-30,STL@SJS,STL,Buchnevich,Neighbours,,ES,,Neighbours A1 Buchnevich G; chain overlap YES
+2026-03-30,STL@SJS,STL,Fowler,,,PP,,Fowler PPG ties 4-4
+2026-03-30,STL@SJS,STL,Lindstein,,,ES,,Lindstein 1st NHL goal 1-0
+2026-03-30,TOR@ANA,ANA,Carlsson,Terry,,ES,,Terry A1 Carlsson G1; chain overlap YES
+2026-03-30,TOR@ANA,ANA,Carlsson,,,ES,,Carlsson tying G 4-4 on return from injury
+2026-03-30,TOR@ANA,ANA,Gauthier,J.Carlson,,PP,,Gauthier PPG J.Carlson A1; J.Carlson+Gauthier YES
+2026-03-30,TOR@ANA,ANA,J.Carlson,LaCombe,,SH,,J.Carlson SHG; LaCombe A
+2026-03-30,TOR@ANA,TOR,Knies,OEL,Cowan,PP,P3,Knies PPG; OEL A1 Cowan A2 YES
+2026-03-30,TOR@ANA,TOR,Nylander,Cowan,,ES,,Nylander breakaway; Cowan A
+2026-03-30,TOR@ANA,TOR,Rielly,,,ES,,Rielly snap shot 4-3
+2026-03-30,TOR@ANA,TOR,Tavares,Nylander,,PP,P1,Tavares PPG; OEL QB A1 Nylander A; OEL+Tavares chain YES
+2026-03-30,TOR@ANA,TOR,Tavares,Rielly,,OT,OT,Tavares OT winner; Rielly A1 Tavares redirect YES
+2026-03-30,VAN@VGK,VAN,Boeser,,,ES,,Boeser 2-2
+2026-03-30,VAN@VGK,VAN,Kane,,,ES,,Kane 1000th game goal
+2026-03-30,VAN@VGK,VGK,Andersson,Theodore,,ES,,Theodore A on Andersson G; chain overlap YES
+2026-03-30,VAN@VGK,VGK,C.Smith,,,ES,,C.Smith 4-2 empty area
+2026-03-30,VAN@VGK,VGK,R.Smith,McNabb,,ES,,R.Smith G McNabb A
+2026-03-30,VAN@VGK,VGK,Theodore,Barbashev,,ES,,Barbashev A1 Theodore G; chain overlap YES
+2026-03-31,CAR@CBJ,CAR,Gostisbehere,,,PP,P1 13:29,
+2026-03-31,CAR@CBJ,CAR,Stankoven,Jankowski,,PP,P1 16:12,
+2026-03-31,CAR@CBJ,CAR,Ehlers,,,ES,P3 12:42,
+2026-03-31,CAR@CBJ,CAR,Svechnikov,Ehlers,,PP,P3 13:55,
+2026-03-31,CAR@CBJ,CAR,Martinook,,,SH EN,P3 19:13,
+2026-03-31,CAR@CBJ,CBJ,Marchenko,Marchment,,ES,P2 15:14,
+2026-03-31,CAR@CBJ,CBJ,Fantilli,Marchment,,ES,P3 2:07,
+2026-03-31,DAL@BOS,BOS,Khusnutdinov,Pastrnak,,ES,P1,
+2026-03-31,DAL@BOS,BOS,Arvidsson,Pastrnak,Zacha,ES,P1 18:51,
+2026-03-31,DAL@BOS,BOS,Lindholm,Pastrnak,McAvoy,PP,P3 0:13,
+2026-03-31,DAL@BOS,BOS,Jokiharju,,,ES,P3 5:51,
+2026-03-31,DAL@BOS,BOS,Arvidsson,,,EN,P3 16:23,
+2026-03-31,DAL@BOS,BOS,Arvidsson,,,EN,P3,
+2026-03-31,DAL@BOS,DAL,Benn,,,ES,P2 4:49,
+2026-03-31,DAL@BOS,DAL,Duchene,Robertson,,ES,P2 16:53,
+2026-03-31,DAL@BOS,DAL,Johnston,Heiskanen,,PP,P3 19:02,
+2026-03-31,DET@PIT,DET,Larkin,Kane,,PP,P2 3:17,
+2026-03-31,DET@PIT,PIT,Rakell,,,ES,P1 4:10,
+2026-03-31,DET@PIT,PIT,Mantha,,,ES,P1 8:34,
+2026-03-31,DET@PIT,PIT,Chinakhov,Letang,,ES,P1 18:02,
+2026-03-31,DET@PIT,PIT,Brazeau,Clifton,,deflection,P2 12:23,
+2026-03-31,DET@PIT,PIT,Acciari,,,ES,P3 12:09,
+2026-03-31,EDM@SEA,EDM,McDavid,Bouchard,,PP,P1,
+2026-03-31,EDM@SEA,EDM,(EDM G2),,,ES,,
+2026-03-31,EDM@SEA,EDM,(EDM G3),,,ES,,
+2026-03-31,MTL@TBL,MTL,Slafkovsky,Hutson,Struble,PP(5-on-3),P1 12:25,
+2026-03-31,MTL@TBL,MTL,Matheson,Suzuki,Bolduc,ES,P2,
+2026-03-31,MTL@TBL,MTL,Caufield,Slafkovsky,,ES,P2 ~9:00,
+2026-03-31,MTL@TBL,MTL,Matheson,,,EN,P3 ~17:00,
+2026-03-31,MTL@TBL,MTL,Suzuki,,,EN,P3 ~19:00,
+2026-03-31,MTL@TBL,TBL,Guentzel,,,ES,P1 13:41,
+2026-03-31,NJD@NYR,NJD,Brown,L.Hughes,Hischier,ES,,
+2026-03-31,NJD@NYR,NYR,Zibanejad,Perreault,Fox,ES,,
+2026-03-31,NJD@NYR,NYR,Miller,Fox,Lafreniere,ES,,
+2026-03-31,NJD@NYR,NYR,Chmelar,Schneider,,ES,,
+2026-03-31,NJD@NYR,NYR,Sheary,Kartye,,ES,,
+2026-03-31,NYI@BUF,BUF,Krebs,Tuch,,ES,P3 ~16:57,
+2026-03-31,NYI@BUF,BUF,Byram,,,EN,P3 EN,
+2026-03-31,NYI@BUF,BUF,Quinn,Thompson,,ES,,
+2026-03-31,NYI@BUF,NYI,Schenn,,,ES,,
+2026-03-31,NYI@BUF,NYI,Ritchie,,,ES,,
+2026-03-31,NYI@BUF,NYI,Lee,Horvat,,ES,,
+2026-03-31,OTT@FLA,FLA,Gregor,,,ES,P1 0:08,
+2026-03-31,OTT@FLA,FLA,Tkachuk,Bennett,Ekblad,PP,P1,
+2026-03-31,OTT@FLA,FLA,Bennett,Ekblad,,PP,,
+2026-03-31,OTT@FLA,FLA,Verhaeghe,Bennett,,ES,,
+2026-03-31,OTT@FLA,OTT,Stutzle,Batherson,,ES,,
+2026-03-31,PHI@WSH,PHI,Sanheim,Konecny,,4-on-4,P2 0:39,
+2026-03-31,PHI@WSH,PHI,Grundstrom,,,ES,P2,
+2026-03-31,PHI@WSH,PHI,Dvorak,Martone,Sanheim,ES,P3 0:33,
+2026-03-31,PHI@WSH,PHI,Barkey,Ristolainen,,deflection,P3,
+2026-03-31,PHI@WSH,WSH,Wilson,,,ES,P1,
+2026-03-31,PHI@WSH,WSH,Ovechkin,Roy,,ES,P1,
+2026-03-31,PHI@WSH,WSH,Chychrun,,,ES,P2,
+2026-03-31,PHI@WSH,WSH,Leonard,Chychrun,,PP,P2,
+2026-03-31,PHI@WSH,WSH,Ovechkin,McMichael,,ES,P3,
+2026-03-31,PHI@WSH,WSH,Wilson,,,EN,P3,
+2026-03-31,WPG@CHI,WPG,Connor,,,ES,,
+2026-03-31,WPG@CHI,WPG,Scheifele,Morrissey,,ES/PP,,
+2026-04-01,ANA@SJS,ANA,Poehling,Helleson,,ES,P1 17:47,
+2026-04-01,ANA@SJS,ANA,Killorn,Helleson,LaCombe,ES,P2 14:59,
+2026-04-01,ANA@SJS,ANA,Terry,,,ES,P3 4:04,
+2026-04-01,ANA@SJS,SJS,W.Smith,Celebrini,,PP,P1 4:37,
+2026-04-01,ANA@SJS,SJS,Celebrini,W.Smith,Graf,ES,P3 0:27,
+2026-04-01,ANA@SJS,SJS,Celebrini,Orlov,W.Smith,EN/EA,P3 18:21,
+2026-04-01,ANA@SJS,SJS,Wennberg,Celebrini,Dickinson,ES,P3 19:29,
+2026-04-01,STL@LAK,LAK,Moore,Kopitar,Doughty,ES,OT 3:04,
+2026-04-01,STL@LAK,LAK,Kempe,Laferriere,Panarin,PP,P2 16:59,
+2026-04-01,STL@LAK,STL,R.Thomas,Broberg,Holloway,ES,P3 16:07,
+2026-04-01,VAN@COL,COL,MacKinnon,Toews,Malinski,ES,P1 1:22,
+2026-04-01,VAN@COL,COL,Landeskog,Burns,Nichushkin,ES,P1 16:05,
+2026-04-01,VAN@COL,COL,Malinski,Toews,,ES,P2 15:43,
+2026-04-01,VAN@COL,COL,Kelly,Drury,Manson,ES,P3 0:14,
+2026-04-01,VAN@COL,COL,Burns,Nelson,Nichushkin,ES,P3 13:21,
+2026-04-01,VAN@COL,COL,Malinski,,,ES,P3 13:58,
+2026-04-01,VAN@COL,VAN,Sasson,Hronek,Buium,ES,P1 0:29,
+2026-04-01,VAN@COL,VAN,Blueger,Ohgren,,SH,P1 5:21,
+2026-04-01,VAN@COL,VAN,DeBrusk,E.Pettersson,Rossi,PP,P1 11:38,
+2026-04-01,VAN@COL,VAN,Blueger,Sasson,M.Pettersson,ES,P2 5:02,
+2026-04-01,VAN@COL,VAN,Boeser,Willander,Rossi,ES,P2 9:42,
+2026-04-01,VAN@COL,VAN,Boeser,O'Connor,,ES,P2 15:21,
+2026-04-01,VAN@COL,VAN,M.Pettersson,Boeser,O'Connor,ES,P3 14:21,
+2026-04-01,VAN@COL,VAN,Boeser,M.Pettersson,,EN,P3 18:31,
+2026-04-02,NSH@LAK,LAK,Kempe,Panarin,,ES,P2,Panarin A1 on Kempe G1; chain overlap
+2026-04-02,NSH@LAK,LAK,Kempe,Edmundson,Kopitar,ES,P2,Kopitar A2 on Kempe G2; Kempe+Kopitar chain WIN
+2026-04-02,NSH@LAK,LAK,Laughton,Armia,Anderson,ES,P2,
+2026-04-02,NSH@LAK,LAK,Armia,Wright,Dumoulin,ES,P3,
+2026-04-02,NSH@LAK,NSH,Forsberg,Marchessault,Haula,ES,P1,
+2026-04-02,NSH@LAK,NSH,L'Heureux,Skjei,,ES,P1,
+2026-04-02,NSH@LAK,NSH,Marchessault,Wood,Barron,ES,P2,
+2026-04-02,NSH@LAK,NSH,Stamkos,O'Reilly,Josi,ES,P2,
+2026-04-02,NSH@LAK,NSH,Evangelista,,,SO,SO,SO winner; NSH win
+2026-04-02,TOR@SJS,SJS,Ostapchuk,Goodrow,Orlov,ES,P1,
+2026-04-02,TOR@SJS,SJS,Graf,Misa,Toffoli,ES,P1,
+2026-04-02,TOR@SJS,SJS,Eklund,Wennberg,Sherwood,ES,P2,
+2026-04-02,TOR@SJS,SJS,Gaudette,Eklund,Ostapchuk,EN,P3,
+2026-04-02,TOR@SJS,TOR,Tavares,Cowan,Nylander,PP,P2,
+2026-04-03,STL@ANA,ANA,Poehling,McTavish,Zellweger,ES,P1,
+2026-04-03,STL@ANA,ANA,Viel,Poehling,Helleson,ES,P1,
+2026-04-03,STL@ANA,STL,R.Thomas,Broberg,Parayko,ES,P1,Broberg→Thomas D-QB chain; Thomas 1G+2A total
+2026-04-03,STL@ANA,STL,Holloway,Neighbours,Thomas,PP,P1,Thomas+Holloway chain; Holloway G1 Thomas A1
+2026-04-03,STL@ANA,STL,Berggren,Suter,,ES,P1,
+2026-04-03,STL@ANA,STL,Suter,Tucker,Neighbours,ES,P2,
+2026-04-03,STL@ANA,STL,Parayko,Dvorsky,Kyrou,ES,P2,
+2026-04-03,STL@ANA,STL,Holloway,Thomas,Broberg,PP,P3,Thomas+Holloway chain #2; Holloway G2 Thomas A2; Broberg D-QB A2
+2026-04-04,CGY@ANA,ANA,Sennecke,LaCombe,Trouba,ES,P1,LaCombe A1 on Sennecke G; chain overlap WIN
+2026-04-04,CGY@ANA,ANA,Carlsson,,,ES,P3,Carlsson 1G; cleared 2-game cold flag
+2026-04-04,CGY@ANA,ANA,McTavish,Killorn,,PP,P3,
+2026-04-04,CGY@ANA,CGY,Farabee,Gridin,Bahl,ES,P1,
+2026-04-04,CGY@ANA,CGY,Strome,Pospisil,Olofsson,ES,P2,
+2026-04-04,CGY@ANA,CGY,Gridin,Farabee,Brzustewicz,ES,P2,
+2026-04-04,CGY@ANA,CGY,Frost,Määttä,Coleman,ES,P2,
+2026-04-04,CGY@ANA,CGY,Frost,Coronato,,EN,P3,
+2026-04-04,NSH@SJS,NSH,Forsberg,Marchessault,Josi,PP,P1,
+2026-04-04,NSH@SJS,NSH,Forsberg,Wood,Wilsby,ES,P1,
+2026-04-04,NSH@SJS,NSH,Stamkos,Forsberg,Josi,PP,P1,
+2026-04-04,NSH@SJS,NSH,O'Reilly,Evangelista,Jost,ES,P3,
+2026-04-04,NSH@SJS,NSH,Haula,Jost,,SH,P3,
+2026-04-04,NSH@SJS,NSH,Jost,O'Reilly,Wilsby,EN,P3,
+2026-04-04,NSH@SJS,SJS,Leddy,Eklund,,ES,P2,
+2026-04-04,NSH@SJS,SJS,Celebrini,Graf,Leddy,ES,P2,Celebrini 1G; cleared 1-game cold watch
+2026-04-04,NSH@SJS,SJS,Wennberg,Orlov,,ES,P3,Orlov A1 on Wennberg G; Orlov still contributing
+2026-04-04,TOR@LAK,LAK,Byfield,Panarin,Kempe,OT,OT,Byfield OT GWG; Panarin A1 Kempe A2; Kempe 4th pt; Panarin+Kempe chain #3
+2026-04-04,TOR@LAK,LAK,Byfield,Wright,Moore,ES,P2,
+2026-04-04,TOR@LAK,LAK,Kempe,Anderson,,ES,P2,
+2026-04-04,TOR@LAK,LAK,Panarin,Clarke,Kempe,ES,P2,Clarke A1+Kempe A2 on Panarin G; Panarin+Kempe+Clarke triple chain
+2026-04-04,TOR@LAK,LAK,Kempe,Panarin,Edmundson,ES,P3,Kempe hat trick G3; Panarin A1; Kempe+Panarin chain #2
+2026-04-04,TOR@LAK,LAK,Helenius,Ward,Ceci,ES,P3,
+2026-04-04,TOR@LAK,LAK,Laferriere,Moore,,ES,P3,
+2026-04-04,TOR@LAK,TOR,Knies,Domi,,ES,P1,
+2026-04-04,TOR@LAK,TOR,Lorentz,,,SH,P1,
+2026-04-04,TOR@LAK,TOR,Tavares,Nylander,Knies,PP,P2,
+2026-04-04,TOR@LAK,TOR,Cowan,Tavares,Knies,PP,P2,
+2026-04-04,TOR@LAK,TOR,Robertson,Joshua,,ES,P3,
+2026-04-04,TOR@LAK,TOR,Knies,Tavares,Maccelli,ES,P3,
+2026-04-05,STL@COL,COL,Kelly,Burns,O'Connor,ES,P1,
+2026-04-05,STL@COL,COL,Burns,Blankenburg,Nelson,ES,P2,
+2026-04-05,STL@COL,STL,R.Thomas,Snuggerud,Holloway,ES,P1,Thomas hat trick G1; Thomas+Holloway chain #1
+2026-04-05,STL@COL,STL,R.Thomas,Holloway,Snuggerud,ES,P2,Thomas hat trick G2; Thomas+Holloway chain #2
+2026-04-05,STL@COL,STL,R.Thomas,Snuggerud,Holloway,ES,P3,Thomas hat trick G3; Thomas+Holloway chain #3
+2026-04-06,CHI@SJS,CHI,Donato,Nazar,Bedard,ES,P1,
+2026-04-06,CHI@SJS,CHI,Nazar,Teravainen,Frondell,PP,P3,
+2026-04-06,CHI@SJS,SJS,Eklund,,,ES,P2,
+2026-04-06,CHI@SJS,SJS,Sherwood,Eklund,Wennberg,ES,P2,
+2026-04-06,CHI@SJS,SJS,W.Smith,Graf,Celebrini,ES,P3,W.Smith 1G clears 2-game cold flag; Celebrini A2; Celebrini+W.Smith chain overlap
+2026-04-06,NSH@LAK,LAK,(LAK win SO),,,SO,SO,LAK win SO; full individual chains not extracted
