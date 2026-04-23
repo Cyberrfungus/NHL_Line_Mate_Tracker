@@ -1,0 +1,681 @@
+{
+  "date": "2026-04-23",
+  "season": "2025-2026",
+  "fetched": "2026-04-23T18:54:31.566660",
+  "teams": {
+    "NYR": {
+      "xGF": 237.2,
+      "xGA": 268.44,
+      "xGF_pct": 46.9,
+      "GF": 235,
+      "GA": 249,
+      "pace_gf60": 2.83,
+      "fenwick_pct": 48.0,
+      "corsi_pct": 48.9,
+      "games": 0
+    },
+    "LAK": {
+      "xGF": 248.96,
+      "xGA": 238.87,
+      "xGF_pct": 51.0,
+      "GF": 220,
+      "GA": 238,
+      "pace_gf60": 2.63,
+      "fenwick_pct": 52.2,
+      "corsi_pct": 52.2,
+      "games": 0
+    },
+    "NYI": {
+      "xGF": 256.5,
+      "xGA": 276.12,
+      "xGF_pct": 48.2,
+      "GF": 229,
+      "GA": 236,
+      "pace_gf60": 2.75,
+      "fenwick_pct": 49.3,
+      "corsi_pct": 49.0,
+      "games": 0
+    },
+    "MTL": {
+      "xGF": 268.31,
+      "xGA": 273.39,
+      "xGF_pct": 49.5,
+      "GF": 279,
+      "GA": 251,
+      "pace_gf60": 3.34,
+      "fenwick_pct": 49.5,
+      "corsi_pct": 48.6,
+      "games": 0
+    },
+    "NJD": {
+      "xGF": 261.2,
+      "xGA": 249.47,
+      "xGF_pct": 51.1,
+      "GF": 226,
+      "GA": 253,
+      "pace_gf60": 2.73,
+      "fenwick_pct": 51.3,
+      "corsi_pct": 51.4,
+      "games": 0
+    },
+    "TOR": {
+      "xGF": 238.41,
+      "xGA": 285.49,
+      "xGF_pct": 45.5,
+      "GF": 252,
+      "GA": 295,
+      "pace_gf60": 3.03,
+      "fenwick_pct": 45.1,
+      "corsi_pct": 44.8,
+      "games": 0
+    },
+    "OTT": {
+      "xGF": 271.89,
+      "xGA": 221.02,
+      "xGF_pct": 55.2,
+      "GF": 275,
+      "GA": 245,
+      "pace_gf60": 3.32,
+      "fenwick_pct": 53.7,
+      "corsi_pct": 52.9,
+      "games": 0
+    },
+    "BOS": {
+      "xGF": 247.57,
+      "xGA": 277.57,
+      "xGF_pct": 47.1,
+      "GF": 268,
+      "GA": 247,
+      "pace_gf60": 3.22,
+      "fenwick_pct": 49.2,
+      "corsi_pct": 48.9,
+      "games": 0
+    },
+    "EDM": {
+      "xGF": 274.56,
+      "xGA": 257.25,
+      "xGF_pct": 51.6,
+      "GF": 282,
+      "GA": 265,
+      "pace_gf60": 3.4,
+      "fenwick_pct": 51.1,
+      "corsi_pct": 50.3,
+      "games": 0
+    },
+    "TBL": {
+      "xGF": 284.4,
+      "xGA": 241.48,
+      "xGF_pct": 54.1,
+      "GF": 286,
+      "GA": 229,
+      "pace_gf60": 3.45,
+      "fenwick_pct": 52.4,
+      "corsi_pct": 53.3,
+      "games": 0
+    },
+    "UTA": {
+      "xGF": 261.53,
+      "xGA": 254.05,
+      "xGF_pct": 50.7,
+      "GF": 268,
+      "GA": 240,
+      "pace_gf60": 3.25,
+      "fenwick_pct": 52.9,
+      "corsi_pct": 53.1,
+      "games": 0
+    },
+    "DET": {
+      "xGF": 256.45,
+      "xGA": 252.38,
+      "xGF_pct": 50.4,
+      "GF": 239,
+      "GA": 254,
+      "pace_gf60": 2.88,
+      "fenwick_pct": 49.7,
+      "corsi_pct": 48.8,
+      "games": 0
+    },
+    "BUF": {
+      "xGF": 258.05,
+      "xGA": 264.51,
+      "xGF_pct": 49.4,
+      "GF": 283,
+      "GA": 240,
+      "pace_gf60": 3.42,
+      "fenwick_pct": 49.8,
+      "corsi_pct": 49.3,
+      "games": 0
+    },
+    "VGK": {
+      "xGF": 264.89,
+      "xGA": 225.49,
+      "xGF_pct": 54.0,
+      "GF": 264,
+      "GA": 242,
+      "pace_gf60": 3.16,
+      "fenwick_pct": 52.8,
+      "corsi_pct": 52.3,
+      "games": 0
+    },
+    "COL": {
+      "xGF": 301.1,
+      "xGA": 231.31,
+      "xGF_pct": 56.6,
+      "GF": 298,
+      "GA": 197,
+      "pace_gf60": 3.59,
+      "fenwick_pct": 55.9,
+      "corsi_pct": 56.7,
+      "games": 0
+    },
+    "SEA": {
+      "xGF": 223.93,
+      "xGA": 257.92,
+      "xGF_pct": 46.5,
+      "GF": 224,
+      "GA": 257,
+      "pace_gf60": 2.69,
+      "fenwick_pct": 45.6,
+      "corsi_pct": 45.4,
+      "games": 0
+    },
+    "WSH": {
+      "xGF": 269.9,
+      "xGA": 263.11,
+      "xGF_pct": 50.6,
+      "GF": 261,
+      "GA": 238,
+      "pace_gf60": 3.15,
+      "fenwick_pct": 50.2,
+      "corsi_pct": 49.4,
+      "games": 0
+    },
+    "VAN": {
+      "xGF": 234.39,
+      "xGA": 285.74,
+      "xGF_pct": 45.1,
+      "GF": 210,
+      "GA": 314,
+      "pace_gf60": 2.52,
+      "fenwick_pct": 46.1,
+      "corsi_pct": 46.5,
+      "games": 0
+    },
+    "PIT": {
+      "xGF": 272.39,
+      "xGA": 259.17,
+      "xGF_pct": 51.2,
+      "GF": 290,
+      "GA": 258,
+      "pace_gf60": 3.48,
+      "fenwick_pct": 50.5,
+      "corsi_pct": 50.2,
+      "games": 0
+    },
+    "FLA": {
+      "xGF": 265.21,
+      "xGA": 265.22,
+      "xGF_pct": 50.0,
+      "GF": 246,
+      "GA": 274,
+      "pace_gf60": 2.97,
+      "fenwick_pct": 50.9,
+      "corsi_pct": 51.7,
+      "games": 0
+    },
+    "WPG": {
+      "xGF": 247.44,
+      "xGA": 263.63,
+      "xGF_pct": 48.4,
+      "GF": 229,
+      "GA": 256,
+      "pace_gf60": 2.76,
+      "fenwick_pct": 48.6,
+      "corsi_pct": 48.8,
+      "games": 0
+    },
+    "SJS": {
+      "xGF": 241.67,
+      "xGA": 264.33,
+      "xGF_pct": 47.8,
+      "GF": 249,
+      "GA": 290,
+      "pace_gf60": 3.0,
+      "fenwick_pct": 46.4,
+      "corsi_pct": 47.0,
+      "games": 0
+    },
+    "NSH": {
+      "xGF": 251.09,
+      "xGA": 269.8,
+      "xGF_pct": 48.2,
+      "GF": 242,
+      "GA": 267,
+      "pace_gf60": 2.91,
+      "fenwick_pct": 48.4,
+      "corsi_pct": 50.1,
+      "games": 0
+    },
+    "DAL": {
+      "xGF": 259.26,
+      "xGA": 237.93,
+      "xGF_pct": 52.1,
+      "GF": 273,
+      "GA": 222,
+      "pace_gf60": 3.28,
+      "fenwick_pct": 48.1,
+      "corsi_pct": 47.5,
+      "games": 0
+    },
+    "STL": {
+      "xGF": 221.97,
+      "xGA": 246.8,
+      "xGF_pct": 47.4,
+      "GF": 230,
+      "GA": 254,
+      "pace_gf60": 2.77,
+      "fenwick_pct": 48.0,
+      "corsi_pct": 48.2,
+      "games": 0
+    },
+    "CGY": {
+      "xGF": 232.23,
+      "xGA": 270.16,
+      "xGF_pct": 46.2,
+      "GF": 208,
+      "GA": 256,
+      "pace_gf60": 2.51,
+      "fenwick_pct": 48.9,
+      "corsi_pct": 49.2,
+      "games": 0
+    },
+    "CAR": {
+      "xGF": 300.64,
+      "xGA": 235.15,
+      "xGF_pct": 56.1,
+      "GF": 291,
+      "GA": 236,
+      "pace_gf60": 3.49,
+      "fenwick_pct": 58.9,
+      "corsi_pct": 59.8,
+      "games": 0
+    },
+    "MIN": {
+      "xGF": 265.88,
+      "xGA": 242.92,
+      "xGF_pct": 52.3,
+      "GF": 268,
+      "GA": 235,
+      "pace_gf60": 3.21,
+      "fenwick_pct": 49.0,
+      "corsi_pct": 48.2,
+      "games": 0
+    },
+    "CHI": {
+      "xGF": 219.25,
+      "xGA": 277.46,
+      "xGF_pct": 44.1,
+      "GF": 210,
+      "GA": 270,
+      "pace_gf60": 2.53,
+      "fenwick_pct": 45.1,
+      "corsi_pct": 45.6,
+      "games": 0
+    },
+    "PHI": {
+      "xGF": 241.58,
+      "xGA": 232.25,
+      "xGF_pct": 51.0,
+      "GF": 240,
+      "GA": 239,
+      "pace_gf60": 2.86,
+      "fenwick_pct": 48.7,
+      "corsi_pct": 47.8,
+      "games": 0
+    },
+    "ANA": {
+      "xGF": 285.6,
+      "xGA": 275.2,
+      "xGF_pct": 50.9,
+      "GF": 265,
+      "GA": 288,
+      "pace_gf60": 3.17,
+      "fenwick_pct": 52.5,
+      "corsi_pct": 52.4,
+      "games": 0
+    },
+    "CBJ": {
+      "xGF": 258.93,
+      "xGA": 258.77,
+      "xGF_pct": 50.0,
+      "GF": 246,
+      "GA": 251,
+      "pace_gf60": 2.95,
+      "fenwick_pct": 50.5,
+      "corsi_pct": 50.8,
+      "games": 0
+    }
+  },
+  "goalies": {
+    "NYR": {
+      "name": "Igor Shesterkin",
+      "GSAx": 0.0,
+      "xGA": 147.25,
+      "GA": 126,
+      "sv_pct": -125.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "NSH": {
+      "name": "Justus Annunen",
+      "GSAx": 0.0,
+      "xGA": 75.31,
+      "GA": 67,
+      "sv_pct": -66.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "EDM": {
+      "name": "Connor Ingram",
+      "GSAx": 0.0,
+      "xGA": 78.66,
+      "GA": 77,
+      "sv_pct": -76.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "FLA": {
+      "name": "Daniil Tarasov",
+      "GSAx": 0.0,
+      "xGA": 95.24,
+      "GA": 97,
+      "sv_pct": -96.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "SJS": {
+      "name": "Yaroslav Askarov",
+      "GSAx": 0.0,
+      "xGA": 138.09,
+      "GA": 157,
+      "sv_pct": -156.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "UTA": {
+      "name": "Karel Vejmelka",
+      "GSAx": 0.0,
+      "xGA": 175.92,
+      "GA": 169,
+      "sv_pct": -168.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "DAL": {
+      "name": "Jake Oettinger",
+      "GSAx": 0.0,
+      "xGA": 143.72,
+      "GA": 138,
+      "sv_pct": -137.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "MTL": {
+      "name": "Jacob Fowler",
+      "GSAx": 0.0,
+      "xGA": 48.12,
+      "GA": 41,
+      "sv_pct": -40.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "VAN": {
+      "name": "Thatcher Demko",
+      "GSAx": 0.0,
+      "xGA": 55.98,
+      "GA": 54,
+      "sv_pct": -53.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "NYI": {
+      "name": "David Rittich",
+      "GSAx": 0.0,
+      "xGA": 80.23,
+      "GA": 76,
+      "sv_pct": -75.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "OTT": {
+      "name": "Linus Ullmark",
+      "GSAx": 0.0,
+      "xGA": 118.19,
+      "GA": 131,
+      "sv_pct": -130.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "SEA": {
+      "name": "Philipp Grubauer",
+      "GSAx": 0.0,
+      "xGA": 84.65,
+      "GA": 79,
+      "sv_pct": -78.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "CAR": {
+      "name": "Frederik Andersen",
+      "GSAx": 0.0,
+      "xGA": 103.69,
+      "GA": 107,
+      "sv_pct": -106.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "CHI": {
+      "name": "Arvid Soderblom",
+      "GSAx": 0.0,
+      "xGA": 88.98,
+      "GA": 93,
+      "sv_pct": -92.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "LAK": {
+      "name": "Pheonix Copley",
+      "GSAx": 0.0,
+      "xGA": 2.2,
+      "GA": 3,
+      "sv_pct": -2.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "WSH": {
+      "name": "Charlie Lindgren",
+      "GSAx": 0.0,
+      "xGA": 67.71,
+      "GA": 73,
+      "sv_pct": -72.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "COL": {
+      "name": "Mackenzie Blackwood",
+      "GSAx": 0.0,
+      "xGA": 98.3,
+      "GA": 90,
+      "sv_pct": -89.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "VGK": {
+      "name": "Carl Lindbom",
+      "GSAx": 0.0,
+      "xGA": 19.84,
+      "GA": 24,
+      "sv_pct": -23.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "BOS": {
+      "name": "Jeremy Swayman",
+      "GSAx": 0.0,
+      "xGA": 174.78,
+      "GA": 146,
+      "sv_pct": -145.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "STL": {
+      "name": "Jordan Binnington",
+      "GSAx": 0.0,
+      "xGA": 105.61,
+      "GA": 128,
+      "sv_pct": -127.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "WPG": {
+      "name": "Connor Hellebuyck",
+      "GSAx": 0.0,
+      "xGA": 167.54,
+      "GA": 162,
+      "sv_pct": -161.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "ANA": {
+      "name": "Petr Mrazek",
+      "GSAx": 0.0,
+      "xGA": 27.03,
+      "GA": 35,
+      "sv_pct": -34.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "TBL": {
+      "name": "Andrei Vasilevskiy",
+      "GSAx": 0.0,
+      "xGA": 156.74,
+      "GA": 132,
+      "sv_pct": -131.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "PIT": {
+      "name": "Sergei Murashov",
+      "GSAx": 0.0,
+      "xGA": 8.48,
+      "GA": 12,
+      "sv_pct": -11.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "BUF": {
+      "name": "Colten Ellis",
+      "GSAx": 0.0,
+      "xGA": 45.86,
+      "GA": 44,
+      "sv_pct": -43.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "DET": {
+      "name": "Cam Talbot",
+      "GSAx": 0.0,
+      "xGA": 79.89,
+      "GA": 93,
+      "sv_pct": -92.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "CGY": {
+      "name": "Devin Cooley",
+      "GSAx": 0.0,
+      "xGA": 94.26,
+      "GA": 77,
+      "sv_pct": -76.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "PHI": {
+      "name": "Samuel Ersson",
+      "GSAx": 0.0,
+      "xGA": 80.48,
+      "GA": 97,
+      "sv_pct": -96.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "MIN": {
+      "name": "Filip Gustavsson",
+      "GSAx": 0.0,
+      "xGA": 134.38,
+      "GA": 133,
+      "sv_pct": -132.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "TOR": {
+      "name": "Dennis Hildeby",
+      "GSAx": 0.0,
+      "xGA": 58.45,
+      "GA": 48,
+      "sv_pct": -47.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "NJD": {
+      "name": "Jake Allen",
+      "GSAx": 0.0,
+      "xGA": 106.35,
+      "GA": 100,
+      "sv_pct": -99.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    },
+    "CBJ": {
+      "name": "Elvis Merzlikins",
+      "GSAx": 0.0,
+      "xGA": 87.7,
+      "GA": 95,
+      "sv_pct": -94.0,
+      "tier": "WEAK",
+      "signal": "BOOST",
+      "games": 0
+    }
+  }
+}
