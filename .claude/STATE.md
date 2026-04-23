@@ -273,10 +273,21 @@ Cold Flag suppress → Goalie SV% tier (boost or suppress) → Hot goalscorer fi
 - `fetch_lineups_nhl.py` — Plain HTTP DFO scraper. Status: WATCH (2 clean slates)
 - `verify_players.py` — NHL API L5 + Cold Sticks v1
 - `scripts/fetch_postgame.py chains` — post-game chain fetcher
+- `scripts/fetch_advanced_metrics.py` — MoneyPuck xG/xGA/Fenwick/GSAx → `data/advanced_metrics_YYYY-MM-DD.json`
 
 ## TERMINAL WORKFLOW
-Pre-game: `py fetch_lineups_nhl.py` → `py verify_players.py --date YYYY-MM-DD --elite-only`
+Pre-game:
+```
+py fetch_lineups_nhl.py
+py verify_players.py --date YYYY-MM-DD --elite-only
+py scripts/fetch_advanced_metrics.py --date YYYY-MM-DD
+```
 Post-game: `py scripts/fetch_postgame.py chains`
+
+Advanced metrics flags:
+- `--season 2025` (default) — season start year
+- `--debug-cols` — print raw MoneyPuck CSV column names (run once if schema changes)
+- `--print-only` — stdout only, no file write
 
 ---
 
