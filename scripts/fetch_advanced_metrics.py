@@ -48,12 +48,12 @@ TEAM_COLS = {
 }
 
 GOALIE_COLS = {
-    "GSAx":    ["GSAx", "goalsAverted", "dfscore"],
-    "xGA":     ["xGoals", "xGoalsAgainst"],
-    "GA":      ["goals",  "goalsAgainst"],
-    "shots":   ["shotsAgainst", "shots"],
-    "games":   ["games"],
-    "name":    ["name", "playerName"],
+    "xGA":   ["xGoals"],
+    "GA":    ["goals"],
+    "ongoal":["ongoal"],
+    "games": ["games"],
+    "name":  ["name"],
+    "team":  ["team"],
 }
 
 
@@ -160,31 +160,27 @@ def build_goalie_metrics(df: pd.DataFrame) -> dict:
                     return float(row[a]) if pd.notna(row[a]) else 0.0
             return 0.0
 
-        name_val = ""
-        for a in GOALIE_COLS["name"]:
-            if a in row.index and pd.notna(row[a]):
-                name_val = str(row[a])
-                break
+        name_val = str(row["name"]) if "name" in row.index and pd.notna(row["name"]) else ""
 
-        gsax    = v(GOALIE_COLS["GSAx"])
-        xga     = v(GOALIE_COLS["xGA"])
-        ga      = v(GOALIE_COLS["GA"])
-        shots   = max(v(GOALIE_COLS["shots"]), 1)
-        sv_pct  = round(1 - ga / shots, 3)
+        xga    = v(GOALIE_COLS["xGA"])
+        ga     = v(GOALIE_COLS["GA"])
+        ongoal = v(GOALIE_COLS["ongoal"])
+        gsax   = round(ga - xga, 2)          # positive = worse than expected
+        sv_pct = round(1 - ga / ongoal, 3) if ongoal > 0 else 0.0
 
-        # Keep only the best-GSAx goalie per team (primary starter proxy)
-        if team in metrics and metrics[team]["GSAx"] >= gsax:
+        # Keep best-performing goalie per team (most negative goals-xGoals = primary starter proxy)
+        if team in metrics and metrics[team]["GSAx"] <= gsax:
             continue
 
         metrics[team] = {
-            "name":    name_val,
-            "GSAx":    round(gsax, 2),
-            "xGA":     round(xga,  2),
-            "GA":      int(ga),
-            "sv_pct":  sv_pct,
-            "tier":    tier_goalie(sv_pct),
-            "signal":  signal(sv_pct),
-            "games":   int(v(GOALIE_COLS["games"])),
+            "name":   name_val,
+            "GSAx":   gsax,
+            "xGA":    round(xga, 2),
+            "GA":     int(ga),
+            "sv_pct": sv_pct,
+            "tier":   tier_goalie(sv_pct),
+            "signal": signal(sv_pct),
+            "games":  int(v(GOALIE_COLS["games"])),
         }
     return metrics
 
