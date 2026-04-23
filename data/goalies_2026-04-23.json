@@ -1,0 +1,62 @@
+{
+  "BOS": {
+    "goalie": "Jeremy Swayman",
+    "status": "Confirmed",
+    "record": "31-18-4",
+    "gaa": "2.71",
+    "svpct": "0.907",
+    "opponent": "BUF",
+    "home_away": "home",
+    "news": "Swayman will start Game 3 vs. Buffalo."
+  },
+  "BUF": {
+    "goalie": "Alex Lyon",
+    "status": "Likely",
+    "record": "20-10-4",
+    "gaa": "2.77",
+    "svpct": "0.906",
+    "opponent": "BOS",
+    "home_away": "away",
+    "news": "Lyon is in the starter's crease at Buffalo's morning skate ahead of Game 3. "
+  },
+  "OTT": {
+    "goalie": "Linus Ullmark",
+    "status": "Likely",
+    "record": "28-12-8",
+    "gaa": "2.73",
+    "svpct": "0.890",
+    "opponent": "CAR",
+    "home_away": "home",
+    "news": "Ullmark is expected to start Game 3 vs. Carolina. "
+  },
+  "CAR": {
+    "goalie": "Frederik Andersen",
+    "status": "Confirmed",
+    "record": "16-14-5",
+    "gaa": "3.05",
+    "svpct": "0.874",
+    "opponent": "OTT",
+    "home_away": "away",
+    "news": "Andersen will start Game 3 vs. Ottawa."
+  },
+  "LAK": {
+    "goalie": "Anton Forsberg",
+    "status": "Confirmed",
+    "record": "16-12-5",
+    "gaa": "2.57",
+    "svpct": "0.908",
+    "opponent": "COL",
+    "home_away": "home",
+    "news": "Forsberg will start Game 3 vs. Colorado."
+  },
+  "COL": {
+    "goalie": "Scott Wedgewood",
+    "status": "Likely",
+    "record": "31-6-6",
+    "gaa": "2.02",
+    "svpct": "0.921",
+    "opponent": "LAK",
+    "home_away": "away",
+    "news": "Wedgewood is in the starter's crease at the Avalanche morning skate. "
+  }
+}
