@@ -26,7 +26,7 @@
 - Extract `cold_sticks` list, split Tier A / Tier B, note line role (L#+PP#)
 - Flag "high-role cold" players: Tier A/B who occupy L1/L2 ES or PP1 slots
 
-### STEP 3 — Read goalies_YYYY-MM-DD.json with `view` tool
+### STEP 3 — Read goalies_YYYY-MM-DD.json + advanced_metrics_YYYY-MM-DD.json with `view` tool
 - **TIER GOALIES BY SV% NUMBERS ONLY, NEVER BY ROLE LABEL**
 - SV% tiers:
   - ELITE: .920+
@@ -34,7 +34,16 @@
   - AVG: .895–.904
   - WEAK: <.895
 - The word "backup" or "starter" is metadata, not signal. A .915 "backup" is not a fade.
-- Output a goalie tier table with signal direction (BOOST / SUPPRESS / NEUTRAL) per team.
+- **GSAx takes priority over raw SV% when available** (from `advanced_metrics_YYYY-MM-DD.json`):
+  - GSAx > +3.0 → upgrade tier by one step (signal → stronger suppress)
+  - GSAx < -2.0 → downgrade tier by one step (signal → stronger boost)
+  - GSAx between -2.0 and +3.0 → use raw SV% tier as-is
+  - If `advanced_metrics` file absent → fall back to SV% only, note gap
+- Also read `teams` block for context signals:
+  - xGF% > 52% → pace/pressure edge for that team's duos
+  - Fenwick% (5v5) > 53% → shot-share dominance, elevates STRONG duo floor
+  - pace_gf60 > 3.2 → high-pace team, boosts First-10 GIFT OVER
+- Output a goalie tier table: name · SV% · GSAx · tier · signal direction (BOOST / SUPPRESS / NEUTRAL)
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 - Iterate each hot player
@@ -235,6 +244,11 @@ Track cumulatively + per-slate. Update after every scored day.
 | Team Total O/U | [pending historical] | Stronger edge (favor UNDER) | Boost OVER on weak GSAx + high pace; suppress on elite goalies + low xG |
 | 1st Period O/U (1.5) | ~55% OVER league avg | Sharper UNDER | Use 1P xG rates |
 | First-10 Min GIFT (0.5 goals) | 55–60% OVER | 50–55% OVER | Tighter defense / elite goalies early |
+| xGF% Boost (>52%) | [tracking] | [tracking] | Elevates STRONG duo floor; boost OVER on that team's duos |
+| xGF% Suppress (<48%) | [tracking] | [tracking] | Depresses scoring pace; fade OVER for that team's duos |
+| Goalie GSAx > +3.0 (SUPPRESS) | [tracking] | [tracking] | Upgrade goalie tier → stronger suppress signal; stack against |
+| Goalie GSAx < −2.0 (BOOST) | [tracking] | [tracking] | Downgrade goalie tier → stronger boost signal; exploit vs |
+| Fenwick% 5v5 > 53% | [tracking] | [tracking] | Shot-share dominance; elevates STRONG duo floor, boosts OVER |
 
 ### FIRST-10 MIN GIFT (0.5 GOALS) — DETAILED NOTES
 - Regular Season: 55–60% OVER (higher pace, open starts)
