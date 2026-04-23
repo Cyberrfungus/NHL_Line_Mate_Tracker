@@ -23,7 +23,7 @@ from io import StringIO
 import requests
 import pandas as pd
 
-BASE_URL = "https://moneypuck.com/moneypuck/playerData/careers/{season}/regular"
+BASE_URL = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
 HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
 
 # MoneyPuck abbrevs that differ from project standard
