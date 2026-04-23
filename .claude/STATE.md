@@ -216,6 +216,51 @@ Apr 22 session included 4 corrections (Hughes anomaly, PHI line wrong, Wallstedt
 | F+D PP LINK chain rate | 44.8% chain overlap | ~55 obs | CONFIRMED |
 | Hot goalscorer filter | tracking | 45+ obs | TRACKING |
 | Playoff ELITE slump | 10W/29L last 3 slates | 39 obs | NEGATIVE — MONITOR |
+| First-10 GIFT OVER 0.5 | 55–60% reg season | ~50–55% playoffs | TRACKING (needs playoff sample) |
+| Team Total O/U | moderate edge reg season | strong edge (unders) playoffs | TRACKING |
+
+---
+
+## GRADING METRICS — REGULAR SEASON vs PLAYOFFS
+
+Track cumulatively + per-slate. Update after every scored day.
+
+| Signal / Prop | Regular Season (Hit % / Sample) | Playoffs (Hit % / Sample) | Notes / Edge |
+|---|---|---|---|
+| ELITE Duo (same ES + PP1) | 41.8% / ~431 obs | 25.6% / 39 obs | Chain overlap drops sharply in playoffs |
+| STRONG Duo (ES line only) | 34.5% / ~354 obs | [to be calculated] | More variance |
+| PP LINK (F+F or F+D) | 44.8% / ~420 obs | [to be calculated] | Strongest playoff signal |
+| Tier A Cold Stick u0.5 | 80.6% / 31 obs | [pending] | Strongest overall signal |
+| Tier B Cold Stick u0.5 | 63.2% / 19 obs | [pending] | Needs v2 tightening |
+| Team Total O/U | [pending historical] | Stronger edge (favor UNDER) | Boost OVER on weak GSAx + high pace; suppress on elite goalies + low xG |
+| 1st Period O/U (1.5) | ~55% OVER league avg | Sharper UNDER | Use 1P xG rates |
+| First-10 Min GIFT (0.5 goals) | 55–60% OVER | 50–55% OVER | Tighter defense / elite goalies early |
+
+### FIRST-10 MIN GIFT (0.5 GOALS) — DETAILED NOTES
+- Regular Season: 55–60% OVER (higher pace, open starts)
+- Playoffs: Typically 50–55% OVER (structured early play, better goaltending, lower rush chances — matches Apr 21 zero rush-chain overlaps)
+- Home vs Away: Home edge ~2–4% in both; still useful in playoffs for series-specific edges
+- Signal priority: Combine with weak goalie SV% + high early-pace teams
+- Observed Apr 23 data (today's teams, all playoff games): 16/16 games had F10 goal = 100% OVER sample (n=16, caution small sample)
+
+---
+
+## PLAYOFF GUARDRAIL — POST-GAME UPDATE PROTOCOL
+
+**Run before generating any duos, SGPs, cold sticks, First-10 GIFT, or totals.**
+
+- Run `scripts/fetch_postgame.py chains` for the previous night's games
+- Update Playoff Team Snapshot for every team on tonight's slate
+- Print: `"Post-game data refreshed for [Team1] and [Team2] — Y/N"`
+- If N → **⚠️ WARNING** (not hard HALT until script validated). Flag affected signals as unverified. Proceed with reduced confidence.
+
+### PLAYOFF TEAM SNAPSHOT (max 6 fields per team)
+- Last 3 playoff games: chain overlap % (A1 present on goal)
+- Playoff-specific hot/cold players (from verified JSON)
+- Goalie SV% tier for tonight (ELITE/STRONG/AVG/WEAK)
+- First-10 GIFT % in this series (OVER 0.5)
+- Team Total O/U signal (goalie SV%, early pace, series context)
+- Series momentum note
 
 ---
 
@@ -254,10 +299,13 @@ Post-game: `py scripts/fetch_postgame.py chains`
 16. ⏳ Cold Sticks v2: opposing goalie cross-ref + PP1 flag
 17. ✅ Playoff deployment: duo tracker + SGP sheet React dashboards
 18. ⏳ F10 Under project (separate system)
-19. 🟡 INVESTIGATE: Playoff ELITE slump (10W/29L over 3 slates). Need 2 more slates before structural filter change.
+19. 🔄 IN PROGRESS: Playoff ELITE slump (10W/29L over 3 slates). Need 2 more slates before structural filter change.
 20. 🆕 **Hot-player-first duo generator** — iterate hot players as seeds, enumerate all valid linemate correlations, then rank. Replaces template-driven team-by-team build.
 21. 🆕 **Goalie tier = SV% numbers only** — never role label. Add as hard rule in script.
 22. 🆕 **Roster anomaly halt protocol** — if lineup JSON contains player on unexpected team or unusual role, HALT. Do not generate with disclaimer.
+25. ✅ Period-specific signals (1P O/U, First-10 GIFT framework documented)
+28. ⏳ First-10 GIFT tracker with reg-season vs playoff + home/away splits (extend `verify_players.py`)
+29. 🔄 IN PROGRESS: Playoff Guardrail — automated post-game snapshot for active teams (`scripts/fetch_postgame.py`)
 
 ---
 
