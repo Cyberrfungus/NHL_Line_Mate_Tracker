@@ -1,0 +1,614 @@
+{
+  "ANA": {
+    "updated": "2026-04-16T15:20:12.284268",
+    "source": "DFO-plain",
+    "L1": [
+      "Jeffrey Viel",
+      "Leo Carlsson",
+      "Troy Terry"
+    ],
+    "L2": [
+      "Alex Killorn",
+      "Mikael Granlund",
+      "Beckett Sennecke"
+    ],
+    "L3": [
+      "Ryan Poehling",
+      "Cutter Gauthier",
+      "Frank Vatrano"
+    ],
+    "L4": [
+      "Tim Washe",
+      "Ian Moore",
+      "Jackson Lacombe"
+    ],
+    "D1": [
+      "Jacob Trouba",
+      "Pavel Mintyukov"
+    ],
+    "D2": [
+      "John Carlson",
+      "Tyson Hinds"
+    ],
+    "D3": [
+      "Drew Helleson",
+      "Beckett Sennecke"
+    ],
+    "PP1": [
+      "Leo Carlsson",
+      "Troy Terry",
+      "John Carlson",
+      "Mikael Granlund",
+      "Alex Killorn"
+    ],
+    "PP2": [
+      "Ryan Poehling",
+      "Cutter Gauthier",
+      "Jackson Lacombe",
+      "Ryan Poehling",
+      "Alex Killorn"
+    ],
+    "injuries": []
+  },
+  "CGY": {
+    "updated": "2026-04-16T15:20:12.949272",
+    "source": "DFO-plain",
+    "L1": [
+      "Blake Coleman",
+      "Mikael Backlund",
+      "Joel Farabee"
+    ],
+    "L2": [
+      "Matvei Gridin",
+      "Morgan Frost",
+      "Victor Olofsson"
+    ],
+    "L3": [
+      "Matt Coronato",
+      "Connor Zary",
+      "Adam Klapka"
+    ],
+    "L4": [
+      "Yegor Sharangovich",
+      "Rory Kerins",
+      "Aydar Suniev"
+    ],
+    "D1": [
+      "Zayne Parekh",
+      "Zach Whitecloud"
+    ],
+    "D2": [
+      "Olli Maatta",
+      "Hunter Brzustewicz"
+    ],
+    "D3": [
+      "Abram Wiebe",
+      "Brayden Pachal"
+    ],
+    "PP1": [
+      "Matvei Gridin",
+      "Morgan Frost",
+      "Joel Farabee",
+      "Zayne Parekh",
+      "Matt Coronato"
+    ],
+    "PP2": [
+      "Rory Kerins",
+      "Connor Zary",
+      "Yegor Sharangovich",
+      "Hunter Brzustewicz",
+      "Victor Olofsson"
+    ],
+    "injuries": []
+  },
+  "COL": {
+    "updated": "2026-04-16T15:20:13.618750",
+    "source": "DFO-plain",
+    "L1": [
+      "Artturi Lehkonen",
+      "Brock Nelson",
+      "Valeri Nichushkin"
+    ],
+    "L2": [
+      "Parker Kelly",
+      "Nicolas Roy",
+      "Ross Colton"
+    ],
+    "L3": [
+      "Joel Kiviranta",
+      "Jack Drury",
+      "Zakhar Bardakov"
+    ],
+    "L4": [
+      "Jason Polin",
+      "Brett Kulak",
+      "Cale Makar"
+    ],
+    "D1": [
+      "Sam Malinski",
+      "Devon Toews"
+    ],
+    "D2": [
+      "Nick Blankenburg",
+      "Brent Burns"
+    ],
+    "D3": [
+      "Artturi Lehkonen",
+      "Brock Nelson"
+    ],
+    "PP1": [
+      "Ross Colton",
+      "Valeri Nichushkin",
+      "Cale Makar",
+      "Nicolas Roy",
+      "Jack Drury"
+    ],
+    "PP2": [
+      "Sam Malinski",
+      "Brent Burns",
+      "Jack Drury",
+      "Valeri Nichushkin",
+      "Sam Malinski"
+    ],
+    "injuries": []
+  },
+  "EDM": {
+    "updated": "2026-04-16T15:20:14.289211",
+    "source": "DFO-plain",
+    "L1": [
+      "Matthew Savoie",
+      "Zach Hyman",
+      "Vasily Podkolzin"
+    ],
+    "L2": [
+      "Jack Roslovic",
+      "Colton Dach",
+      "Josh Samanski"
+    ],
+    "L3": [
+      "Trent Frederic",
+      "Kasperi Kapanen",
+      "Adam Henrique"
+    ],
+    "L4": [
+      "Curtis Lazar",
+      "Mattias Ekholm",
+      "Evan Bouchard"
+    ],
+    "D1": [
+      "Darnell Nurse",
+      "Connor Murphy"
+    ],
+    "D2": [
+      "Jake Walman",
+      "Ty Emberson"
+    ],
+    "D3": [
+      "Zach Hyman",
+      "Jack Roslovic"
+    ],
+    "PP1": [
+      "Evan Bouchard",
+      "Vasily Podkolzin",
+      "Adam Henrique",
+      "Matthew Savoie",
+      "Mattias Ekholm"
+    ],
+    "PP2": [
+      "Jake Walman",
+      "Adam Henrique",
+      "Kasperi Kapanen",
+      "Darnell Nurse",
+      "Connor Murphy"
+    ],
+    "injuries": []
+  },
+  "LAK": {
+    "updated": "2026-04-16T15:20:14.951178",
+    "source": "DFO-plain",
+    "L1": [
+      "Artemi Panarin",
+      "Anze Kopitar",
+      "Adrian Kempe"
+    ],
+    "L2": [
+      "Trevor Moore",
+      "Quinton Byfield",
+      "Alex Laferriere"
+    ],
+    "L3": [
+      "Joel Armia",
+      "Scott Laughton",
+      "Jared Wright"
+    ],
+    "L4": [
+      "Mathieu Joseph",
+      "Samuel Helenius",
+      "Taylor Ward"
+    ],
+    "D1": [
+      "Mikey Anderson",
+      "Drew Doughty"
+    ],
+    "D2": [
+      "Joel Edmundson",
+      "Brandt Clarke"
+    ],
+    "D3": [
+      "Brian Dumoulin",
+      "Cody Ceci"
+    ],
+    "PP1": [
+      "Alex Laferriere",
+      "Anze Kopitar",
+      "Adrian Kempe",
+      "Artemi Panarin",
+      "Brandt Clarke"
+    ],
+    "PP2": [
+      "Scott Laughton",
+      "Quinton Byfield",
+      "Trevor Moore",
+      "Artemi Panarin",
+      "Drew Doughty"
+    ],
+    "injuries": []
+  },
+  "NSH": {
+    "updated": "2026-04-16T15:20:15.749219",
+    "source": "DFO-plain",
+    "L1": [
+      "Steven Stamkos",
+      "Luke Evangelista",
+      "Filip Forsberg"
+    ],
+    "L2": [
+      "Matthew Wood",
+      "Jonathan Marchessault",
+      "Erik Haula"
+    ],
+    "L3": [
+      "Joakim Kemell",
+      "Reid Schaefer",
+      "Fedor Svechkov"
+    ],
+    "L4": [
+      "Tyson Jost",
+      "Roman Josi",
+      "Brady Skjei"
+    ],
+    "D1": [
+      "Adam Wilsby",
+      "Justin Barron"
+    ],
+    "D2": [
+      "Ryan Ufko",
+      "Nick Perbix"
+    ],
+    "D3": [
+      "Filip Forsberg",
+      "Jonathan Marchessault"
+    ],
+    "PP1": [
+      "Steven Stamkos",
+      "Roman Josi",
+      "Matthew Wood",
+      "Erik Haula",
+      "Luke Evangelista"
+    ],
+    "PP2": [
+      "Brady Skjei",
+      "Ryan Ufko",
+      "Tyson Jost",
+      "Brady Skjei",
+      "Nick Perbix"
+    ],
+    "injuries": []
+  },
+  "SEA": {
+    "updated": "2026-04-16T15:20:16.420596",
+    "source": "DFO-plain",
+    "L1": [
+      "Matty Beniers",
+      "Jordan Eberle",
+      "Kaapo Kakko"
+    ],
+    "L2": [
+      "Shane Wright",
+      "Jani Nyman",
+      "Berkly Catton"
+    ],
+    "L3": [
+      "Chandler Stephenson",
+      "Eeli Tolvanen",
+      "Ben Meyers"
+    ],
+    "L4": [
+      "Frederick Gaudreau",
+      "Ryan Winterton",
+      "Vince Dunn"
+    ],
+    "D1": [
+      "Adam Larsson",
+      "Joshua Mahura"
+    ],
+    "D2": [
+      "Brandon Montour",
+      "Ryker Evans"
+    ],
+    "D3": [
+      "Jamie Oleksiak",
+      "Matty Beniers"
+    ],
+    "PP1": [
+      "Chandler Stephenson",
+      "Jordan Eberle",
+      "Vince Dunn",
+      "Eeli Tolvanen",
+      "Berkly Catton"
+    ],
+    "PP2": [
+      "Shane Wright",
+      "Kaapo Kakko",
+      "Brandon Montour",
+      "Chandler Stephenson",
+      "Eeli Tolvanen"
+    ],
+    "injuries": []
+  },
+  "SJS": {
+    "updated": "2026-04-16T15:20:17.084670",
+    "source": "DFO-plain",
+    "L1": [
+      "Igor Chernyshov",
+      "Macklin Celebrini",
+      "Will Smith"
+    ],
+    "L2": [
+      "William Eklund",
+      "Alexander Wennberg",
+      "Kiefer Sherwood"
+    ],
+    "L3": [
+      "Collin Graf",
+      "Michael Misa",
+      "Tyler Toffoli"
+    ],
+    "L4": [
+      "Barclay Goodrow",
+      "Zack Ostapchuk",
+      "Adam Gaudette"
+    ],
+    "D1": [
+      "Shakir Mukhamadullin",
+      "Dmitry Orlov"
+    ],
+    "D2": [
+      "Sam Dickinson",
+      "Mario Ferraro"
+    ],
+    "D3": [
+      "Luca Cagnoni",
+      "Vincent Desharnais"
+    ],
+    "PP1": [
+      "Tyler Toffoli",
+      "Alexander Wennberg",
+      "Will Smith",
+      "Macklin Celebrini",
+      "Luca Cagnoni"
+    ],
+    "PP2": [
+      "Igor Chernyshov",
+      "Michael Misa",
+      "Kiefer Sherwood",
+      "William Eklund",
+      "Dmitry Orlov"
+    ],
+    "injuries": []
+  },
+  "STL": {
+    "updated": "2026-04-16T15:20:17.750556",
+    "source": "DFO-plain",
+    "L1": [
+      "Dylan Holloway",
+      "Robert Thomas",
+      "Jimmy Snuggerud"
+    ],
+    "L2": [
+      "Pavel Buchnevich",
+      "Pius Suter",
+      "Jordan Kyrou"
+    ],
+    "L3": [
+      "Jake Neighbours",
+      "Dalibor Dvorsky",
+      "Jonathan Drouin"
+    ],
+    "L4": [
+      "Alexey Toropchenko",
+      "Oskar Sundqvist",
+      "Nathan Walker"
+    ],
+    "D1": [
+      "Philip Broberg",
+      "Logan Mailloux"
+    ],
+    "D2": [
+      "Cam Fowler",
+      "Colton Parayko"
+    ],
+    "D3": [
+      "Tyler Tucker",
+      "Matthew Kessel"
+    ],
+    "PP1": [
+      "Jimmy Snuggerud",
+      "Robert Thomas",
+      "Jake Neighbours",
+      "Philip Broberg",
+      "Dylan Holloway"
+    ],
+    "PP2": [
+      "Pavel Buchnevich",
+      "Dalibor Dvorsky",
+      "Jonathan Drouin",
+      "Jordan Kyrou",
+      "Logan Mailloux"
+    ],
+    "injuries": []
+  },
+  "UTA": {
+    "updated": "2026-04-16T15:20:18.418439",
+    "source": "DFO-plain",
+    "L1": [
+      "Clayton Keller",
+      "Nick Schmaltz",
+      "Lawson Crouse"
+    ],
+    "L2": [
+      "Kailer Yamamoto",
+      "Logan Cooley",
+      "Dylan Guenther"
+    ],
+    "L3": [
+      "Alex Kerfoot",
+      "Michael Carcone",
+      "Kevin Stenlund"
+    ],
+    "L4": [
+      "Brandon Tanev",
+      "Mikhail Sergachev",
+      "Nate Schmidt"
+    ],
+    "D1": [
+      "John Marino",
+      "Ian Cole"
+    ],
+    "D2": [
+      "Sean Durzi",
+      "Logan Cooley"
+    ],
+    "D3": [
+      "Nick Schmaltz",
+      "Clayton Keller"
+    ],
+    "PP1": [
+      "Dylan Guenther",
+      "Mikhail Sergachev",
+      "Lawson Crouse",
+      "Alex Kerfoot",
+      "Michael Carcone"
+    ],
+    "PP2": [
+      "Kevin Stenlund",
+      "Lawson Crouse",
+      "Ian Cole",
+      "Nick Schmaltz",
+      "Brandon Tanev"
+    ],
+    "injuries": []
+  },
+  "VAN": {
+    "updated": "2026-04-16T15:20:19.089356",
+    "source": "DFO-plain",
+    "L1": [
+      "Marco Rossi",
+      "Linus Karlsson",
+      "Liam Ohgren"
+    ],
+    "L2": [
+      "Teddy Blueger",
+      "Brock Boeser",
+      "Elias Pettersson"
+    ],
+    "L3": [
+      "Nils Hoglander",
+      "Curtis Douglas",
+      "Ty Mueller"
+    ],
+    "L4": [
+      "Aatu Raty",
+      "Zeev Buium",
+      "Filip Hronek"
+    ],
+    "D1": [
+      "Marcus Pettersson",
+      "Tom Willander"
+    ],
+    "D2": [
+      "Elias Nils Pettersson",
+      "Kirill Kudryavtsev"
+    ],
+    "D3": [
+      "Marco Rossi",
+      "Brock Boeser"
+    ],
+    "PP1": [
+      "Elias Pettersson",
+      "Filip Hronek",
+      "Liam Ohgren",
+      "Linus Karlsson",
+      "Zeev Buium"
+    ],
+    "PP2": [
+      "Tom Willander",
+      "Teddy Blueger",
+      "Brock Boeser",
+      "Marcus Pettersson",
+      "Filip Hronek"
+    ],
+    "injuries": []
+  },
+  "WPG": {
+    "updated": "2026-04-16T15:20:19.754658",
+    "source": "DFO-plain",
+    "L1": [
+      "Kyle Connor",
+      "Mark Scheifele",
+      "Gabriel Vilardi"
+    ],
+    "L2": [
+      "Cole Perfetti",
+      "Adam Lowry",
+      "Nino Niederreiter"
+    ],
+    "L3": [
+      "Isak Rosen",
+      "Jonathan Toews",
+      "Brad Lambert"
+    ],
+    "L4": [
+      "Cole Koepke",
+      "Brayden Yager",
+      "Nikita Chibrikov"
+    ],
+    "D1": [
+      "Josh Morrissey",
+      "Dylan Samberg"
+    ],
+    "D2": [
+      "Colin Miller",
+      "Haydn Fleury"
+    ],
+    "D3": [
+      "Ville Heinola",
+      "Gabriel Vilardi"
+    ],
+    "PP1": [
+      "Mark Scheifele",
+      "Jonathan Toews",
+      "Josh Morrissey",
+      "Kyle Connor",
+      "Nino Niederreiter"
+    ],
+    "PP2": [
+      "Brad Lambert",
+      "Isak Rosen",
+      "Cole Perfetti",
+      "Colin Miller",
+      "Adam Lowry"
+    ],
+    "injuries": []
+  }
+}

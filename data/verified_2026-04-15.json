@@ -1,0 +1,6620 @@
+{
+  "date": "2026-04-15",
+  "verified_count": 123,
+  "cold_flags": [
+    {
+      "name": "Zach Benson",
+      "team": "BUF",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Zach Metsa",
+      "team": "BUF",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Michael Kesselring",
+      "team": "BUF",
+      "blanks": 2,
+      "l5_pts": 1
+    },
+    {
+      "name": "Bowen Byram",
+      "team": "BUF",
+      "blanks": 2,
+      "l5_pts": 3
+    },
+    {
+      "name": "Frank Nazar",
+      "team": "CHI",
+      "blanks": 3,
+      "l5_pts": 3
+    },
+    {
+      "name": "Nick Lardis",
+      "team": "CHI",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Ethan Del Mastro",
+      "team": "CHI",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Teuvo Teravainen",
+      "team": "CHI",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Ryan Donato",
+      "team": "CHI",
+      "blanks": 3,
+      "l5_pts": 1
+    },
+    {
+      "name": "Sam Steel",
+      "team": "DAL",
+      "blanks": 2,
+      "l5_pts": 1
+    },
+    {
+      "name": "Lian Bichsel",
+      "team": "DAL",
+      "blanks": 4,
+      "l5_pts": 1
+    },
+    {
+      "name": "Tyler Myers",
+      "team": "DAL",
+      "blanks": 3,
+      "l5_pts": 1
+    },
+    {
+      "name": "Michael Bunting",
+      "team": "DAL",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Jamie Benn",
+      "team": "DAL",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Andrew Copp",
+      "team": "DET",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Moritz Seider",
+      "team": "DET",
+      "blanks": 2,
+      "l5_pts": 6
+    },
+    {
+      "name": "Simon Edvinsson",
+      "team": "DET",
+      "blanks": 2,
+      "l5_pts": 2
+    },
+    {
+      "name": "Sam Bennett",
+      "team": "FLA",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Ludvig Jansson",
+      "team": "FLA",
+      "blanks": 3,
+      "l5_pts": 0
+    },
+    {
+      "name": "Jesper Boqvist",
+      "team": "FLA",
+      "blanks": 2,
+      "l5_pts": 2
+    },
+    {
+      "name": "Gustav Forsling",
+      "team": "FLA",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Mika Zibanejad",
+      "team": "NYR",
+      "blanks": 2,
+      "l5_pts": 5
+    },
+    {
+      "name": "Tye Kartye",
+      "team": "NYR",
+      "blanks": 3,
+      "l5_pts": 1
+    },
+    {
+      "name": "Conor Sheary",
+      "team": "NYR",
+      "blanks": 3,
+      "l5_pts": 1
+    },
+    {
+      "name": "Vincent Trocheck",
+      "team": "NYR",
+      "blanks": 2,
+      "l5_pts": 3
+    },
+    {
+      "name": "Vladislav Gavrikov",
+      "team": "NYR",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Stephen Halliday",
+      "team": "OTT",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Jordan Spence",
+      "team": "OTT",
+      "blanks": 2,
+      "l5_pts": 2
+    },
+    {
+      "name": "Warren Foegele",
+      "team": "OTT",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Eeli Tolvanen",
+      "team": "SEA",
+      "blanks": 4,
+      "l5_pts": 1
+    },
+    {
+      "name": "Berkly Catton",
+      "team": "SEA",
+      "blanks": 2,
+      "l5_pts": 1
+    },
+    {
+      "name": "Brandon Montour",
+      "team": "SEA",
+      "blanks": 3,
+      "l5_pts": 1
+    },
+    {
+      "name": "Vincent Desharnais",
+      "team": "SJS",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Kiefer Sherwood",
+      "team": "SJS",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Anthony Cirelli",
+      "team": "TBL",
+      "blanks": 4,
+      "l5_pts": 3
+    },
+    {
+      "name": "Corey Perry",
+      "team": "TBL",
+      "blanks": 3,
+      "l5_pts": 2
+    },
+    {
+      "name": "Yanni Gourde",
+      "team": "TBL",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Matthew Knies",
+      "team": "TOR",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Calle Jarnkrok",
+      "team": "TOR",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Morgan Rielly",
+      "team": "TOR",
+      "blanks": 2,
+      "l5_pts": 1
+    },
+    {
+      "name": "Matias Maccelli",
+      "team": "TOR",
+      "blanks": 2,
+      "l5_pts": 2
+    },
+    {
+      "name": "Ivan Barbashev",
+      "team": "VGK",
+      "blanks": 5,
+      "l5_pts": 0
+    },
+    {
+      "name": "Brett Howden",
+      "team": "VGK",
+      "blanks": 2,
+      "l5_pts": 3
+    }
+  ],
+  "hot_players": [
+    {
+      "name": "Josh Norris",
+      "team": "BUF",
+      "l5_pts": 6,
+      "l5_goals": 2
+    },
+    {
+      "name": "Josh Doan",
+      "team": "BUF",
+      "l5_pts": 5,
+      "l5_goals": 2
+    },
+    {
+      "name": "Alex Tuch",
+      "team": "BUF",
+      "l5_pts": 5,
+      "l5_goals": 3
+    },
+    {
+      "name": "Ilya Mikheyev",
+      "team": "CHI",
+      "l5_pts": 5,
+      "l5_goals": 3
+    },
+    {
+      "name": "Wyatt Johnston",
+      "team": "DAL",
+      "l5_pts": 6,
+      "l5_goals": 4
+    },
+    {
+      "name": "Mikko Rantanen",
+      "team": "DAL",
+      "l5_pts": 4,
+      "l5_goals": 1
+    },
+    {
+      "name": "Jason Robertson",
+      "team": "DAL",
+      "l5_pts": 7,
+      "l5_goals": 5
+    },
+    {
+      "name": "Matt Duchene",
+      "team": "DAL",
+      "l5_pts": 6,
+      "l5_goals": 0
+    },
+    {
+      "name": "Thomas Harley",
+      "team": "DAL",
+      "l5_pts": 3,
+      "l5_goals": 0
+    },
+    {
+      "name": "Mavrik Bourque",
+      "team": "DAL",
+      "l5_pts": 5,
+      "l5_goals": 3
+    },
+    {
+      "name": "Dylan Larkin",
+      "team": "DET",
+      "l5_pts": 9,
+      "l5_goals": 4
+    },
+    {
+      "name": "Justin Faulk",
+      "team": "DET",
+      "l5_pts": 4,
+      "l5_goals": 3
+    },
+    {
+      "name": "Matthew Tkachuk",
+      "team": "FLA",
+      "l5_pts": 5,
+      "l5_goals": 1
+    },
+    {
+      "name": "Mackie Samoskevich",
+      "team": "FLA",
+      "l5_pts": 4,
+      "l5_goals": 2
+    },
+    {
+      "name": "Eetu Luostarinen",
+      "team": "FLA",
+      "l5_pts": 5,
+      "l5_goals": 2
+    },
+    {
+      "name": "Adam Fox",
+      "team": "NYR",
+      "l5_pts": 8,
+      "l5_goals": 2
+    },
+    {
+      "name": "Claude Giroux",
+      "team": "OTT",
+      "l5_pts": 3,
+      "l5_goals": 2
+    },
+    {
+      "name": "Drake Batherson",
+      "team": "OTT",
+      "l5_pts": 5,
+      "l5_goals": 1
+    },
+    {
+      "name": "Dylan Cozens",
+      "team": "OTT",
+      "l5_pts": 5,
+      "l5_goals": 1
+    },
+    {
+      "name": "Shane Pinto",
+      "team": "OTT",
+      "l5_pts": 5,
+      "l5_goals": 3
+    },
+    {
+      "name": "Fabian Zetterlund",
+      "team": "OTT",
+      "l5_pts": 5,
+      "l5_goals": 4
+    },
+    {
+      "name": "Matty Beniers",
+      "team": "SEA",
+      "l5_pts": 4,
+      "l5_goals": 1
+    },
+    {
+      "name": "Kaapo Kakko",
+      "team": "SEA",
+      "l5_pts": 4,
+      "l5_goals": 0
+    },
+    {
+      "name": "Chandler Stephenson",
+      "team": "SEA",
+      "l5_pts": 4,
+      "l5_goals": 1
+    },
+    {
+      "name": "Igor Chernyshov",
+      "team": "SJS",
+      "l5_pts": 4,
+      "l5_goals": 3
+    },
+    {
+      "name": "Macklin Celebrini",
+      "team": "SJS",
+      "l5_pts": 6,
+      "l5_goals": 3
+    },
+    {
+      "name": "Will Smith",
+      "team": "SJS",
+      "l5_pts": 3,
+      "l5_goals": 1
+    },
+    {
+      "name": "William Eklund",
+      "team": "SJS",
+      "l5_pts": 4,
+      "l5_goals": 1
+    },
+    {
+      "name": "Alexander Wennberg",
+      "team": "SJS",
+      "l5_pts": 3,
+      "l5_goals": 0
+    },
+    {
+      "name": "Brandon Hagel",
+      "team": "TBL",
+      "l5_pts": 5,
+      "l5_goals": 3
+    },
+    {
+      "name": "Nikita Kucherov",
+      "team": "TBL",
+      "l5_pts": 5,
+      "l5_goals": 2
+    },
+    {
+      "name": "Brayden Point",
+      "team": "TBL",
+      "l5_pts": 3,
+      "l5_goals": 0
+    },
+    {
+      "name": "Darren Raddysh",
+      "team": "TBL",
+      "l5_pts": 4,
+      "l5_goals": 2
+    },
+    {
+      "name": "John Tavares",
+      "team": "TOR",
+      "l5_pts": 6,
+      "l5_goals": 2
+    },
+    {
+      "name": "William Nylander",
+      "team": "TOR",
+      "l5_pts": 6,
+      "l5_goals": 3
+    },
+    {
+      "name": "Steven Lorentz",
+      "team": "TOR",
+      "l5_pts": 3,
+      "l5_goals": 2
+    },
+    {
+      "name": "Jack Eichel",
+      "team": "VGK",
+      "l5_pts": 9,
+      "l5_goals": 2
+    },
+    {
+      "name": "Mark Stone",
+      "team": "VGK",
+      "l5_pts": 7,
+      "l5_goals": 5
+    },
+    {
+      "name": "Pavel Dorofeyev",
+      "team": "VGK",
+      "l5_pts": 5,
+      "l5_goals": 2
+    },
+    {
+      "name": "Rasmus Andersson",
+      "team": "VGK",
+      "l5_pts": 4,
+      "l5_goals": 2
+    }
+  ],
+  "not_found": [
+    "Starting Goalies",
+    "Line Combination"
+  ],
+  "players": {
+    "Starting Goalies": {
+      "name": "Starting Goalies",
+      "status": "NOT_FOUND",
+      "player_id": null
+    },
+    "Line Combination": {
+      "name": "Line Combination",
+      "status": "NOT_FOUND",
+      "player_id": null
+    },
+    "Zach Benson": {
+      "name": "Zach Benson",
+      "player_id": "8474567",
+      "status": "ACTIVE",
+      "last_game": "2026-04-04",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-04",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:08"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:17"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:30"
+        },
+        {
+          "date": "2026-03-24",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:52"
+        },
+        {
+          "date": "2026-03-21",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:00"
+        }
+      ]
+    },
+    "Josh Norris": {
+      "name": "Josh Norris",
+      "player_id": "8480064",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "12:35"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "14:36"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:46"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "17:10"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:48"
+        }
+      ]
+    },
+    "Josh Doan": {
+      "name": "Josh Doan",
+      "player_id": "8482659",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:29"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "14:42"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:08"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:40"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:57"
+        }
+      ]
+    },
+    "Peyton Krebs": {
+      "name": "Peyton Krebs",
+      "player_id": "8481522",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:32"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:35"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:04"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:37"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:05"
+        }
+      ]
+    },
+    "Zach Metsa": {
+      "name": "Zach Metsa",
+      "player_id": "8474567",
+      "status": "ACTIVE",
+      "last_game": "2026-04-04",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-04",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:08"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:17"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:30"
+        },
+        {
+          "date": "2026-03-24",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:52"
+        },
+        {
+          "date": "2026-03-21",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:00"
+        }
+      ]
+    },
+    "Michael Kesselring": {
+      "name": "Michael Kesselring",
+      "player_id": "8480891",
+      "status": "ACTIVE",
+      "last_game": "2026-04-08",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:37"
+        },
+        {
+          "date": "2026-03-10",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:09"
+        },
+        {
+          "date": "2026-03-08",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "6:03"
+        },
+        {
+          "date": "2026-03-07",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:28"
+        },
+        {
+          "date": "2026-03-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:58"
+        }
+      ]
+    },
+    "Alex Tuch": {
+      "name": "Alex Tuch",
+      "player_id": "8477949",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "21:23"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:16"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "19:05"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "17:59"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:20"
+        }
+      ]
+    },
+    "Jack Quinn": {
+      "name": "Jack Quinn",
+      "player_id": "8482097",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:02"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:48"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:24"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:24"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:27"
+        }
+      ]
+    },
+    "Bowen Byram": {
+      "name": "Bowen Byram",
+      "player_id": "8481524",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:11"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:32"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "22:07"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "TBL",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "21:16"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:59"
+        }
+      ]
+    },
+    "Tyson Kozak": {
+      "name": "Tyson Kozak",
+      "player_id": "8482896",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:49"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "9:38"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:50"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:15"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "7:51"
+        }
+      ]
+    },
+    "Frank Nazar": {
+      "name": "Frank Nazar",
+      "player_id": "8483493",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:35"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "7:24"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:39"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "21:35"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:57"
+        }
+      ]
+    },
+    "Connor Bedard": {
+      "name": "Connor Bedard",
+      "player_id": "8484144",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:31"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "23:01"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:22"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:13"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "17:41"
+        }
+      ]
+    },
+    "Nick Lardis": {
+      "name": "Nick Lardis",
+      "player_id": "8484185",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:18"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:27"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:32"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:03"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:12"
+        }
+      ]
+    },
+    "Ilya Mikheyev": {
+      "name": "Ilya Mikheyev",
+      "player_id": "8481624",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:39"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "18:00"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:13"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:06"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "17:14"
+        }
+      ]
+    },
+    "Kevin Korchinski": {
+      "name": "Kevin Korchinski",
+      "status": "NO_GAMES",
+      "player_id": "8484864"
+    },
+    "Ethan Del Mastro": {
+      "name": "Ethan Del Mastro",
+      "player_id": "8482807",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:13"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:35"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:23"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:42"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:37"
+        }
+      ]
+    },
+    "Tyler Bertuzzi": {
+      "name": "Tyler Bertuzzi",
+      "player_id": "8477479",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:44"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:30"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:33"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:16"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:46"
+        }
+      ]
+    },
+    "Teuvo Teravainen": {
+      "name": "Teuvo Teravainen",
+      "player_id": "8476882",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:45"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:14"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:42"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:36"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:48"
+        }
+      ]
+    },
+    "Anton Frondell": {
+      "name": "Anton Frondell",
+      "player_id": "8485391",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:06"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:11"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "20:31"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:44"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:50"
+        }
+      ]
+    },
+    "Ryan Donato": {
+      "name": "Ryan Donato",
+      "player_id": "8477987",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:49"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:53"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:53"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:40"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:12"
+        }
+      ]
+    },
+    "Ryan Greene": {
+      "name": "Ryan Greene",
+      "player_id": "8483450",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "BUF",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "17:07"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "STL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:20"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:29"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:34"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:17"
+        }
+      ]
+    },
+    "Sam Steel": {
+      "name": "Sam Steel",
+      "player_id": "8479351",
+      "status": "ACTIVE",
+      "last_game": "2026-03-26",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-03-26",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:36"
+        },
+        {
+          "date": "2026-03-24",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:03"
+        },
+        {
+          "date": "2026-03-22",
+          "opp": "VGK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:10"
+        },
+        {
+          "date": "2026-03-21",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:45"
+        },
+        {
+          "date": "2026-03-18",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:32"
+        }
+      ]
+    },
+    "Wyatt Johnston": {
+      "name": "Wyatt Johnston",
+      "player_id": "8482740",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 4,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:24"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:34"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "16:53"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "22:12"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:08"
+        }
+      ]
+    },
+    "Mikko Rantanen": {
+      "name": "Mikko Rantanen",
+      "player_id": "8478420",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:23"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:25"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "17:42"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:08"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:45"
+        }
+      ]
+    },
+    "Jason Robertson": {
+      "name": "Jason Robertson",
+      "player_id": "8480027",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 7,
+      "last5_goals": 5,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "19:26"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "20:58"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "16:14"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "24:14"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "24:52"
+        }
+      ]
+    },
+    "Lian Bichsel": {
+      "name": "Lian Bichsel",
+      "player_id": "8483425",
+      "status": "ACTIVE",
+      "last_game": "2026-04-11",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 4,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:51"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:25"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:42"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:56"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "WPG",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:33"
+        }
+      ]
+    },
+    "Tyler Myers": {
+      "name": "Tyler Myers",
+      "player_id": "8474574",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:46"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:56"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:38"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:30"
+        },
+        {
+          "date": "2026-03-29",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:33"
+        }
+      ]
+    },
+    "Matt Duchene": {
+      "name": "Matt Duchene",
+      "player_id": "8475168",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 3,
+          "pts": 3,
+          "toi": "18:36"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "18:34"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:20"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:37"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:23"
+        }
+      ]
+    },
+    "Thomas Harley": {
+      "name": "Thomas Harley",
+      "player_id": "8481581",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "24:24"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "26:26"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "25:17"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:11"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:24"
+        }
+      ]
+    },
+    "Michael Bunting": {
+      "name": "Michael Bunting",
+      "player_id": "8478047",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:20"
+        },
+        {
+          "date": "2026-03-29",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "3:46"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:23"
+        },
+        {
+          "date": "2026-03-24",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:59"
+        },
+        {
+          "date": "2026-03-22",
+          "opp": "VGK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:51"
+        }
+      ]
+    },
+    "Jamie Benn": {
+      "name": "Jamie Benn",
+      "player_id": "8473994",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:24"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:31"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:55"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:47"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:24"
+        }
+      ]
+    },
+    "Mavrik Bourque": {
+      "name": "Mavrik Bourque",
+      "player_id": "8482145",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TOR",
+          "g": 3,
+          "a": 1,
+          "pts": 4,
+          "toi": "15:56"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:10"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:00"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:16"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:51"
+        }
+      ]
+    },
+    "Emmitt Finnie": {
+      "name": "Emmitt Finnie",
+      "player_id": "8484471",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:56"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "16:50"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:59"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:32"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:08"
+        }
+      ]
+    },
+    "Dylan Larkin": {
+      "name": "Dylan Larkin",
+      "player_id": "8477946",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 9,
+      "last5_goals": 4,
+      "consecutive_blanks": 1,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:33"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "20:08"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 3,
+          "a": 1,
+          "pts": 4,
+          "toi": "19:34"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "23:20"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "17:55"
+        }
+      ]
+    },
+    "Lucas Raymond": {
+      "name": "Lucas Raymond",
+      "status": "NO_GAMES",
+      "player_id": "8485006"
+    },
+    "Andrew Copp": {
+      "name": "Andrew Copp",
+      "player_id": "8477429",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:41"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:41"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:05"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "17:33"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:22"
+        }
+      ]
+    },
+    "Moritz Seider": {
+      "name": "Moritz Seider",
+      "player_id": "8481542",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2",
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "25:50"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "26:47"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 1,
+          "a": 4,
+          "pts": 5,
+          "toi": "22:06"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "29:33"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "27:54"
+        }
+      ]
+    },
+    "Marco Kasper": {
+      "name": "Marco Kasper",
+      "player_id": "8483464",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:32"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:14"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:29"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:06"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "12:02"
+        }
+      ]
+    },
+    "David Perron": {
+      "name": "David Perron",
+      "player_id": "8474102",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:48"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:37"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:16"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:52"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:55"
+        }
+      ]
+    },
+    "Justin Faulk": {
+      "name": "Justin Faulk",
+      "player_id": "8475753",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:28"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "22:31"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:40"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "23:40"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:49"
+        }
+      ]
+    },
+    "Simon Edvinsson": {
+      "name": "Simon Edvinsson",
+      "player_id": "8482762",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:17"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:12"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "PHI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:34"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "26:49"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "23:13"
+        }
+      ]
+    },
+    "Carter Verhaeghe": {
+      "name": "Carter Verhaeghe",
+      "player_id": "8477409",
+      "status": "ACTIVE",
+      "last_game": "2026-04-09",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:15"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "21:54"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "22:43"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:52"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:11"
+        }
+      ]
+    },
+    "Sam Bennett": {
+      "name": "Sam Bennett",
+      "player_id": "8477935",
+      "status": "ACTIVE",
+      "last_game": "2026-04-09",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:44"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:48"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:28"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "PIT",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:53"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "BOS",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "19:52"
+        }
+      ]
+    },
+    "Matthew Tkachuk": {
+      "name": "Matthew Tkachuk",
+      "player_id": "8479314",
+      "status": "ACTIVE",
+      "last_game": "2026-04-05",
+      "last5_pts": 5,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:09"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "PIT",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:41"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:17"
+        },
+        {
+          "date": "2026-03-31",
+          "opp": "OTT",
+          "g": 1,
+          "a": 3,
+          "pts": 4,
+          "toi": "17:13"
+        },
+        {
+          "date": "2026-03-29",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:03"
+        }
+      ]
+    },
+    "Mackie Samoskevich": {
+      "name": "Mackie Samoskevich",
+      "player_id": "8482713",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "11:38"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "13:37"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:19"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:04"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:38"
+        }
+      ]
+    },
+    "Ludvig Jansson": {
+      "name": "Ludvig Jansson",
+      "player_id": "8483712",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:38"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:42"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:37"
+        }
+      ]
+    },
+    "Michael Benning": {
+      "name": "Michael Benning",
+      "player_id": "8480022",
+      "status": "ACTIVE",
+      "last_game": "2026-02-26",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-02-26",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "6:03"
+        }
+      ]
+    },
+    "Jesper Boqvist": {
+      "name": "Jesper Boqvist",
+      "player_id": "8480003",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:52"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:41"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:59"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:29"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:45"
+        }
+      ]
+    },
+    "Eetu Luostarinen": {
+      "name": "Eetu Luostarinen",
+      "player_id": "8480185",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:27"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "15:10"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:53"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:23"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:59"
+        }
+      ]
+    },
+    "Noah Gregor": {
+      "name": "Noah Gregor",
+      "player_id": "8479393",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:48"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:04"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:32"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:29"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "8:09"
+        }
+      ]
+    },
+    "Gustav Forsling": {
+      "name": "Gustav Forsling",
+      "player_id": "8478055",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NYR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:58"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:54"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "27:05"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MTL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "26:24"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PIT",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "24:21"
+        }
+      ]
+    },
+    "Gabriel Perreault": {
+      "name": "Gabriel Perreault",
+      "status": "NO_GAMES",
+      "player_id": "8484887"
+    },
+    "Mika Zibanejad": {
+      "name": "Mika Zibanejad",
+      "player_id": "8476459",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2",
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:26"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:22"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:44"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 0,
+          "a": 3,
+          "pts": 3,
+          "toi": "19:54"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:51"
+        }
+      ]
+    },
+    "Tye Kartye": {
+      "name": "Tye Kartye",
+      "player_id": "8481789",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:35"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:50"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:07"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "9:44"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:34"
+        }
+      ]
+    },
+    "Conor Sheary": {
+      "name": "Conor Sheary",
+      "player_id": "8477839",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:50"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:30"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:28"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:49"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:13"
+        }
+      ]
+    },
+    "Vincent Trocheck": {
+      "name": "Vincent Trocheck",
+      "player_id": "8476389",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:45"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:41"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:48"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "17:03"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:44"
+        }
+      ]
+    },
+    "Adam Fox": {
+      "name": "Adam Fox",
+      "player_id": "8479323",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 8,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "28:10"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "25:35"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "23:20"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "19:31"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "22:39"
+        }
+      ]
+    },
+    "Will Cuylle": {
+      "name": "Will Cuylle",
+      "status": "NO_GAMELOG",
+      "player_id": "8484842"
+    },
+    "Noah Laba": {
+      "name": "Noah Laba",
+      "player_id": "8483690",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "11:04"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:25"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:33"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:38"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:27"
+        }
+      ]
+    },
+    "Vladislav Gavrikov": {
+      "name": "Vladislav Gavrikov",
+      "player_id": "8478882",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:13"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:26"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "24:41"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "WSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:05"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "DET",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "26:00"
+        }
+      ]
+    },
+    "Claude Giroux": {
+      "name": "Claude Giroux",
+      "player_id": "8473512",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 3,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:58"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:58"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:12"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:31"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:01"
+        }
+      ]
+    },
+    "Stephen Halliday": {
+      "name": "Stephen Halliday",
+      "player_id": "8483676",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:27"
+        },
+        {
+          "date": "2026-03-03",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "6:56"
+        },
+        {
+          "date": "2026-02-28",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:06"
+        },
+        {
+          "date": "2026-02-26",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "6:38"
+        },
+        {
+          "date": "2026-02-05",
+          "opp": "PHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "7:34"
+        }
+      ]
+    },
+    "Drake Batherson": {
+      "name": "Drake Batherson",
+      "player_id": "8480208",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 5,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:53"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:44"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:46"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "17:17"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:43"
+        }
+      ]
+    },
+    "Dylan Cozens": {
+      "name": "Dylan Cozens",
+      "player_id": "8481528",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 5,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:32"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:23"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:51"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:21"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "16:16"
+        }
+      ]
+    },
+    "Cameron Crotty": {
+      "name": "Cameron Crotty",
+      "player_id": "8480075",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:32"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:50"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:20"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:19"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:37"
+        }
+      ]
+    },
+    "Shane Pinto": {
+      "name": "Shane Pinto",
+      "player_id": "8481596",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 5,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "21:33"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:51"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:09"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "17:20"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "17:10"
+        }
+      ]
+    },
+    "Jordan Spence": {
+      "name": "Jordan Spence",
+      "player_id": "8481606",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "26:36"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:13"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:23"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "22:59"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:57"
+        }
+      ]
+    },
+    "Warren Foegele": {
+      "name": "Warren Foegele",
+      "player_id": "8477998",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:01"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:10"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:18"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "8:23"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:45"
+        }
+      ]
+    },
+    "Ridly Greig": {
+      "name": "Ridly Greig",
+      "player_id": "8482092",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 4,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:35"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "22:36"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:48"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:02"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "16:30"
+        }
+      ]
+    },
+    "Fabian Zetterlund": {
+      "name": "Fabian Zetterlund",
+      "player_id": "8480188",
+      "status": "ACTIVE",
+      "last_game": "2026-04-12",
+      "last5_pts": 5,
+      "last5_goals": 4,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-12",
+          "opp": "NJD",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "16:44"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:32"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "FLA",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "11:48"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "TBL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "9:23"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "CAR",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "12:43"
+        }
+      ]
+    },
+    "Matty Beniers": {
+      "name": "Matty Beniers",
+      "player_id": "8482665",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "18:06"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "21:16"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:17"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:56"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:21"
+        }
+      ]
+    },
+    "Jordan Eberle": {
+      "name": "Jordan Eberle",
+      "player_id": "8474586",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:03"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:54"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:05"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:26"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "16:37"
+        }
+      ]
+    },
+    "Kaapo Kakko": {
+      "name": "Kaapo Kakko",
+      "player_id": "8481554",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:07"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:12"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:09"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:41"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "12:26"
+        }
+      ]
+    },
+    "Shane Wright": {
+      "name": "Shane Wright",
+      "player_id": "8483524",
+      "status": "ACTIVE",
+      "last_game": "2026-03-28",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-03-28",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "3:36"
+        },
+        {
+          "date": "2026-03-26",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "10:56"
+        },
+        {
+          "date": "2026-03-24",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:47"
+        },
+        {
+          "date": "2026-03-21",
+          "opp": "CBJ",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:37"
+        },
+        {
+          "date": "2026-03-19",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:15"
+        }
+      ]
+    },
+    "Jamie Oleksiak": {
+      "name": "Jamie Oleksiak",
+      "player_id": "8476467",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:24"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:46"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:10"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:08"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:23"
+        }
+      ]
+    },
+    "Chandler Stephenson": {
+      "name": "Chandler Stephenson",
+      "player_id": "8476905",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:29"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "16:59"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:04"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:02"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:03"
+        }
+      ]
+    },
+    "Vince Dunn": {
+      "name": "Vince Dunn",
+      "player_id": "8478407",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:44"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:56"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "22:50"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:18"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:09"
+        }
+      ]
+    },
+    "Eeli Tolvanen": {
+      "name": "Eeli Tolvanen",
+      "player_id": "8480009",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 4,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:44"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:13"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:43"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:06"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "CHI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:22"
+        }
+      ]
+    },
+    "Berkly Catton": {
+      "name": "Berkly Catton",
+      "player_id": "8484800",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:20"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:42"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "11:01"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:46"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:43"
+        }
+      ]
+    },
+    "Brandon Montour": {
+      "name": "Brandon Montour",
+      "player_id": "8477986",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "23:58"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:11"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "VGK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "24:09"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "MIN",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "19:43"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:38"
+        }
+      ]
+    },
+    "Igor Chernyshov": {
+      "name": "Igor Chernyshov",
+      "player_id": "8484994",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "15:02"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "17:59"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:25"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:27"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:15"
+        }
+      ]
+    },
+    "Macklin Celebrini": {
+      "name": "Macklin Celebrini",
+      "player_id": "8484801",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "19:34"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "22:14"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:14"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "21:48"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "22:05"
+        }
+      ]
+    },
+    "Will Smith": {
+      "name": "Will Smith",
+      "player_id": "8484227",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:28"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:26"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:58"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:40"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "17:47"
+        }
+      ]
+    },
+    "William Eklund": {
+      "name": "William Eklund",
+      "player_id": "8482667",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:57"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:32"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:23"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "17:20"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "15:03"
+        }
+      ]
+    },
+    "Luca Cagnoni": {
+      "name": "Luca Cagnoni",
+      "player_id": "8484152",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:53"
+        }
+      ]
+    },
+    "Vincent Desharnais": {
+      "name": "Vincent Desharnais",
+      "player_id": "8479576",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:56"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:43"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:42"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:58"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "24:11"
+        }
+      ]
+    },
+    "Tyler Toffoli": {
+      "name": "Tyler Toffoli",
+      "player_id": "8475726",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:55"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "12:04"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "12:11"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:24"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:16"
+        }
+      ]
+    },
+    "Alexander Wennberg": {
+      "name": "Alexander Wennberg",
+      "player_id": "8477505",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:54"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:35"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:40"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:52"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:14"
+        }
+      ]
+    },
+    "Michael Misa": {
+      "name": "Michael Misa",
+      "player_id": "8485402",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "10:58"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "11:58"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:44"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:34"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:40"
+        }
+      ]
+    },
+    "Kiefer Sherwood": {
+      "name": "Kiefer Sherwood",
+      "player_id": "8480748",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:33"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:26"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:39"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "EDM",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:01"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "CHI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:15"
+        }
+      ]
+    },
+    "Brandon Hagel": {
+      "name": "Brandon Hagel",
+      "player_id": "8479542",
+      "status": "ACTIVE",
+      "last_game": "2026-04-11",
+      "last5_pts": 5,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:46"
+        },
+        {
+          "date": "2026-03-31",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:21"
+        },
+        {
+          "date": "2026-03-29",
+          "opp": "NSH",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "22:20"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "OTT",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "22:17"
+        },
+        {
+          "date": "2026-03-26",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "22:09"
+        }
+      ]
+    },
+    "Anthony Cirelli": {
+      "name": "Anthony Cirelli",
+      "player_id": "8478519",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 3,
+      "consecutive_blanks": 4,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:37"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:15"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:28"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:01"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "PIT",
+          "g": 3,
+          "a": 0,
+          "pts": 3,
+          "toi": "15:08"
+        }
+      ]
+    },
+    "Nikita Kucherov": {
+      "name": "Nikita Kucherov",
+      "player_id": "8476453",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 5,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "16:29"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:21"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "23:12"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:41"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "23:30"
+        }
+      ]
+    },
+    "Jake Guentzel": {
+      "name": "Jake Guentzel",
+      "status": "NO_GAMELOG",
+      "player_id": "8485028"
+    },
+    "Brayden Point": {
+      "name": "Brayden Point",
+      "player_id": "8478010",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:13"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:21"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:22"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:33"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:11"
+        }
+      ]
+    },
+    "Darren Raddysh": {
+      "name": "Darren Raddysh",
+      "player_id": "8478178",
+      "status": "ACTIVE",
+      "last_game": "2026-04-09",
+      "last5_pts": 4,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:59"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:42"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 2,
+          "pts": 2,
+          "toi": "25:45"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "BOS",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:41"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:42"
+        }
+      ]
+    },
+    "Corey Perry": {
+      "name": "Corey Perry",
+      "player_id": "8470621",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 3,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:29"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:10"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:17"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "14:17"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:36"
+        }
+      ]
+    },
+    "Gage Goncalves": {
+      "name": "Gage Goncalves",
+      "player_id": "8482201",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:10"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:04"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "18:19"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:52"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:17"
+        }
+      ]
+    },
+    "Oliver Bjorkstrand": {
+      "name": "Oliver Bjorkstrand",
+      "player_id": "8477416",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "8:55"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:48"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "10:46"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:01"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:57"
+        }
+      ]
+    },
+    "Yanni Gourde": {
+      "name": "Yanni Gourde",
+      "player_id": "8476826",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:10"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:42"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:05"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:13"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:53"
+        }
+      ]
+    },
+    "Zemgus Girgensons": {
+      "name": "Zemgus Girgensons",
+      "player_id": "8476878",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DET",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:54"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "MTL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:25"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "OTT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:46"
+        },
+        {
+          "date": "2026-04-06",
+          "opp": "BUF",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:29"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "BOS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:46"
+        }
+      ]
+    },
+    "Easton Cowan": {
+      "name": "Easton Cowan",
+      "player_id": "8484158",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 2,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:10"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:59"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:54"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:44"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "18:06"
+        }
+      ]
+    },
+    "John Tavares": {
+      "name": "John Tavares",
+      "player_id": "8475166",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:03"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "17:01"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:39"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "19:32"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "20:21"
+        }
+      ]
+    },
+    "William Nylander": {
+      "name": "William Nylander",
+      "player_id": "8477939",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 6,
+      "last5_goals": 3,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "22:50"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "19:48"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:53"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:32"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "23:24"
+        }
+      ]
+    },
+    "Matthew Knies": {
+      "name": "Matthew Knies",
+      "player_id": "8482516",
+      "status": "ACTIVE",
+      "last_game": "2026-04-14",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-14",
+          "opp": "PIT",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:54"
+        },
+        {
+          "date": "2026-03-26",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:07"
+        },
+        {
+          "date": "2026-03-08",
+          "opp": "ANA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:21"
+        },
+        {
+          "date": "2026-03-06",
+          "opp": "SJS",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:21"
+        },
+        {
+          "date": "2026-03-04",
+          "opp": "SEA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:10"
+        }
+      ]
+    },
+    "Calle Jarnkrok": {
+      "name": "Calle Jarnkrok",
+      "player_id": "8475714",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:22"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:06"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:43"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:38"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:51"
+        }
+      ]
+    },
+    "Max Domi": {
+      "name": "Max Domi",
+      "player_id": "8477503",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 1,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:40"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:23"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:18"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:35"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:19"
+        }
+      ]
+    },
+    "Nicholas Robertson": {
+      "name": "Nicholas Robertson",
+      "status": "NO_GAMELOG",
+      "player_id": "8484485"
+    },
+    "Morgan Rielly": {
+      "name": "Morgan Rielly",
+      "player_id": "8476853",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 1,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:57"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "20:13"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:45"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "21:10"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:18"
+        }
+      ]
+    },
+    "Matias Maccelli": {
+      "name": "Matias Maccelli",
+      "player_id": "8481711",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:51"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:56"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "11:17"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "15:47"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "11:44"
+        }
+      ]
+    },
+    "Steven Lorentz": {
+      "name": "Steven Lorentz",
+      "player_id": "8478904",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "DAL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "13:19"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "FLA",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "14:48"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "NYI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:15"
+        },
+        {
+          "date": "2026-04-08",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:05"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "LAK",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "10:33"
+        }
+      ]
+    },
+    "Ivan Barbashev": {
+      "name": "Ivan Barbashev",
+      "player_id": "8483930",
+      "status": "ACTIVE",
+      "last_game": "2026-03-20",
+      "last5_pts": 0,
+      "last5_goals": 0,
+      "consecutive_blanks": 5,
+      "flags": [
+        "COLD_3+"
+      ],
+      "games": [
+        {
+          "date": "2026-03-20",
+          "opp": "CHI",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:09"
+        },
+        {
+          "date": "2026-03-18",
+          "opp": "DAL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "3:43"
+        },
+        {
+          "date": "2026-01-19",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "4:57"
+        },
+        {
+          "date": "2026-01-16",
+          "opp": "NSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:36"
+        },
+        {
+          "date": "2026-01-12",
+          "opp": "TOR",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "5:04"
+        }
+      ]
+    },
+    "Jack Eichel": {
+      "name": "Jack Eichel",
+      "player_id": "8478403",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 9,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 1,
+          "a": 3,
+          "pts": 4,
+          "toi": "17:34"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "20:44"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:19"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:58"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 0,
+          "a": 3,
+          "pts": 3,
+          "toi": "18:08"
+        }
+      ]
+    },
+    "Mark Stone": {
+      "name": "Mark Stone",
+      "player_id": "8475913",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 7,
+      "last5_goals": 5,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 1,
+          "a": 2,
+          "pts": 3,
+          "toi": "16:06"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "19:19"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 2,
+          "a": 0,
+          "pts": 2,
+          "toi": "20:13"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:10"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "19:36"
+        }
+      ]
+    },
+    "Brett Howden": {
+      "name": "Brett Howden",
+      "player_id": "8479353",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 2,
+      "consecutive_blanks": 2,
+      "flags": [
+        "COLD_2"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:03"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:11"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "15:34"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:17"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "15:59"
+        }
+      ]
+    },
+    "Kaedan Korczak": {
+      "name": "Kaedan Korczak",
+      "player_id": "8481527",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 1,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:34"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "11:49"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:55"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:45"
+        },
+        {
+          "date": "2026-03-30",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:57"
+        }
+      ]
+    },
+    "Tomas Hertl": {
+      "name": "Tomas Hertl",
+      "player_id": "8476881",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "16:59"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "15:14"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "14:46"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:16"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "12:57"
+        }
+      ]
+    },
+    "Pavel Dorofeyev": {
+      "name": "Pavel Dorofeyev",
+      "player_id": "8478401",
+      "status": "ACTIVE",
+      "last_game": "2026-04-14",
+      "last5_pts": 5,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT_5+"
+      ],
+      "games": [
+        {
+          "date": "2026-04-14",
+          "opp": "NJD",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "4:58"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "TBL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "17:11"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "CAR",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "16:59"
+        },
+        {
+          "date": "2026-04-05",
+          "opp": "PHI",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "16:38"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "TBL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "16:05"
+        }
+      ]
+    },
+    "Mitch Marner": {
+      "name": "Mitch Marner",
+      "player_id": "8478483",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 3,
+      "last5_goals": 0,
+      "consecutive_blanks": 1,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:39"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "20:30"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "19:18"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "18:46"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "21:37"
+        }
+      ]
+    },
+    "Reilly Smith": {
+      "name": "Reilly Smith",
+      "player_id": "8475191",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 2,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "14:13"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "11:03"
+        },
+        {
+          "date": "2026-04-02",
+          "opp": "CGY",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "13:40"
+        },
+        {
+          "date": "2026-03-30",
+          "opp": "VAN",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "13:10"
+        },
+        {
+          "date": "2026-03-28",
+          "opp": "WSH",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "9:24"
+        }
+      ]
+    },
+    "Rasmus Andersson": {
+      "name": "Rasmus Andersson",
+      "player_id": "8478397",
+      "status": "ACTIVE",
+      "last_game": "2026-04-13",
+      "last5_pts": 4,
+      "last5_goals": 2,
+      "consecutive_blanks": 0,
+      "flags": [
+        "HOT"
+      ],
+      "games": [
+        {
+          "date": "2026-04-13",
+          "opp": "WPG",
+          "g": 1,
+          "a": 1,
+          "pts": 2,
+          "toi": "20:10"
+        },
+        {
+          "date": "2026-04-11",
+          "opp": "COL",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "25:51"
+        },
+        {
+          "date": "2026-04-09",
+          "opp": "SEA",
+          "g": 0,
+          "a": 1,
+          "pts": 1,
+          "toi": "29:03"
+        },
+        {
+          "date": "2026-04-07",
+          "opp": "VAN",
+          "g": 0,
+          "a": 0,
+          "pts": 0,
+          "toi": "22:22"
+        },
+        {
+          "date": "2026-04-04",
+          "opp": "EDM",
+          "g": 1,
+          "a": 0,
+          "pts": 1,
+          "toi": "22:03"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,543 @@
+{
+  "date": "2026-04-12",
+  "games_count": 6,
+  "goals_count": 32,
+  "games": [
+    {
+      "label": "PIT@WSH",
+      "score": "0-3",
+      "state": "OFF"
+    },
+    {
+      "label": "MTL@NYI",
+      "score": "4-1",
+      "state": "OFF"
+    },
+    {
+      "label": "BOS@CBJ",
+      "score": "3-2",
+      "state": "OFF"
+    },
+    {
+      "label": "OTT@NJD",
+      "score": "3-4",
+      "state": "OFF"
+    },
+    {
+      "label": "VAN@ANA",
+      "score": "4-3",
+      "state": "OFF"
+    },
+    {
+      "label": "UTA@CGY",
+      "score": "1-4",
+      "state": "OFF"
+    }
+  ],
+  "goals": [
+    {
+      "date": "2026-04-12",
+      "game": "PIT@WSH",
+      "team": "WSH",
+      "period": 2,
+      "time": "12:22",
+      "strength": "ES",
+      "scorer": "Trevor van Riemsdyk",
+      "assist1": "Pierre-Luc Dubois",
+      "assist2": "Connor McMichael",
+      "chain": [
+        "Trevor van Riemsdyk",
+        "Pierre-Luc Dubois",
+        "Connor McMichael"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "PIT@WSH",
+      "team": "WSH",
+      "period": 3,
+      "time": "15:50",
+      "strength": "ES",
+      "scorer": "Connor McMichael",
+      "assist1": "Ryan Leonard",
+      "assist2": "Martin Fehérváry",
+      "chain": [
+        "Connor McMichael",
+        "Ryan Leonard",
+        "Martin Fehérváry"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "PIT@WSH",
+      "team": "WSH",
+      "period": 3,
+      "time": "17:16",
+      "strength": "EN",
+      "scorer": "Connor McMichael",
+      "assist1": "Alex Ovechkin",
+      "assist2": "Martin Fehérváry",
+      "chain": [
+        "Connor McMichael",
+        "Alex Ovechkin",
+        "Martin Fehérváry"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "MTL@NYI",
+      "team": "MTL",
+      "period": 2,
+      "time": "15:56",
+      "strength": "ES",
+      "scorer": "Nick Suzuki",
+      "assist1": "Juraj Slafkovský",
+      "assist2": "Lane Hutson",
+      "chain": [
+        "Nick Suzuki",
+        "Juraj Slafkovský",
+        "Lane Hutson"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "MTL@NYI",
+      "team": "MTL",
+      "period": 2,
+      "time": "16:24",
+      "strength": "PP",
+      "scorer": "Ivan Demidov",
+      "assist1": "Nick Suzuki",
+      "assist2": "Lane Hutson",
+      "chain": [
+        "Ivan Demidov",
+        "Nick Suzuki",
+        "Lane Hutson"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "MTL@NYI",
+      "team": "MTL",
+      "period": 2,
+      "time": "16:51",
+      "strength": "ES",
+      "scorer": "Alex Newhook",
+      "assist1": "Zachary Bolduc",
+      "assist2": "David Reinbacher",
+      "chain": [
+        "Alex Newhook",
+        "Zachary Bolduc",
+        "David Reinbacher"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "MTL@NYI",
+      "team": "NYI",
+      "period": 3,
+      "time": "08:45",
+      "strength": "ES",
+      "scorer": "Casey Cizikas",
+      "assist1": "Scott Mayfield",
+      "assist2": "Ryan Pulock",
+      "chain": [
+        "Casey Cizikas",
+        "Scott Mayfield",
+        "Ryan Pulock"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "MTL@NYI",
+      "team": "MTL",
+      "period": 3,
+      "time": "19:45",
+      "strength": "ES",
+      "scorer": "Zachary Bolduc",
+      "assist1": "Alex Newhook",
+      "assist2": "Kirby Dach",
+      "chain": [
+        "Zachary Bolduc",
+        "Alex Newhook",
+        "Kirby Dach"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "BOS@CBJ",
+      "team": "CBJ",
+      "period": 1,
+      "time": "03:59",
+      "strength": "ES",
+      "scorer": "Mason Marchment",
+      "assist1": "Dante Fabbro",
+      "assist2": "Boone Jenner",
+      "chain": [
+        "Mason Marchment",
+        "Dante Fabbro",
+        "Boone Jenner"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "BOS@CBJ",
+      "team": "BOS",
+      "period": 1,
+      "time": "10:31",
+      "strength": "ES",
+      "scorer": "Sean Kuraly",
+      "assist1": "Mark Kastelic",
+      "assist2": "Henri Jokiharju",
+      "chain": [
+        "Sean Kuraly",
+        "Mark Kastelic",
+        "Henri Jokiharju"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "BOS@CBJ",
+      "team": "BOS",
+      "period": 2,
+      "time": "19:41",
+      "strength": "ES",
+      "scorer": "Henri Jokiharju",
+      "assist1": "Sean Kuraly",
+      "assist2": "James Hagens",
+      "chain": [
+        "Henri Jokiharju",
+        "Sean Kuraly",
+        "James Hagens"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "BOS@CBJ",
+      "team": "CBJ",
+      "period": 3,
+      "time": "01:27",
+      "strength": "ES",
+      "scorer": "Adam Fantilli",
+      "assist1": "Danton Heinen",
+      "assist2": "",
+      "chain": [
+        "Adam Fantilli",
+        "Danton Heinen"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "BOS@CBJ",
+      "team": "BOS",
+      "period": 3,
+      "time": "10:22",
+      "strength": "ES",
+      "scorer": "Mark Kastelic",
+      "assist1": "Sean Kuraly",
+      "assist2": "Jordan Harris",
+      "chain": [
+        "Mark Kastelic",
+        "Sean Kuraly",
+        "Jordan Harris"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "NJD",
+      "period": 1,
+      "time": "05:12",
+      "strength": "ES",
+      "scorer": "Nico Hischier",
+      "assist1": "Dawson Mercer",
+      "assist2": "Timo Meier",
+      "chain": [
+        "Nico Hischier",
+        "Dawson Mercer",
+        "Timo Meier"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "NJD",
+      "period": 1,
+      "time": "14:51",
+      "strength": "SH",
+      "scorer": "Connor Brown",
+      "assist1": "Jack Hughes",
+      "assist2": "",
+      "chain": [
+        "Connor Brown",
+        "Jack Hughes"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "OTT",
+      "period": 2,
+      "time": "07:42",
+      "strength": "ES",
+      "scorer": "Michael Amadio",
+      "assist1": "Artem Zub",
+      "assist2": "Nick Cousins",
+      "chain": [
+        "Michael Amadio",
+        "Artem Zub",
+        "Nick Cousins"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "OTT",
+      "period": 2,
+      "time": "10:25",
+      "strength": "PP",
+      "scorer": "Shane Pinto",
+      "assist1": "Claude Giroux",
+      "assist2": "Drake Batherson",
+      "chain": [
+        "Shane Pinto",
+        "Claude Giroux",
+        "Drake Batherson"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "OTT",
+      "period": 2,
+      "time": "14:14",
+      "strength": "ES",
+      "scorer": "Fabian Zetterlund",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Fabian Zetterlund"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "NJD",
+      "period": 3,
+      "time": "12:28",
+      "strength": "SH",
+      "scorer": "Dawson Mercer",
+      "assist1": "Nico Hischier",
+      "assist2": "",
+      "chain": [
+        "Dawson Mercer",
+        "Nico Hischier"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "OTT@NJD",
+      "team": "NJD",
+      "period": 4,
+      "time": "03:18",
+      "strength": "OT",
+      "scorer": "Nico Hischier",
+      "assist1": "Jack Hughes",
+      "assist2": "Dougie Hamilton",
+      "chain": [
+        "Nico Hischier",
+        "Jack Hughes",
+        "Dougie Hamilton"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "ANA",
+      "period": 1,
+      "time": "03:41",
+      "strength": "ES",
+      "scorer": "Cutter Gauthier",
+      "assist1": "Chris Kreider",
+      "assist2": "Alex Killorn",
+      "chain": [
+        "Cutter Gauthier",
+        "Chris Kreider",
+        "Alex Killorn"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "VAN",
+      "period": 1,
+      "time": "10:49",
+      "strength": "ES",
+      "scorer": "Curtis Douglas",
+      "assist1": "Aatu Räty",
+      "assist2": "Kirill Kudryavtsev",
+      "chain": [
+        "Curtis Douglas",
+        "Aatu Räty",
+        "Kirill Kudryavtsev"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "VAN",
+      "period": 1,
+      "time": "14:37",
+      "strength": "PP",
+      "scorer": "Jake DeBrusk",
+      "assist1": "Marco Rossi",
+      "assist2": "Filip Hronek",
+      "chain": [
+        "Jake DeBrusk",
+        "Marco Rossi",
+        "Filip Hronek"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "VAN",
+      "period": 3,
+      "time": "04:28",
+      "strength": "SH",
+      "scorer": "Brock Boeser",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Brock Boeser"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "ANA",
+      "period": 3,
+      "time": "05:05",
+      "strength": "PP",
+      "scorer": "Cutter Gauthier",
+      "assist1": "Jackson LaCombe",
+      "assist2": "Mason McTavish",
+      "chain": [
+        "Cutter Gauthier",
+        "Jackson LaCombe",
+        "Mason McTavish"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "ANA",
+      "period": 3,
+      "time": "06:56",
+      "strength": "ES",
+      "scorer": "Leo Carlsson",
+      "assist1": "Chris Kreider",
+      "assist2": "",
+      "chain": [
+        "Leo Carlsson",
+        "Chris Kreider"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "VAN@ANA",
+      "team": "VAN",
+      "period": 4,
+      "time": "04:50",
+      "strength": "OT",
+      "scorer": "Marco Rossi",
+      "assist1": "Zeev Buium",
+      "assist2": "Brock Boeser",
+      "chain": [
+        "Marco Rossi",
+        "Zeev Buium",
+        "Brock Boeser"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "UTA@CGY",
+      "team": "CGY",
+      "period": 1,
+      "time": "07:06",
+      "strength": "ES",
+      "scorer": "Matt Coronato",
+      "assist1": "Morgan Frost",
+      "assist2": "Brayden Pachal",
+      "chain": [
+        "Matt Coronato",
+        "Morgan Frost",
+        "Brayden Pachal"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "UTA@CGY",
+      "team": "CGY",
+      "period": 1,
+      "time": "08:27",
+      "strength": "ES",
+      "scorer": "Connor Zary",
+      "assist1": "Zayne Parekh",
+      "assist2": "Zach Whitecloud",
+      "chain": [
+        "Connor Zary",
+        "Zayne Parekh",
+        "Zach Whitecloud"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "UTA@CGY",
+      "team": "CGY",
+      "period": 3,
+      "time": "06:01",
+      "strength": "ES",
+      "scorer": "Mikael Backlund",
+      "assist1": "Blake Coleman",
+      "assist2": "Brayden Pachal",
+      "chain": [
+        "Mikael Backlund",
+        "Blake Coleman",
+        "Brayden Pachal"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "UTA@CGY",
+      "team": "CGY",
+      "period": 3,
+      "time": "09:10",
+      "strength": "ES",
+      "scorer": "Brayden Pachal",
+      "assist1": "Aydar Suniev",
+      "assist2": "Olli Määttä",
+      "chain": [
+        "Brayden Pachal",
+        "Aydar Suniev",
+        "Olli Määttä"
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "game": "UTA@CGY",
+      "team": "UTA",
+      "period": 3,
+      "time": "11:20",
+      "strength": "ES",
+      "scorer": "Lawson Crouse",
+      "assist1": "Clayton Keller",
+      "assist2": "MacKenzie Weegar",
+      "chain": [
+        "Lawson Crouse",
+        "Clayton Keller",
+        "MacKenzie Weegar"
+      ]
+    }
+  ]
+}

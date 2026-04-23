@@ -1,0 +1,1152 @@
+{
+  "date": "2026-04-13",
+  "games_count": 10,
+  "goals_count": 71,
+  "games": [
+    {
+      "label": "DET@TBL",
+      "score": "3-4",
+      "state": "OFF"
+    },
+    {
+      "label": "NYR@FLA",
+      "score": "2-3",
+      "state": "OFF"
+    },
+    {
+      "label": "CAR@PHI",
+      "score": "2-3",
+      "state": "OFF"
+    },
+    {
+      "label": "DAL@TOR",
+      "score": "6-5",
+      "state": "OFF"
+    },
+    {
+      "label": "MIN@STL",
+      "score": "3-6",
+      "state": "OFF"
+    },
+    {
+      "label": "SJS@NSH",
+      "score": "3-2",
+      "state": "OFF"
+    },
+    {
+      "label": "BUF@CHI",
+      "score": "5-1",
+      "state": "OFF"
+    },
+    {
+      "label": "COL@EDM",
+      "score": "2-1",
+      "state": "OFF"
+    },
+    {
+      "label": "LAK@SEA",
+      "score": "5-3",
+      "state": "OFF"
+    },
+    {
+      "label": "WPG@VGK",
+      "score": "2-6",
+      "state": "OFF"
+    }
+  ],
+  "goals": [
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "DET",
+      "period": 1,
+      "time": "05:31",
+      "strength": "ES",
+      "scorer": "David Perron",
+      "assist1": "J.T. Compher",
+      "assist2": "Ben Chiarot",
+      "chain": [
+        "David Perron",
+        "J.T. Compher",
+        "Ben Chiarot"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "TBL",
+      "period": 1,
+      "time": "17:05",
+      "strength": "ES",
+      "scorer": "Conor Geekie",
+      "assist1": "Oliver Bjorkstrand",
+      "assist2": "",
+      "chain": [
+        "Conor Geekie",
+        "Oliver Bjorkstrand"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "TBL",
+      "period": 2,
+      "time": "15:53",
+      "strength": "ES",
+      "scorer": "Erik Cernak",
+      "assist1": "Ryan McDonagh",
+      "assist2": "Zemgus Girgensons",
+      "chain": [
+        "Erik Cernak",
+        "Ryan McDonagh",
+        "Zemgus Girgensons"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "TBL",
+      "period": 2,
+      "time": "18:03",
+      "strength": "ES",
+      "scorer": "Jake Guentzel",
+      "assist1": "Nikita Kucherov",
+      "assist2": "J.J. Moser",
+      "chain": [
+        "Jake Guentzel",
+        "Nikita Kucherov",
+        "J.J. Moser"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "DET",
+      "period": 3,
+      "time": "02:56",
+      "strength": "ES",
+      "scorer": "Marco Kasper",
+      "assist1": "James van Riemsdyk",
+      "assist2": "Justin Faulk",
+      "chain": [
+        "Marco Kasper",
+        "James van Riemsdyk",
+        "Justin Faulk"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "DET",
+      "period": 3,
+      "time": "15:16",
+      "strength": "ES",
+      "scorer": "Alex DeBrincat",
+      "assist1": "Patrick Kane",
+      "assist2": "",
+      "chain": [
+        "Alex DeBrincat",
+        "Patrick Kane"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DET@TBL",
+      "team": "TBL",
+      "period": 4,
+      "time": "00:27",
+      "strength": "OT",
+      "scorer": "Nikita Kucherov",
+      "assist1": "Brayden Point",
+      "assist2": "",
+      "chain": [
+        "Nikita Kucherov",
+        "Brayden Point"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "NYR@FLA",
+      "team": "FLA",
+      "period": 1,
+      "time": "09:35",
+      "strength": "ES",
+      "scorer": "Cole Reinhardt",
+      "assist1": "Tobias Bjornfot",
+      "assist2": "Vinnie Hinostroza",
+      "chain": [
+        "Cole Reinhardt",
+        "Tobias Bjornfot",
+        "Vinnie Hinostroza"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "NYR@FLA",
+      "team": "FLA",
+      "period": 1,
+      "time": "11:31",
+      "strength": "ES",
+      "scorer": "Mackie Samoskevich",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Mackie Samoskevich"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "NYR@FLA",
+      "team": "NYR",
+      "period": 1,
+      "time": "15:19",
+      "strength": "ES",
+      "scorer": "Matthew Robertson",
+      "assist1": "Noah Laba",
+      "assist2": "",
+      "chain": [
+        "Matthew Robertson",
+        "Noah Laba"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "NYR@FLA",
+      "team": "NYR",
+      "period": 2,
+      "time": "17:20",
+      "strength": "ES",
+      "scorer": "Gabe Perreault",
+      "assist1": "Adam Fox",
+      "assist2": "Alexis Lafrenière",
+      "chain": [
+        "Gabe Perreault",
+        "Adam Fox",
+        "Alexis Lafrenière"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "NYR@FLA",
+      "team": "FLA",
+      "period": 3,
+      "time": "18:10",
+      "strength": "ES",
+      "scorer": "Cole Reinhardt",
+      "assist1": "Luke Kunin",
+      "assist2": "Donovan Sebrango",
+      "chain": [
+        "Cole Reinhardt",
+        "Luke Kunin",
+        "Donovan Sebrango"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "CAR@PHI",
+      "team": "CAR",
+      "period": 1,
+      "time": "08:41",
+      "strength": "ES",
+      "scorer": "Bradly Nadeau",
+      "assist1": "Nikolaj Ehlers",
+      "assist2": "Sean Walker",
+      "chain": [
+        "Bradly Nadeau",
+        "Nikolaj Ehlers",
+        "Sean Walker"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "CAR@PHI",
+      "team": "CAR",
+      "period": 1,
+      "time": "15:30",
+      "strength": "PP",
+      "scorer": "Nikolaj Ehlers",
+      "assist1": "Logan Stankoven",
+      "assist2": "Jackson Blake",
+      "chain": [
+        "Nikolaj Ehlers",
+        "Logan Stankoven",
+        "Jackson Blake"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "CAR@PHI",
+      "team": "PHI",
+      "period": 2,
+      "time": "07:57",
+      "strength": "ES",
+      "scorer": "Matvei Michkov",
+      "assist1": "Denver Barkey",
+      "assist2": "Noah Cates",
+      "chain": [
+        "Matvei Michkov",
+        "Denver Barkey",
+        "Noah Cates"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "CAR@PHI",
+      "team": "PHI",
+      "period": 2,
+      "time": "10:30",
+      "strength": "PP",
+      "scorer": "Trevor Zegras",
+      "assist1": "Porter Martone",
+      "assist2": "Tyson Foerster",
+      "chain": [
+        "Trevor Zegras",
+        "Porter Martone",
+        "Tyson Foerster"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "CAR@PHI",
+      "team": "PHI",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Tyson Foerster",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Tyson Foerster"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "TOR",
+      "period": 1,
+      "time": "02:14",
+      "strength": "PP",
+      "scorer": "John Tavares",
+      "assist1": "William Nylander",
+      "assist2": "",
+      "chain": [
+        "John Tavares",
+        "William Nylander"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "TOR",
+      "period": 1,
+      "time": "14:35",
+      "strength": "ES",
+      "scorer": "Jacob Quillan",
+      "assist1": "Steven Lorentz",
+      "assist2": "",
+      "chain": [
+        "Jacob Quillan",
+        "Steven Lorentz"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "TOR",
+      "period": 1,
+      "time": "15:51",
+      "strength": "ES",
+      "scorer": "William Nylander",
+      "assist1": "Jake McCabe",
+      "assist2": "Simon Benoit",
+      "chain": [
+        "William Nylander",
+        "Jake McCabe",
+        "Simon Benoit"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 2,
+      "time": "00:52",
+      "strength": "ES",
+      "scorer": "Mavrik Bourque",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Mavrik Bourque"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 2,
+      "time": "05:31",
+      "strength": "ES",
+      "scorer": "Mavrik Bourque",
+      "assist1": "Jason Robertson",
+      "assist2": "Matt Duchene",
+      "chain": [
+        "Mavrik Bourque",
+        "Jason Robertson",
+        "Matt Duchene"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 2,
+      "time": "09:29",
+      "strength": "ES",
+      "scorer": "Jason Robertson",
+      "assist1": "Matt Duchene",
+      "assist2": "Mavrik Bourque",
+      "chain": [
+        "Jason Robertson",
+        "Matt Duchene",
+        "Mavrik Bourque"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "TOR",
+      "period": 3,
+      "time": "01:40",
+      "strength": "ES",
+      "scorer": "Max Domi",
+      "assist1": "William Nylander",
+      "assist2": "Matthew Knies",
+      "chain": [
+        "Max Domi",
+        "William Nylander",
+        "Matthew Knies"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "TOR",
+      "period": 3,
+      "time": "04:19",
+      "strength": "ES",
+      "scorer": "Nicholas Robertson",
+      "assist1": "Troy Stecher",
+      "assist2": "Matthew Knies",
+      "chain": [
+        "Nicholas Robertson",
+        "Troy Stecher",
+        "Matthew Knies"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 3,
+      "time": "08:18",
+      "strength": "PP",
+      "scorer": "Wyatt Johnston",
+      "assist1": "Mikko Rantanen",
+      "assist2": "Thomas Harley",
+      "chain": [
+        "Wyatt Johnston",
+        "Mikko Rantanen",
+        "Thomas Harley"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 3,
+      "time": "09:38",
+      "strength": "ES",
+      "scorer": "Arttu Hyry",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Arttu Hyry"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "DAL@TOR",
+      "team": "DAL",
+      "period": 3,
+      "time": "14:52",
+      "strength": "ES",
+      "scorer": "Mavrik Bourque",
+      "assist1": "Matt Duchene",
+      "assist2": "Alexander Petrovic",
+      "chain": [
+        "Mavrik Bourque",
+        "Matt Duchene",
+        "Alexander Petrovic"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 1,
+      "time": "01:22",
+      "strength": "ES",
+      "scorer": "Colton Parayko",
+      "assist1": "Robert Thomas",
+      "assist2": "Jimmy Snuggerud",
+      "chain": [
+        "Colton Parayko",
+        "Robert Thomas",
+        "Jimmy Snuggerud"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "MIN",
+      "period": 1,
+      "time": "14:46",
+      "strength": "ES",
+      "scorer": "Nick Foligno",
+      "assist1": "Yakov Trenin",
+      "assist2": "Daemon Hunt",
+      "chain": [
+        "Nick Foligno",
+        "Yakov Trenin",
+        "Daemon Hunt"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "MIN",
+      "period": 1,
+      "time": "19:13",
+      "strength": "PP",
+      "scorer": "Danila Yurov",
+      "assist1": "Vladimir Tarasenko",
+      "assist2": "Marcus Johansson",
+      "chain": [
+        "Danila Yurov",
+        "Vladimir Tarasenko",
+        "Marcus Johansson"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "MIN",
+      "period": 2,
+      "time": "01:59",
+      "strength": "SH",
+      "scorer": "Michael McCarron",
+      "assist1": "Nick Foligno",
+      "assist2": "",
+      "chain": [
+        "Michael McCarron",
+        "Nick Foligno"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 2,
+      "time": "04:04",
+      "strength": "ES",
+      "scorer": "Otto Stenberg",
+      "assist1": "Tyler Tucker",
+      "assist2": "Alexey Toropchenko",
+      "chain": [
+        "Otto Stenberg",
+        "Tyler Tucker",
+        "Alexey Toropchenko"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 2,
+      "time": "04:31",
+      "strength": "ES",
+      "scorer": "Pavel Buchnevich",
+      "assist1": "Jordan Kyrou",
+      "assist2": "Cam Fowler",
+      "chain": [
+        "Pavel Buchnevich",
+        "Jordan Kyrou",
+        "Cam Fowler"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 2,
+      "time": "16:41",
+      "strength": "ES",
+      "scorer": "Theo Lindstein",
+      "assist1": "Jonathan Drouin",
+      "assist2": "Dalibor Dvorsky",
+      "chain": [
+        "Theo Lindstein",
+        "Jonathan Drouin",
+        "Dalibor Dvorsky"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 3,
+      "time": "03:05",
+      "strength": "ES",
+      "scorer": "Jake Neighbours",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Jake Neighbours"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "MIN@STL",
+      "team": "STL",
+      "period": 3,
+      "time": "16:56",
+      "strength": "EN",
+      "scorer": "Jimmy Snuggerud",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Jimmy Snuggerud"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "SJS@NSH",
+      "team": "SJS",
+      "period": 2,
+      "time": "09:53",
+      "strength": "PP",
+      "scorer": "Igor Chernyshov",
+      "assist1": "William Eklund",
+      "assist2": "Michael Misa",
+      "chain": [
+        "Igor Chernyshov",
+        "William Eklund",
+        "Michael Misa"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "SJS@NSH",
+      "team": "SJS",
+      "period": 3,
+      "time": "03:04",
+      "strength": "ES",
+      "scorer": "Macklin Celebrini",
+      "assist1": "Igor Chernyshov",
+      "assist2": "Will Smith",
+      "chain": [
+        "Macklin Celebrini",
+        "Igor Chernyshov",
+        "Will Smith"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "SJS@NSH",
+      "team": "NSH",
+      "period": 3,
+      "time": "15:39",
+      "strength": "ES",
+      "scorer": "Luke Evangelista",
+      "assist1": "Nick Perbix",
+      "assist2": "Ryan Ufko",
+      "chain": [
+        "Luke Evangelista",
+        "Nick Perbix",
+        "Ryan Ufko"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "SJS@NSH",
+      "team": "SJS",
+      "period": 3,
+      "time": "18:15",
+      "strength": "EN",
+      "scorer": "Macklin Celebrini",
+      "assist1": "Collin Graf",
+      "assist2": "Alexander Wennberg",
+      "chain": [
+        "Macklin Celebrini",
+        "Collin Graf",
+        "Alexander Wennberg"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "SJS@NSH",
+      "team": "NSH",
+      "period": 3,
+      "time": "18:50",
+      "strength": "PP",
+      "scorer": "Luke Evangelista",
+      "assist1": "Ryan Ufko",
+      "assist2": "Roman Josi",
+      "chain": [
+        "Luke Evangelista",
+        "Ryan Ufko",
+        "Roman Josi"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "CHI",
+      "period": 1,
+      "time": "03:58",
+      "strength": "SH",
+      "scorer": "Ryan Greene",
+      "assist1": "Ilya Mikheyev",
+      "assist2": "",
+      "chain": [
+        "Ryan Greene",
+        "Ilya Mikheyev"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "BUF",
+      "period": 1,
+      "time": "19:02",
+      "strength": "ES",
+      "scorer": "Josh Norris",
+      "assist1": "Josh Doan",
+      "assist2": "",
+      "chain": [
+        "Josh Norris",
+        "Josh Doan"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "BUF",
+      "period": 2,
+      "time": "13:00",
+      "strength": "ES",
+      "scorer": "Tage Thompson",
+      "assist1": "Alex Tuch",
+      "assist2": "",
+      "chain": [
+        "Tage Thompson",
+        "Alex Tuch"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "BUF",
+      "period": 3,
+      "time": "05:38",
+      "strength": "ES",
+      "scorer": "Alex Tuch",
+      "assist1": "Rasmus Dahlin",
+      "assist2": "Logan Stanley",
+      "chain": [
+        "Alex Tuch",
+        "Rasmus Dahlin",
+        "Logan Stanley"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "BUF",
+      "period": 3,
+      "time": "11:13",
+      "strength": "ES",
+      "scorer": "Tage Thompson",
+      "assist1": "Rasmus Dahlin",
+      "assist2": "Jason Zucker",
+      "chain": [
+        "Tage Thompson",
+        "Rasmus Dahlin",
+        "Jason Zucker"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "BUF@CHI",
+      "team": "BUF",
+      "period": 3,
+      "time": "18:35",
+      "strength": "ES",
+      "scorer": "Ryan McLeod",
+      "assist1": "Zach Benson",
+      "assist2": "Owen Power",
+      "chain": [
+        "Ryan McLeod",
+        "Zach Benson",
+        "Owen Power"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "COL",
+      "period": 2,
+      "time": "09:05",
+      "strength": "ES",
+      "scorer": "Sam Malinski",
+      "assist1": "Nicolas Roy",
+      "assist2": "",
+      "chain": [
+        "Sam Malinski",
+        "Nicolas Roy"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "EDM",
+      "period": 2,
+      "time": "15:49",
+      "strength": "ES",
+      "scorer": "Connor McDavid",
+      "assist1": "Matt Savoie",
+      "assist2": "Evan Bouchard",
+      "chain": [
+        "Connor McDavid",
+        "Matt Savoie",
+        "Evan Bouchard"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "EDM",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Connor McDavid",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Connor McDavid"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "COL",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Valeri Nichushkin",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Valeri Nichushkin"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "EDM",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Ryan Nugent-Hopkins",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Ryan Nugent-Hopkins"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "COL",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Martin Necas",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Martin Necas"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "COL@EDM",
+      "team": "COL",
+      "period": 5,
+      "time": "00:00",
+      "strength": "PP",
+      "scorer": "Nathan MacKinnon",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Nathan MacKinnon"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "LAK",
+      "period": 1,
+      "time": "02:43",
+      "strength": "ES",
+      "scorer": "Quinton Byfield",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Quinton Byfield"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "LAK",
+      "period": 1,
+      "time": "13:19",
+      "strength": "ES",
+      "scorer": "Quinton Byfield",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Quinton Byfield"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "LAK",
+      "period": 2,
+      "time": "07:13",
+      "strength": "ES",
+      "scorer": "Trevor Moore",
+      "assist1": "Alex Laferriere",
+      "assist2": "",
+      "chain": [
+        "Trevor Moore",
+        "Alex Laferriere"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "SEA",
+      "period": 3,
+      "time": "01:53",
+      "strength": "ES",
+      "scorer": "Adam Larsson",
+      "assist1": "Matty Beniers",
+      "assist2": "Jaden Schwartz",
+      "chain": [
+        "Adam Larsson",
+        "Matty Beniers",
+        "Jaden Schwartz"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "SEA",
+      "period": 3,
+      "time": "08:08",
+      "strength": "ES",
+      "scorer": "Frederick Gaudreau",
+      "assist1": "Kaapo Kakko",
+      "assist2": "",
+      "chain": [
+        "Frederick Gaudreau",
+        "Kaapo Kakko"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "LAK",
+      "period": 3,
+      "time": "12:29",
+      "strength": "ES",
+      "scorer": "Adrian Kempe",
+      "assist1": "Anze Kopitar",
+      "assist2": "Trevor Moore",
+      "chain": [
+        "Adrian Kempe",
+        "Anze Kopitar",
+        "Trevor Moore"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "SEA",
+      "period": 3,
+      "time": "17:33",
+      "strength": "PP",
+      "scorer": "Bobby McMann",
+      "assist1": "Matty Beniers",
+      "assist2": "Chandler Stephenson",
+      "chain": [
+        "Bobby McMann",
+        "Matty Beniers",
+        "Chandler Stephenson"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "LAK@SEA",
+      "team": "LAK",
+      "period": 3,
+      "time": "19:58",
+      "strength": "EN",
+      "scorer": "Alex Laferriere",
+      "assist1": "Joel Edmundson",
+      "assist2": "",
+      "chain": [
+        "Alex Laferriere",
+        "Joel Edmundson"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 2,
+      "time": "07:38",
+      "strength": "SH",
+      "scorer": "Mark Stone",
+      "assist1": "Jack Eichel",
+      "assist2": "",
+      "chain": [
+        "Mark Stone",
+        "Jack Eichel"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 2,
+      "time": "18:54",
+      "strength": "ES",
+      "scorer": "Reilly Smith",
+      "assist1": "Noah Hanifin",
+      "assist2": "Rasmus Andersson",
+      "chain": [
+        "Reilly Smith",
+        "Noah Hanifin",
+        "Rasmus Andersson"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 3,
+      "time": "00:31",
+      "strength": "ES",
+      "scorer": "Ivan Barbashev",
+      "assist1": "Jack Eichel",
+      "assist2": "Noah Hanifin",
+      "chain": [
+        "Ivan Barbashev",
+        "Jack Eichel",
+        "Noah Hanifin"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "WPG",
+      "period": 3,
+      "time": "02:34",
+      "strength": "PP",
+      "scorer": "Gabriel Vilardi",
+      "assist1": "Colin Miller",
+      "assist2": "Mark Scheifele",
+      "chain": [
+        "Gabriel Vilardi",
+        "Colin Miller",
+        "Mark Scheifele"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 3,
+      "time": "03:37",
+      "strength": "ES",
+      "scorer": "Rasmus Andersson",
+      "assist1": "Mark Stone",
+      "assist2": "Ivan Barbashev",
+      "chain": [
+        "Rasmus Andersson",
+        "Mark Stone",
+        "Ivan Barbashev"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "WPG",
+      "period": 3,
+      "time": "04:41",
+      "strength": "ES",
+      "scorer": "Mark Scheifele",
+      "assist1": "Kyle Connor",
+      "assist2": "Gabriel Vilardi",
+      "chain": [
+        "Mark Scheifele",
+        "Kyle Connor",
+        "Gabriel Vilardi"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 3,
+      "time": "05:42",
+      "strength": "PP",
+      "scorer": "Pavel Dorofeyev",
+      "assist1": "Mark Stone",
+      "assist2": "Jack Eichel",
+      "chain": [
+        "Pavel Dorofeyev",
+        "Mark Stone",
+        "Jack Eichel"
+      ]
+    },
+    {
+      "date": "2026-04-13",
+      "game": "WPG@VGK",
+      "team": "VGK",
+      "period": 3,
+      "time": "07:38",
+      "strength": "PP",
+      "scorer": "Jack Eichel",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Jack Eichel"
+      ]
+    }
+  ]
+}
