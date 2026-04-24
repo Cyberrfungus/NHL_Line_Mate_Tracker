@@ -1,0 +1,225 @@
+{
+  "date": "2026-04-23",
+  "games_count": 3,
+  "goals_count": 13,
+  "games": [
+    {
+      "label": "BUF@BOS",
+      "score": "3-1",
+      "state": "OFF"
+    },
+    {
+      "label": "CAR@OTT",
+      "score": "2-1",
+      "state": "OFF"
+    },
+    {
+      "label": "COL@LAK",
+      "score": "4-2",
+      "state": "OFF"
+    }
+  ],
+  "goals": [
+    {
+      "date": "2026-04-23",
+      "game": "BUF@BOS",
+      "team": "BOS",
+      "period": 2,
+      "time": "03:26",
+      "strength": "ES",
+      "scorer": "Tanner Jeannot",
+      "assist1": "Charlie McAvoy",
+      "assist2": "",
+      "chain": [
+        "Tanner Jeannot",
+        "Charlie McAvoy"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "BUF@BOS",
+      "team": "BUF",
+      "period": 2,
+      "time": "10:58",
+      "strength": "ES",
+      "scorer": "Bowen Byram",
+      "assist1": "Noah Ostlund",
+      "assist2": "Owen Power",
+      "chain": [
+        "Bowen Byram",
+        "Noah Ostlund",
+        "Owen Power"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "BUF@BOS",
+      "team": "BUF",
+      "period": 3,
+      "time": "04:03",
+      "strength": "ES",
+      "scorer": "Alex Tuch",
+      "assist1": "Peyton Krebs",
+      "assist2": "Bowen Byram",
+      "chain": [
+        "Alex Tuch",
+        "Peyton Krebs",
+        "Bowen Byram"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "BUF@BOS",
+      "team": "BUF",
+      "period": 3,
+      "time": "18:36",
+      "strength": "EN",
+      "scorer": "Noah Ostlund",
+      "assist1": "Jack Quinn",
+      "assist2": "",
+      "chain": [
+        "Noah Ostlund",
+        "Jack Quinn"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "CAR@OTT",
+      "team": "CAR",
+      "period": 1,
+      "time": "05:13",
+      "strength": "ES",
+      "scorer": "Logan Stankoven",
+      "assist1": "Taylor Hall",
+      "assist2": "Eric Robinson",
+      "chain": [
+        "Logan Stankoven",
+        "Taylor Hall",
+        "Eric Robinson"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "CAR@OTT",
+      "team": "OTT",
+      "period": 2,
+      "time": "16:06",
+      "strength": "ES",
+      "scorer": "Drake Batherson",
+      "assist1": "Nick Cousins",
+      "assist2": "",
+      "chain": [
+        "Drake Batherson",
+        "Nick Cousins"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "CAR@OTT",
+      "team": "CAR",
+      "period": 2,
+      "time": "17:29",
+      "strength": "ES",
+      "scorer": "Jackson Blake",
+      "assist1": "K'Andre Miller",
+      "assist2": "Taylor Hall",
+      "chain": [
+        "Jackson Blake",
+        "K'Andre Miller",
+        "Taylor Hall"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "COL",
+      "period": 1,
+      "time": "05:29",
+      "strength": "ES",
+      "scorer": "Gabriel Landeskog",
+      "assist1": "Nicolas Roy",
+      "assist2": "Josh Manson",
+      "chain": [
+        "Gabriel Landeskog",
+        "Nicolas Roy",
+        "Josh Manson"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "LAK",
+      "period": 2,
+      "time": "05:55",
+      "strength": "ES",
+      "scorer": "Trevor Moore",
+      "assist1": "Quinton Byfield",
+      "assist2": "Alex Laferriere",
+      "chain": [
+        "Trevor Moore",
+        "Quinton Byfield",
+        "Alex Laferriere"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "COL",
+      "period": 2,
+      "time": "12:12",
+      "strength": "ES",
+      "scorer": "Cale Makar",
+      "assist1": "Devon Toews",
+      "assist2": "Artturi Lehkonen",
+      "chain": [
+        "Cale Makar",
+        "Devon Toews",
+        "Artturi Lehkonen"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "COL",
+      "period": 3,
+      "time": "07:39",
+      "strength": "SH",
+      "scorer": "Artturi Lehkonen",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Artturi Lehkonen"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "LAK",
+      "period": 3,
+      "time": "15:57",
+      "strength": "PP",
+      "scorer": "Adrian Kempe",
+      "assist1": "Artemi Panarin",
+      "assist2": "Alex Laferriere",
+      "chain": [
+        "Adrian Kempe",
+        "Artemi Panarin",
+        "Alex Laferriere"
+      ]
+    },
+    {
+      "date": "2026-04-23",
+      "game": "COL@LAK",
+      "team": "COL",
+      "period": 3,
+      "time": "17:42",
+      "strength": "EN",
+      "scorer": "Brock Nelson",
+      "assist1": "unassisted",
+      "assist2": "",
+      "chain": [
+        "Brock Nelson"
+      ]
+    }
+  ]
+}
