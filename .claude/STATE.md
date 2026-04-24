@@ -344,3 +344,20 @@ Advanced metrics flags:
 - Martone (PHI L2 RW + PP2, 7pts/3G) is top individual signal; rebuilt SGP board around him
 - Hughes anomaly: deploy halt on MIN D-stacks until verified
 - Next session: verify Quinn Hughes roster status, score Apr 22 chains, evaluate playoff ELITE slump investigation
+
+---
+
+## APR 23 SESSION LOG — MAJOR UPGRADE DAY
+- Added full GRADING METRICS table (Regular Season vs Playoffs split)
+- Added First-10 GIFT (0.5 goals) tracking with reg vs playoff distinction
+- Added Team Total O/U tracking (strong playoff edge noted)
+- Added PLAYOFF GUARDRAIL + post-game snapshot protocol
+- Integrated new `scripts/fetch_advanced_metrics.py` (xG, GSAx, Fenwick, pace)
+- Updated STEP 3 pre-flight to use GSAx priority over raw SV%
+- GSAx sign convention: GA − xGA (negative = better than expected → SUPPRESS; positive = worse → BOOST)
+- ⚠️ STATE.md STEP 3 GSAx thresholds currently inverted — needs flip: GSAx < −2.0 → upgrade (suppress); GSAx > +3.0 → downgrade (boost)
+- Pushed all Apr 23 data files + advanced_metrics_2026-04-23.json to repo
+- System now has xG/GSAx signals for duos, First-10, and Team Totals
+- Apr 23 pre-flight run: BOS Swayman adj ELITE (GSAx −28.78), OTT Ullmark confirmed WEAK++ (GSAx +12.81), CAR Andersen confirmed WEAK+ (GSAx +3.31)
+- Primary targets Apr 23: CAR duos vs Ullmark, OTT duos vs Andersen (both triple-signal: xGF% + Fenwick + GSAx); BOS@BUF UNDER (double suppress)
+- advanced_metrics goalie stored fields (GSAx/sv_pct) still corrupt in pushed file — re-run fixed script locally and push corrected file
