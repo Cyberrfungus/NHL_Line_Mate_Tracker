@@ -64,6 +64,41 @@ Regular-season metrics alone are insufficient in playoffs. Maintain separate cum
 
 After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
 
+#### SIGNAL HIERARCHY (updated Apr 24 2026 — now quantitative)
+**Composite Play Score** = sum of all applicable signals (range: -100 to +130).
+**Hard filters** = automatic -100 (exclude).
+**Qualified plays only** = Composite Score **≥ +35** AND Correlation Strength **≥ ★★**.
+Rank verified play sheet by Composite Score descending, then by star rating.
+**Important:** When determining the Goalie signal, **always apply the new PLAYOFF GOALIE ADJUSTMENT + PLAYOFF CUMULATIVE PERFORMANCE TRACKER** first (the rules you just added).
+
+| Priority | Signal | Points | Action | Justification |
+|----------|---------------------------------|----------|-----------------|---------------|
+| 1 | Cold Flag (2+ blanks) | -100 | Hard exclude | 0W/29L+ |
+| 2 | Forward L5G = 0 (non D-man) | -100 | Hard exclude | Validated |
+| 3 | Elite Goalie (after playoff adjustment) | -40 | Heavy suppress | 0W/5L (reg season) |
+| 4 | Hot Goalscorer Tier | +30 to +60 | Boost | 58.6% WR (Apr 14) |
+| 5 | Backup Goalie (after playoff adjustment) | +35 | Strong boost | 10W/1L |
+| 6 | Tier (ELITE / PP LINK F+D / STRONG) | +25 / +15 / +5 | Base score | Confirmed WR gaps |
+| 7 | O/U Boost | +10 per 5 pts above 55 | Mild boost | Market edge |
+| 8 | Motivation / Home / B2B context | +5 to +10 | Contextual | Soft signal |
+
+**Hot Goalscorer Tier Bonus (applied once per duo):**
+- DUAL FINISHER (both L5G ≥ 3) → **+60**
+- GOAL SCORER (both L5G ≥ 2) → **+45**
+- FINISHER + PLAYMAKER (one ≥3, one ≥1) → **+30**
+
+#### COMPOSITE SCORING RUBRIC (new — authoritative)
+Claude **must** calculate and show the Composite Score for every suggested play using the playoff-adjusted goalie tier.
+Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★★ | SCORE: +25 (tier) + 35 (backup) + 60 (dual finisher) = +120
+**Minimum threshold for verified play sheet: +35**
+
+#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated)
+1. **Hard excludes** (Cold Flag, Forward L5G=0, scratches/injuries)
+2. **Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER** to every goalie
+3. Score remaining duos/trios using the Composite Scoring Rubric
+4. **Qualified plays only**: Composite Score ≥ +35 AND Correlation Strength ≥ ★★
+5. Rank by Composite Score descending, then by star rating
+
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 - Iterate each hot player
 - For each hot player, enumerate ALL valid correlations:
