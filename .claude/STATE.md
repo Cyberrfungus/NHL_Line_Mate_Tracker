@@ -1,5 +1,5 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 22 2026 (post-Apr 21 scored, pre-Apr 22 Day 5)
+# Source of Truth | Updated: April 24 2026 (post-Apr 23 analysis, pre-Apr 24 Game 4+)
 # Format: caveman compression for token efficiency
 
 ---
@@ -44,6 +44,60 @@
   - Fenwick% (5v5) > 53% → shot-share dominance, elevates STRONG duo floor
   - pace_gf60 > 3.2 → high-pace team, boosts First-10 GIFT OVER
 - Output a goalie tier table: name · SV% · GSAx · tier · signal direction (BOOST / SUPPRESS / NEUTRAL)
+
+#### PLAYOFF GOALIE ADJUSTMENT *(mandatory during playoffs only)*
+Goalies frequently elevate performance in playoffs due to tighter defense and higher focus. Apply **before** finalizing tier and signal direction:
+- Move tier up one level from season SV% (WEAK → AVG, AVG → STRONG, STRONG → ELITE)
+- OR add +0.008 to their SV% before applying tier (conservative boost; use this form if blending with playoff stats)
+- **This adjustment does NOT apply to regular season.** Regular season uses raw SV% + GSAx only.
+
+#### PLAYOFF CUMULATIVE PERFORMANCE TRACKER *(mandatory during playoffs)*
+Regular-season metrics alone are insufficient in playoffs. Maintain separate cumulative playoff stats:
+- Playoff SV% (minimum 2 games to be usable)
+- Playoff GSAx (GA − xGA accumulated across playoff games)
+- Playoff xGF% and Fenwick% per team
+
+**Goalie tiering priority during playoffs (apply in order):**
+1. **3+ playoff games played** → use playoff SV% + playoff GSAx as primary signal (season stats secondary)
+2. **1–2 playoff games played** → blend 70% playoff + 30% season SV%/GSAx
+3. **0 playoff games** → use season SV% + GSAx, then apply the Playoff Goalie Adjustment above
+
+After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
+
+#### SIGNAL HIERARCHY (updated Apr 24 2026 — now quantitative)
+**Composite Play Score** = sum of all applicable signals (range: -100 to +130).
+**Hard filters** = automatic -100 (exclude).
+**Qualified plays only** = Composite Score **≥ +35** AND Correlation Strength **≥ ★★**.
+Rank verified play sheet by Composite Score descending, then by star rating.
+**Important:** When determining the Goalie signal, **always apply the new PLAYOFF GOALIE ADJUSTMENT + PLAYOFF CUMULATIVE PERFORMANCE TRACKER** first (the rules you just added).
+
+| Priority | Signal | Points | Action | Justification |
+|----------|---------------------------------|----------|-----------------|---------------|
+| 1 | Cold Flag (2+ blanks) | -100 | Hard exclude | 0W/29L+ |
+| 2 | Forward L5G = 0 (non D-man) | -100 | Hard exclude | Validated |
+| 3 | Elite Goalie (after playoff adjustment) | -40 | Heavy suppress | 0W/5L (reg season) |
+| 4 | Hot Goalscorer Tier | +30 to +60 | Boost | 58.6% WR (Apr 14) |
+| 5 | Backup Goalie (after playoff adjustment) | +35 | Strong boost | 10W/1L |
+| 6 | Tier (ELITE / PP LINK F+D / STRONG) | +25 / +15 / +5 | Base score | Confirmed WR gaps |
+| 7 | O/U Boost | +10 per 5 pts above 55 | Mild boost | Market edge |
+| 8 | Motivation / Home / B2B context | +5 to +10 | Contextual | Soft signal |
+
+**Hot Goalscorer Tier Bonus (applied once per duo):**
+- DUAL FINISHER (both L5G ≥ 3) → **+60**
+- GOAL SCORER (both L5G ≥ 2) → **+45**
+- FINISHER + PLAYMAKER (one ≥3, one ≥1) → **+30**
+
+#### COMPOSITE SCORING RUBRIC (new — authoritative)
+Claude **must** calculate and show the Composite Score for every suggested play using the playoff-adjusted goalie tier.
+Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★★ | SCORE: +25 (tier) + 35 (backup) + 60 (dual finisher) = +120
+**Minimum threshold for verified play sheet: +35**
+
+#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated)
+1. **Hard excludes** (Cold Flag, Forward L5G=0, scratches/injuries)
+2. **Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER** to every goalie
+3. Score remaining duos/trios using the Composite Scoring Rubric
+4. **Qualified plays only**: Composite Score ≥ +35 AND Correlation Strength ≥ ★★
+5. Rank by Composite Score descending, then by star rating
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 - Iterate each hot player
@@ -344,3 +398,28 @@ Advanced metrics flags:
 - Martone (PHI L2 RW + PP2, 7pts/3G) is top individual signal; rebuilt SGP board around him
 - Hughes anomaly: deploy halt on MIN D-stacks until verified
 - Next session: verify Quinn Hughes roster status, score Apr 22 chains, evaluate playoff ELITE slump investigation
+
+---
+
+## APR 23 SESSION LOG — MAJOR UPGRADE DAY
+- Added full GRADING METRICS table (Regular Season vs Playoffs split)
+- Added First-10 GIFT (0.5 goals) tracking with reg vs playoff distinction
+- Added Team Total O/U tracking (strong playoff edge noted)
+- Added PLAYOFF GUARDRAIL + post-game snapshot protocol
+- Integrated new `scripts/fetch_advanced_metrics.py` (xG, GSAx, Fenwick, pace)
+- Updated STEP 3 pre-flight to use GSAx priority over raw SV%
+- GSAx sign convention: GA − xGA (negative = better than expected → SUPPRESS; positive = worse → BOOST)
+- ⚠️ STATE.md STEP 3 GSAx thresholds currently inverted — needs flip: GSAx < −2.0 → upgrade (suppress); GSAx > +3.0 → downgrade (boost)
+- Pushed all Apr 23 data files + advanced_metrics_2026-04-23.json to repo
+- System now has xG/GSAx signals for duos, First-10, and Team Totals
+- Apr 23 pre-flight run: BOS Swayman adj ELITE (GSAx −28.78), OTT Ullmark confirmed WEAK++ (GSAx +12.81), CAR Andersen confirmed WEAK+ (GSAx +3.31)
+- Primary targets Apr 23: CAR duos vs Ullmark, OTT duos vs Andersen (both triple-signal: xGF% + Fenwick + GSAx); BOS@BUF UNDER (double suppress)
+- advanced_metrics goalie stored fields (GSAx/sv_pct) still corrupt in pushed file — re-run fixed script locally and push corrected file
+
+---
+
+## APR 24 SESSION LOG — PLAYOFF CALIBRATION UPDATE
+- **Apr 23 results:** 13 total goals across 3 games (4.33 avg) — strong UNDER performance. First-10 and Team Total OVERs underperformed. Model over-weighted xGF%/pace; under-weighted playoff defensive structure and goalie elevation.
+- Added **PLAYOFF GOALIE ADJUSTMENT** to STEP 3: mandatory tier upgrade (+1 level or +0.008 SV%) for all playoff goalies. Season SV% raw numbers alone understate playoff goalie performance.
+- Added **PLAYOFF CUMULATIVE PERFORMANCE TRACKER** to STEP 3: blending rules (3+ games = playoff primary; 1–2 games = 70/30 blend; 0 games = season + adjustment). Forces the model to track real playoff sample, not carry reg-season bias into deep rounds.
+- ⏳ OPEN: push corrected advanced_metrics file (corrupt goalie stored fields from Apr 23 script)
