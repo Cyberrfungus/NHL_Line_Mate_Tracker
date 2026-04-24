@@ -1,5 +1,5 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 24 2026 (post-Apr 23 analysis, pre-Apr 24 Game 4+)
+# Source of Truth | Updated: April 24 2026
 # Format: caveman compression for token efficiency
 
 ---
@@ -65,39 +65,59 @@ Regular-season metrics alone are insufficient in playoffs. Maintain separate cum
 After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
 
 #### SIGNAL HIERARCHY (updated Apr 24 2026 — now quantitative)
-**Composite Play Score** = sum of all applicable signals (range: -100 to +130).
-**Hard filters** = automatic -100 (exclude).
-**Qualified plays only** = Composite Score **≥ +35** AND Correlation Strength **≥ ★★**.
+
+**Composite Play Score** = sum of all applicable signals (range: -100 to +130).  
+**Hard filters** = automatic -100 (exclude).  
+**Qualified plays only** = Composite Score **≥ +35** AND Correlation Strength **≥ ★★**.  
 Rank verified play sheet by Composite Score descending, then by star rating.
-**Important:** When determining the Goalie signal, **always apply the new PLAYOFF GOALIE ADJUSTMENT + PLAYOFF CUMULATIVE PERFORMANCE TRACKER** first (the rules you just added).
 
-| Priority | Signal | Points | Action | Justification |
-|----------|---------------------------------|----------|-----------------|---------------|
-| 1 | Cold Flag (2+ blanks) | -100 | Hard exclude | 0W/29L+ |
-| 2 | Forward L5G = 0 (non D-man) | -100 | Hard exclude | Validated |
-| 3 | Elite Goalie (after playoff adjustment) | -40 | Heavy suppress | 0W/5L (reg season) |
-| 4 | Hot Goalscorer Tier | +30 to +60 | Boost | 58.6% WR (Apr 14) |
-| 5 | Backup Goalie (after playoff adjustment) | +35 | Strong boost | 10W/1L |
-| 6 | Tier (ELITE / PP LINK F+D / STRONG) | +25 / +15 / +5 | Base score | Confirmed WR gaps |
-| 7 | O/U Boost | +10 per 5 pts above 55 | Mild boost | Market edge |
-| 8 | Motivation / Home / B2B context | +5 to +10 | Contextual | Soft signal |
+**Important:** When determining the Goalie signal, always apply the PLAYOFF GOALIE ADJUSTMENT + PLAYOFF CUMULATIVE PERFORMANCE TRACKER first.
 
-**Hot Goalscorer Tier Bonus (applied once per duo):**
-- DUAL FINISHER (both L5G ≥ 3) → **+60**
-- GOAL SCORER (both L5G ≥ 2) → **+45**
+| Priority | Signal                          | Points          | Action          | Justification |
+|----------|---------------------------------|-----------------|-----------------|---------------|
+| 1        | Cold Flag (2+ blanks)           | -100            | Hard exclude    | 0W/29L+ |
+| 2        | Forward L5G = 0 (non D-man)     | -100            | Hard exclude    | Validated |
+| 3        | Elite Goalie (after playoff adjustment) | -40     | Heavy suppress  | 0W/5L |
+| 4        | Hot Goalscorer Tier             | +30 to +60      | Boost           | 58.6% WR |
+| 5        | Backup Goalie (after playoff adjustment) | +35    | Strong boost    | 10W/1L |
+| 6        | Tier (ELITE / PP LINK F+D / STRONG) | +25 / +15 / +5 | Base score     | Confirmed WR gaps |
+| 7        | O/U Boost                       | +10 per 5 pts above 55 | Mild boost | Market edge |
+| 8        | Motivation / Home / B2B context | +5 to +10       | Contextual      | Soft signal |
+| 9        | Market +EV Confirmation         | +40 / +20 / 0 / -20 | Confirmation | Realized WR > implied prob |
+
+**Hot Goalscorer Tier Bonus (applied once per duo):**  
+- DUAL FINISHER (both L5G ≥ 3) → **+60**  
+- GOAL SCORER (both L5G ≥ 2) → **+45**  
 - FINISHER + PLAYMAKER (one ≥3, one ≥1) → **+30**
+
+#### ODDS & MARKET EFFICIENCY LAYER (new — added Apr 24 2026)
+
+**Purpose:** Confirm +EV by comparing our Composite Score / historical WR against current market pricing for duos/SGPs.  
+**Tools:** OpticOdds-style prompt or manual check across DraftKings, BetMGM, bet365, FanDuel.
+
+**Market +EV Signal:**
+- **+40** = Strong +EV (multiple books pricing the duo below our verified edge)
+- **+20** = Moderate edge vs consensus
+- **0**   = Neutral / fair pricing
+- **-20** = Overpriced by market (reduce size or avoid)
+
+**Nightly Process:** After generating qualified plays, run a market check on top plays and append to each line:  
+`MARKET: +EV / Neutral / Overpriced | Implied Prob: XX%`
 
 #### COMPOSITE SCORING RUBRIC (new — authoritative)
 Claude **must** calculate and show the Composite Score for every suggested play using the playoff-adjusted goalie tier.
 Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★★ | SCORE: +25 (tier) + 35 (backup) + 60 (dual finisher) = +120
 **Minimum threshold for verified play sheet: +35**
 
-#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated)
-1. **Hard excludes** (Cold Flag, Forward L5G=0, scratches/injuries)
-2. **Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER** to every goalie
-3. Score remaining duos/trios using the Composite Scoring Rubric
-4. **Qualified plays only**: Composite Score ≥ +35 AND Correlation Strength ≥ ★★
-5. Rank by Composite Score descending, then by star rating
+#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated Apr 24 2026)
+
+1. Hard excludes (Cold Flag, Forward L5G=0 non-D-man, scratches/injuries)  
+2. Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER to every goalie  
+3. Calculate Composite Play Score for all remaining duos/trios using the SIGNAL HIERARCHY  
+4. Qualified plays only: Composite Score ≥ +35 AND Correlation Strength ≥ ★★  
+5. Run ODDS & MARKET EFFICIENCY check on all qualified plays  
+6. Rank by Composite Score descending, then by star rating  
+7. Append MARKET signal + implied probability to every line in the final output
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 - Iterate each hot player
