@@ -1,5 +1,5 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 22 2026 (post-Apr 21 scored, pre-Apr 22 Day 5)
+# Source of Truth | Updated: April 24 2026 (post-Apr 23 analysis, pre-Apr 24 Game 4+)
 # Format: caveman compression for token efficiency
 
 ---
@@ -44,6 +44,25 @@
   - Fenwick% (5v5) > 53% → shot-share dominance, elevates STRONG duo floor
   - pace_gf60 > 3.2 → high-pace team, boosts First-10 GIFT OVER
 - Output a goalie tier table: name · SV% · GSAx · tier · signal direction (BOOST / SUPPRESS / NEUTRAL)
+
+#### PLAYOFF GOALIE ADJUSTMENT *(mandatory during playoffs only)*
+Goalies frequently elevate performance in playoffs due to tighter defense and higher focus. Apply **before** finalizing tier and signal direction:
+- Move tier up one level from season SV% (WEAK → AVG, AVG → STRONG, STRONG → ELITE)
+- OR add +0.008 to their SV% before applying tier (conservative boost; use this form if blending with playoff stats)
+- **This adjustment does NOT apply to regular season.** Regular season uses raw SV% + GSAx only.
+
+#### PLAYOFF CUMULATIVE PERFORMANCE TRACKER *(mandatory during playoffs)*
+Regular-season metrics alone are insufficient in playoffs. Maintain separate cumulative playoff stats:
+- Playoff SV% (minimum 2 games to be usable)
+- Playoff GSAx (GA − xGA accumulated across playoff games)
+- Playoff xGF% and Fenwick% per team
+
+**Goalie tiering priority during playoffs (apply in order):**
+1. **3+ playoff games played** → use playoff SV% + playoff GSAx as primary signal (season stats secondary)
+2. **1–2 playoff games played** → blend 70% playoff + 30% season SV%/GSAx
+3. **0 playoff games** → use season SV% + GSAx, then apply the Playoff Goalie Adjustment above
+
+After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 - Iterate each hot player
@@ -361,3 +380,11 @@ Advanced metrics flags:
 - Apr 23 pre-flight run: BOS Swayman adj ELITE (GSAx −28.78), OTT Ullmark confirmed WEAK++ (GSAx +12.81), CAR Andersen confirmed WEAK+ (GSAx +3.31)
 - Primary targets Apr 23: CAR duos vs Ullmark, OTT duos vs Andersen (both triple-signal: xGF% + Fenwick + GSAx); BOS@BUF UNDER (double suppress)
 - advanced_metrics goalie stored fields (GSAx/sv_pct) still corrupt in pushed file — re-run fixed script locally and push corrected file
+
+---
+
+## APR 24 SESSION LOG — PLAYOFF CALIBRATION UPDATE
+- **Apr 23 results:** 13 total goals across 3 games (4.33 avg) — strong UNDER performance. First-10 and Team Total OVERs underperformed. Model over-weighted xGF%/pace; under-weighted playoff defensive structure and goalie elevation.
+- Added **PLAYOFF GOALIE ADJUSTMENT** to STEP 3: mandatory tier upgrade (+1 level or +0.008 SV%) for all playoff goalies. Season SV% raw numbers alone understate playoff goalie performance.
+- Added **PLAYOFF CUMULATIVE PERFORMANCE TRACKER** to STEP 3: blending rules (3+ games = playoff primary; 1–2 games = 70/30 blend; 0 games = season + adjustment). Forces the model to track real playoff sample, not carry reg-season bias into deep rounds.
+- ⏳ OPEN: push corrected advanced_metrics file (corrupt goalie stored fields from Apr 23 script)
