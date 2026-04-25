@@ -302,11 +302,13 @@ Apr 22 session included 4 corrections (Hughes anomaly, PHI line wrong, Wallstedt
 | Signal | Evidence | Sample | Status |
 |--------|----------|--------|--------|
 | Cold flag suppress | 0W/40L+ | 40+ obs | CONFIRMED |
-| Tier A cold stick u0.5 | 25W/6L (80.6%) | 31 obs | CONFIRMED |
-| Tier B cold stick u0.5 | 12W/7L (63.2%) | 19 obs | BELOW PLAN |
+| Tier A cold stick u0.5 pts | 38W/6L (86%) | 44 obs | CONFIRMED ✅ |
+| **Tier A cold stick u0.5 goals** | **~92%+ est.** | **44 obs (65% of breaks = assist only)** | **STRONG — prioritize goals prop over pts prop** |
+| Tier B cold stick u0.5 | 33W/14L (70%) | 47 obs | ABOVE PLAN ✅ |
 | Weak goalie boost (SV% <.895) | 10W/1L | 11 obs | DIRECTIONAL |
 | Strong/Elite goalie suppress | directional | small sample | DIRECTIONAL |
 | ELITE vs STRONG duo gap | 42% vs 35% | 650+ obs | CONFIRMED |
+| ELITE+PP2 duo chain overlap | 8W/7L (53%) | 15 obs | DIRECTIONAL — strongest duo tier |
 | F+D PP LINK chain rate | 44.8% chain overlap | ~55 obs | CONFIRMED |
 | Hot goalscorer filter | tracking | 45+ obs | TRACKING |
 | Playoff ELITE slump | 10W/29L last 3 slates | 39 obs | NEGATIVE — MONITOR |
@@ -368,22 +370,44 @@ Cold Flag suppress → Goalie SV% tier (boost or suppress) → Hot goalscorer fi
 
 ---
 
-## SCRIPTS (project root)
-- `fetch_lineups_nhl.py` — Plain HTTP DFO scraper. Status: WATCH (2 clean slates)
-- `verify_players.py` — NHL API L5 + Cold Sticks v1
-- `scripts/fetch_postgame.py chains` — post-game chain fetcher
-- `scripts/fetch_advanced_metrics.py` — MoneyPuck xG/xGA/Fenwick/GSAx → `data/advanced_metrics_YYYY-MM-DD.json`
+## SCRIPTS
+- `tonight.py` — **master pipeline wrapper** (use this instead of running scripts directly)
+- `scripts/fetch_lineups_nhl.py` — DFO HTTP scraper → `lineups_YYYY-MM-DD.json`
+- `scripts/verify_players.py` — NHL API L5 + Cold Sticks tiers → `verified_YYYY-MM-DD.json`
+- `scripts/fetch_goalies.py` — DFO starting goalies → `goalies_YYYY-MM-DD.json`
+- `scripts/fetch_advanced_metrics.py` — MoneyPuck xG/GSAx/Fenwick → `advanced_metrics_YYYY-MM-DD.json`
+- `scripts/fetch_postgame.py chains` — NHL API play-by-play goal chains → `chains_YYYY-MM-DD.json`
+- `scripts/score_results.py` — scores cold sticks + hot duo chains vs actual chains → appends to `data/results_log.csv`
+- `scripts/analyze_results.py` — win-rate breakdown by signal type, blanks bucket, L5 pts bucket
 
 ## TERMINAL WORKFLOW
-Pre-game:
-```
-py fetch_lineups_nhl.py
-py verify_players.py --date YYYY-MM-DD --elite-only
-py scripts/fetch_advanced_metrics.py --date YYYY-MM-DD
-```
-Post-game: `py scripts/fetch_postgame.py chains`
 
-Advanced metrics flags:
+**Pre-game (standard):**
+```
+py tonight.py
+```
+
+**Pre-game (full signals — recommended for playoffs):**
+```
+py tonight.py --advanced
+```
+Fetches lineups + verify + goalies + advanced metrics. Upload all 4 files to Claude Project.
+
+**Post-game (run after final buzzer):**
+```
+py tonight.py --post-game
+```
+Fetches last night's goal chains then auto-scores cold sticks + duo chains vs predictions.
+Appends results to `data/results_log.csv`.
+
+**Signal analysis (run weekly or after 5+ new dates):**
+```
+py scripts/analyze_results.py
+py scripts/analyze_results.py --cold       # cold sticks breakdown only
+py scripts/analyze_results.py --duos       # hot duo chain rates only
+```
+
+Advanced metrics flags (if running directly):
 - `--season 2025` (default) — season start year
 - `--debug-cols` — print raw MoneyPuck CSV column names (run once if schema changes)
 - `--print-only` — stdout only, no file write
@@ -400,12 +424,12 @@ Advanced metrics flags:
 7. ✅ Cold Sticks engine v1 shipped
 8. ✅ Apr 21 slate scored
 9. 🟡 Cold Sticks v2 (exclude last 4 min 3rd + EN/SH) — logic validated Apr 20; ship to script
-10. ⏳ tonight.py wrapper
+10. ✅ tonight.py wrapper (pre-game, --advanced, --post-game modes)
 11. ⏳ O/U to every game header in script
 12. ⏳ Metadata tag with GOALS field
 13. ⏳ Real odds sourcing
 14. ⏳ CLV tracking
-15. ⏳ Filter-combo win rate table (30+ obs per combo)
+15. ✅ Filter-combo win rate table — `scripts/analyze_results.py` (507 obs backfilled, 8 dates)
 16. ⏳ Cold Sticks v2: opposing goalie cross-ref + PP1 flag
 17. ✅ Playoff deployment: duo tracker + SGP sheet React dashboards
 18. ⏳ F10 Under project (separate system)
@@ -454,3 +478,14 @@ Advanced metrics flags:
 - Added **PLAYOFF GOALIE ADJUSTMENT** to STEP 3: mandatory tier upgrade (+1 level or +0.008 SV%) for all playoff goalies. Season SV% raw numbers alone understate playoff goalie performance.
 - Added **PLAYOFF CUMULATIVE PERFORMANCE TRACKER** to STEP 3: blending rules (3+ games = playoff primary; 1–2 games = 70/30 blend; 0 games = season + adjustment). Forces the model to track real playoff sample, not carry reg-season bias into deep rounds.
 - ⏳ OPEN: push corrected advanced_metrics file (corrupt goalie stored fields from Apr 23 script)
+
+---
+
+## APR 25 SESSION LOG — PIPELINE + SCORER SHIPPED
+- **`scripts/score_results.py`** — post-game scorer. Joins cold sticks + lineup-aware hot duo pairs from verified JSON against goal chains JSON. Appends W/L rows to `data/results_log.csv`.
+- **`data/results_log.csv`** — backfilled 507 rows across 8 dates (Apr 14–23).
+- **`scripts/analyze_results.py`** — signal combo win-rate analyzer. Groups by type, blanks bucket, L5 pts bucket, break type. Closes roadmap item 15.
+- **`tonight.py`** — updated: `--advanced` (+ goalies + metrics), `--post-game` (chains + score), `--date` override.
+- **Key insight from analyzer:** 65% of cold stick breaks = assist (not goal). An **u0.5 goals prop** on Tier A cold sticks would hit ~92%+ vs ~86% for u0.5 points. Prioritize goals prop over points prop going forward.
+- **Key insight — ELITE+PP2:** hot_duo_ELITE_PP2 chain overlap = 53% (8/15). Strongest duo signal in the system. Prioritize ELITE tier pairs who also share PP1.
+- Roadmap items 10 and 15 marked ✅. TERMINAL WORKFLOW section fully updated.
