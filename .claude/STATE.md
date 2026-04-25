@@ -1,5 +1,5 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 24 2026
+# Source of Truth | Updated: April 24 2026 (Quick Fix v5)
 # Format: caveman compression for token efficiency
 
 ---
@@ -68,7 +68,7 @@ After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier
 
 **Composite Play Score** = sum of all applicable signals (range: -100 to +130).  
 **Hard filters** = automatic -100 (exclude).  
-**Qualified plays only** = Composite Score **≥ +35** AND Correlation Strength **≥ ★★**.  
+**Qualified plays only** = Composite Score **≥ +65** AND Correlation Strength **≥ ★★★** (after all adjustments, caps, and overrides).  
 Rank verified play sheet by Composite Score descending, then by star rating.
 
 **Important:** When determining the Goalie signal, always apply the PLAYOFF GOALIE ADJUSTMENT + PLAYOFF CUMULATIVE PERFORMANCE TRACKER first.
@@ -80,15 +80,26 @@ Rank verified play sheet by Composite Score descending, then by star rating.
 | 3        | Elite Goalie (after playoff adjustment) | -40     | Heavy suppress  | 0W/5L |
 | 4        | Hot Goalscorer Tier             | +30 to +60      | Boost           | 58.6% WR |
 | 5        | Backup Goalie (after playoff adjustment) | +35    | Strong boost    | 10W/1L |
-| 6        | Tier (ELITE / PP LINK F+D / STRONG) | +25 / +15 / +5 | Base score     | Confirmed WR gaps |
+| 6        | Tier (ELITE / PP LINK F+D / STRONG) | +50 / +22 / +8 | Base score     | Confirmed WR gaps |
 | 7        | O/U Boost                       | +10 per 5 pts above 55 | Mild boost | Market edge |
 | 8        | Motivation / Home / B2B context | +5 to +10       | Contextual      | Soft signal |
-| 9        | Market +EV Confirmation         | +40 / +20 / 0 / -20 | Confirmation | Realized WR > implied prob |
+| 9        | Market +EV Confirmation         | +25 / +15 / 0 / -25 | Confirmation | Realized WR > implied prob |
+| 10       | Market Override                 | -25 if Overpriced | Hard adjustment | Do not recommend plays with final score < +45 after override |
 
-**Hot Goalscorer Tier Bonus (applied once per duo):**  
-- DUAL FINISHER (both L5G ≥ 3) → **+60**  
-- GOAL SCORER (both L5G ≥ 2) → **+45**  
-- FINISHER + PLAYMAKER (one ≥3, one ≥1) → **+30**
+**Hot Goalscorer Tier Bonus (applied once per duo):**
+- DUAL FINISHER (both L5G ≥ 3) → **+65**
+- GOAL SCORER (both L5G ≥ 2) → **+50**
+- FINISHER + PLAYMAKER (one ≥3, one ≥1) → **+35**
+- Single hot goalscorer (with strong partner) → **+20**
+- **Bonus for ★★★★ Tier synergy**: +10 extra if ELITE with Hot Goalscorer (PP LINK F+D synergy bonus removed)
+
+**Market Override Rule:** If MARKET = Overpriced, reduce the final Composite Score by **35** points. Plays with final score below +60 after this adjustment are disqualified.
+
+**Tier + Star Synergy Rule:** Plays must have Correlation Strength ≥ ★★★ to qualify. ★★ plays are capped at maximum +50 final score.
+
+**Goalie Suppress Cap Rule:** Goalie suppress signals cannot be fully offset by +EV or synergy bonuses. Any play facing STRONG or better playoff-adjusted goalie is capped at maximum +75 final score.
+
+**Elite Tier Priority Rule:** ELITE tier plays receive +15 additional priority bonus in final ranking. PP LINK F+D plays are capped at maximum +80 final score.
 
 #### ODDS & MARKET EFFICIENCY LAYER (new — added Apr 24 2026)
 
@@ -107,14 +118,14 @@ Rank verified play sheet by Composite Score descending, then by star rating.
 #### COMPOSITE SCORING RUBRIC (new — authoritative)
 Claude **must** calculate and show the Composite Score for every suggested play using the playoff-adjusted goalie tier.
 Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★★ | SCORE: +25 (tier) + 35 (backup) + 60 (dual finisher) = +120
-**Minimum threshold for verified play sheet: +35**
+**Minimum threshold for verified play sheet: +45**
 
 #### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated Apr 24 2026)
 
 1. Hard excludes (Cold Flag, Forward L5G=0 non-D-man, scratches/injuries)  
 2. Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER to every goalie  
 3. Calculate Composite Play Score for all remaining duos/trios using the SIGNAL HIERARCHY  
-4. Qualified plays only: Composite Score ≥ +35 AND Correlation Strength ≥ ★★  
+4. Qualified plays only: Composite Score ≥ +65 AND Correlation Strength ≥ ★★★ (after all adjustments, caps, and overrides)  
 5. Run ODDS & MARKET EFFICIENCY check on all qualified plays  
 6. Rank by Composite Score descending, then by star rating  
 7. Append MARKET signal + implied probability to every line in the final output
