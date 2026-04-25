@@ -41,8 +41,8 @@ def main():
     teams, date = get_playing_teams()
     print(f"📅 Processing for {date}\n")
 
-    # Correct paths - scripts are in the scripts/ subfolder
-    run_command(f"py scripts\\fetch_lineups_nhl.py --date {date} --teams {','.join(teams)}")
+    # fetch_lineups_nhl.py does NOT accept --teams, only --date
+    run_command(f"py scripts\\fetch_lineups_nhl.py --date {date}")
     run_command(f"py scripts\\verify_players.py --date {date} --elite-only")
 
     print("🎉 Pipeline complete!")
