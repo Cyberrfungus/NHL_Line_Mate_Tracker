@@ -41,13 +41,16 @@ def main():
     teams, date = get_playing_teams()
     print(f"📅 Processing for {date}\n")
 
-    run_command(f"py fetch_dfo.py --date {date} --teams {','.join(teams)}")
-    run_command(f"py verify_players.py --date {date} --elite-only")
+    # Correct paths - scripts are in the scripts/ subfolder
+    run_command(f"py scripts\\fetch_lineups_nhl.py --date {date} --teams {','.join(teams)}")
+    run_command(f"py scripts\\verify_players.py --date {date} --elite-only")
 
     print("🎉 Pipeline complete!")
     print("\nNext steps:")
-    print("1. Upload lineups_ and verified_ files to Claude Project")
-    print("2. Run the latest nightly prompt (Quick Fix v5)")
+    print(f"1. Upload these files to your Claude Project:")
+    print(f"   - lineups_{date}.json")
+    print(f"   - verified_{date}.json")
+    print("2. Paste the latest nightly prompt (Quick Fix v5)")
     print("You're ready! 🔥")
 
 if __name__ == "__main__":
