@@ -303,7 +303,7 @@ Apr 22 session included 4 corrections (Hughes anomaly, PHI line wrong, Wallstedt
 |--------|----------|--------|--------|
 | Cold flag suppress | 0W/40L+ | 40+ obs | CONFIRMED |
 | Tier A cold stick u0.5 pts | 38W/6L (86%) | 44 obs | CONFIRMED ✅ |
-| **Tier A cold stick u0.5 goals** | **~92%+ est.** | **44 obs (65% of breaks = assist only)** | **STRONG — prioritize goals prop over pts prop** |
+| **Tier A cold stick u0.5 goals** | **~92%+ est.** | **44 obs (65% of breaks = assist only)** | **⚠️ LIKELY UNAVAILABLE at major books (too one-sided). Use u0.5 points as primary. Check anytime goalscorer NO if available.** |
 | Tier B cold stick u0.5 | 33W/14L (70%) | 47 obs | ABOVE PLAN ✅ |
 | Weak goalie boost (SV% <.895) | 10W/1L | 11 obs | DIRECTIONAL |
 | Strong/Elite goalie suppress | directional | small sample | DIRECTIONAL |
@@ -486,6 +486,6 @@ Advanced metrics flags (if running directly):
 - **`data/results_log.csv`** — backfilled 507 rows across 8 dates (Apr 14–23).
 - **`scripts/analyze_results.py`** — signal combo win-rate analyzer. Groups by type, blanks bucket, L5 pts bucket, break type. Closes roadmap item 15.
 - **`tonight.py`** — updated: `--advanced` (+ goalies + metrics), `--post-game` (chains + score), `--date` override.
-- **Key insight from analyzer:** 65% of cold stick breaks = assist (not goal). An **u0.5 goals prop** on Tier A cold sticks would hit ~92%+ vs ~86% for u0.5 points. Prioritize goals prop over points prop going forward.
+- **Key insight from analyzer:** 65% of cold stick breaks = assist (not goal). An **u0.5 goals prop** on Tier A cold sticks would theoretically hit ~92%+ vs ~86% for u0.5 points — BUT major books (bet365, DraftKings, FanDuel) don't post u0.5 goals because the under side is too likely (~85-92%). **u0.5 points remains the primary vehicle.** Secondary option: anytime goalscorer NO (available on some UK/EU books).
 - **Key insight — ELITE+PP2:** hot_duo_ELITE_PP2 chain overlap = 53% (8/15). Strongest duo signal in the system. Prioritize ELITE tier pairs who also share PP1.
 - Roadmap items 10 and 15 marked ✅. TERMINAL WORKFLOW section fully updated.
