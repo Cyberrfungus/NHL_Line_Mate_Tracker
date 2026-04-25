@@ -2,14 +2,21 @@
 """
 NHL Linemate Duo Correlation Tracker — TONIGHT.PY
 One-command nightly pipeline
+
+Usage:
+    py tonight.py               # lineups + verify only
+    py tonight.py --advanced    # lineups + verify + goalies + advanced metrics
 """
 
+import argparse
 import subprocess
 import sys
 from datetime import datetime
 
+
 def get_todays_date():
     return datetime.now().strftime("%Y-%m-%d")
+
 
 def get_playing_teams():
     date = get_todays_date()
@@ -24,6 +31,7 @@ def get_playing_teams():
 
     return teams, date
 
+
 def run_command(cmd):
     print(f"🚀 Running: {cmd}")
     try:
@@ -37,21 +45,37 @@ def run_command(cmd):
         print(f"❌ Failed: {e}")
         sys.exit(1)
 
+
 def main():
+    parser = argparse.ArgumentParser(description="Nightly NHL Linemate pipeline")
+    parser.add_argument(
+        "--advanced", action="store_true",
+        help="Also fetch goalies and advanced metrics (GSAx, Fenwick, xGF%%)"
+    )
+    args = parser.parse_args()
+
     teams, date = get_playing_teams()
     print(f"📅 Processing for {date}\n")
 
-    # fetch_lineups_nhl.py does NOT accept --teams, only --date
+    # Always run: lineups + verify
     run_command(f"py scripts\\fetch_lineups_nhl.py --date {date}")
     run_command(f"py scripts\\verify_players.py --date {date} --elite-only")
 
+    # Optional: goalies + advanced metrics (required for full STEP 3 pre-flight)
+    if args.advanced:
+        run_command(f"py scripts\\fetch_goalies.py --date {date}")
+        run_command(f"py scripts\\fetch_advanced_metrics.py --date {date}")
+
     print("🎉 Pipeline complete!")
-    print("\nNext steps:")
-    print(f"1. Upload these files to your Claude Project:")
-    print(f"   - lineups_{date}.json")
-    print(f"   - verified_{date}.json")
-    print("2. Paste the latest nightly prompt (Quick Fix v5)")
+    print("\nNext steps — upload these files to your Claude Project:")
+    print(f"   lineups_{date}.json")
+    print(f"   verified_{date}.json")
+    if args.advanced:
+        print(f"   goalies_{date}.json")
+        print(f"   advanced_metrics_{date}.json")
+    print("\nThen paste the latest nightly prompt (Quick Fix v5).")
     print("You're ready! 🔥")
+
 
 if __name__ == "__main__":
     main()
