@@ -4,14 +4,16 @@ NHL Linemate Duo Correlation Tracker — TONIGHT.PY
 One-command nightly pipeline
 
 Usage:
-    py tonight.py               # lineups + verify only
-    py tonight.py --advanced    # lineups + verify + goalies + advanced metrics
+    py tonight.py                   # pre-game: lineups + verify
+    py tonight.py --advanced        # pre-game: lineups + verify + goalies + advanced metrics
+    py tonight.py --post-game       # post-game: fetch chains + auto-score vs predictions
+    py tonight.py --post-game --date 2026-04-21   # score a specific past date
 """
 
 import argparse
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def get_todays_date():
@@ -46,35 +48,59 @@ def run_command(cmd):
         sys.exit(1)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Nightly NHL Linemate pipeline")
-    parser.add_argument(
-        "--advanced", action="store_true",
-        help="Also fetch goalies and advanced metrics (GSAx, Fenwick, xGF%%)"
-    )
-    args = parser.parse_args()
-
-    teams, date = get_playing_teams()
-    print(f"📅 Processing for {date}\n")
-
-    # Always run: lineups + verify
+def run_pre_game(date, advanced):
+    """Fetch lineups, verify players, and optionally pull advanced signals."""
     run_command(f"py scripts\\fetch_lineups_nhl.py --date {date}")
     run_command(f"py scripts\\verify_players.py --date {date} --elite-only")
 
-    # Optional: goalies + advanced metrics (required for full STEP 3 pre-flight)
-    if args.advanced:
+    if advanced:
         run_command(f"py scripts\\fetch_goalies.py --date {date}")
         run_command(f"py scripts\\fetch_advanced_metrics.py --date {date}")
 
-    print("🎉 Pipeline complete!")
-    print("\nNext steps — upload these files to your Claude Project:")
+    print("🎉 Pre-game pipeline complete!")
+    print("\nUpload these files to your Claude Project:")
     print(f"   lineups_{date}.json")
     print(f"   verified_{date}.json")
-    if args.advanced:
+    if advanced:
         print(f"   goalies_{date}.json")
         print(f"   advanced_metrics_{date}.json")
-    print("\nThen paste the latest nightly prompt (Quick Fix v5).")
-    print("You're ready! 🔥")
+    print("\nThen paste the latest nightly prompt (Quick Fix v5). You're ready! 🔥")
+
+
+def run_post_game(date):
+    """Fetch last night's goal chains, then auto-score cold sticks + hot duo chains."""
+    print(f"🏁 Post-game pipeline for {date}\n")
+
+    # Step 1: pull chains from NHL API play-by-play
+    run_command(f"py scripts\\fetch_postgame.py chains --date {date}")
+
+    # Step 2: score predictions vs actual chains, print summary
+    run_command(f"py scripts\\score_results.py --date {date}")
+
+    print("📊 Post-game scoring complete.")
+    print(f"   Results appended to data/results_log.csv")
+    print(f"   Run 'py scripts\\score_results.py --summary' for cumulative stats.\n")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Nightly NHL Linemate pipeline")
+    parser.add_argument("--advanced",  action="store_true",
+                        help="Pre-game: also fetch goalies + advanced metrics")
+    parser.add_argument("--post-game", action="store_true",
+                        help="Post-game mode: fetch chains then auto-score results")
+    parser.add_argument("--date",      default=None,
+                        help="Override date (YYYY-MM-DD). Post-game defaults to yesterday.")
+    args = parser.parse_args()
+
+    if args.post_game:
+        date = args.date or (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        run_post_game(date)
+    else:
+        _, date = get_playing_teams()
+        if args.date:
+            date = args.date
+        print(f"📅 Processing for {date}\n")
+        run_pre_game(date, args.advanced)
 
 
 if __name__ == "__main__":
