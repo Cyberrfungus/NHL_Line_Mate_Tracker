@@ -28,8 +28,11 @@ try:
 except ImportError:
     from utils import get_playoff_goalie_weight
 
-BASE_URL        = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
-PLAYOFF_BASE_URL = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/playoffs"
+BASE_URL             = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
+PLAYOFF_BASE_URL     = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/playoffs"
+# Applied when playoffs are underway but MoneyPuck's playoff CSV hasn't populated yet.
+# Signals "playoff mode, low confidence" without misrepresenting the blend ratio.
+PLAYOFF_FALLBACK_WEIGHT = 0.10
 HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
 
 # MoneyPuck abbrevs that differ from project standard
@@ -208,11 +211,15 @@ def build_goalie_metrics(df: pd.DataFrame,
     playoff_games_map: {team: games_played_in_playoffs} from DFO record.
     playoff_sv_map:    {team: {sv_pct, gsax}} from MoneyPuck playoffs CSV.
 
-    Blending formula (applied when playoff_games > 0 and playoff data exists):
-        w             = get_playoff_goalie_weight(playoff_games)
-        blended_sv    = w * playoff_sv   + (1 - w) * season_sv
-        blended_gsax  = w * playoff_gsax + (1 - w) * season_gsax
-    tier() and signal() use blended values; raw season stats are also stored.
+    Three blending cases (see playoff_data_source field in output):
+      "moneypuck"   — playoff CSV available; full blend applied:
+                      blended_sv = w * playoff_sv + (1-w) * season_sv
+      "fallback"    — playoffs started (games > 0) but CSV empty/unavailable;
+                      blended_sv = season_sv; playoff_weight clamped to
+                      PLAYOFF_FALLBACK_WEIGHT so the stored weight is honest
+      "season_only" — regular season or no games played; blended_sv = season_sv,
+                      playoff_weight = 0.0
+    tier() and signal() always use blended_sv; raw season stats also stored.
     """
     if "situation" in df.columns:
         df = df[df["situation"] == "all"].copy()
@@ -255,31 +262,45 @@ def build_goalie_metrics(df: pd.DataFrame,
         playoff_gsax = p_stats.get("gsax")
 
         if playoff_sv is not None and playoff_games > 0:
+            # Case 1: full blend — MoneyPuck playoff data is available
             blended_sv   = round(playoff_sv   * playoff_weight + season_sv   * season_weight, 3)
             blended_gsax = round(playoff_gsax * playoff_weight + season_gsax * season_weight, 2) \
                            if playoff_gsax is not None else season_gsax
+            data_source  = "moneypuck"
+        elif playoff_games > 0:
+            # Case 2: fallback — playoffs started but MoneyPuck CSV not yet populated.
+            # blended_sv stays at season_sv; we clamp playoff_weight to PLAYOFF_FALLBACK_WEIGHT
+            # so the stored weight honestly reflects "minimal playoff adjustment" rather than
+            # claiming the full game-based weight (e.g. 0.40) when no playoff data was blended.
+            playoff_weight = PLAYOFF_FALLBACK_WEIGHT
+            blended_sv     = season_sv
+            blended_gsax   = season_gsax
+            data_source    = "fallback"
         else:
+            # Case 3: regular season — no playoff games played
             blended_sv   = season_sv
             blended_gsax = season_gsax
+            data_source  = "season_only"
 
         metrics[team] = {
-            "name":          name_val,
-            "season_sv":     season_sv,
-            "season_gsax":   season_gsax,
-            "playoff_sv":    playoff_sv,
-            "playoff_gsax":  playoff_gsax,
-            "playoff_games": playoff_games,
-            "playoff_weight":playoff_weight,
-            "blended_sv":    blended_sv,
-            "blended_gsax":  blended_gsax,
-            "tier":          tier_goalie(blended_sv),
-            "signal":        signal(blended_sv),
-            "xGA":           round(xga, 2),
-            "GA":            int(ga),
-            "games":         int(v(GOALIE_COLS["games"])),
+            "name":               name_val,
+            "season_sv":          season_sv,
+            "season_gsax":        season_gsax,
+            "playoff_sv":         playoff_sv,
+            "playoff_gsax":       playoff_gsax,
+            "playoff_games":      playoff_games,
+            "playoff_weight":     playoff_weight,
+            "playoff_data_source":data_source,
+            "blended_sv":         blended_sv,
+            "blended_gsax":       blended_gsax,
+            "tier":               tier_goalie(blended_sv),
+            "signal":             signal(blended_sv),
+            "xGA":                round(xga, 2),
+            "GA":                 int(ga),
+            "games":              int(v(GOALIE_COLS["games"])),
             # Legacy aliases kept so existing callers that read sv_pct / GSAx still work
-            "sv_pct":        season_sv,
-            "GSAx":          season_gsax,
+            "sv_pct":             season_sv,
+            "GSAx":               season_gsax,
         }
     return metrics
 
@@ -339,9 +360,19 @@ def main():
         print("  → playoff goalie stats ... ", end="", flush=True)
         df_playoff = fetch_csv(f"{PLAYOFF_BASE_URL.format(season=args.season)}/goalies.csv")
         playoff_sv_map = build_playoff_goalie_map(df_playoff)
-        print(f"{len(playoff_sv_map)} teams with playoff data")
+        if playoff_sv_map:
+            print(f"{len(playoff_sv_map)} teams with playoff data")
+        else:
+            # CSV fetched but contained no usable rows (MoneyPuck updates slowly early in series).
+            # build_goalie_metrics will apply PLAYOFF_FALLBACK_WEIGHT for teams with games played.
+            games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
+            print(f"0 teams — CSV empty (MoneyPuck not yet updated). "
+                  f"Fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
+                  f"{games_in_progress} team(s) with games played.")
     except Exception as e:
-        print(f"not available — blending skipped ({e})")
+        games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
+        print(f"not available — fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
+              f"{games_in_progress} team(s) with games played. ({e})")
 
     try:
         print("  → season goalie stats ... ", end="", flush=True)
