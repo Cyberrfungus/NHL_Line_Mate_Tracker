@@ -225,8 +225,11 @@ def build_playoff_goalie_map_hockeyref(url: str) -> dict:
     )
     resp.raise_for_status()
 
-    # No flavor specified — pandas auto-selects lxml, bs4, or html5lib
-    tables = pd.read_html(StringIO(resp.text))
+    try:
+        tables = pd.read_html(StringIO(resp.text), flavor="bs4")
+    except ImportError:
+        # bs4/html5lib not installed — skip HR source, caller falls back to MoneyPuck
+        raise RuntimeError("BeautifulSoup4 not installed. Run: pip install beautifulsoup4 html5lib")
     if not tables:
         return {}
 
