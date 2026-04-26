@@ -55,7 +55,10 @@ def run_pre_game(date, advanced):
 
     if advanced:
         run_command(f"py scripts\\fetch_goalies.py --date {date}")
-        run_command(f"py scripts\\fetch_advanced_metrics.py --date {date}")
+        run_command(
+            f"py scripts\\fetch_advanced_metrics.py --date {date} "
+            f"--goalies-json data\\goalies_{date}.json"
+        )
 
     print("🎉 Pre-game pipeline complete!")
     print("\nUpload these files to your Claude Project:")

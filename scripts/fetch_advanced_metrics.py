@@ -23,6 +23,11 @@ from io import StringIO
 import requests
 import pandas as pd
 
+try:
+    from scripts.utils import get_playoff_goalie_weight
+except ImportError:
+    from utils import get_playoff_goalie_weight
+
 BASE_URL = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
 HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
 
@@ -144,9 +149,29 @@ def signal(sv: float) -> str:
     return "BOOST"
 
 
-def build_goalie_metrics(df: pd.DataFrame) -> dict:
+def parse_playoff_games(record_str: str) -> int:
+    """Parse 'W-L-OT' DFO record string → total games played in current series."""
+    try:
+        return sum(int(p) for p in str(record_str).split("-") if p.strip().isdigit())
+    except Exception:
+        return 0
+
+
+def build_goalie_metrics(df: pd.DataFrame,
+                         playoff_games_map: dict | None = None) -> dict:
+    """
+    Build per-team goalie metrics from MoneyPuck season data.
+
+    playoff_games_map: optional dict of {team_abbr: games_played_in_playoffs}.
+    When provided, get_playoff_goalie_weight() is called for each goalie and
+    the resulting weight is stored in the output. Tier and signal use season
+    SV% until a playoff_sv_pct source is added (Step 3).
+    """
     if "situation" in df.columns:
         df = df[df["situation"] == "all"].copy()
+
+    if playoff_games_map is None:
+        playoff_games_map = {}
 
     metrics = {}
     for _, row in df.iterrows():
@@ -172,28 +197,37 @@ def build_goalie_metrics(df: pd.DataFrame) -> dict:
         if team in metrics and metrics[team]["GSAx"] <= gsax:
             continue
 
+        playoff_games  = playoff_games_map.get(team, 0)
+        playoff_weight = get_playoff_goalie_weight(playoff_games)
+
         metrics[team] = {
-            "name":   name_val,
-            "GSAx":   gsax,
-            "xGA":    round(xga, 2),
-            "GA":     int(ga),
-            "sv_pct": sv_pct,
-            "tier":   tier_goalie(sv_pct),
-            "signal": signal(sv_pct),
-            "games":  int(v(GOALIE_COLS["games"])),
+            "name":           name_val,
+            "GSAx":           gsax,
+            "xGA":            round(xga, 2),
+            "GA":             int(ga),
+            "sv_pct":         sv_pct,
+            "tier":           tier_goalie(sv_pct),
+            "signal":         signal(sv_pct),
+            "games":          int(v(GOALIE_COLS["games"])),
+            "playoff_games":  playoff_games,
+            "playoff_weight": playoff_weight,
+            # playoff_blended_sv: set here once a playoff_sv_pct source exists (Step 3)
+            # formula: playoff_weight * playoff_sv + (1 - playoff_weight) * sv_pct
         }
     return metrics
 
 
 def main():
     p = argparse.ArgumentParser(description="Fetch MoneyPuck advanced metrics")
-    p.add_argument("--date",       default=datetime.now().strftime("%Y-%m-%d"),
+    p.add_argument("--date",        default=datetime.now().strftime("%Y-%m-%d"),
                    help="Output date label YYYY-MM-DD")
-    p.add_argument("--season",     default=2025, type=int,
+    p.add_argument("--season",      default=2025, type=int,
                    help="Season start year (2025 = 2025-26 season)")
-    p.add_argument("--print-only", action="store_true",
+    p.add_argument("--goalies-json", default=None,
+                   help="Path to goalies_DATE.json (enables dynamic playoff weight)")
+    p.add_argument("--print-only",  action="store_true",
                    help="Print JSON to stdout, do not write file")
-    p.add_argument("--debug-cols", action="store_true",
+    p.add_argument("--debug-cols",  action="store_true",
                    help="Print available CSV column names and exit")
     args = p.parse_args()
 
@@ -206,6 +240,20 @@ def main():
         print("--- GOALIE COLS ---")
         print(list(fetch_csv(goalie_url).columns))
         return
+
+    # Load playoff game counts from goalies JSON if provided
+    playoff_games_map = {}
+    if args.goalies_json:
+        try:
+            with open(args.goalies_json, encoding="utf-8") as f:
+                goalies_data = json.load(f)
+            for team, info in goalies_data.items():
+                playoff_games_map[team] = parse_playoff_games(info.get("record", "0-0-0"))
+            print(f"  → playoff games loaded from {args.goalies_json}: "
+                  f"{sum(v > 0 for v in playoff_games_map.values())} teams with games played")
+        except Exception as e:
+            print(f"  → goalies-json load failed ({e}), playoff_weight defaults to 0.0",
+                  file=sys.stderr)
 
     teams, goalies = {}, {}
 
@@ -222,7 +270,7 @@ def main():
     try:
         print("  → goalie stats ... ", end="", flush=True)
         df_goalies = fetch_csv(goalie_url)
-        goalies = build_goalie_metrics(df_goalies)
+        goalies = build_goalie_metrics(df_goalies, playoff_games_map=playoff_games_map)
         print(f"{len(goalies)} goalies")
     except Exception as e:
         print(f"FAILED: {e}", file=sys.stderr)
