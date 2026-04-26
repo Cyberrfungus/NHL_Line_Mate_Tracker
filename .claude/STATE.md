@@ -57,12 +57,24 @@ Regular-season metrics alone are insufficient in playoffs. Maintain separate cum
 - Playoff GSAx (GA − xGA accumulated across playoff games)
 - Playoff xGF% and Fenwick% per team
 
-**Goalie tiering priority during playoffs (apply in order):**
-1. **3+ playoff games played** → use playoff SV% + playoff GSAx as primary signal (season stats secondary)
-2. **1–2 playoff games played** → blend 70% playoff + 30% season SV%/GSAx
-3. **0 playoff games** → use season SV% + GSAx, then apply the Playoff Goalie Adjustment above
+**Goalie tiering priority during playoffs — Dynamic Weight Decay (updated Apr 25 2026):**
 
-After blending/selecting the right SV%, apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
+Use `get_playoff_goalie_weight(game_number)` from `scripts/utils.py` to determine the blend.
+
+| Games played | Playoff weight (w) | Season weight (1−w) | Blended SV% formula |
+|---|---|---|---|
+| 0 | 0.00 | 1.00 | season_sv only |
+| 1 | 0.10 | 0.90 | 0.10 × playoff_sv + 0.90 × season_sv |
+| 2 | 0.25 | 0.75 | 0.25 × playoff_sv + 0.75 × season_sv |
+| 3 | 0.40 | 0.60 | 0.40 × playoff_sv + 0.60 × season_sv |
+| 4 | 0.55 | 0.45 | 0.55 × playoff_sv + 0.45 × season_sv |
+| 5+ | 0.65 | 0.35 | 0.65 × playoff_sv + 0.35 × season_sv (hard cap) |
+
+**Rationale:** Regular season SV% is built on 82 games. A goalie who posts .950 in Game 1 has 1 data point vs 82. The weight table prevents over-reacting to a hot start while still incorporating real playoff signal as the sample grows. The cap at 0.65 (Game 5+) ensures the season sample is never fully discarded.
+
+Apply the same weight to GSAx blending if both playoff and season GSAx are available.
+
+After computing the blended SV% (and blended GSAx if available), apply the Playoff Goalie Adjustment tier upgrade before outputting the goalie tier table.
 
 #### SIGNAL HIERARCHY (updated Apr 24 2026 — now quantitative)
 
