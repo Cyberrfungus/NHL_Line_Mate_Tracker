@@ -225,8 +225,8 @@ def build_playoff_goalie_map_hockeyref(url: str) -> dict:
     )
     resp.raise_for_status()
 
-    # flavor="html.parser" uses Python stdlib — no lxml dependency required
-    tables = pd.read_html(StringIO(resp.text), flavor="html.parser")
+    # No flavor specified — pandas auto-selects lxml, bs4, or html5lib
+    tables = pd.read_html(StringIO(resp.text))
     if not tables:
         return {}
 
