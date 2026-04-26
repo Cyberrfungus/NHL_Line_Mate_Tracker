@@ -28,7 +28,8 @@ try:
 except ImportError:
     from utils import get_playoff_goalie_weight
 
-BASE_URL = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
+BASE_URL        = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
+PLAYOFF_BASE_URL = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/playoffs"
 HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
 
 # MoneyPuck abbrevs that differ from project standard
@@ -149,6 +150,47 @@ def signal(sv: float) -> str:
     return "BOOST"
 
 
+def build_playoff_goalie_map(df: pd.DataFrame) -> dict:
+    """
+    Build {team: {sv_pct, gsax, games}} from MoneyPuck playoff goalie CSV.
+    Same structure as season data — xGoals, goals, ongoal columns.
+    Returns empty dict if data unavailable or all teams have 0 games.
+    """
+    if "situation" in df.columns:
+        df = df[df["situation"] == "all"].copy()
+
+    result = {}
+    for _, row in df.iterrows():
+        team = normalize_team(row.get("team", ""))
+        if not team or team == "nan":
+            continue
+
+        def v(aliases):
+            for a in aliases:
+                if a in row.index:
+                    return float(row[a]) if pd.notna(row[a]) else 0.0
+            return 0.0
+
+        xga    = v(GOALIE_COLS["xGA"])
+        ga     = v(GOALIE_COLS["GA"])
+        ongoal = v(GOALIE_COLS["ongoal"])
+        games  = int(v(GOALIE_COLS["games"]))
+
+        if games == 0 or ongoal == 0:
+            continue
+
+        gsax   = round(ga - xga, 2)
+        sv_pct = round(1 - ga / ongoal, 3)
+
+        # Keep best-performing goalie per team (primary starter proxy)
+        if team in result and result[team]["gsax"] <= gsax:
+            continue
+
+        result[team] = {"sv_pct": sv_pct, "gsax": gsax, "games": games}
+
+    return result
+
+
 def parse_playoff_games(record_str: str) -> int:
     """Parse 'W-L-OT' DFO record string → total games played in current series."""
     try:
@@ -158,20 +200,27 @@ def parse_playoff_games(record_str: str) -> int:
 
 
 def build_goalie_metrics(df: pd.DataFrame,
-                         playoff_games_map: dict | None = None) -> dict:
+                         playoff_games_map: dict | None = None,
+                         playoff_sv_map: dict | None = None) -> dict:
     """
-    Build per-team goalie metrics from MoneyPuck season data.
+    Build per-team goalie metrics blending season and playoff data.
 
-    playoff_games_map: optional dict of {team_abbr: games_played_in_playoffs}.
-    When provided, get_playoff_goalie_weight() is called for each goalie and
-    the resulting weight is stored in the output. Tier and signal use season
-    SV% until a playoff_sv_pct source is added (Step 3).
+    playoff_games_map: {team: games_played_in_playoffs} from DFO record.
+    playoff_sv_map:    {team: {sv_pct, gsax}} from MoneyPuck playoffs CSV.
+
+    Blending formula (applied when playoff_games > 0 and playoff data exists):
+        w             = get_playoff_goalie_weight(playoff_games)
+        blended_sv    = w * playoff_sv   + (1 - w) * season_sv
+        blended_gsax  = w * playoff_gsax + (1 - w) * season_gsax
+    tier() and signal() use blended values; raw season stats are also stored.
     """
     if "situation" in df.columns:
         df = df[df["situation"] == "all"].copy()
 
     if playoff_games_map is None:
         playoff_games_map = {}
+    if playoff_sv_map is None:
+        playoff_sv_map = {}
 
     metrics = {}
     for _, row in df.iterrows():
@@ -190,29 +239,47 @@ def build_goalie_metrics(df: pd.DataFrame,
         xga    = v(GOALIE_COLS["xGA"])
         ga     = v(GOALIE_COLS["GA"])
         ongoal = v(GOALIE_COLS["ongoal"])
-        gsax   = round(ga - xga, 2)          # positive = worse than expected
-        sv_pct = round(1 - ga / ongoal, 3) if ongoal > 0 else 0.0
+        season_gsax = round(ga - xga, 2)      # positive = worse than expected
+        season_sv   = round(1 - ga / ongoal, 3) if ongoal > 0 else 0.0
 
-        # Keep best-performing goalie per team (most negative goals-xGoals = primary starter proxy)
-        if team in metrics and metrics[team]["GSAx"] <= gsax:
+        # Keep best-performing goalie per team (most negative GSAx = primary starter proxy)
+        if team in metrics and metrics[team]["season_gsax"] <= season_gsax:
             continue
 
         playoff_games  = playoff_games_map.get(team, 0)
         playoff_weight = get_playoff_goalie_weight(playoff_games)
+        season_weight  = 1.0 - playoff_weight
+
+        p_stats      = playoff_sv_map.get(team, {})
+        playoff_sv   = p_stats.get("sv_pct")   # None if no playoff data yet
+        playoff_gsax = p_stats.get("gsax")
+
+        if playoff_sv is not None and playoff_games > 0:
+            blended_sv   = round(playoff_sv   * playoff_weight + season_sv   * season_weight, 3)
+            blended_gsax = round(playoff_gsax * playoff_weight + season_gsax * season_weight, 2) \
+                           if playoff_gsax is not None else season_gsax
+        else:
+            blended_sv   = season_sv
+            blended_gsax = season_gsax
 
         metrics[team] = {
-            "name":           name_val,
-            "GSAx":           gsax,
-            "xGA":            round(xga, 2),
-            "GA":             int(ga),
-            "sv_pct":         sv_pct,
-            "tier":           tier_goalie(sv_pct),
-            "signal":         signal(sv_pct),
-            "games":          int(v(GOALIE_COLS["games"])),
-            "playoff_games":  playoff_games,
-            "playoff_weight": playoff_weight,
-            # playoff_blended_sv: set here once a playoff_sv_pct source exists (Step 3)
-            # formula: playoff_weight * playoff_sv + (1 - playoff_weight) * sv_pct
+            "name":          name_val,
+            "season_sv":     season_sv,
+            "season_gsax":   season_gsax,
+            "playoff_sv":    playoff_sv,
+            "playoff_gsax":  playoff_gsax,
+            "playoff_games": playoff_games,
+            "playoff_weight":playoff_weight,
+            "blended_sv":    blended_sv,
+            "blended_gsax":  blended_gsax,
+            "tier":          tier_goalie(blended_sv),
+            "signal":        signal(blended_sv),
+            "xGA":           round(xga, 2),
+            "GA":            int(ga),
+            "games":         int(v(GOALIE_COLS["games"])),
+            # Legacy aliases kept so existing callers that read sv_pct / GSAx still work
+            "sv_pct":        season_sv,
+            "GSAx":          season_gsax,
         }
     return metrics
 
@@ -256,6 +323,7 @@ def main():
                   file=sys.stderr)
 
     teams, goalies = {}, {}
+    playoff_sv_map = {}
 
     print(f"Fetching MoneyPuck advanced metrics (season {args.season}-{args.season + 1})...")
 
@@ -268,9 +336,21 @@ def main():
         print(f"FAILED: {e}", file=sys.stderr)
 
     try:
-        print("  → goalie stats ... ", end="", flush=True)
+        print("  → playoff goalie stats ... ", end="", flush=True)
+        df_playoff = fetch_csv(f"{PLAYOFF_BASE_URL.format(season=args.season)}/goalies.csv")
+        playoff_sv_map = build_playoff_goalie_map(df_playoff)
+        print(f"{len(playoff_sv_map)} teams with playoff data")
+    except Exception as e:
+        print(f"not available — blending skipped ({e})")
+
+    try:
+        print("  → season goalie stats ... ", end="", flush=True)
         df_goalies = fetch_csv(goalie_url)
-        goalies = build_goalie_metrics(df_goalies, playoff_games_map=playoff_games_map)
+        goalies = build_goalie_metrics(
+            df_goalies,
+            playoff_games_map=playoff_games_map,
+            playoff_sv_map=playoff_sv_map,
+        )
         print(f"{len(goalies)} goalies")
     except Exception as e:
         print(f"FAILED: {e}", file=sys.stderr)
