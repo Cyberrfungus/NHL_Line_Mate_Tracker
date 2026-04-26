@@ -141,16 +141,33 @@ Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★
 5. Qualified plays only: Composite Score ≥ +65 AND Correlation Strength ≥ ★★★ (after all adjustments, caps, and overrides)  
 6. Run ODDS & MARKET EFFICIENCY check on all qualified plays  
 7. Rank by Composite Score descending, then by star rating  
-8. Append MARKET signal + implied probability to every line in the final output
+8. Append MARKET signal + implied probability to every line in the final output  
+9. **Apply CORRELATION CAP** — max 2 qualified plays per game, max 3 per team. Drop lower-scoring plays that exceed the cap. Output a CAP APPLIED block.
 
-**Output must include these 7 sections (follow `prompts/nightly_play_sheet_v6.md`):**
+#### CORRELATION CAP (added Apr 25 2026)
+
+Limits exposure so that one bad game script cannot destroy the entire play sheet.
+
+**Rules:**
+- Max **2 qualified plays per game** (Sections 1 + 2 + 6 combined)
+- Max **3 qualified plays per team** (across all sections)
+- Priority: Composite Score desc → stars desc (tiebreaker)
+- Cold stick u0.5 pts plays count toward both the game and team caps
+
+**Implementation:** `scripts/utils.py → apply_correlation_cap(plays, max_per_game=2, max_per_team=3)`  
+Returns `(selected, removed)`. Each removed play includes `cap_reason`.
+
+**Output requirement:** Every play sheet must include a CAP APPLIED block listing dropped plays (or confirming none were dropped).
+
+**Output must include these 7 sections + cap block (follow `prompts/nightly_play_sheet_v6.md`):**
 1. Cold Stick u0.5 Points table (Tier A ranked — PRIMARY BET SECTION)
 2. ELITE+PP2 duo table (highest-priority duo tier — 53% chain overlap)
 3. Team Total O/U leans (game by game)
 4. First-10 Min O/U leans (F10 GIFT)
 5. Goalie Saves props (top 1-2 only)
 6. SGP correlation table (Tier 1/2/3)
-7. Self-check answers (4 questions)
+6.5. Correlation Cap — CAP APPLIED block (mandatory)
+7. Self-check answers (5 questions)
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
 

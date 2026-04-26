@@ -169,14 +169,45 @@ Composite: [score]
 
 ---
 
+## SECTION 6.5 — CORRELATION CAP (apply before finalizing)
+
+**After completing Sections 1–6, apply the Correlation Cap before shipping.**
+
+The cap prevents a single bad game script from destroying the entire sheet.
+Logic is implemented in `scripts/utils.py → apply_correlation_cap()`.
+
+**Rules:**
+- **Max 2 qualified plays per game** (across all sections combined)
+- **Max 3 qualified plays per team** (across all sections combined)
+- Tiebreaker: higher Composite Score keeps its slot; if tied, higher star rating wins
+- Cold stick u0.5 pts plays (Section 1) count toward the game and team caps
+
+**How to apply manually:**
+1. List every qualified play from Sections 1, 2, and 6 with its game_id, teams, Composite Score, stars
+2. Sort by Composite Score desc → stars desc
+3. Walk the list top-to-bottom; drop any play that would push a game past 2 or a team past 3
+4. Append a **CAP APPLIED** block at the bottom of the sheet listing dropped plays and why
+
+**Example CAP APPLIED block:**
+```
+CAP APPLIED — 2 plays removed:
+  ❌ Konecny + Tippett (PHI, ELITE, +72) — PHI game cap (2/2 already selected: cold stick + Michkov duo)
+  ❌ Reinhart + Tkachuk (FLA, ELITE+PP2, +68) — game cap (2/2 already selected for FLA@TBL)
+```
+
+If no plays are dropped, output: `CAP APPLIED — no plays removed (all games ≤2, all teams ≤3)`
+
+---
+
 ## SECTION 7 — SELF-CHECK (MANDATORY BEFORE SHIPPING)
 
 Answer these 4 questions explicitly in your output:
 
 1. Did I open every JSON with the view tool this session? (Y/N)
 2. Are all duos validated against the printed line table? (Y/N)
-3. Are goalie tiers based on SV% numbers (not role labels)? (Y/N)
+3. Are goalie tiers based on blended_sv (not raw season SV%, not role labels)? (Y/N)
 4. Did I surface every ELITE+PP2 pair in Section 2? (Y/N)
+5. Did I apply the Correlation Cap (Section 6.5) and output the CAP APPLIED block? (Y/N)
 
 **If any answer is N — rebuild that section before shipping.**
 
