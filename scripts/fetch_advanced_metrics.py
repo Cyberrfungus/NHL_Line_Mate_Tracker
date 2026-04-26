@@ -30,7 +30,10 @@ except ImportError:
 
 BASE_URL             = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
 PLAYOFF_BASE_URL     = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/playoffs"
-# Applied when playoffs are underway but MoneyPuck's playoff CSV hasn't populated yet.
+# Primary playoff source: Hockey-Reference updates daily, usually by ~5:40 AM after games.
+# {year} is the playoff year (season start year + 1, e.g. 2025 season → 2026 playoffs).
+HOCKEYREF_PLAYOFF_URL = "https://www.hockey-reference.com/playoffs/NHL_{year}_goalies.html"
+# Applied when playoffs are underway but no data source has populated yet.
 # Signals "playoff mode, low confidence" without misrepresenting the blend ratio.
 PLAYOFF_FALLBACK_WEIGHT = 0.10
 HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
@@ -39,6 +42,18 @@ HEADERS = {"User-Agent": "NHL-Line-Mate-Tracker/1.0"}
 TEAM_NORM = {
     "T.B": "TBL", "N.J": "NJD", "S.J": "SJS", "L.A": "LAK",
     "T.B.": "TBL", "N.J.": "NJD", "S.J.": "SJS", "L.A.": "LAK",
+}
+
+# Hockey-Reference abbrevs that differ from project standard
+HOCKEYREF_TEAM_NORM = {
+    "L.A":  "LAK", "L.A.": "LAK",
+    "T.B":  "TBL", "T.B.": "TBL",
+    "N.J":  "NJD", "N.J.": "NJD",
+    "S.J":  "SJS", "S.J.": "SJS",
+    "VEG":  "VGK",   # Vegas Golden Knights
+    "UTH":  "UTA",   # Utah Mammoth (alt abbrev)
+    "PHX":  "ARI",   # legacy Arizona
+    "ANH":  "ANA",   # legacy Anaheim
 }
 
 # Fenwick = unblocked shot attempts; Corsi = all shot attempts
@@ -194,6 +209,79 @@ def build_playoff_goalie_map(df: pd.DataFrame) -> dict:
     return result
 
 
+def build_playoff_goalie_map_hockeyref(url: str) -> dict:
+    """
+    Fetch playoff goalie stats from Hockey-Reference using pd.read_html.
+    Updates daily (~5:40 AM after games) — used as the primary playoff source.
+
+    Returns {team_abbr: {sv_pct, gsax, games}} where gsax is always None
+    (Hockey-Reference doesn't publish expected goals / GSAx).
+    Returns empty dict on any fetch or parse failure.
+    """
+    resp = requests.get(
+        url,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; NHL-Linemate-Tracker/1.0)"},
+        timeout=20,
+    )
+    resp.raise_for_status()
+
+    # flavor="html.parser" uses Python stdlib — no lxml dependency required
+    tables = pd.read_html(StringIO(resp.text), flavor="html.parser")
+    if not tables:
+        return {}
+
+    df = tables[0]
+
+    # Hockey-Reference repeats the header row every ~20 rows; drop them
+    if "Rk" in df.columns:
+        df = df[df["Rk"] != "Rk"].copy()
+
+    # Drop rows with no team (totals, blank separators)
+    tm_col = next((c for c in df.columns if str(c).strip() in ("Tm", "Team")), None)
+    if tm_col is None:
+        return {}
+    df = df[df[tm_col].notna()].copy()
+    df = df[~df[tm_col].isin(["TOT", "Team", "Tm"])].copy()
+
+    # Locate the SV% and GP columns (HR sometimes uses multi-level headers)
+    sv_col = next((c for c in df.columns if str(c).strip() in ("SV%", "Sv%")), None)
+    gp_col = next((c for c in df.columns if str(c).strip() == "GP"), None)
+    if sv_col is None or gp_col is None:
+        return {}
+
+    result = {}
+    for _, row in df.iterrows():
+        team_raw = str(row[tm_col]).strip()
+        team = HOCKEYREF_TEAM_NORM.get(team_raw, team_raw)
+        if not team or team in ("nan", "TOT", ""):
+            continue
+
+        try:
+            sv_pct = float(str(row[sv_col]).strip())
+        except (ValueError, TypeError):
+            continue
+
+        try:
+            gp = int(float(str(row[gp_col]).strip()))
+        except (ValueError, TypeError):
+            gp = 0
+
+        if gp == 0 or sv_pct <= 0:
+            continue
+
+        # Keep the goalie with most GP per team (primary starter proxy)
+        if team in result and result[team]["games"] >= gp:
+            continue
+
+        result[team] = {
+            "sv_pct": round(sv_pct, 3),
+            "gsax":   None,   # HR doesn't publish expected goals
+            "games":  gp,
+        }
+
+    return result
+
+
 def parse_playoff_games(record_str: str) -> int:
     """Parse 'W-L-OT' DFO record string → total games played in current series."""
     try:
@@ -204,21 +292,24 @@ def parse_playoff_games(record_str: str) -> int:
 
 def build_goalie_metrics(df: pd.DataFrame,
                          playoff_games_map: dict | None = None,
-                         playoff_sv_map: dict | None = None) -> dict:
+                         playoff_sv_map: dict | None = None,
+                         playoff_source: str = "moneypuck") -> dict:
     """
     Build per-team goalie metrics blending season and playoff data.
 
-    playoff_games_map: {team: games_played_in_playoffs} from DFO record.
-    playoff_sv_map:    {team: {sv_pct, gsax}} from MoneyPuck playoffs CSV.
+    playoff_games_map: {team: games_played_in_playoffs} from DFO W-L-OT record.
+                       If absent for a team, falls back to 'games' in playoff_sv_map.
+    playoff_sv_map:    {team: {sv_pct, gsax, games}} from any playoff source.
+    playoff_source:    label stored in playoff_data_source field ("hockeyref" |
+                       "moneypuck"). Ignored when falling back to season-only.
 
     Three blending cases (see playoff_data_source field in output):
-      "moneypuck"   — playoff CSV available; full blend applied:
-                      blended_sv = w * playoff_sv + (1-w) * season_sv
-      "fallback"    — playoffs started (games > 0) but CSV empty/unavailable;
-                      blended_sv = season_sv; playoff_weight clamped to
-                      PLAYOFF_FALLBACK_WEIGHT so the stored weight is honest
-      "season_only" — regular season or no games played; blended_sv = season_sv,
-                      playoff_weight = 0.0
+      playoff_source  — playoff data available; full blend applied:
+                        blended_sv = w * playoff_sv + (1-w) * season_sv
+      "fallback"      — playoffs started (games > 0) but no data available;
+                        blended_sv = season_sv; playoff_weight clamped to
+                        PLAYOFF_FALLBACK_WEIGHT so the stored weight is honest
+      "season_only"   — regular season or no games played; playoff_weight = 0.0
     tier() and signal() always use blended_sv; raw season stats also stored.
     """
     if "situation" in df.columns:
@@ -253,20 +344,24 @@ def build_goalie_metrics(df: pd.DataFrame,
         if team in metrics and metrics[team]["season_gsax"] <= season_gsax:
             continue
 
-        playoff_games  = playoff_games_map.get(team, 0)
+        p_stats      = playoff_sv_map.get(team, {})
+        playoff_sv   = p_stats.get("sv_pct")   # None if no playoff data yet
+        playoff_gsax = p_stats.get("gsax")     # None for Hockey-Reference source
+
+        playoff_games = playoff_games_map.get(team, 0)
+        # If DFO record wasn't provided, use GP from the playoff source itself
+        if playoff_games == 0 and p_stats:
+            playoff_games = p_stats.get("games", 0)
+
         playoff_weight = get_playoff_goalie_weight(playoff_games)
         season_weight  = 1.0 - playoff_weight
 
-        p_stats      = playoff_sv_map.get(team, {})
-        playoff_sv   = p_stats.get("sv_pct")   # None if no playoff data yet
-        playoff_gsax = p_stats.get("gsax")
-
         if playoff_sv is not None and playoff_games > 0:
-            # Case 1: full blend — MoneyPuck playoff data is available
+            # Case 1: full blend — playoff data available (hockeyref or moneypuck)
             blended_sv   = round(playoff_sv   * playoff_weight + season_sv   * season_weight, 3)
             blended_gsax = round(playoff_gsax * playoff_weight + season_gsax * season_weight, 2) \
                            if playoff_gsax is not None else season_gsax
-            data_source  = "moneypuck"
+            data_source  = playoff_source
         elif playoff_games > 0:
             # Case 2: fallback — playoffs started but MoneyPuck CSV not yet populated.
             # blended_sv stays at season_sv; we clamp playoff_weight to PLAYOFF_FALLBACK_WEIGHT
@@ -345,6 +440,7 @@ def main():
 
     teams, goalies = {}, {}
     playoff_sv_map = {}
+    playoff_source = "moneypuck"  # updated to "hockeyref" if HR succeeds
 
     print(f"Fetching MoneyPuck advanced metrics (season {args.season}-{args.season + 1})...")
 
@@ -356,23 +452,45 @@ def main():
     except Exception as e:
         print(f"FAILED: {e}", file=sys.stderr)
 
+    # ── Playoff goalie stats: try Hockey-Reference first, then MoneyPuck ────────
+    # Step 1: Hockey-Reference (primary — updates daily, usually by ~5:40 AM)
+    print("  → playoff goalie stats (Hockey-Reference) ... ", end="", flush=True)
     try:
-        print("  → playoff goalie stats ... ", end="", flush=True)
-        df_playoff = fetch_csv(f"{PLAYOFF_BASE_URL.format(season=args.season)}/goalies.csv")
-        playoff_sv_map = build_playoff_goalie_map(df_playoff)
-        if playoff_sv_map:
-            print(f"{len(playoff_sv_map)} teams with playoff data")
+        hr_year = args.season + 1
+        hr_map = build_playoff_goalie_map_hockeyref(
+            HOCKEYREF_PLAYOFF_URL.format(year=hr_year)
+        )
+        if hr_map:
+            playoff_sv_map = hr_map
+            playoff_source = "hockeyref"
+            print(f"{len(hr_map)} teams")
         else:
-            # CSV fetched but contained no usable rows (MoneyPuck updates slowly early in series).
-            # build_goalie_metrics will apply PLAYOFF_FALLBACK_WEIGHT for teams with games played.
-            games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
-            print(f"0 teams — CSV empty (MoneyPuck not yet updated). "
-                  f"Fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
-                  f"{games_in_progress} team(s) with games played.")
+            print("0 teams (page empty or not yet updated)")
     except Exception as e:
-        games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
-        print(f"not available — fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
-              f"{games_in_progress} team(s) with games played. ({e})")
+        print(f"unavailable ({e})")
+
+    # Step 2: MoneyPuck fallback if HR gave nothing
+    if not playoff_sv_map:
+        print("  → playoff goalie stats (MoneyPuck fallback) ... ", end="", flush=True)
+        try:
+            df_playoff = fetch_csv(
+                f"{PLAYOFF_BASE_URL.format(season=args.season)}/goalies.csv"
+            )
+            mp_map = build_playoff_goalie_map(df_playoff)
+            if mp_map:
+                playoff_sv_map = mp_map
+                playoff_source = "moneypuck"
+                print(f"{len(mp_map)} teams")
+            else:
+                games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
+                print(f"0 teams — CSV empty. "
+                      f"Fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
+                      f"{games_in_progress} team(s) with games played.")
+        except Exception as e:
+            games_in_progress = sum(1 for g in playoff_games_map.values() if g > 0)
+            print(f"unavailable — fallback weight {PLAYOFF_FALLBACK_WEIGHT} applied to "
+                  f"{games_in_progress} team(s). ({e})")
+    # ────────────────────────────────────────────────────────────────────────────
 
     try:
         print("  → season goalie stats ... ", end="", flush=True)
@@ -381,6 +499,7 @@ def main():
             df_goalies,
             playoff_games_map=playoff_games_map,
             playoff_sv_map=playoff_sv_map,
+            playoff_source=playoff_source,
         )
         print(f"{len(goalies)} goalies")
     except Exception as e:
