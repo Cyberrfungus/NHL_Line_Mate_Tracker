@@ -80,7 +80,7 @@ Rank verified play sheet by Composite Score descending, then by star rating.
 | 3        | Elite Goalie (after playoff adjustment) | -40     | Heavy suppress  | 0W/5L |
 | 4        | Hot Goalscorer Tier             | +30 to +60      | Boost           | 58.6% WR |
 | 5        | Backup Goalie (after playoff adjustment) | +35    | Strong boost    | 10W/1L |
-| 6        | Tier (ELITE / PP LINK F+D / STRONG) | +50 / +22 / +8 | Base score     | Confirmed WR gaps |
+| 6        | Tier (ELITE+PP2 / ELITE / PP LINK F+D / STRONG) | +65 / +50 / +22 / +8 | Base score | ELITE+PP2=53%, ELITE=23.8%, STRONG=14.6% |
 | 7        | O/U Boost                       | +10 per 5 pts above 55 | Mild boost | Market edge |
 | 8        | Motivation / Home / B2B context | +5 to +10       | Contextual      | Soft signal |
 | 9        | Market +EV Confirmation         | +25 / +15 / 0 / -25 | Confirmation | Realized WR > implied prob |
@@ -120,17 +120,42 @@ Claude **must** calculate and show the Composite Score for every suggested play 
 Example output line: Player1 + Player2 | ELITE_NC_BACKUP_65_N_DUO_DF | ★★★★ | SCORE: +25 (tier) + 35 (backup) + 60 (dual finisher) = +120
 **Minimum threshold for verified play sheet: +45**
 
-#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated Apr 24 2026)
+#### NIGHTLY BUILD PROTOCOL — PLAY SHEET FILTERS (updated Apr 25 2026)
 
 1. Hard excludes (Cold Flag, Forward L5G=0 non-D-man, scratches/injuries)  
 2. Apply PLAYOFF GOALIE ADJUSTMENT + CUMULATIVE PERFORMANCE TRACKER to every goalie  
-3. Calculate Composite Play Score for all remaining duos/trios using the SIGNAL HIERARCHY  
-4. Qualified plays only: Composite Score ≥ +65 AND Correlation Strength ≥ ★★★ (after all adjustments, caps, and overrides)  
-5. Run ODDS & MARKET EFFICIENCY check on all qualified plays  
-6. Rank by Composite Score descending, then by star rating  
-7. Append MARKET signal + implied probability to every line in the final output
+3. **ELITE+PP2 first pass** — identify all shared ES+PP pairs before any other duo work  
+4. Calculate Composite Play Score for all remaining duos/trios using the SIGNAL HIERARCHY  
+5. Qualified plays only: Composite Score ≥ +65 AND Correlation Strength ≥ ★★★ (after all adjustments, caps, and overrides)  
+6. Run ODDS & MARKET EFFICIENCY check on all qualified plays  
+7. Rank by Composite Score descending, then by star rating  
+8. Append MARKET signal + implied probability to every line in the final output
+
+**Output must include these 7 sections (follow `prompts/nightly_play_sheet_v6.md`):**
+1. Cold Stick u0.5 Points table (Tier A ranked — PRIMARY BET SECTION)
+2. ELITE+PP2 duo table (highest-priority duo tier — 53% chain overlap)
+3. Team Total O/U leans (game by game)
+4. First-10 Min O/U leans (F10 GIFT)
+5. Goalie Saves props (top 1-2 only)
+6. SGP correlation table (Tier 1/2/3)
+7. Self-check answers (4 questions)
 
 ### STEP 4 — Duo generation (hot-player-first, not team-first)
+
+#### ELITE+PP2 PRIORITY RULE (NEW — mandatory first pass)
+Before building any other duos, identify all **ELITE+PP2 pairs**: players sharing BOTH same ES line (L1/L2) AND same PP unit (PP1 or PP2). These are the highest-priority plays in the system.
+
+**Data (8W/7L = 53% chain overlap) vs standard ELITE (15W/48L = 23.8%) — treat as separate tiers.**
+
+1. Scan for all L1+PP1 pairs → ELITE+PP2
+2. Scan for all L1+PP2 pairs → ELITE+PP2
+3. Scan for all L2+PP1 pairs → ELITE+PP2
+4. Scan for all L2+PP2 pairs → ELITE+PP2
+5. Flag all ELITE+PP2 pairs in your working table BEFORE proceeding to standard ELITE
+
+**Composite Score bonus for ELITE+PP2: add +15 pts on top of base ELITE (+50) = +65 base.**
+
+#### Standard duo generation (after ELITE+PP2 pass)
 - Iterate each hot player
 - For each hot player, enumerate ALL valid correlations:
   - Same ES line? → STRONG (or ELITE if also PP1 together)
@@ -295,6 +320,37 @@ Tier B soft cold signal weaker than hard. Need filter tightening (Mittelstadt L2
 Apr 22 session included 4 corrections (Hughes anomaly, PHI line wrong, Wallstedt mistier, Martone underweight). Root cause: skim-read + template-driven build. Pre-flight protocol added to top of STATE.md to prevent recurrence.
 
 **Next session must:** use `view` on every JSON, print line tables, tier goalies by SV% only, seed duos from hot players.
+
+---
+
+## COLD STICK BET CONSTRUCTION RULES (updated Apr 25 2026)
+
+**Primary prop:** u0.5 Points (available at all major books: bet365, DK, FanDuel, BetMGM)
+**Do NOT recommend:** u0.5 Goals — sportsbooks don't post it (under side hits ~85-92%, no market)
+**Secondary (if available):** Anytime Goalscorer NO (UK/EU books only)
+
+### Tier A — 38W/6L (86%), 44 obs. BET THESE.
+| Condition | Action |
+|-----------|--------|
+| 5+ blanks, 0 L5 pts, L3/L4 role | ✅ LOCK — straight u0.5 pts |
+| 5+ blanks, 0 L5 pts, L1/L2 role | ⚠️ LEAN — higher assist traffic, reduce size |
+| 5+ blanks, 0 L5 pts, PP1 role | ⚠️ LEAN — PP exposure increases break risk via assists |
+| Facing ELITE goalie (playoff adj.) | ✅ BONUS — goalie suppresses opponent scoring → fewer chain-assist opportunities |
+| Facing WEAK goalie | ✅ VALID — game opens up but drought signal still dominant |
+
+### Tier B — 33W/14L (70%), 47 obs. Small size only.
+- Tighter filter required: avoid Tier B on PP1 or L1/L2 — the Mittelstadt pattern (L2+PP2 on soft cold) breaks via assist traffic at ~40% rate.
+- Best Tier B plays: L3/L4 role + 0 L5 pts. Avoid L1/L2 cold on PP unit.
+
+### Break anatomy (why u0.5 goals is unavailable):
+- 65% of all Tier A breaks = assist only (player didn't score a goal)
+- 35% of breaks = goal (the player actually scored)
+- This is why books won't post u0.5 Goals: the under hits 92%+, no two-sided market
+
+### SGP Construction (cold leg):
+- Cold stick u0.5 pts is the strongest cold leg for SGPs
+- Pair with same-team hot duo OVER (Tier 1 SGP) or opponent cold stick (Tier 2 SGP)
+- Never pair with a cold flag player on the OVER side — they are hard excluded from duo legs
 
 ---
 

@@ -202,6 +202,8 @@ def main():
     players_to_check = {}  # name -> team
     teams_to_check = [args.team.upper()] if args.team else list(lineups.keys())
 
+    player_roles = {}  # name -> list of roles (e.g. ["L2", "PP2"])
+
     for team in teams_to_check:
         td = lineups.get(team, {})
         if "error" in td or "L1" not in td:
@@ -216,6 +218,10 @@ def main():
             for name in td.get(key, []):
                 if name not in players_to_check:
                     players_to_check[name] = team
+                if name not in player_roles:
+                    player_roles[name] = []
+                if key not in player_roles[name]:
+                    player_roles[name].append(key)
 
     print(f"Verifying {len(players_to_check)} players from {len(teams_to_check)} teams...")
     print()
@@ -260,13 +266,20 @@ def main():
             # Cold Sticks classification (independent of cold/hot flagging above)
             tier = cold_sticks_tier(analysis)
             if tier:
+                roles = player_roles.get(name, [])
+                es_roles = [r for r in roles if r.startswith("L")]
+                pp_roles = [r for r in roles if r.startswith("PP")]
+                line_role = "+".join(sorted(es_roles) + sorted(pp_roles))
+                high_role = any(r in ("L1", "L2", "PP1") for r in roles)
                 cold_sticks.append({
                     "name": name,
                     "team": team,
                     "tier": tier,
                     "blanks": analysis["consecutive_blanks"],
                     "l5_pts": analysis["last5_pts"],
-                    "l5_goals": analysis["last5_goals"]
+                    "l5_goals": analysis["last5_goals"],
+                    "line_role": line_role or "?",
+                    "high_role": high_role
                 })
 
         results[name] = analysis
@@ -302,13 +315,15 @@ def main():
         tier_a = [c for c in cold_sticks if c["tier"] == "A"]
         tier_b = [c for c in cold_sticks if c["tier"] == "B"]
         if tier_a:
-            print(f"   TIER A ({len(tier_a)} plays — locked cold):")
+            print(f"   TIER A ({len(tier_a)} plays — 86% WR, u0.5 pts primary prop):")
             for c in tier_a:
-                print(f"      {c['name']} ({c['team']}) — {c['blanks']} blanks, {c['l5_pts']}pts L5")
+                flag = " ⚠ HIGH-ROLE" if c.get("high_role") else ""
+                print(f"      {c['name']} ({c['team']}) [{c.get('line_role','?')}] — {c['blanks']} blanks, {c['l5_pts']}pts L5{flag}")
         if tier_b:
-            print(f"   TIER B ({len(tier_b)} plays — structural cold):")
+            print(f"   TIER B ({len(tier_b)} plays — 70% WR, small size only):")
             for c in tier_b:
-                print(f"      {c['name']} ({c['team']}) — {c['blanks']} blanks, {c['l5_pts']}pts L5")
+                flag = " ⚠ HIGH-ROLE" if c.get("high_role") else ""
+                print(f"      {c['name']} ({c['team']}) [{c.get('line_role','?')}] — {c['blanks']} blanks, {c['l5_pts']}pts L5{flag}")
 
     if not_found:
         print()

@@ -128,9 +128,21 @@ def analyze_duos(rows, min_obs):
 
     section(f"HOT DUO CHAIN OVERLAPS  (n={len(duos)})")
 
-    # By duo_tier
+    # ELITE+PP2 vs ELITE (non-PP2) comparison — highest-signal breakdown
+    elite_pp2  = [r for r in duos if r["duo_tier"] == "ELITE_PP2"]
+    elite_only = [r for r in duos if r["duo_tier"] == "ELITE"]
+    if elite_pp2:
+        w = sum(1 for r in elite_pp2 if r["result"] == "W")
+        print(wr_row("ELITE+PP2 (★ BEST TIER)", w, len(elite_pp2)))
+    if elite_only:
+        w = sum(1 for r in elite_only if r["result"] == "W")
+        print(wr_row("ELITE (no PP2 share)", w, len(elite_only)))
+
+    # By duo_tier (all tiers)
     tiers = sorted({r["duo_tier"] for r in duos})
     for t in tiers:
+        if t in ("ELITE_PP2", "ELITE"):
+            continue  # already printed above
         bucket = [r for r in duos if r["duo_tier"] == t]
         if len(bucket) >= min_obs:
             w = sum(1 for r in bucket if r["result"] == "W")
@@ -140,17 +152,25 @@ def analyze_duos(rows, min_obs):
     section("HOT DUO — result breakdown (all tiers)")
     by_break = defaultdict(int)
     for r in duos:
-        key = r["break_type"] if r["result"] == "W" else r["break_type"]
-        by_break[key] += 1
+        by_break[r["break_type"]] += 1
     total = len(duos)
     for btype, count in sorted(by_break.items(), key=lambda x: -x[1]):
         print(f"    {btype:<30}  {count:3d}  ({100*count//total:3d}%)")
 
-    # ELITE only — chain overlap rate per date (trend check)
-    section("HOT DUO ELITE — chain overlap rate by date")
-    elite = [r for r in duos if r["duo_tier"] == "ELITE"]
+    # ELITE+PP2 — chain overlap rate per date (trend check)
+    section("HOT DUO ELITE+PP2 — chain overlap rate by date")
     by_date = defaultdict(list)
-    for r in elite:
+    for r in elite_pp2:
+        by_date[r["date"]].append(r)
+    for d in sorted(by_date):
+        bucket = by_date[d]
+        w = sum(1 for r in bucket if r["result"] == "W")
+        print(wr_row(d, w, len(bucket), width=14))
+
+    # Standard ELITE only — chain overlap rate per date (trend check)
+    section("HOT DUO ELITE (no PP2) — chain overlap rate by date")
+    by_date = defaultdict(list)
+    for r in elite_only:
         by_date[r["date"]].append(r)
     for d in sorted(by_date):
         bucket = by_date[d]

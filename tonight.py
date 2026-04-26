@@ -59,12 +59,24 @@ def run_pre_game(date, advanced):
 
     print("🎉 Pre-game pipeline complete!")
     print("\nUpload these files to your Claude Project:")
-    print(f"   lineups_{date}.json")
-    print(f"   verified_{date}.json")
+    print(f"   data/lineups_{date}.json")
+    print(f"   data/verified_{date}.json")
     if advanced:
-        print(f"   goalies_{date}.json")
-        print(f"   advanced_metrics_{date}.json")
-    print("\nThen paste the latest nightly prompt (Quick Fix v5). You're ready! 🔥")
+        print(f"   data/goalies_{date}.json")
+        print(f"   data/advanced_metrics_{date}.json")
+    print()
+    print("Then paste the nightly prompt:")
+    print("   prompts/nightly_play_sheet_v6.md")
+    print()
+    print("Play sheet will include:")
+    print("   1. Cold Stick u0.5 pts table (Tier A — 86% WR)")
+    print("   2. ELITE+PP2 duo table (53% chain overlap — best duo tier)")
+    print("   3. Team Total O/U leans")
+    print("   4. F10 GIFT O/U leans")
+    print("   5. Goalie Saves props")
+    print("   6. SGP correlation table")
+    print()
+    print("You're ready. 🔥")
 
 
 def run_post_game(date):
