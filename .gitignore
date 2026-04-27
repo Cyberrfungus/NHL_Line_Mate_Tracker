@@ -3,7 +3,5 @@ dist/
 .DS_Store
 *.local
 data/*
-!data/bet_log.csv
-!data/claude_bet_log.csv
 __pycache__/
 *.pyc
