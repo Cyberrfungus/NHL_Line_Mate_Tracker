@@ -28,7 +28,7 @@ SEARCH_API = "https://search.d3.nhle.com/api/v1/search/player"
 
 # Data quality filters — applied before any tier assignment
 MIN_TOI_MINUTES = 8.0       # ignore games where player had < 8 min (scratches / IR returns)
-MAX_STALENESS_DAYS = 10     # playoff series have 2-4 day gaps; allow up to 10 days between games
+MAX_STALENESS_DAYS = 14     # covers inter-round breaks (series gap can be 7-10 days)
 MIN_QUALIFYING_GAMES = 3    # need at least 3 qualifying games to assign any hot/cold tier
 
 # Hockey-Reference playoff skater stats (cumulative, updated daily)
@@ -124,7 +124,14 @@ def fetch_hr_playoff_map(url: str) -> dict:
         "Upgrade-Insecure-Requests": "1",
     }
     try:
-        resp = requests.get(url, timeout=20, headers=_HR_HEADERS)
+        # Prime the session with the HR homepage so we arrive with real cookies,
+        # then request the stats page — mirrors how a browser navigates the site.
+        _sess = requests.Session()
+        try:
+            _sess.get("https://www.hockey-reference.com/", timeout=10, headers=_HR_HEADERS)
+        except Exception:
+            pass  # homepage prime is best-effort; continue regardless
+        resp = _sess.get(url, timeout=20, headers=_HR_HEADERS)
         resp.raise_for_status()
     except Exception as e:
         print(f"    [HR] fetch failed: {e}")
@@ -517,9 +524,9 @@ def main():
     print(f"Fetching Hockey-Reference playoff skater stats ({hr_url})...")
     hr_map = fetch_hr_playoff_map(hr_url)
     if hr_map:
-        print(f"Using Hockey-Reference for player L5 stats ({len(hr_map)} players parsed)")
+        print(f"✅ Using fresh Hockey-Reference playoff skater data ({len(hr_map)} players parsed)")
     else:
-        print("Hockey-Reference unavailable — falling back to NHL API for all players")
+        print("⚠️  Hockey-Reference unavailable — falling back to NHL API playoff log")
     print()
 
     print(f"Verifying {len(players_to_check)} players from {len(teams_to_check)} teams...")
