@@ -14,6 +14,8 @@ import argparse
 import subprocess
 import sys
 from datetime import datetime, timedelta
+from datetime import date as _date
+from scripts.write_picks_file import write_picks
 
 
 def get_todays_date():
@@ -120,3 +122,32 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ----------------------------------------------------------------------
+# Picks file + odds fetch integration
+# ----------------------------------------------------------------------
+today_iso = _date.today().isoformat()
+
+# 1. Write the picks file the odds script reads
+try:
+    write_picks(
+        date=today_iso,
+        tier_a=tier_a_picks,    # <-- replace with your actual Tier A variable name
+        duos=duo_picks,         # <-- replace with your actual duo variable name
+    )
+except NameError as e:
+    print(f"[picks] SKIPPED: variable not defined yet -> {e}")
+    print("[picks] Edit tonight.py to point write_picks() at your real lists.")
+else:
+    # 2. Pre-bet odds fetch
+    try:
+        subprocess.run(
+            ["python", "scripts/fetch_odds.py", "--date", today_iso, "--window", "pre"],
+            check=True,
+        )
+        print(f"[odds] pre-window fetch complete for {today_iso}")
+    except subprocess.CalledProcessError as e:
+        print(f"[odds] pre-window fetch FAILED: {e}")
+
+# Closing-line fetch (run manually ~5 min before puck drop):
+# python scripts/fetch_odds.py --date {today} --window close
