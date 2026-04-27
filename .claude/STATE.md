@@ -238,16 +238,22 @@ Never replace eye test. Model filters non-observable variables only.
 
 ---
 
-## CURRENT SEASON STATS (through Apr 21 2026)
-- ELITE:   ~180W ~251L | ~41.8% | chain overlap ~40%
-- STRONG:  ~122W ~232L | ~34.5% | chain overlap ~24%
-- PP LINK: ~188W ~232L | ~44.8% | chain overlap ~44% (F+D pairs)
-- TOTAL:   ~490W ~715L | ~40.7%
-- Apr 19 verified: 2W/6L = 25% ❌
-- Apr 20 verified: 3W/10L = 23.1% ❌
-- Apr 21 verified: 5W/13L = 27.8% ❌
+## SYSTEM STATUS — REGIME-SEPARATED (April 27 2026)
 
-**PLAYOFF DUO RECORD: ~10W/29L = 25.6% ❌ STRUCTURAL CONCERN**
+### REGULAR SEASON DUOS
+| Tier    | Hit % | Sample | Status                          |
+|---------|-------|--------|---------------------------------|
+| ELITE   | 41.8% | 431    | KEEP — likely +EV at ≥ +145     |
+| PP LINK | 44.8% | 420    | KEEP — likely +EV at ≥ +125     |
+| STRONG  | 34.5% | 354    | CONDITIONAL — only at ≥ +200    |
+
+### PLAYOFF DUOS
+- Combined: 25.6% / 39 obs
+- Status: PAUSED for live betting (paper-track only)
+
+### TIER A COLD STICKS u0.5
+- 80.6% / 31 obs ✅
+- Status: ACTIVE — primary live signal
 
 ## APR 21 RESULTS (post-game scored)
 
@@ -450,8 +456,17 @@ Track cumulatively + per-slate. Update after every scored day.
 
 ---
 
-## SIGNAL HIERARCHY
-Cold Flag suppress → Goalie SV% tier (boost or suppress) → Hot goalscorer filter → O/U boost
+## SIGNAL HIERARCHY — SIMPLIFIED
+
+REGULAR SEASON:
+1. Tier A Cold Sticks → live deploy
+2. ELITE + PP LINK duos → deploy if price ≥ +145 / +125
+3. STRONG duos → deploy only if price ≥ +200
+
+PLAYOFFS:
+1. Tier A Cold Sticks → live deploy
+2. Duos → paper-track only
+3. Tier B Cold, F10, Team Totals → tracking only
 
 ---
 
@@ -574,3 +589,12 @@ Advanced metrics flags (if running directly):
 - **Key insight from analyzer:** 65% of cold stick breaks = assist (not goal). An **u0.5 goals prop** on Tier A cold sticks would theoretically hit ~92%+ vs ~86% for u0.5 points — BUT major books (bet365, DraftKings, FanDuel) don't post u0.5 goals because the under side is too likely (~85-92%). **u0.5 points remains the primary vehicle.** Secondary option: anytime goalscorer NO (available on some UK/EU books).
 - **Key insight — ELITE+PP2:** hot_duo_ELITE_PP2 chain overlap = 53% (8/15). Strongest duo signal in the system. Prioritize ELITE tier pairs who also share PP1.
 - Roadmap items 10 and 15 marked ✅. TERMINAL WORKFLOW section fully updated.
+
+---
+
+## PRICE & CLV LOGGING — MANDATORY (starts April 27 2026)
+
+Every live bet records in data/bet_log.csv:
+date,bet_description,signal_tier,stake_units,price_taken,book,closing_line,clv_cents,result,pnl_units
+
+Review weekly. Decision based on CLV after 50 bets per signal.
