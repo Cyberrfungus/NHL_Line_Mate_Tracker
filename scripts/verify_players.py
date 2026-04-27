@@ -28,7 +28,7 @@ SEARCH_API = "https://search.d3.nhle.com/api/v1/search/player"
 
 # Data quality filters — applied before any tier assignment
 MIN_TOI_MINUTES = 8.0       # ignore games where player had < 8 min (scratches / IR returns)
-MAX_STALENESS_DAYS = 7      # player's most recent qualifying game must be within 7 days of slate
+MAX_STALENESS_DAYS = 10     # playoff series have 2-4 day gaps; allow up to 10 days between games
 MIN_QUALIFYING_GAMES = 3    # need at least 3 qualifying games to assign any hot/cold tier
 
 # Hockey-Reference playoff skater stats (cumulative, updated daily)
@@ -106,9 +106,25 @@ def fetch_hr_playoff_map(url: str) -> dict:
         print("    [HR] beautifulsoup4 not installed — skipping HR source")
         return {}
 
+    _HR_HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Accept": (
+            "text/html,application/xhtml+xml,application/xml;"
+            "q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8"
+        ),
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Referer": "https://www.hockey-reference.com/",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+    }
     try:
-        resp = requests.get(url, timeout=20,
-                            headers={"User-Agent": "Mozilla/5.0 (compatible)"})
+        resp = requests.get(url, timeout=20, headers=_HR_HEADERS)
         resp.raise_for_status()
     except Exception as e:
         print(f"    [HR] fetch failed: {e}")
@@ -318,7 +334,8 @@ def analyze_player(name, session, season="20252026", slate_date=None, hr_map=Non
     Source priority:
       1. Hockey-Reference cumulative playoff stats (hr_map) — fresh daily scrape
       2. NHL API playoff game log (game_type=3) — per-game, accurate blanks count
-      3. NHL API regular season game log (game_type=2) — last resort only
+      Regular-season game log (game_type=2) is NEVER used — it is the source of
+      stale April 11-16 dates that triggered the audit finding.
 
     Qualifying game criteria (applied before any tier assignment):
       - TOI >= MIN_TOI_MINUTES (filters scratches and brief IR returns)
@@ -331,21 +348,19 @@ def analyze_player(name, session, season="20252026", slate_date=None, hr_map=Non
         if hr_data is not None:
             return _build_from_hr(name, hr_data, slate_date)
 
-    # Fallback: NHL API — try playoff game log first, then regular season
+    # Fallback: NHL API playoff game log only — no regular-season fallback
     pid = find_player_id(name, session)
     if not pid:
         return {"name": name, "status": "NOT_FOUND", "player_id": None}
 
     log_data = get_player_game_log(pid, season, session, game_type=3)
-    if not log_data or not log_data.get("gameLog"):
-        log_data = get_player_game_log(pid, season, session, game_type=2)
 
     if not log_data or "gameLog" not in log_data:
         return {"name": name, "status": "NO_GAMELOG", "player_id": pid}
 
     games = log_data["gameLog"]
     if not games:
-        return {"name": name, "status": "NO_GAMES", "player_id": pid}
+        return {"name": name, "status": "NO_PLAYOFF_GAMES", "player_id": pid}
 
     # Filter 1 — TOI floor: each game must meet the minimum ice-time threshold
     qualified_games = [
@@ -524,7 +539,7 @@ def main():
         if analysis["status"] == "NOT_FOUND":
             print("NOT FOUND")
             not_found.append(name)
-        elif analysis["status"] in ("NO_GAMELOG", "NO_GAMES"):
+        elif analysis["status"] in ("NO_GAMELOG", "NO_GAMES", "NO_PLAYOFF_GAMES"):
             print(f"{analysis['status']}")
         elif analysis["status"] == "STALE_DATA":
             days = analysis.get("days_stale", "?")
