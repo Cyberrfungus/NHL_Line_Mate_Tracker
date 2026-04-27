@@ -31,6 +31,9 @@ MIN_TOI_MINUTES = 8.0       # ignore games where player had < 8 min (scratches /
 MAX_STALENESS_DAYS = 7      # player's most recent qualifying game must be within 7 days of slate
 MIN_QUALIFYING_GAMES = 3    # need at least 3 qualifying games to assign any hot/cold tier
 
+# Hockey-Reference playoff skater stats (cumulative, updated daily)
+HOCKEYREF_SKATERS_URL = "https://www.hockey-reference.com/playoffs/NHL_{year}_skaters.html"
+
 
 def cold_sticks_tier(player_data):
     """
@@ -71,6 +74,209 @@ def parse_toi_minutes(toi_str: str) -> float:
         return 0.0
 
 
+def _normalize_name(name: str) -> str:
+    """Lowercase, strip accents, collapse spaces — for fuzzy player-name matching."""
+    import unicodedata
+    nfkd = unicodedata.normalize("NFKD", name)
+    ascii_name = nfkd.encode("ascii", "ignore").decode("ascii")
+    return " ".join(ascii_name.lower().split())
+
+
+def _hr_lookup(name: str, hr_map: dict) -> dict | None:
+    """Find player in HR map: exact match first, then accent/case-normalised match."""
+    if name in hr_map:
+        return hr_map[name]
+    norm = _normalize_name(name)
+    for k, v in hr_map.items():
+        if _normalize_name(k) == norm:
+            return v
+    return None
+
+
+def fetch_hr_playoff_map(url: str) -> dict:
+    """
+    Scrape Hockey-Reference cumulative playoff skater stats.
+    Returns {player_name: {team, gp, pts, g, a, atoi_min}} or {} on failure.
+    HR hides stats tables in HTML comments — checks both visible DOM and comments.
+    """
+    import requests
+    try:
+        from bs4 import BeautifulSoup, Comment
+    except ImportError:
+        print("    [HR] beautifulsoup4 not installed — skipping HR source")
+        return {}
+
+    try:
+        resp = requests.get(url, timeout=20,
+                            headers={"User-Agent": "Mozilla/5.0 (compatible)"})
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"    [HR] fetch failed: {e}")
+        return {}
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    def _find_table(search_soup):
+        for tid in ("stats", "skaters", "skaterstats"):
+            t = search_soup.find("table", id=tid)
+            if t:
+                hs = [th.get_text(strip=True) for th in t.find_all("th")]
+                if "PTS" in hs and "GP" in hs:
+                    return t
+        for t in search_soup.find_all("table"):
+            hs = [th.get_text(strip=True) for th in t.find_all("th")]
+            if "PTS" in hs and "GP" in hs and any(h in ("Tm", "Team") for h in hs):
+                return t
+        return None
+
+    table = _find_table(soup)
+    if table is None:
+        for comment in soup.find_all(string=lambda t: isinstance(t, Comment)):
+            if "PTS" not in str(comment):
+                continue
+            table = _find_table(BeautifulSoup(str(comment), "html.parser"))
+            if table is not None:
+                break
+
+    if table is None:
+        print("    [HR] skater table not found in page or comments")
+        return {}
+
+    thead = table.find("thead")
+    header_row = thead.find_all("tr")[-1] if thead else None
+    if header_row is None:
+        return {}
+    headers = [th.get_text(strip=True) for th in header_row.find_all(["th", "td"])]
+
+    def _col(*names):
+        for n in names:
+            try:
+                return headers.index(n)
+            except ValueError:
+                pass
+        return None
+
+    name_idx = _col("Player")
+    tm_idx   = _col("Tm", "Team")
+    gp_idx   = _col("GP")
+    g_idx    = _col("G")
+    a_idx    = _col("A")
+    pts_idx  = _col("PTS")
+    atoi_idx = _col("ATOI", "TOI")
+
+    if any(i is None for i in [name_idx, tm_idx, gp_idx, pts_idx]):
+        print(f"    [HR] missing required columns — name:{name_idx} tm:{tm_idx} gp:{gp_idx} pts:{pts_idx}")
+        return {}
+
+    result = {}
+    tbody = table.find("tbody") or table
+    for row in tbody.find_all("tr"):
+        cells = row.find_all(["td", "th"])
+        if not cells or cells[0].name == "th":
+            continue
+        req = max(c for c in [name_idx, tm_idx, gp_idx, pts_idx] if c is not None)
+        if len(cells) <= req:
+            continue
+
+        player_name = cells[name_idx].get_text(strip=True)
+        if not player_name or player_name in ("", "Player"):
+            continue
+
+        team_raw = cells[tm_idx].get_text(strip=True)
+        if team_raw in ("", "TOT", "nan"):
+            continue
+
+        def _int(idx):
+            if idx is None or idx >= len(cells):
+                return 0
+            try:
+                return int(float(cells[idx].get_text(strip=True) or 0))
+            except (ValueError, TypeError):
+                return 0
+
+        gp = _int(gp_idx)
+        if gp == 0:
+            continue
+
+        atoi_min = 0.0
+        if atoi_idx is not None and atoi_idx < len(cells):
+            atoi_min = parse_toi_minutes(cells[atoi_idx].get_text(strip=True))
+
+        result[player_name] = {
+            "team":     team_raw,
+            "gp":       gp,
+            "pts":      _int(pts_idx),
+            "g":        _int(g_idx),
+            "a":        _int(a_idx),
+            "atoi_min": atoi_min,
+        }
+
+    return result
+
+
+def _build_from_hr(name: str, hr_data: dict, slate_date: str) -> dict:
+    """
+    Synthesise an analysis dict from Hockey-Reference cumulative playoff stats.
+    consecutive_blanks is only definitive when total pts == 0; otherwise 0 (conservative).
+    """
+    gp      = hr_data["gp"]
+    pts     = hr_data["pts"]
+    g       = hr_data["g"]
+    atoi_min = hr_data.get("atoi_min", 0.0)
+
+    # TOI floor check: ATOI must meet minimum
+    if atoi_min > 0 and atoi_min < MIN_TOI_MINUTES:
+        return {
+            "name": name, "player_id": None,
+            "status": "INSUFFICIENT_QUALIFYING_GAMES",
+            "qualifying_games": 0, "last_game": "",
+        }
+
+    if gp < MIN_QUALIFYING_GAMES:
+        return {
+            "name": name, "player_id": None,
+            "status": "INSUFFICIENT_QUALIFYING_GAMES",
+            "qualifying_games": gp, "last_game": "",
+        }
+
+    # L5 metrics: exact when GP ≤ 5, rate-scaled otherwise
+    l5_pts   = pts if gp <= 5 else round(pts / gp * 5)
+    l5_goals = g   if gp <= 5 else round(g   / gp * 5)
+
+    # Consecutive blanks: only deterministic when all games were pointless
+    consecutive_blanks = gp if pts == 0 else 0
+
+    flags = []
+    if consecutive_blanks >= 3:
+        flags.append("COLD_3+")
+    elif consecutive_blanks >= 2:
+        flags.append("COLD_2")
+    if l5_pts >= 5:
+        flags.append("HOT_5+")
+    elif l5_pts >= 3 and consecutive_blanks == 0:
+        flags.append("HOT")
+
+    mins = int(atoi_min)
+    secs = int(round((atoi_min - mins) * 60))
+    atoi_str = f"{mins}:{secs:02d}" if atoi_min > 0 else "?"
+
+    return {
+        "name":               name,
+        "player_id":          None,
+        "status":             "ACTIVE",
+        "source":             "hockey-reference",
+        "last_game":          slate_date or "",
+        "last5_pts":          l5_pts,
+        "last5_goals":        l5_goals,
+        "consecutive_blanks": consecutive_blanks,
+        "flags":              flags,
+        "games":              [],
+        "hr_gp":              gp,
+        "hr_pts":             pts,
+        "hr_atoi":            atoi_str,
+    }
+
+
 def find_player_id(name, session):
     """Search NHL API for player ID by name."""
     import requests
@@ -90,13 +296,13 @@ def find_player_id(name, session):
     return None
 
 
-def get_player_game_log(player_id, season="20252026", session=None):
-    """Get player's game log for the season."""
+def get_player_game_log(player_id, season="20252026", session=None, game_type=2):
+    """Get player's game log. game_type: 2 = regular season, 3 = playoffs."""
     import requests
     if session is None:
         session = requests.Session()
     try:
-        url = f"{NHL_API}/v1/player/{player_id}/game-log/{season}/2"
+        url = f"{NHL_API}/v1/player/{player_id}/game-log/{season}/{game_type}"
         resp = session.get(url, timeout=10)
         if resp.status_code == 200:
             return resp.json()
@@ -105,20 +311,35 @@ def get_player_game_log(player_id, season="20252026", session=None):
     return None
 
 
-def analyze_player(name, session, season="20252026", slate_date=None):
+def analyze_player(name, session, season="20252026", slate_date=None, hr_map=None):
     """
     Find player, get last 5 qualifying games, return analysis dict.
+
+    Source priority:
+      1. Hockey-Reference cumulative playoff stats (hr_map) — fresh daily scrape
+      2. NHL API playoff game log (game_type=3) — per-game, accurate blanks count
+      3. NHL API regular season game log (game_type=2) — last resort only
 
     Qualifying game criteria (applied before any tier assignment):
       - TOI >= MIN_TOI_MINUTES (filters scratches and brief IR returns)
       - Most recent qualifying game within MAX_STALENESS_DAYS of slate_date
       - At least MIN_QUALIFYING_GAMES qualifying games in the sample
     """
+    # Primary path: Hockey-Reference cumulative playoff data
+    if hr_map is not None:
+        hr_data = _hr_lookup(name, hr_map)
+        if hr_data is not None:
+            return _build_from_hr(name, hr_data, slate_date)
+
+    # Fallback: NHL API — try playoff game log first, then regular season
     pid = find_player_id(name, session)
     if not pid:
         return {"name": name, "status": "NOT_FOUND", "player_id": None}
 
-    log_data = get_player_game_log(pid, season, session)
+    log_data = get_player_game_log(pid, season, session, game_type=3)
+    if not log_data or not log_data.get("gameLog"):
+        log_data = get_player_game_log(pid, season, session, game_type=2)
+
     if not log_data or "gameLog" not in log_data:
         return {"name": name, "status": "NO_GAMELOG", "player_id": pid}
 
@@ -275,6 +496,17 @@ def main():
                 if key not in player_roles[name]:
                     player_roles[name].append(key)
 
+    # Fetch Hockey-Reference playoff stats as primary data source
+    hr_year = target_date[:4]
+    hr_url = HOCKEYREF_SKATERS_URL.format(year=hr_year)
+    print(f"Fetching Hockey-Reference playoff skater stats ({hr_url})...")
+    hr_map = fetch_hr_playoff_map(hr_url)
+    if hr_map:
+        print(f"Using Hockey-Reference for player L5 stats ({len(hr_map)} players parsed)")
+    else:
+        print("Hockey-Reference unavailable — falling back to NHL API for all players")
+    print()
+
     print(f"Verifying {len(players_to_check)} players from {len(teams_to_check)} teams...")
     print()
 
@@ -287,7 +519,7 @@ def main():
     for i, (name, team) in enumerate(players_to_check.items(), 1):
         print(f"  [{i}/{len(players_to_check)}] {name} ({team})...", end=" ", flush=True)
 
-        analysis = analyze_player(name, session, slate_date=target_date)
+        analysis = analyze_player(name, session, slate_date=target_date, hr_map=hr_map)
 
         if analysis["status"] == "NOT_FOUND":
             print("NOT FOUND")
@@ -307,11 +539,17 @@ def main():
             flags_str = ", ".join(analysis["flags"]) if analysis["flags"] else "OK"
             last_game = analysis.get("last_game", "?")
 
-            # Show last 5 as compact string
-            games_str = " | ".join([
-                f"{g['date'][-5:]} vs {g['opp']}: {g['pts']}pts"
-                for g in analysis.get("games", [])[:5]
-            ])
+            # Show game data: per-game detail (NHL API) or cumulative summary (HR)
+            source = analysis.get("source", "")
+            if source == "hockey-reference":
+                gp   = analysis.get("hr_gp", "?")
+                atoi = analysis.get("hr_atoi", "?")
+                games_str = f"[HR playoff] {gp}GP | ATOI {atoi}"
+            else:
+                games_str = " | ".join([
+                    f"{g['date'][-5:]} vs {g['opp']}: {g['pts']}pts"
+                    for g in analysis.get("games", [])[:5]
+                ])
 
             if "COLD" in flags_str:
                 print(f"⛔ {flags_str} ({blanks} blanks) | L5: {pts}pts | {games_str}")
