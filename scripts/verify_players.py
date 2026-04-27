@@ -26,6 +26,11 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 NHL_API = "https://api-web.nhle.com"
 SEARCH_API = "https://search.d3.nhle.com/api/v1/search/player"
 
+# Data quality filters — applied before any tier assignment
+MIN_TOI_MINUTES = 8.0       # ignore games where player had < 8 min (scratches / IR returns)
+MAX_STALENESS_DAYS = 7      # player's most recent qualifying game must be within 7 days of slate
+MIN_QUALIFYING_GAMES = 3    # need at least 3 qualifying games to assign any hot/cold tier
+
 
 def cold_sticks_tier(player_data):
     """
@@ -55,6 +60,15 @@ def cold_sticks_tier(player_data):
         return 'B'
 
     return None
+
+
+def parse_toi_minutes(toi_str: str) -> float:
+    """Parse 'MM:SS' string → total minutes as float. Returns 0.0 on bad input."""
+    try:
+        parts = str(toi_str).split(":")
+        return int(parts[0]) + int(parts[1]) / 60
+    except (AttributeError, ValueError, IndexError):
+        return 0.0
 
 
 def find_player_id(name, session):
@@ -91,9 +105,14 @@ def get_player_game_log(player_id, season="20252026", session=None):
     return None
 
 
-def analyze_player(name, session, season="20252026"):
+def analyze_player(name, session, season="20252026", slate_date=None):
     """
-    Find player, get last 5 games, return analysis dict.
+    Find player, get last 5 qualifying games, return analysis dict.
+
+    Qualifying game criteria (applied before any tier assignment):
+      - TOI >= MIN_TOI_MINUTES (filters scratches and brief IR returns)
+      - Most recent qualifying game within MAX_STALENESS_DAYS of slate_date
+      - At least MIN_QUALIFYING_GAMES qualifying games in the sample
     """
     pid = find_player_id(name, session)
     if not pid:
@@ -107,8 +126,41 @@ def analyze_player(name, session, season="20252026"):
     if not games:
         return {"name": name, "status": "NO_GAMES", "player_id": pid}
 
-    # Last 5 games (most recent first)
-    last5 = games[:5]
+    # Filter 1 — TOI floor: each game must meet the minimum ice-time threshold
+    qualified_games = [
+        g for g in games
+        if parse_toi_minutes(g.get("toi", "")) >= MIN_TOI_MINUTES
+    ]
+
+    # Filter 2 — Staleness: most recent qualifying game must be within MAX_STALENESS_DAYS
+    if slate_date and qualified_games:
+        try:
+            slate_dt = datetime.strptime(slate_date, "%Y-%m-%d").date()
+            last_q_dt = datetime.strptime(qualified_games[0]["gameDate"], "%Y-%m-%d").date()
+            days_stale = (slate_dt - last_q_dt).days
+            if days_stale > MAX_STALENESS_DAYS:
+                return {
+                    "name": name,
+                    "player_id": pid,
+                    "status": "STALE_DATA",
+                    "last_game": qualified_games[0]["gameDate"],
+                    "days_stale": days_stale,
+                }
+        except (ValueError, KeyError):
+            pass
+
+    # Filter 3 — Minimum sample: need at least MIN_QUALIFYING_GAMES to assign any tier
+    if len(qualified_games) < MIN_QUALIFYING_GAMES:
+        return {
+            "name": name,
+            "player_id": pid,
+            "status": "INSUFFICIENT_QUALIFYING_GAMES",
+            "qualifying_games": len(qualified_games),
+            "last_game": qualified_games[0]["gameDate"] if qualified_games else "",
+        }
+
+    # Last 5 qualifying games (most recent first)
+    last5 = qualified_games[:5]
 
     # Extract stats
     game_entries = []
@@ -235,13 +287,20 @@ def main():
     for i, (name, team) in enumerate(players_to_check.items(), 1):
         print(f"  [{i}/{len(players_to_check)}] {name} ({team})...", end=" ", flush=True)
 
-        analysis = analyze_player(name, session)
+        analysis = analyze_player(name, session, slate_date=target_date)
 
         if analysis["status"] == "NOT_FOUND":
             print("NOT FOUND")
             not_found.append(name)
         elif analysis["status"] in ("NO_GAMELOG", "NO_GAMES"):
             print(f"{analysis['status']}")
+        elif analysis["status"] == "STALE_DATA":
+            days = analysis.get("days_stale", "?")
+            last = analysis.get("last_game", "?")
+            print(f"⚠️  STALE ({days}d — last qualifying game {last}) — excluded from tiers")
+        elif analysis["status"] == "INSUFFICIENT_QUALIFYING_GAMES":
+            n = analysis.get("qualifying_games", 0)
+            print(f"⚠️  SKIP ({n} qualifying games < {MIN_QUALIFYING_GAMES} required) — excluded from tiers")
         else:
             pts = analysis["last5_pts"]
             blanks = analysis["consecutive_blanks"]
