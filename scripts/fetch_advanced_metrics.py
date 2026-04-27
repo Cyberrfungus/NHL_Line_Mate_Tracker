@@ -225,47 +225,90 @@ def build_playoff_goalie_map_hockeyref(url: str) -> dict:
     )
     resp.raise_for_status()
 
+    # Parse with BeautifulSoup + stdlib html.parser — no lxml or html5lib required.
     try:
-        tables = pd.read_html(StringIO(resp.text), flavor="bs4")
+        from bs4 import BeautifulSoup, Comment
     except ImportError:
-        # bs4/html5lib not installed — skip HR source, caller falls back to MoneyPuck
-        raise RuntimeError("BeautifulSoup4 not installed. Run: pip install beautifulsoup4 html5lib")
-    if not tables:
+        raise RuntimeError("BeautifulSoup4 not installed. Run: pip install beautifulsoup4")
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    # HR buries most stats tables inside HTML comments to deter scrapers.
+    # Count visible tables first (for debugging), then check comments.
+    visible_tables = soup.find_all("table")
+    print(f"    [HR debug] {len(visible_tables)} visible table(s); checking comments too")
+
+    def _find_hr_stats_table(search_soup):
+        """Return (table_tag, source_label) for the first table with Tm + SV% headers."""
+        for tid in ("stats", "goalies"):
+            t = search_soup.find("table", id=tid)
+            if t:
+                headers = [th.get_text(strip=True) for th in t.find_all("th")]
+                if "SV%" in headers and any(h in ("Tm", "Team") for h in headers):
+                    return t, f"id={tid!r}"
+        for t in search_soup.find_all("table"):
+            headers = [th.get_text(strip=True) for th in t.find_all("th")]
+            if "SV%" in headers and any(h in ("Tm", "Team") for h in headers):
+                return t, "column-match"
+        return None, None
+
+    table, source = _find_hr_stats_table(soup)
+
+    if table is None:
+        # Check every HTML comment block for a hidden stats table
+        for comment in soup.find_all(string=lambda t: isinstance(t, Comment)):
+            if "SV%" not in str(comment):
+                continue
+            comment_soup = BeautifulSoup(str(comment), "html.parser")
+            table, source = _find_hr_stats_table(comment_soup)
+            if table is not None:
+                source = f"comment/{source}"
+                break
+
+    if table is None:
+        print("    [HR debug] stats table not found — returning empty")
         return {}
 
-    df = tables[0]
+    print(f"    [HR debug] using table ({source})")
 
-    # Hockey-Reference repeats the header row every ~20 rows; drop them
-    if "Rk" in df.columns:
-        df = df[df["Rk"] != "Rk"].copy()
-
-    # Drop rows with no team (totals, blank separators)
-    tm_col = next((c for c in df.columns if str(c).strip() in ("Tm", "Team")), None)
-    if tm_col is None:
+    # Resolve column indices from the last header row
+    thead = table.find("thead")
+    header_row = thead.find_all("tr")[-1] if thead else None
+    if header_row is None:
         return {}
-    df = df[df[tm_col].notna()].copy()
-    df = df[~df[tm_col].isin(["TOT", "Team", "Tm"])].copy()
+    headers = [th.get_text(strip=True) for th in header_row.find_all(["th", "td"])]
 
-    # Locate the SV% and GP columns (HR sometimes uses multi-level headers)
-    sv_col = next((c for c in df.columns if str(c).strip() in ("SV%", "Sv%")), None)
-    gp_col = next((c for c in df.columns if str(c).strip() == "GP"), None)
-    if sv_col is None or gp_col is None:
+    tm_idx = next((i for i, h in enumerate(headers) if h in ("Tm", "Team")), None)
+    sv_idx = next((i for i, h in enumerate(headers) if h in ("SV%", "Sv%")), None)
+    gp_idx = next((i for i, h in enumerate(headers) if h == "GP"), None)
+    if tm_idx is None or sv_idx is None or gp_idx is None:
+        print(f"    [HR debug] missing columns — Tm:{tm_idx} SV%:{sv_idx} GP:{gp_idx}")
         return {}
+
+    # Parse body rows directly — skips repeated <th> header rows automatically
+    tbody = table.find("tbody") or table
 
     result = {}
-    for _, row in df.iterrows():
-        team_raw = str(row[tm_col]).strip()
+    for row in tbody.find_all("tr"):
+        cells = row.find_all(["td", "th"])
+        # Skip header rows (all-th rows or rows too short)
+        if not cells or cells[0].name == "th":
+            continue
+        if len(cells) <= max(tm_idx, sv_idx, gp_idx):
+            continue
+
+        team_raw = cells[tm_idx].get_text(strip=True)
         team = HOCKEYREF_TEAM_NORM.get(team_raw, team_raw)
-        if not team or team in ("nan", "TOT", ""):
+        if not team or team in ("", "nan", "TOT", "Team", "Tm"):
             continue
 
         try:
-            sv_pct = float(str(row[sv_col]).strip())
+            sv_pct = float(cells[sv_idx].get_text(strip=True))
         except (ValueError, TypeError):
             continue
 
         try:
-            gp = int(float(str(row[gp_col]).strip()))
+            gp = int(float(cells[gp_idx].get_text(strip=True)))
         except (ValueError, TypeError):
             gp = 0
 
@@ -282,6 +325,7 @@ def build_playoff_goalie_map_hockeyref(url: str) -> dict:
             "games":  gp,
         }
 
+    print(f"    [HR debug] parsed {len(result)} team(s): {sorted(result)}")
     return result
 
 
