@@ -17,8 +17,10 @@ import argparse
 import json
 import os
 import sys
+import unicodedata
 from datetime import datetime
 from io import StringIO
+from pathlib import Path
 
 import requests
 import pandas as pd
@@ -337,10 +339,23 @@ def parse_playoff_games(record_str: str) -> int:
         return 0
 
 
+def _names_match(mp_name: str, confirmed_name: str) -> bool:
+    """True if MoneyPuck name and confirmed starter name refer to the same player."""
+    if not mp_name or not confirmed_name:
+        return False
+
+    def _norm(n: str) -> str:
+        nfkd = unicodedata.normalize("NFKD", n.lower().strip())
+        return nfkd.encode("ascii", "ignore").decode("ascii")
+
+    return _norm(mp_name) == _norm(confirmed_name)
+
+
 def build_goalie_metrics(df: pd.DataFrame,
                          playoff_games_map: dict | None = None,
                          playoff_sv_map: dict | None = None,
-                         playoff_source: str = "moneypuck") -> dict:
+                         playoff_source: str = "moneypuck",
+                         confirmed_starters: dict | None = None) -> dict:
     """
     Build per-team goalie metrics blending season and playoff data.
 
@@ -366,6 +381,8 @@ def build_goalie_metrics(df: pd.DataFrame,
         playoff_games_map = {}
     if playoff_sv_map is None:
         playoff_sv_map = {}
+    if confirmed_starters is None:
+        confirmed_starters = {}
 
     metrics = {}
     for _, row in df.iterrows():
@@ -387,9 +404,15 @@ def build_goalie_metrics(df: pd.DataFrame,
         season_gsax = round(ga - xga, 2)      # positive = worse than expected
         season_sv   = round(1 - ga / ongoal, 3) if ongoal > 0 else 0.0
 
-        # Keep best-performing goalie per team (most negative GSAx = primary starter proxy)
-        if team in metrics and metrics[team]["season_gsax"] <= season_gsax:
-            continue
+        # Select the correct goalie per team
+        if team in confirmed_starters:
+            # Skip any row that isn't the confirmed starter — ignores backups entirely
+            if not _names_match(name_val, confirmed_starters[team].get("name", "")):
+                continue
+        else:
+            # No confirmed starter available: fall back to GSAx proxy
+            if team in metrics and metrics[team]["season_gsax"] <= season_gsax:
+                continue
 
         p_stats      = playoff_sv_map.get(team, {})
         playoff_sv   = p_stats.get("sv_pct")   # None if no playoff data yet
@@ -444,6 +467,63 @@ def build_goalie_metrics(df: pd.DataFrame,
             "sv_pct":             season_sv,
             "GSAx":               season_gsax,
         }
+    # Synthesise entries for confirmed starters that had no matching MoneyPuck row
+    for team, starter_info in confirmed_starters.items():
+        if team in metrics:
+            continue
+        starter_name = starter_info.get("name", "")
+        try:
+            season_sv = float(starter_info.get("svpct", 0.900))
+        except (ValueError, TypeError):
+            season_sv = 0.900
+
+        playoff_games = playoff_games_map.get(team, 0)
+        if playoff_games == 0:
+            playoff_games = playoff_sv_map.get(team, {}).get("games", 0)
+        playoff_weight = get_playoff_goalie_weight(playoff_games)
+        season_weight  = 1.0 - playoff_weight
+
+        p_stats      = playoff_sv_map.get(team, {})
+        playoff_sv   = p_stats.get("sv_pct")
+        playoff_gsax = p_stats.get("gsax")
+
+        if playoff_sv is not None and playoff_games > 0:
+            blended_sv   = round(playoff_sv * playoff_weight + season_sv * season_weight, 3)
+            blended_gsax = None
+            data_source  = playoff_source
+        elif playoff_games > 0:
+            playoff_weight = PLAYOFF_FALLBACK_WEIGHT
+            blended_sv     = season_sv
+            blended_gsax   = None
+            data_source    = "fallback"
+        else:
+            blended_sv   = season_sv
+            blended_gsax = None
+            data_source  = "season_only"
+
+        print(f"    [goalie] {team}: {starter_name!r} not in MoneyPuck — "
+              f"using goalies.json sv_pct={season_sv}")
+        metrics[team] = {
+            "name":                starter_name,
+            "season_sv":           season_sv,
+            "season_gsax":         None,
+            "playoff_sv":          playoff_sv,
+            "playoff_gsax":        playoff_gsax,
+            "playoff_games":       playoff_games,
+            "playoff_weight":      playoff_weight,
+            "playoff_data_source": data_source,
+            "blended_sv":          blended_sv,
+            "blended_gsax":        blended_gsax,
+            "tier":                tier_goalie(blended_sv),
+            "signal":              signal(blended_sv),
+            "xGA":                 None,
+            "GA":                  None,
+            "games":               None,
+            "sv_pct":              season_sv,
+            "GSAx":                None,
+            "source":              "goalies_json_fallback",
+        }
+
     return metrics
 
 
@@ -471,19 +551,32 @@ def main():
         print(list(fetch_csv(goalie_url).columns))
         return
 
-    # Load playoff game counts from goalies JSON if provided
+    # Load goalies JSON: confirmed starters + playoff game counts
     playoff_games_map = {}
+    confirmed_starters = {}
     if args.goalies_json:
-        try:
-            with open(args.goalies_json, encoding="utf-8") as f:
-                goalies_data = json.load(f)
-            for team, info in goalies_data.items():
-                playoff_games_map[team] = parse_playoff_games(info.get("record", "0-0-0"))
-            print(f"  → playoff games loaded from {args.goalies_json}: "
-                  f"{sum(v > 0 for v in playoff_games_map.values())} teams with games played")
-        except Exception as e:
-            print(f"  → goalies-json load failed ({e}), playoff_weight defaults to 0.0",
-                  file=sys.stderr)
+        goalies_json_path = Path(args.goalies_json).expanduser()
+        if not goalies_json_path.exists():
+            print(f"  ⚠  WARNING: --goalies-json not found: {goalies_json_path}", flush=True)
+            print(f"     Goalie selection will use MoneyPuck GSAx proxy — "
+                  f"playoff_weight defaults to 0.0")
+        else:
+            try:
+                with goalies_json_path.open(encoding="utf-8") as f:
+                    goalies_data = json.load(f)
+                for team, info in goalies_data.items():
+                    playoff_games_map[team] = parse_playoff_games(info.get("record", "0-0-0"))
+                    if info.get("goalie"):
+                        confirmed_starters[team] = {
+                            "name":  info["goalie"],
+                            "svpct": info.get("svpct", "0.900"),
+                        }
+                print(f"  → goalies.json loaded: {len(confirmed_starters)} confirmed starters, "
+                      f"{sum(v > 0 for v in playoff_games_map.values())} teams with playoff games")
+            except Exception as e:
+                print(f"  ⚠  WARNING: --goalies-json load failed: {e}", flush=True)
+                print(f"     Goalie selection will use MoneyPuck GSAx proxy — "
+                      f"playoff_weight defaults to 0.0")
 
     teams, goalies = {}, {}
     playoff_sv_map = {}
@@ -547,6 +640,7 @@ def main():
             playoff_games_map=playoff_games_map,
             playoff_sv_map=playoff_sv_map,
             playoff_source=playoff_source,
+            confirmed_starters=confirmed_starters,
         )
         print(f"{len(goalies)} goalies")
     except Exception as e:

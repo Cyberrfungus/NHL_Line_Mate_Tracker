@@ -300,21 +300,33 @@ def _build_from_hr(name: str, hr_data: dict, slate_date: str) -> dict:
     }
 
 
-def find_player_id(name, session):
-    """Search NHL API for player ID by name."""
+def find_player_id(name, session, team=None):
+    """Search NHL API for player ID by name, with optional team validation."""
     import requests
     try:
         resp = session.get(SEARCH_API, params={
             "culture": "en-us",
-            "limit": 3,
+            "limit": 10,
             "q": name,
             "active": "true"
         }, timeout=10)
         results = resp.json()
-        if results and len(results) > 0:
-            # Return first match
-            return results[0].get("playerId")
-    except Exception as e:
+        if not results:
+            return None
+        if team:
+            team_upper = team.upper()
+            for r in results:
+                r_team = (
+                    r.get("currentTeamAbbrev")
+                    or r.get("teamAbbrev")
+                    or r.get("teamCode")
+                    or ""
+                ).upper()
+                if r_team == team_upper:
+                    return r.get("playerId")
+        # Fall back to first result if team filter found nothing
+        return results[0].get("playerId")
+    except Exception:
         pass
     return None
 
@@ -334,7 +346,7 @@ def get_player_game_log(player_id, season="20252026", session=None, game_type=2)
     return None
 
 
-def analyze_player(name, session, season="20252026", slate_date=None, hr_map=None):
+def analyze_player(name, session, season="20252026", slate_date=None, hr_map=None, team=None):
     """
     Find player, get last 5 qualifying games, return analysis dict.
 
@@ -356,7 +368,7 @@ def analyze_player(name, session, season="20252026", slate_date=None, hr_map=Non
             return _build_from_hr(name, hr_data, slate_date)
 
     # Fallback: NHL API playoff game log only — no regular-season fallback
-    pid = find_player_id(name, session)
+    pid = find_player_id(name, session, team=team)
     if not pid:
         return {"name": name, "status": "NOT_FOUND", "player_id": None}
 
@@ -541,7 +553,7 @@ def main():
     for i, (name, team) in enumerate(players_to_check.items(), 1):
         print(f"  [{i}/{len(players_to_check)}] {name} ({team})...", end=" ", flush=True)
 
-        analysis = analyze_player(name, session, slate_date=target_date, hr_map=hr_map)
+        analysis = analyze_player(name, session, slate_date=target_date, hr_map=hr_map, team=team)
 
         if analysis["status"] == "NOT_FOUND":
             print("NOT FOUND")
