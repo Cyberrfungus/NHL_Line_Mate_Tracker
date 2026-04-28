@@ -82,6 +82,18 @@ def run_pre_game(date, advanced):
     print("   6. SGP correlation table")
     print()
     print("You're ready. 🔥")
+    print()
+    print(f"✅ Pipeline complete for {date}")
+    print(f"✅ Fresh Hockey-Reference playoff data used")
+    print(f"✅ verified_{date}.json is ready")
+    print()
+    print("Next step:")
+    print("1. Go to your main Claude Project folder")
+    print("2. Upload these 3 files:")
+    print(f"   - data/lineups_{date}.json")
+    print(f"   - data/verified_{date}.json")
+    print(f"   - data/advanced_metrics_{date}.json")
+    print("3. Paste the updated v6 prompt and generate tonight's Verified Play Sheet.")
 
 
 def run_post_game(date):
