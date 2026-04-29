@@ -2,6 +2,14 @@ node_modules/
 dist/
 .DS_Store
 *.local
+
+# data/ — ignore everything except dated pipeline JSON files
 data/*
+!data/advanced_metrics_*.json
+!data/goalies_*.json
+!data/lineups_*.json
+!data/verified_*.json
+!data/chains_*.json
+
 __pycache__/
 *.pyc
