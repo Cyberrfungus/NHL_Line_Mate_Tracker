@@ -1,0 +1,494 @@
+{
+  "MTL": {
+    "updated": "2026-04-29T16:45:00.861563",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-29T17:23:31.277Z",
+    "team_id": 16,
+    "L1": [
+      "Cole Caufield",
+      "Nick Suzuki",
+      "Juraj Slafkovsky"
+    ],
+    "L2": [
+      "Alexandre Texier",
+      "Alex Newhook",
+      "Ivan Demidov"
+    ],
+    "L3": [
+      "Josh Anderson",
+      "Phillip Danault",
+      "Brendan Gallagher"
+    ],
+    "L4": [
+      "Kirby Dach",
+      "Jake Evans",
+      "Zack Bolduc"
+    ],
+    "D1": [
+      "Mike Matheson",
+      "Alexandre Carrier"
+    ],
+    "D2": [
+      "Kaiden Guhle",
+      "Lane Hutson"
+    ],
+    "D3": [
+      "Jayden Struble",
+      "Arber Xhekaj"
+    ],
+    "PP1": [
+      "Juraj Slafkovsky",
+      "Nick Suzuki",
+      "Ivan Demidov",
+      "Cole Caufield",
+      "Lane Hutson"
+    ],
+    "PP2": [
+      "Alex Newhook",
+      "Kirby Dach",
+      "Zack Bolduc",
+      "Mike Matheson",
+      "Alexandre Texier"
+    ],
+    "PK1": [
+      "Jake Evans",
+      "Josh Anderson",
+      "Mike Matheson",
+      "Alexandre Carrier"
+    ],
+    "PK2": [
+      "Phillip Danault",
+      "Brendan Gallagher",
+      "Kaiden Guhle",
+      "Arber Xhekaj"
+    ],
+    "starter": "Jakub Dobes",
+    "backup": "Jacob Fowler",
+    "injuries": [
+      {
+        "player": "Patrik Laine",
+        "status": "ir",
+        "note": "Laine (core muscle) is expected to miss the next 3-4 months after having a procedure done on Friday.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Noah Dobson",
+        "status": "out",
+        "note": "Dobson (upper body) will be re-evaluated in two weeks.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  },
+  "PHI": {
+    "updated": "2026-04-29T16:45:01.415129",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-29T17:20:56.400Z",
+    "team_id": 22,
+    "L1": [
+      "Denver Barkey",
+      "Trevor Zegras",
+      "Owen Tippett"
+    ],
+    "L2": [
+      "Travis Konecny",
+      "Christian Dvorak",
+      "Porter Martone"
+    ],
+    "L3": [
+      "Alex Bump",
+      "Noah Cates",
+      "Matvei Michkov"
+    ],
+    "L4": [
+      "Luke Glendening",
+      "Sean Couturier",
+      "Tyson Foerster"
+    ],
+    "D1": [
+      "Travis Sanheim",
+      "Rasmus Ristolainen"
+    ],
+    "D2": [
+      "Cam York",
+      "Jamie Drysdale"
+    ],
+    "D3": [
+      "Nick Seeler",
+      "Noah Juulsen"
+    ],
+    "PP1": [
+      "Travis Konecny",
+      "Christian Dvorak",
+      "Matvei Michkov",
+      "Owen Tippett",
+      "Rasmus Ristolainen"
+    ],
+    "PP2": [
+      "Porter Martone",
+      "Noah Cates",
+      "Tyson Foerster",
+      "Jamie Drysdale",
+      "Trevor Zegras"
+    ],
+    "PK1": [
+      "Sean Couturier",
+      "Luke Glendening",
+      "Nick Seeler",
+      "Rasmus Ristolainen"
+    ],
+    "PK2": [
+      "Noah Cates",
+      "Tyson Foerster",
+      "Cam York",
+      "Travis Sanheim"
+    ],
+    "starter": "Dan Vladar",
+    "backup": "Samuel Ersson",
+    "injuries": [
+      {
+        "player": "Rodrigo Abols",
+        "status": "ir",
+        "note": "Abols (lower body) has been placed on IR.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Nikita Grebenkin",
+        "status": "out",
+        "note": "Grebenkin is expected to miss the next 7-10 days with an upper-body injury.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  },
+  "PIT": {
+    "updated": "2026-04-29T16:45:01.964122",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-29T17:22:25.803Z",
+    "team_id": 24,
+    "L1": [
+      "Rickard Rakell",
+      "Sidney Crosby",
+      "Bryan Rust"
+    ],
+    "L2": [
+      "Egor Chinakhov",
+      "Tommy Novak",
+      "Evgeni Malkin"
+    ],
+    "L3": [
+      "Elmer Soderblom",
+      "Ben Kindel",
+      "Anthony Mantha"
+    ],
+    "L4": [
+      "Connor Dewar",
+      "Blake Lizotte",
+      "Noel Acciari"
+    ],
+    "D1": [
+      "Parker Wotherspoon",
+      "Erik Karlsson"
+    ],
+    "D2": [
+      "Samuel Girard",
+      "Kris Letang"
+    ],
+    "D3": [
+      "Ryan Shea",
+      "Ilya Solovyov"
+    ],
+    "PP1": [
+      "Bryan Rust",
+      "Evgeni Malkin",
+      "Rickard Rakell",
+      "Erik Karlsson",
+      "Sidney Crosby"
+    ],
+    "PP2": [
+      "Egor Chinakhov",
+      "Ben Kindel",
+      "Anthony Mantha",
+      "Kris Letang",
+      "Tommy Novak"
+    ],
+    "PK1": [
+      "Blake Lizotte",
+      "Connor Dewar",
+      "Parker Wotherspoon",
+      "Erik Karlsson"
+    ],
+    "PK2": [
+      "Noel Acciari",
+      "Bryan Rust",
+      "Ryan Shea",
+      "Kris Letang"
+    ],
+    "starter": "Arturs Silovs",
+    "backup": "Stuart Skinner",
+    "injuries": [
+      {
+        "player": "Joel Blomqvist",
+        "status": "ir",
+        "note": "The Penguns have activated Joel Blomqvist (lower-body) from IR and assigned him to Wilkes-Barre/Scranton (AHL).",
+        "game_time_decision": false
+      },
+      {
+        "player": "Filip Hallander",
+        "status": "ir",
+        "note": "Hallander has been recalled from his conditioning loan with the @WBSPenguins (AHL) in order to undergo further evaluation and testing.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  },
+  "TBL": {
+    "updated": "2026-04-29T16:45:02.522177",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-29T17:38:08.599Z",
+    "team_id": 27,
+    "L1": [
+      "Brandon Hagel",
+      "Brayden Point",
+      "Nikita Kucherov"
+    ],
+    "L2": [
+      "Gage Goncalves",
+      "Anthony Cirelli",
+      "Jake Guentzel"
+    ],
+    "L3": [
+      "Zemgus Girgensons",
+      "Yanni Gourde",
+      "Nick Paul"
+    ],
+    "L4": [
+      "Corey Perry",
+      "Dominic James",
+      "Oliver Bjorkstrand"
+    ],
+    "D1": [
+      "J.J. Moser",
+      "Darren Raddysh"
+    ],
+    "D2": [
+      "Ryan McDonagh",
+      "Erik Cernak"
+    ],
+    "D3": [
+      "Emil Lilleberg",
+      "Maxwell Crozier"
+    ],
+    "PP1": [
+      "Jake Guentzel",
+      "Brayden Point",
+      "Nikita Kucherov",
+      "Brandon Hagel",
+      "Darren Raddysh"
+    ],
+    "PP2": [
+      "Nick Paul",
+      "Anthony Cirelli",
+      "Corey Perry",
+      "Oliver Bjorkstrand",
+      "J.J. Moser"
+    ],
+    "PK1": [
+      "Anthony Cirelli",
+      "Brandon Hagel",
+      "Ryan McDonagh",
+      "Erik Cernak"
+    ],
+    "PK2": [
+      "Yanni Gourde",
+      "Zemgus Girgensons",
+      "Emil Lilleberg",
+      "J.J. Moser"
+    ],
+    "starter": "Andrei Vasilevskiy",
+    "backup": "Jonas Johansson",
+    "injuries": [
+      {
+        "player": "Victor Hedman",
+        "status": "out",
+        "note": "Hedman (personal) is doubtful to return for Tampa Bay for their first round matchup vs. Montreal.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Pontus Holmberg",
+        "status": "out",
+        "note": "Holmberg (upper-body) has been ruled out for Tampa Bay's opening round series vs. Montreal.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Charle-Edouard D'Astous",
+        "status": "dtd",
+        "note": "D’Astous (undisclosed) will be a game-time decision for Game 5 vs. Montreal.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  },
+  "UTA": {
+    "updated": "2026-04-29T16:45:03.069862",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-29T18:22:26.979Z",
+    "team_id": 798,
+    "L1": [
+      "Clayton Keller",
+      "Nick Schmaltz",
+      "Lawson Crouse"
+    ],
+    "L2": [
+      "Kailer Yamamoto",
+      "Logan Cooley",
+      "Dylan Guenther"
+    ],
+    "L3": [
+      "Alex Kerfoot",
+      "Barrett Hayton",
+      "Michael Carcone"
+    ],
+    "L4": [
+      "JJ Peterka",
+      "Kevin Stenlund",
+      "Brandon Tanev"
+    ],
+    "D1": [
+      "Mikhail Sergachev",
+      "MacKenzie Weegar"
+    ],
+    "D2": [
+      "Nate Schmidt",
+      "John Marino"
+    ],
+    "D3": [
+      "Ian Cole",
+      "Sean Durzi"
+    ],
+    "PP1": [
+      "Nick Schmaltz",
+      "Logan Cooley",
+      "Clayton Keller",
+      "Dylan Guenther",
+      "Mikhail Sergachev"
+    ],
+    "PP2": [
+      "Lawson Crouse",
+      "Barrett Hayton",
+      "Michael Carcone",
+      "JJ Peterka",
+      "MacKenzie Weegar"
+    ],
+    "PK1": [
+      "Kevin Stenlund",
+      "Lawson Crouse",
+      "Ian Cole",
+      "John Marino"
+    ],
+    "PK2": [
+      "Nick Schmaltz",
+      "Alex Kerfoot",
+      "Mikhail Sergachev",
+      "Nate Schmidt"
+    ],
+    "starter": "Karel Vejmelka",
+    "backup": "Vitek Vanecek",
+    "injuries": [
+      {
+        "player": "Barrett Hayton",
+        "status": "dtd",
+        "note": "Hayton (upper-body) skated on Wednesday but is considered day-to-day.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Jack McBain",
+        "status": "dtd",
+        "note": "McBain (undisclosed) will not play in Game 2 in Vegas.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  },
+  "VGK": {
+    "updated": "2026-04-29T16:45:03.616443",
+    "source": "DFO-nextdata",
+    "source_updated": "2026-04-28T14:20:26.024Z",
+    "team_id": 32,
+    "L1": [
+      "Ivan Barbashev",
+      "Jack Eichel",
+      "Brett Howden"
+    ],
+    "L2": [
+      "Reilly Smith",
+      "Mitch Marner",
+      "Mark Stone"
+    ],
+    "L3": [
+      "Pavel Dorofeyev",
+      "Tomas Hertl",
+      "Keegan Kolesar"
+    ],
+    "L4": [
+      "Cole Smith",
+      "Nic Dowd",
+      "Colton Sissons"
+    ],
+    "D1": [
+      "Brayden McNabb",
+      "Shea Theodore"
+    ],
+    "D2": [
+      "Noah Hanifin",
+      "Rasmus Andersson"
+    ],
+    "D3": [
+      "Jeremy Lauzon",
+      "Kaedan Korczak"
+    ],
+    "PP1": [
+      "Ivan Barbashev",
+      "Jack Eichel",
+      "Mark Stone",
+      "Pavel Dorofeyev",
+      "Shea Theodore"
+    ],
+    "PP2": [
+      "Brett Howden",
+      "Mitch Marner",
+      "Tomas Hertl",
+      "Noah Hanifin",
+      "Rasmus Andersson"
+    ],
+    "PK1": [
+      "Mitch Marner",
+      "Brett Howden",
+      "Noah Hanifin",
+      "Rasmus Andersson"
+    ],
+    "PK2": [
+      "Jack Eichel",
+      "Mark Stone",
+      "Brayden McNabb",
+      "Jeremy Lauzon"
+    ],
+    "starter": "Carter Hart",
+    "backup": "Adin Hill",
+    "injuries": [
+      {
+        "player": "William Karlsson",
+        "status": "ir",
+        "note": "Karlsson (lower-body) will not be available to start Round 1 but continues to progress.",
+        "game_time_decision": false
+      },
+      {
+        "player": "Alexander Holtz",
+        "status": "dtd",
+        "note": "Holtz will be a healthy scratch vs. Pittsburgh on Sunday.",
+        "game_time_decision": false
+      }
+    ],
+    "scratched": []
+  }
+}

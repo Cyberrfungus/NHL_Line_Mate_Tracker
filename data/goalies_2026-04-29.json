@@ -1,0 +1,62 @@
+{
+  "TBL": {
+    "goalie": "Andrei Vasilevskiy",
+    "status": "Confirmed",
+    "record": "38-15-4",
+    "gaa": "2.35",
+    "svpct": "0.909",
+    "opponent": "MTL",
+    "home_away": "home",
+    "news": "Vasilevskiy will start Game 5 vs. Montreal. "
+  },
+  "MTL": {
+    "goalie": "Jakub Dobes",
+    "status": "Unknown",
+    "record": "29-10-4",
+    "gaa": "2.78",
+    "svpct": "0.901",
+    "opponent": "TBL",
+    "home_away": "away",
+    "news": ""
+  },
+  "PHI": {
+    "goalie": "Dan Vladar",
+    "status": "Likely",
+    "record": "29-14-7",
+    "gaa": "2.42",
+    "svpct": "0.906",
+    "opponent": "PIT",
+    "home_away": "home",
+    "news": "Vladar was the first goalie off the ice ahead of Game 6. "
+  },
+  "PIT": {
+    "goalie": "Arturs Silovs",
+    "status": "Confirmed",
+    "record": "19-12-8",
+    "gaa": "3.07",
+    "svpct": "0.887",
+    "opponent": "PHI",
+    "home_away": "away",
+    "news": "Silovs will start Game 6 in Philadelphia. "
+  },
+  "VGK": {
+    "goalie": "Carter Hart",
+    "status": "Confirmed",
+    "record": "11-3-3",
+    "gaa": "2.71",
+    "svpct": "0.890",
+    "opponent": "UTA",
+    "home_away": "home",
+    "news": "Hart will start Game 5 vs. Utah. "
+  },
+  "UTA": {
+    "goalie": "Karel Vejmelka",
+    "status": "Unknown",
+    "record": "38-19-3",
+    "gaa": "2.76",
+    "svpct": "0.895",
+    "opponent": "VGK",
+    "home_away": "away",
+    "news": ""
+  }
+}
