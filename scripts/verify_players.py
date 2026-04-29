@@ -511,6 +511,23 @@ def main():
 
     player_roles = {}  # name -> list of roles (e.g. ["L2", "PP2"])
 
+    # Build injury map: any player flagged out/ir/dtd or scratched is marked INACTIVE
+    # and excluded from API lookups — they cannot generate meaningful game log data.
+    INACTIVE_STATUSES = {"out", "ir", "dtd", "scratched"}
+    injured_map = {}  # name -> status string
+    for team in teams_to_check:
+        td = lineups.get(team, {})
+        for inj in td.get("injuries", []):
+            p = inj.get("player", "")
+            s = inj.get("status", "").lower()
+            if p and s in INACTIVE_STATUSES:
+                injured_map[p] = s
+        for p in td.get("scratched", []):
+            if p:
+                injured_map[p] = "scratched"
+
+    injured_in_slots = {}  # name -> {team, status} — injured players found in active slots
+
     for team in teams_to_check:
         td = lineups.get(team, {})
         if "error" in td or "L1" not in td:
@@ -523,6 +540,10 @@ def main():
 
         for key in keys:
             for name in td.get(key, []):
+                if name in injured_map:
+                    if name not in injured_in_slots:
+                        injured_in_slots[name] = {"team": team, "status": injured_map[name]}
+                    continue  # skip — will be written as INACTIVE
                 if name not in players_to_check:
                     players_to_check[name] = team
                 if name not in player_roles:
@@ -540,6 +561,12 @@ def main():
     else:
         print("⚠️  Hockey-Reference unavailable — falling back to NHL API playoff log")
     print()
+
+    if injured_in_slots:
+        print(f"Skipping {len(injured_in_slots)} injured/out/dtd player(s) — will be marked INACTIVE:")
+        for inj_name, inj_info in injured_in_slots.items():
+            print(f"  {inj_name} ({inj_info['team']}) — {inj_info['status'].upper()}")
+        print()
 
     print(f"Verifying {len(players_to_check)} players from {len(teams_to_check)} teams...")
     print()
@@ -659,6 +686,15 @@ def main():
     if not_found:
         print()
         print(f"⚠️  NOT FOUND ({len(not_found)}): {', '.join(not_found)}")
+
+    # Write INACTIVE entries for injured/out/dtd players found in lineup slots
+    for inj_name, inj_info in injured_in_slots.items():
+        results[inj_name] = {
+            "name": inj_name,
+            "status": "INACTIVE",
+            "player_id": None,
+            "injury_status": inj_info["status"],
+        }
 
     # Save results
     out_path = os.path.join(DATA_DIR, f"verified_{target_date}.json")

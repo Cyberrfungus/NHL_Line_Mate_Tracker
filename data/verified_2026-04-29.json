@@ -2646,8 +2646,9 @@
     },
     "Barrett Hayton": {
       "name": "Barrett Hayton",
-      "status": "NO_PLAYOFF_GAMES",
-      "player_id": "8480849"
+      "status": "INACTIVE",
+      "player_id": "8480849",
+      "injury_status": "dtd"
     },
     "Michael Carcone": {
       "name": "Michael Carcone",
