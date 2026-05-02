@@ -200,6 +200,10 @@ def get_strength(situation_code, scoring_team_id, away_team_id, period_type):
     home_skaters = int(sc[2])
     home_goalie  = int(sc[3])
 
+    # Bug 11 fix: shootout goals must be tagged SO, not ES
+    if period_type == "SO":
+        return "SO"
+
     if period_type == "OT":
         return "OT"
 
@@ -258,6 +262,14 @@ def extract_goals(pbp_data, game_info, date_str):
         assist1 = pmap.get(a1_id, {}).get("name") if a1_id else None
         assist2 = pmap.get(a2_id, {}).get("name") if a2_id else None
 
+        # Bug 12: blocklist — strings that must never appear as players in chain
+        CHAIN_BLOCKLIST = {"unassisted", "unknown", ""}
+
+        # Bug 10 fix: filter blocklist strings from chain; "unassisted" is only
+        # a display label for assist1 JSON field, not a real player name.
+        def _valid(name):
+            return bool(name) and name.lower() not in CHAIN_BLOCKLIST
+
         goals.append({
             "date": date_str,
             "game": f"{game_info['away']}@{game_info['home']}",
@@ -266,9 +278,9 @@ def extract_goals(pbp_data, game_info, date_str):
             "time": time_in,
             "strength": strength,
             "scorer": scorer,
-            "assist1": assist1 or "unassisted",
-            "assist2": assist2 or "",
-            "chain": [scorer] + ([assist1] if assist1 else []) + ([assist2] if assist2 else []),
+            "assist1": assist1 if assist1 and _valid(assist1) else "unassisted",
+            "assist2": assist2 if assist2 and _valid(assist2) else "",
+            "chain": [scorer] + ([assist1] if _valid(assist1) else []) + ([assist2] if _valid(assist2) else []),
         })
 
     return goals

@@ -8,6 +8,7 @@ Usage:
     py scripts/score_results.py --date 2026-04-21
     py scripts/score_results.py --backfill          # score all past dates with both files
     py scripts/score_results.py --date 2026-04-21 --dry-run
+    py scripts/score_results.py --date 2026-04-21 --force   # delete existing rows then re-score
     py scripts/score_results.py --summary           # print cumulative stats from log
 """
 
@@ -178,6 +179,23 @@ def already_scored(date):
         return any(row["date"] == date for row in csv.DictReader(f))
 
 
+def delete_date_rows(date_str):
+    """Remove all rows for date_str from results_log.csv. Returns count deleted."""
+    if not RESULTS_LOG.exists():
+        return 0
+    with open(RESULTS_LOG, newline="", encoding="utf-8") as f:
+        reader     = csv.DictReader(f)
+        all_rows   = list(reader)
+    kept    = [r for r in all_rows if r.get("date") != date_str]
+    deleted = len(all_rows) - len(kept)
+    if deleted:
+        with open(RESULTS_LOG, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=CSV_FIELDS)
+            writer.writeheader()
+            writer.writerows(kept)
+    return deleted
+
+
 def append_to_log(rows):
     write_header = not RESULTS_LOG.exists()
     with open(RESULTS_LOG, "a", newline="", encoding="utf-8") as f:
@@ -282,6 +300,8 @@ def main():
     parser.add_argument("--backfill", action="store_true", help="Score all past dates with both files present")
     parser.add_argument("--dry-run",  action="store_true", help="Print results without writing CSV")
     parser.add_argument("--summary",  action="store_true", help="Print cumulative summary from results_log.csv")
+    parser.add_argument("--force",    action="store_true",
+                        help="Delete existing rows for this date then re-score (use with --date)")
     args = parser.parse_args()
 
     if args.summary:
@@ -313,8 +333,15 @@ def main():
     date = args.date or (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
     print(f"🏒 Scoring {date}")
 
-    if not args.dry_run and already_scored(date):
-        print(f"  ⚠  {date} already in results_log.csv. Use --dry-run to preview or delete the rows to re-score.")
+    if args.force and not args.dry_run:
+        deleted = delete_date_rows(date)
+        if deleted:
+            print(f"  🗑  --force: removed {deleted} existing row(s) for {date}")
+        else:
+            print(f"  🗑  --force: no existing rows for {date} to remove")
+    elif not args.dry_run and already_scored(date):
+        print(f"  ⚠  {date} already in results_log.csv. "
+              f"Use --dry-run to preview or --force to delete and re-score.")
         return
 
     n = score_date(date, dry_run=args.dry_run)

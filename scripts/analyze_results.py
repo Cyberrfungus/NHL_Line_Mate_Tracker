@@ -10,6 +10,8 @@ Usage:
     py scripts/analyze_results.py --cold           # cold sticks detail only
     py scripts/analyze_results.py --duos           # hot duo chains detail only
     py scripts/analyze_results.py --csv            # dump full breakdown to stdout as CSV
+    py scripts/analyze_results.py --since 2026-04-20 --until 2026-04-29   # date range
+    py scripts/analyze_results.py --since 2026-04-25                       # from date onward
 """
 
 import argparse
@@ -49,6 +51,15 @@ def load_rows():
         sys.exit(1)
     with open(LOG_PATH, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def filter_by_date(rows, since=None, until=None):
+    """Filter rows to [since, until] date range (both inclusive, YYYY-MM-DD strings)."""
+    if since:
+        rows = [r for r in rows if r.get("date", "") >= since]
+    if until:
+        rows = [r for r in rows if r.get("date", "") <= until]
+    return rows
 
 
 def date_range(rows):
@@ -224,9 +235,17 @@ def main():
     parser.add_argument("--cold",  action="store_true", help="Cold sticks analysis only")
     parser.add_argument("--duos",  action="store_true", help="Hot duo chains analysis only")
     parser.add_argument("--csv",   action="store_true", help="Dump breakdown as CSV to stdout")
+    parser.add_argument("--since", default=None,
+                        help="Start date filter, inclusive (YYYY-MM-DD)")
+    parser.add_argument("--until", default=None,
+                        help="End date filter, inclusive (YYYY-MM-DD)")
     args = parser.parse_args()
 
     rows = load_rows()
+    rows = filter_by_date(rows, since=args.since, until=args.until)
+    if not rows:
+        print("No rows match the given date filter.")
+        sys.exit(0)
 
     if args.csv:
         dump_csv(rows)
