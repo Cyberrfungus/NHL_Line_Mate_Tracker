@@ -95,7 +95,9 @@ def parse_goalies(next_data):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", required=True, help="YYYY-MM-DD")
-    ap.add_argument("--out-dir", default="data")
+    # Default resolves relative to the project root, not the shell's CWD —
+    # required for Task Scheduler / cron runs that launch from elsewhere.
+    ap.add_argument("--out-dir", default=str(Path(__file__).resolve().parent.parent / "data"))
     ap.add_argument("--raw-html", action="store_true")
     args = ap.parse_args()
 

@@ -1,6 +1,29 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 24 2026
+# Source of Truth | Updated: August 1 2026 (offseason)
 # Format: caveman compression for token efficiency
+
+---
+
+## 🏗️ 2026 OFFSEASON — NEXT-SEASON READINESS (Aug 1 2026)
+
+**Pipeline now season-agnostic. No manual edits needed in October.**
+
+### Done (commit history has details)
+- **Regime switch**: verify_players + fetch_advanced_metrics take `--regime {auto,regular,playoffs}`, default auto-detect from date (Oct–Apr 19 = regular, Apr 20–Jun = playoffs). Regular season uses NHL API game_type=2 per-game logs as PRIMARY (HR cumulative skipped — can't produce last-5/blanks from 40+ GP). Playoffs unchanged: HR playoff cumulative primary, game_type=3 fallback.
+- **Auto-season**: season code (20262027) and MoneyPuck year derived from slate date via scripts/utils.py. `--season` still overridable.
+- **Regime staleness**: 7d regular / 14d playoffs (was fixed 14d).
+- **Latent bug fixed**: in regular season, DFO goalie records are SEASON W-L-OT — no longer parsed as playoff games (would have applied playoff fallback weight 0.10 to every team).
+- **WSH added** to fetch_postgame TEAM_SLUGS (was missing — 31 of 32 teams).
+- **CWD-safe paths**: fetch_postgame + fetch_goalies now write to project data/ regardless of launch dir (Task Scheduler safe).
+- **tonight.py rewritten**: input() prompt removed, dead write_picks/odds block removed, sys.executable + Path (portable), odds fetch non-fatal.
+- **verified_*.json now records** `regime` and `season` fields.
+- Tests: scripts/test_season_regime.py (20 boundary tests), all pre-existing suites pass.
+
+### Still open for next season
+- Correlation cap (`apply_correlation_cap` in utils.py) still not wired into any pipeline step — manual via v6 prompt only. Wire or delete.
+- Duo regime PAUSED (25.6% / 39 playoff obs, paper only). Decide reactivation criteria for regular season before October.
+- Odds/CLV logging: fetch_odds needs ODDS_API_KEY; not in run_pregame.bat. Decide if part of nightly flow.
+- April regime boundary is heuristic (Apr 20). Pass explicit `--regime` on slates near the boundary.
 
 ---
 

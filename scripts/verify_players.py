@@ -26,12 +26,23 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 NHL_API = "https://api-web.nhle.com"
 SEARCH_API = "https://search.d3.nhle.com/api/v1/search/player"
 
+try:
+    from scripts.utils import derive_season_code, detect_regime
+except ImportError:
+    from utils import derive_season_code, detect_regime
+
 # Data quality filters — applied before any tier assignment
 MIN_TOI_MINUTES = 8.0       # ignore games where player had < 8 min (scratches / IR returns)
-MAX_STALENESS_DAYS = 14     # covers inter-round breaks (series gap can be 7-10 days)
 MIN_QUALIFYING_GAMES = 3    # need at least 3 qualifying games to assign any hot/cold tier
 
-# Hockey-Reference playoff skater stats (cumulative, updated daily)
+# Staleness window per regime: regular-season teams play every 2-3 days;
+# playoff series gaps + inter-round breaks can stretch 7-10 days.
+STALENESS_DAYS = {"regular": 7, "playoffs": 14}
+MAX_STALENESS_DAYS = STALENESS_DAYS["playoffs"]  # overwritten in main() by regime
+
+# Hockey-Reference playoff skater stats (cumulative, updated daily).
+# Playoffs ONLY — the cumulative table works for short playoff samples but
+# cannot produce last-5 / blank-streak data from a 40+ GP regular season.
 HOCKEYREF_SKATERS_URL = "https://www.hockey-reference.com/playoffs/NHL_{year}_skaters.html"
 
 
@@ -346,40 +357,46 @@ def get_player_game_log(player_id, season="20252026", session=None, game_type=2)
     return None
 
 
-def analyze_player(name, session, season="20252026", slate_date=None, hr_map=None, team=None):
+def analyze_player(name, session, season="20252026", slate_date=None, hr_map=None,
+                   team=None, game_type=3):
     """
     Find player, get last 5 qualifying games, return analysis dict.
 
-    Source priority:
-      1. Hockey-Reference cumulative playoff stats (hr_map) — fresh daily scrape
-      2. NHL API playoff game log (game_type=3) — per-game, accurate blanks count
-      Regular-season game log (game_type=2) is NEVER used — it is the source of
-      stale April 11-16 dates that triggered the audit finding.
+    Source priority by regime:
+      PLAYOFFS (game_type=3):
+        1. Hockey-Reference cumulative playoff stats (hr_map) — fresh daily scrape
+        2. NHL API playoff game log — per-game, accurate blanks count
+      REGULAR SEASON (game_type=2, hr_map must be None):
+        NHL API regular-season game log is the primary and only source — the
+        per-game log gives true last-5 and blank streaks, which HR's cumulative
+        table cannot provide over a 40+ GP season.
+      Cross-regime leakage is the failure mode that caused the April 2026 stale
+      data audit finding: never feed regular-season logs into a playoff slate.
 
     Qualifying game criteria (applied before any tier assignment):
       - TOI >= MIN_TOI_MINUTES (filters scratches and brief IR returns)
       - Most recent qualifying game within MAX_STALENESS_DAYS of slate_date
       - At least MIN_QUALIFYING_GAMES qualifying games in the sample
     """
-    # Primary path: Hockey-Reference cumulative playoff data
+    # Primary path (playoffs only): Hockey-Reference cumulative playoff data
     if hr_map is not None:
         hr_data = _hr_lookup(name, hr_map)
         if hr_data is not None:
             return _build_from_hr(name, hr_data, slate_date)
 
-    # Fallback: NHL API playoff game log only — no regular-season fallback
     pid = find_player_id(name, session, team=team)
     if not pid:
         return {"name": name, "status": "NOT_FOUND", "player_id": None}
 
-    log_data = get_player_game_log(pid, season, session, game_type=3)
+    log_data = get_player_game_log(pid, season, session, game_type=game_type)
 
     if not log_data or "gameLog" not in log_data:
         return {"name": name, "status": "NO_GAMELOG", "player_id": pid}
 
     games = log_data["gameLog"]
     if not games:
-        return {"name": name, "status": "NO_PLAYOFF_GAMES", "player_id": pid}
+        empty_status = "NO_PLAYOFF_GAMES" if game_type == 3 else "NO_GAMES"
+        return {"name": name, "status": empty_status, "player_id": pid}
 
     # Filter 1 — TOI floor: each game must meet the minimum ice-time threshold
     qualified_games = [
@@ -490,9 +507,22 @@ def main():
     parser.add_argument("--date", default=None, help="Date for lineups file (YYYY-MM-DD)")
     parser.add_argument("--team", default=None, help="Single team to verify")
     parser.add_argument("--elite-only", action="store_true", help="Only check players on L1/L2/PP1/PP2")
+    parser.add_argument("--regime", choices=["auto", "regular", "playoffs"], default="auto",
+                        help="Data regime: regular season or playoffs (default: auto-detect from date)")
     args = parser.parse_args()
 
     target_date = args.date or date.today().strftime("%Y-%m-%d")
+
+    # Resolve regime → data sources, game_type, and staleness window
+    global MAX_STALENESS_DAYS
+    regime = detect_regime(target_date) if args.regime == "auto" else args.regime
+    game_type = 3 if regime == "playoffs" else 2
+    MAX_STALENESS_DAYS = STALENESS_DAYS[regime]
+    season = derive_season_code(target_date)
+    print(f"📅 Regime: {regime.upper()}  |  season {season}  |  "
+          f"staleness window {MAX_STALENESS_DAYS}d"
+          + ("  (auto-detected — pass --regime to override)" if args.regime == "auto" else ""))
+
     lineup_path = os.path.join(DATA_DIR, f"lineups_{target_date}.json")
 
     if not os.path.exists(lineup_path):
@@ -551,15 +581,20 @@ def main():
                 if key not in player_roles[name]:
                     player_roles[name].append(key)
 
-    # Fetch Hockey-Reference playoff stats as primary data source
-    hr_year = target_date[:4]
-    hr_url = HOCKEYREF_SKATERS_URL.format(year=hr_year)
-    print(f"Fetching Hockey-Reference playoff skater stats ({hr_url})...")
-    hr_map = fetch_hr_playoff_map(hr_url)
-    if hr_map:
-        print(f"✅ Using fresh Hockey-Reference playoff skater data ({len(hr_map)} players parsed)")
+    # Playoffs: Hockey-Reference cumulative stats as primary data source.
+    # Regular season: skip HR entirely — NHL API per-game log is primary.
+    hr_map = None
+    if regime == "playoffs":
+        hr_year = target_date[:4]
+        hr_url = HOCKEYREF_SKATERS_URL.format(year=hr_year)
+        print(f"Fetching Hockey-Reference playoff skater stats ({hr_url})...")
+        hr_map = fetch_hr_playoff_map(hr_url)
+        if hr_map:
+            print(f"✅ Using fresh Hockey-Reference playoff skater data ({len(hr_map)} players parsed)")
+        else:
+            print("⚠️  Hockey-Reference unavailable — falling back to NHL API playoff log")
     else:
-        print("⚠️  Hockey-Reference unavailable — falling back to NHL API playoff log")
+        print("Using NHL API regular-season game logs (per-game last-5 + blank streaks)")
     print()
 
     if injured_in_slots:
@@ -580,7 +615,8 @@ def main():
     for i, (name, team) in enumerate(players_to_check.items(), 1):
         print(f"  [{i}/{len(players_to_check)}] {name} ({team})...", end=" ", flush=True)
 
-        analysis = analyze_player(name, session, slate_date=target_date, hr_map=hr_map, team=team)
+        analysis = analyze_player(name, session, season=season, slate_date=target_date,
+                                  hr_map=hr_map, team=team, game_type=game_type)
 
         if analysis["status"] == "NOT_FOUND":
             print("NOT FOUND")
@@ -700,6 +736,8 @@ def main():
     out_path = os.path.join(DATA_DIR, f"verified_{target_date}.json")
     output = {
         "date": target_date,
+        "regime": regime,
+        "season": season,
         "verified_count": len(results),
         "cold_flags": [{"name": n, "team": t, "blanks": b, "l5_pts": p} for n, t, b, p in cold_players],
         "hot_players": [{"name": n, "team": t, "l5_pts": p, "l5_goals": g} for n, t, p, g in hot_players],

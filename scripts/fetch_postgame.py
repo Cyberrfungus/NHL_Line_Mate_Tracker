@@ -18,6 +18,10 @@ Setup (one time):
 import requests, json, os, sys, re, time
 from datetime import datetime, timedelta
 
+# Always resolve data/ relative to the project root, not the shell's CWD —
+# required for Task Scheduler / cron runs that launch from elsewhere.
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+
 
 # ══════════════════════════════════════════════════════
 # SHARED CONFIG
@@ -39,7 +43,7 @@ TEAM_SLUGS = {
     "STL":"st-louis-blues",    "TBL":"tampa-bay-lightning",
     "TOR":"toronto-maple-leafs","UTA":"utah-mammoth",
     "VAN":"vancouver-canucks", "VGK":"vegas-golden-knights",
-    "WPG":"winnipeg-jets",
+    "WPG":"winnipeg-jets",     "WSH":"washington-capitals",
 }
 
 
@@ -153,9 +157,9 @@ def run_lineups():
 
     driver.quit()
 
-    os.makedirs("data", exist_ok=True)
+    os.makedirs(DATA_DIR, exist_ok=True)
     date_str = datetime.now().strftime("%Y-%m-%d")
-    filename = f"data/lineups_{date_str}.json"
+    filename = os.path.join(DATA_DIR, f"lineups_{date_str}.json")
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(lineups, f, indent=2, ensure_ascii=False)
 
@@ -326,7 +330,7 @@ def run_chains(date_str):
             print(f"❌ {e}")
         time.sleep(0.3)
 
-    os.makedirs("data", exist_ok=True)
+    os.makedirs(DATA_DIR, exist_ok=True)
 
     # JSON
     output = {
@@ -339,12 +343,12 @@ def run_chains(date_str):
         ],
         "goals": all_goals,
     }
-    json_file = f"data/chains_{date_str}.json"
+    json_file = os.path.join(DATA_DIR, f"chains_{date_str}.json")
     with open(json_file, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     # CSV
-    csv_file = f"data/chains_{date_str}.csv"
+    csv_file = os.path.join(DATA_DIR, f"chains_{date_str}.csv")
     with open(csv_file, "w", encoding="utf-8") as f:
         f.write("date,game,team,period,time,strength,scorer,assist1,assist2\n")
         for g in all_goals:

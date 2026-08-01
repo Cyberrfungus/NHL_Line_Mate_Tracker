@@ -26,9 +26,9 @@ import requests
 import pandas as pd
 
 try:
-    from scripts.utils import get_playoff_goalie_weight
+    from scripts.utils import get_playoff_goalie_weight, derive_season_start_year, detect_regime
 except ImportError:
-    from utils import get_playoff_goalie_weight
+    from utils import get_playoff_goalie_weight, derive_season_start_year, detect_regime
 
 BASE_URL             = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/regular"
 PLAYOFF_BASE_URL     = "https://moneypuck.com/moneypuck/playerData/seasonSummary/{season}/playoffs"
@@ -531,8 +531,10 @@ def main():
     p = argparse.ArgumentParser(description="Fetch MoneyPuck advanced metrics")
     p.add_argument("--date",        default=datetime.now().strftime("%Y-%m-%d"),
                    help="Output date label YYYY-MM-DD")
-    p.add_argument("--season",      default=2025, type=int,
-                   help="Season start year (2025 = 2025-26 season)")
+    p.add_argument("--season",      default=None, type=int,
+                   help="Season start year (2026 = 2026-27 season). Default: derived from --date")
+    p.add_argument("--regime",      choices=["auto", "regular", "playoffs"], default="auto",
+                   help="Data regime (default: auto-detect from date)")
     p.add_argument("--goalies-json", default=None,
                    help="Path to goalies_DATE.json (enables dynamic playoff weight)")
     p.add_argument("--print-only",  action="store_true",
@@ -540,6 +542,12 @@ def main():
     p.add_argument("--debug-cols",  action="store_true",
                    help="Print available CSV column names and exit")
     args = p.parse_args()
+
+    if args.season is None:
+        args.season = derive_season_start_year(args.date)
+    regime = detect_regime(args.date) if args.regime == "auto" else args.regime
+    print(f"📅 Regime: {regime.upper()}  |  season {args.season}-{args.season + 1}"
+          + ("  (auto-detected — pass --regime to override)" if args.regime == "auto" else ""))
 
     team_url   = f"{BASE_URL.format(season=args.season)}/teams.csv"
     goalie_url = f"{BASE_URL.format(season=args.season)}/goalies.csv"
@@ -565,7 +573,11 @@ def main():
                 with goalies_json_path.open(encoding="utf-8") as f:
                     goalies_data = json.load(f)
                 for team, info in goalies_data.items():
-                    playoff_games_map[team] = parse_playoff_games(info.get("record", "0-0-0"))
+                    # DFO records are playoff W-L-OT only in the playoffs; during the
+                    # regular season the record is the season record and must NOT be
+                    # counted as playoff games (would wrongly trigger blend weights).
+                    if regime == "playoffs":
+                        playoff_games_map[team] = parse_playoff_games(info.get("record", "0-0-0"))
                     if info.get("goalie"):
                         confirmed_starters[team] = {
                             "name":  info["goalie"],
@@ -593,24 +605,28 @@ def main():
         print(f"FAILED: {e}", file=sys.stderr)
 
     # ── Playoff goalie stats: try Hockey-Reference first, then MoneyPuck ────────
-    # Step 1: Hockey-Reference (primary — updates daily, usually by ~5:40 AM)
-    print("  → playoff goalie stats (Hockey-Reference) ... ", end="", flush=True)
-    try:
-        hr_year = args.season + 1
-        hr_map = build_playoff_goalie_map_hockeyref(
-            HOCKEYREF_PLAYOFF_URL.format(year=hr_year)
-        )
-        if hr_map:
-            playoff_sv_map = hr_map
-            playoff_source = "hockeyref"
-            print(f"{len(hr_map)} teams")
-        else:
-            print("0 teams (page empty or not yet updated)")
-    except Exception as e:
-        print(f"unavailable ({e})")
+    # Regular season: skip playoff sources entirely — all goalies are season_only.
+    if regime == "regular":
+        print("  → playoff goalie stats skipped (regular-season regime — season stats only)")
+    else:
+        # Step 1: Hockey-Reference (primary — updates daily, usually by ~5:40 AM)
+        print("  → playoff goalie stats (Hockey-Reference) ... ", end="", flush=True)
+        try:
+            hr_year = args.season + 1
+            hr_map = build_playoff_goalie_map_hockeyref(
+                HOCKEYREF_PLAYOFF_URL.format(year=hr_year)
+            )
+            if hr_map:
+                playoff_sv_map = hr_map
+                playoff_source = "hockeyref"
+                print(f"{len(hr_map)} teams")
+            else:
+                print("0 teams (page empty or not yet updated)")
+        except Exception as e:
+            print(f"unavailable ({e})")
 
-    # Step 2: MoneyPuck fallback if HR gave nothing
-    if not playoff_sv_map:
+    # Step 2: MoneyPuck fallback if HR gave nothing (playoffs only)
+    if regime == "playoffs" and not playoff_sv_map:
         print("  → playoff goalie stats (MoneyPuck fallback) ... ", end="", flush=True)
         try:
             df_playoff = fetch_csv(
