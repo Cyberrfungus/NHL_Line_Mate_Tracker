@@ -164,17 +164,52 @@ with tempfile.TemporaryDirectory() as tmp:
     by_es = mod.defaultdict(mod.Rate, by_es)
     by_pp = mod.defaultdict(mod.Rate, by_pp)
 
-    hits, expect, sources, role_mix = mod.cold_stick_edge(
+    cs_picks, sources = mod.cold_stick_edge(
         ["2026-01-01"], by_role, by_es, by_pp, overall)
 
     # Blank One recorded no point (win); Scorer One scored (loss) → 1 of 2
-    check("tier A scored 1 win of 2", tuple(hits["A"]), (1, 2))
+    wins, total, obs, base, edge, se = mod.summarize(cs_picks)
+    check("2 picks scored", total, 2)
+    check("1 win of 2", wins, 1)
     # Every bucket here is under both thresholds, so all fall to all-slots
     check("thin buckets fall to all slots", sources["all slots"], 2)
-    check("fallback baseline is overall rate",
-          [round(x, 1) for x in expect["A"]], [60.0, 60.0])
-    check("role mix records both picks",
-          dict(role_mix["A"]), {"L1": 1, "L1+PP1": 1})
+    check("fallback baseline is overall rate", round(base, 1), 60.0)
+    check("pick roles captured",
+          sorted(p["role"] for p in cs_picks), ["L1", "L1+PP1"])
+    check("both picks are HIGH role class",
+          {p["role_class"] for p in cs_picks}, {"HIGH"})
+
+
+# ── role class + odds helpers ─────────────────────────────────────────────────
+
+print("\n── role class / odds helpers ──")
+check("L1 is HIGH",            mod.role_class("L1"),        "HIGH")
+check("L2+PP2 is HIGH",        mod.role_class("L2+PP2"),    "HIGH")
+check("PP1 alone is HIGH",     mod.role_class("PP1"),       "HIGH")
+check("L4 is DEPTH",           mod.role_class("L4"),        "DEPTH")
+check("L3+PP2 is DEPTH",       mod.role_class("L3+PP2"),    "DEPTH")
+check("PP2 alone is DEPTH",    mod.role_class("PP2"),       "DEPTH")
+check("empty role is DEPTH",   mod.role_class(""),          "DEPTH")
+
+check("80% implies -400",      mod.implied_american(80.0),  "-400")
+check("50% implies -100",      mod.implied_american(50.0),  "-100")
+check("40% implies +150",      mod.implied_american(40.0),  "+150")
+check("degenerate 0% guarded", mod.implied_american(0.0),   "—")
+check("degenerate 100% guarded", mod.implied_american(100.0), "—")
+
+print("\n── verdict gating ──")
+check("thin sample suppressed",
+      mod.verdict_for(edge=30.0, se=0.0, total=2), "thin sample (n<30)")
+check("large edge over 2 SE is REAL",
+      mod.verdict_for(edge=10.0, se=3.0, total=100), "REAL (>2 SE)")
+check("edge between 1 and 2 SE is weak",
+      mod.verdict_for(edge=4.0, se=3.0, total=100), "weak (1-2 SE)")
+check("edge under 1 SE is noise",
+      mod.verdict_for(edge=1.0, se=3.0, total=100), "noise (<1 SE)")
+check("negative edge is NO EDGE",
+      mod.verdict_for(edge=-2.0, se=3.0, total=100), "NO EDGE")
+
+check("summarize on empty group is safe", mod.summarize([]), (0, 0, 0.0, 0.0, 0.0, 0.0))
 
 
 # ── baseline fallback chain ───────────────────────────────────────────────────

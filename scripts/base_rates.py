@@ -234,16 +234,37 @@ def roles_from_lineups(lineups):
     return out
 
 
+def role_class(role_key):
+    """
+    HIGH  — occupies L1, L2, or PP1: a scoring role the market prices near
+            even money, so a cold read there is worth real money.
+    DEPTH — L3/L4/PP2 only: already expected to blank, and priced accordingly.
+    Matches the high_role flag verify_players writes to cold_sticks.
+    """
+    parts = role_key.split("+") if role_key else []
+    return "HIGH" if any(p in ("L1", "L2", "PP1") for p in parts) else "DEPTH"
+
+
+def implied_american(pct):
+    """Fair American odds for a probability given in percent."""
+    if pct <= 0 or pct >= 100:
+        return "—"
+    if pct >= 50:
+        return f"{-round(pct / (100 - pct) * 100):d}"
+    return f"+{round((100 - pct) / pct * 100):d}"
+
+
 def cold_stick_edge(dates, by_role, by_es, by_pp, overall):
     """
     Score cold sticks straight from verified + chains (same rule as
     score_results: a cold stick WINS if the player recorded no point),
-    then compare against the baseline for the identical role mix.
+    and attach the baseline for that pick's exact lineup role.
+
+    Returns (picks, sources); picks is one record per cold-stick pick so the
+    reporting layer can slice by tier, role, or role class without rescanning.
     """
-    tier_hits   = defaultdict(lambda: [0, 0])   # tier -> [wins, total]
-    tier_expect = defaultdict(list)             # tier -> [baseline pct per pick]
-    sources     = defaultdict(int)              # which baseline granularity was used
-    role_mix    = defaultdict(lambda: defaultdict(int))   # tier -> role -> count
+    picks   = []
+    sources = defaultdict(int)   # which baseline granularity was used
 
     for d in dates:
         verified = load_json(DATA_DIR / f"verified_{d}.json")
@@ -254,23 +275,49 @@ def cold_stick_edge(dates, by_role, by_es, by_pp, overall):
         derived = None   # lazily built only if a pick is missing line_role
 
         for cs in verified.get("cold_sticks", []):
-            tier = cs.get("tier", "?")
-            won  = cs["name"] not in scored
-            tier_hits[tier][1] += 1
-            tier_hits[tier][0] += 1 if won else 0
-
             role = cs.get("line_role", "") or ""
             if role in ("", "?"):
                 if derived is None:
                     derived = roles_from_lineups(load_json(DATA_DIR / f"lineups_{d}.json"))
                 role = derived.get(cs["name"], "")
 
-            role_mix[tier][role or "(unknown)"] += 1
-            tier_expect[tier].append(
-                role_baseline(role, by_role, by_es, by_pp, overall, sources)
-            )
+            picks.append({
+                "date":       d,
+                "name":       cs["name"],
+                "tier":       cs.get("tier", "?"),
+                "role":       role or "(unknown)",
+                "role_class": role_class(role),
+                "won":        cs["name"] not in scored,
+                "baseline":   role_baseline(role, by_role, by_es, by_pp,
+                                            overall, sources),
+            })
 
-    return tier_hits, tier_expect, sources, role_mix
+    return picks, sources
+
+
+def summarize(picks):
+    """(wins, total, observed_pct, baseline_pct, edge_pts, stderr_pts)."""
+    total = len(picks)
+    if not total:
+        return 0, 0, 0.0, 0.0, 0.0, 0.0
+    wins     = sum(1 for p in picks if p["won"])
+    obs      = 100.0 * wins / total
+    baseline = sum(p["baseline"] for p in picks) / total
+    se       = 100.0 * ((obs / 100) * (1 - obs / 100) / total) ** 0.5
+    return wins, total, obs, baseline, obs - baseline, se
+
+
+def verdict_for(edge, se, total):
+    """Significance label, gated on sample size to avoid a spurious 'REAL'."""
+    if total < MIN_VERDICT_OBS:
+        return f"thin sample (n<{MIN_VERDICT_OBS})"
+    if edge > 2 * se:
+        return "REAL (>2 SE)"
+    if edge > se:
+        return "weak (1-2 SE)"
+    if edge > 0:
+        return "noise (<1 SE)"
+    return "NO EDGE"
 
 
 # ── duo correlation decomposition ─────────────────────────────────────────────
@@ -385,34 +432,20 @@ def main():
     print(rate_row("ALL SLOTS", overall))
 
     # ── the decisive comparison ───────────────────────────────────────────────
-    tier_hits, tier_expect, sources, role_mix = cold_stick_edge(
-        dates, by_role, by_es, by_pp, overall)
-    if tier_hits:
-        section("COLD STICKS vs BASELINE  ← the number that matters")
-        print(f"  {'Tier':<6} {'Observed':>16}  {'Baseline':>9}  {'Edge':>8}  Verdict")
-        print(f"  {'-'*6} {'-'*16}  {'-'*9}  {'-'*8}  {'-'*24}")
-        for tier in sorted(tier_hits):
-            wins, total = tier_hits[tier]
+    picks, sources = cold_stick_edge(dates, by_role, by_es, by_pp, overall)
+    if picks:
+        def edge_row(label, group, width=16):
+            wins, total, obs, base, edge, se = summarize(group)
             if not total:
-                continue
-            obs_pct = 100.0 * wins / total
-            exp_pct = sum(tier_expect[tier]) / len(tier_expect[tier])
-            edge    = obs_pct - exp_pct
-            se      = 100.0 * ((obs_pct / 100) * (1 - obs_pct / 100) / total) ** 0.5
-            # A perfect record makes the normal-approximation SE collapse to 0,
-            # which would call any edge significant. Gate on sample size first.
-            if total < MIN_VERDICT_OBS:
-                verdict = f"thin sample (n<{MIN_VERDICT_OBS})"
-            elif edge > 2 * se:
-                verdict = "REAL (>2 SE)"
-            elif edge > se:
-                verdict = "weak (1-2 SE)"
-            elif edge > 0:
-                verdict = "noise (<1 SE)"
-            else:
-                verdict = "NO EDGE"
-            print(f"  {tier:<6} {wins:4d}/{total:<4d} {obs_pct:5.1f}%  "
-                  f"{exp_pct:8.1f}%  {edge:+7.1f}pt  {verdict}")
+                return
+            print(f"  {label:<{width}} {wins:4d}/{total:<4d} {obs:5.1f}%  "
+                  f"{base:8.1f}%  {edge:+7.1f}pt  {verdict_for(edge, se, total)}")
+
+        section("COLD STICKS vs BASELINE  ← the number that matters")
+        print(f"  {'Tier':<16} {'Observed':>10}  {'Baseline':>9}  {'Edge':>8}  Verdict")
+        print(f"  {'-'*16} {'-'*10}  {'-'*9}  {'-'*8}  {'-'*24}")
+        for tier in sorted({p["tier"] for p in picks}):
+            edge_row(f"Tier {tier}", [p for p in picks if p["tier"] == tier])
         print(f"\n  Edge = how much better the tier does than an ordinary skater")
         print(f"  in the SAME lineup role. SE on the observed rate is the yardstick;")
         print(f"  an edge inside 1 SE is indistinguishable from picking at random.")
@@ -427,16 +460,47 @@ def main():
             print(f"    ^ 'all slots' compares a pick against the league-wide average")
             print(f"      rather than its own role — treat those as approximate.")
 
+        # ── where the edge actually lives ─────────────────────────────────────
+        section("COLD STICKS BY ROLE CLASS  ← where the edge is worth money")
+        print(f"  HIGH  = pick occupies L1, L2, or PP1   (market prices these near even)")
+        print(f"  DEPTH = L3/L4/PP2 only                 (already expected to blank)\n")
+        print(f"  {'Group':<16} {'Observed':>10}  {'Baseline':>9}  {'Edge':>8}  Verdict")
+        print(f"  {'-'*16} {'-'*10}  {'-'*9}  {'-'*8}  {'-'*24}")
+        for tier in sorted({p["tier"] for p in picks}):
+            for cls in ("HIGH", "DEPTH"):
+                edge_row(f"Tier {tier} / {cls}",
+                         [p for p in picks
+                          if p["tier"] == tier and p["role_class"] == cls])
+        print()
+        for cls in ("HIGH", "DEPTH"):
+            edge_row(f"ALL {cls}", [p for p in picks if p["role_class"] == cls])
+
+        print(f"\n  {'Group':<16} {'Baseline price':>15} {'Observed price':>15}")
+        print(f"  {'-'*16} {'-'*15} {'-'*15}")
+        for cls in ("HIGH", "DEPTH"):
+            grp = [p for p in picks if p["role_class"] == cls]
+            if not grp:
+                continue
+            _, _, obs, base, _, _ = summarize(grp)
+            print(f"  {'ALL ' + cls:<16} {implied_american(base):>15} "
+                  f"{implied_american(obs):>15}")
+        print(f"\n  Baseline price is roughly what an under-0.5-points line should")
+        print(f"  cost for an ordinary player in that role; observed price is what")
+        print(f"  your picks actually earned. The gap between them is the edge, and")
+        print(f"  it is only bankable if the market is not already charging for it.")
+
         section("COLD STICK ROLE MIX  (what roles the picks actually occupy)")
-        for tier in sorted(role_mix):
-            picks = role_mix[tier]
-            total = sum(picks.values())
-            top = sorted(picks.items(), key=lambda kv: -kv[1])[:6]
-            print(f"  Tier {tier}  (n={total})")
-            for role, n in top:
+        for tier in sorted({p["tier"] for p in picks}):
+            tier_picks = [p for p in picks if p["tier"] == tier]
+            counts = defaultdict(int)
+            for p in tier_picks:
+                counts[p["role"]] += 1
+            print(f"  Tier {tier}  (n={len(tier_picks)})")
+            for role, n in sorted(counts.items(), key=lambda kv: -kv[1])[:6]:
                 base = by_role.get(role)
                 base_str = f"{base.pct:5.1f}%" if base and base.total >= MIN_ROLE_OBS else "   n/a"
-                print(f"    {role:<14} {n:4d} picks   role baseline {base_str}")
+                print(f"    {role:<14} {n:4d} picks   [{role_class(role):<5}]"
+                      f"   role baseline {base_str}")
 
     # ── duo correlation ───────────────────────────────────────────────────────
     duos = duo_decomposition(dates)
