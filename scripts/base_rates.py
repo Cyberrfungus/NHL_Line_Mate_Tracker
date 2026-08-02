@@ -38,6 +38,10 @@ INACTIVE_STATUSES = {"out", "ir", "dtd", "scratched"}
 # and would otherwise report a spurious "REAL" edge.
 MIN_VERDICT_OBS = 30
 
+# Observations required before a baseline bucket is trusted for comparison.
+MIN_ROLE_OBS     = 10   # exact composite role, e.g. "L3+PP2"
+MIN_MARGINAL_OBS = 30   # marginal ES line or PP unit fallback
+
 
 # ── loading ───────────────────────────────────────────────────────────────────
 
@@ -185,15 +189,61 @@ def section(title):
 
 # ── cold stick edge vs baseline ───────────────────────────────────────────────
 
-def cold_stick_edge(dates, role_rates, overall):
+def role_baseline(role_key, by_role, by_es, by_pp, overall, sources):
+    """
+    Best available baseline for a role string, most specific first:
+      exact composite role -> even-strength line -> PP unit -> all slots.
+    Falling straight to the all-slots average would compare an L4 grinder
+    against a pool that includes L1 scorers, so the marginal ES-line rate
+    (always in the hundreds of observations) is used before that.
+    """
+    parts = role_key.split("+") if role_key else []
+
+    r = by_role.get(role_key)
+    if r and r.total >= MIN_ROLE_OBS:
+        sources["exact role"] += 1
+        return r.pct
+
+    es = next((p for p in parts if p.startswith("L")), None)
+    if es and by_es[es].total >= MIN_MARGINAL_OBS:
+        sources["ES line"] += 1
+        return by_es[es].pct
+
+    pp = next((p for p in parts if p.startswith("PP")), None)
+    if pp and by_pp[pp].total >= MIN_MARGINAL_OBS:
+        sources["PP unit"] += 1
+        return by_pp[pp].pct
+
+    sources["all slots"] += 1
+    return overall.pct
+
+
+def roles_from_lineups(lineups):
+    """player -> composite role string, for filling in picks missing line_role."""
+    out = {}
+    for team, td in (lineups or {}).items():
+        if not isinstance(td, dict) or "L1" not in td:
+            continue
+        roles = defaultdict(list)
+        for key in SLOT_KEYS:
+            for name in td.get(key, []):
+                if name and key not in roles[name]:
+                    roles[name].append(key)
+        for name, rl in roles.items():
+            out[name] = composite_role(rl)
+    return out
+
+
+def cold_stick_edge(dates, by_role, by_es, by_pp, overall):
     """
     Score cold sticks straight from verified + chains (same rule as
     score_results: a cold stick WINS if the player recorded no point),
     then compare against the baseline for the identical role mix.
     """
-    tier_hits  = defaultdict(lambda: [0, 0])   # tier -> [wins, total]
-    tier_expect = defaultdict(list)            # tier -> [baseline pct per pick]
-    missing_roles = 0
+    tier_hits   = defaultdict(lambda: [0, 0])   # tier -> [wins, total]
+    tier_expect = defaultdict(list)             # tier -> [baseline pct per pick]
+    sources     = defaultdict(int)              # which baseline granularity was used
+    role_mix    = defaultdict(lambda: defaultdict(int))   # tier -> role -> count
 
     for d in dates:
         verified = load_json(DATA_DIR / f"verified_{d}.json")
@@ -201,6 +251,7 @@ def cold_stick_edge(dates, role_rates, overall):
         if not verified or not chains:
             continue
         scored = players_with_points(chains)
+        derived = None   # lazily built only if a pick is missing line_role
 
         for cs in verified.get("cold_sticks", []):
             tier = cs.get("tier", "?")
@@ -208,15 +259,18 @@ def cold_stick_edge(dates, role_rates, overall):
             tier_hits[tier][1] += 1
             tier_hits[tier][0] += 1 if won else 0
 
-            role = cs.get("line_role", "")
-            r = role_rates.get(role)
-            if r and r.total >= 10:
-                tier_expect[tier].append(r.pct)
-            else:
-                tier_expect[tier].append(overall.pct)
-                missing_roles += 1
+            role = cs.get("line_role", "") or ""
+            if role in ("", "?"):
+                if derived is None:
+                    derived = roles_from_lineups(load_json(DATA_DIR / f"lineups_{d}.json"))
+                role = derived.get(cs["name"], "")
 
-    return tier_hits, tier_expect, missing_roles
+            role_mix[tier][role or "(unknown)"] += 1
+            tier_expect[tier].append(
+                role_baseline(role, by_role, by_es, by_pp, overall, sources)
+            )
+
+    return tier_hits, tier_expect, sources, role_mix
 
 
 # ── duo correlation decomposition ─────────────────────────────────────────────
@@ -331,7 +385,8 @@ def main():
     print(rate_row("ALL SLOTS", overall))
 
     # ── the decisive comparison ───────────────────────────────────────────────
-    tier_hits, tier_expect, missing = cold_stick_edge(dates, by_role, overall)
+    tier_hits, tier_expect, sources, role_mix = cold_stick_edge(
+        dates, by_role, by_es, by_pp, overall)
     if tier_hits:
         section("COLD STICKS vs BASELINE  ← the number that matters")
         print(f"  {'Tier':<6} {'Observed':>16}  {'Baseline':>9}  {'Edge':>8}  Verdict")
@@ -361,9 +416,27 @@ def main():
         print(f"\n  Edge = how much better the tier does than an ordinary skater")
         print(f"  in the SAME lineup role. SE on the observed rate is the yardstick;")
         print(f"  an edge inside 1 SE is indistinguishable from picking at random.")
-        if missing:
-            print(f"  ({missing} pick(s) had a role with <10 baseline obs — "
-                  f"fell back to the all-slots rate.)")
+
+        total_src = sum(sources.values()) or 1
+        print(f"\n  Baseline granularity used (more specific = more trustworthy):")
+        for src in ("exact role", "ES line", "PP unit", "all slots"):
+            if sources.get(src):
+                n = sources[src]
+                print(f"    {src:<12} {n:4d}  ({100 * n // total_src:3d}%)")
+        if sources.get("all slots"):
+            print(f"    ^ 'all slots' compares a pick against the league-wide average")
+            print(f"      rather than its own role — treat those as approximate.")
+
+        section("COLD STICK ROLE MIX  (what roles the picks actually occupy)")
+        for tier in sorted(role_mix):
+            picks = role_mix[tier]
+            total = sum(picks.values())
+            top = sorted(picks.items(), key=lambda kv: -kv[1])[:6]
+            print(f"  Tier {tier}  (n={total})")
+            for role, n in top:
+                base = by_role.get(role)
+                base_str = f"{base.pct:5.1f}%" if base and base.total >= MIN_ROLE_OBS else "   n/a"
+                print(f"    {role:<14} {n:4d} picks   role baseline {base_str}")
 
     # ── duo correlation ───────────────────────────────────────────────────────
     duos = duo_decomposition(dates)

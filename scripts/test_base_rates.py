@@ -154,16 +154,59 @@ with tempfile.TemporaryDirectory() as tmp:
           mod.find_dates(since="2026-06-01"), [])
 
     overall = mod.Rate()
+    by_es, by_pp = {}, {}
     for o in obs:
         overall.add(o["blanked"])
-    hits, expect, missing = mod.cold_stick_edge(["2026-01-01"], by_role, overall)
+        if o["es_line"]:
+            by_es.setdefault(o["es_line"], mod.Rate()).add(o["blanked"])
+        key = o["on_pp"] or "no PP"
+        by_pp.setdefault(key, mod.Rate()).add(o["blanked"])
+    by_es = mod.defaultdict(mod.Rate, by_es)
+    by_pp = mod.defaultdict(mod.Rate, by_pp)
+
+    hits, expect, sources, role_mix = mod.cold_stick_edge(
+        ["2026-01-01"], by_role, by_es, by_pp, overall)
 
     # Blank One recorded no point (win); Scorer One scored (loss) → 1 of 2
     check("tier A scored 1 win of 2", tuple(hits["A"]), (1, 2))
-    # Both roles have <10 baseline obs, so both fall back to the overall rate
-    check("thin role buckets fall back", missing, 2)
+    # Every bucket here is under both thresholds, so all fall to all-slots
+    check("thin buckets fall to all slots", sources["all slots"], 2)
     check("fallback baseline is overall rate",
           [round(x, 1) for x in expect["A"]], [60.0, 60.0])
+    check("role mix records both picks",
+          dict(role_mix["A"]), {"L1": 1, "L1+PP1": 1})
+
+
+# ── baseline fallback chain ───────────────────────────────────────────────────
+
+print("\n── baseline fallback chain ──")
+big_role = mod.defaultdict(mod.Rate)
+big_es   = mod.defaultdict(mod.Rate)
+big_pp   = mod.defaultdict(mod.Rate)
+ov       = mod.Rate()
+for _ in range(50):
+    big_role["L3+PP2"].add(True)      # 50 obs, 100% blank
+for i in range(100):
+    big_es["L3"].add(i < 70)          # 100 obs, 70% blank
+for i in range(100):
+    big_pp["PP2"].add(i < 60)         # 100 obs, 60% blank
+for i in range(100):
+    ov.add(i < 65)                    # 100 obs, 65% blank
+
+src = mod.defaultdict(int)
+check("exact composite role preferred",
+      round(mod.role_baseline("L3+PP2", big_role, big_es, big_pp, ov, src), 1), 100.0)
+check("falls to ES line when composite thin",
+      round(mod.role_baseline("L3+PP1", big_role, big_es, big_pp, ov, src), 1), 70.0)
+check("falls to PP unit when no ES line",
+      round(mod.role_baseline("PP2", big_role, big_es, big_pp, ov, src), 1), 60.0)
+check("falls to all slots when nothing matches",
+      round(mod.role_baseline("L9+PP9", big_role, big_es, big_pp, ov, src), 1), 65.0)
+check("granularity counters tracked",
+      dict(src), {"exact role": 1, "ES line": 1, "PP unit": 1, "all slots": 1})
+
+check("roles_from_lineups derives composite role",
+      mod.roles_from_lineups(LINEUPS)["Blank Two"], "L2+PP2")
 
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)
