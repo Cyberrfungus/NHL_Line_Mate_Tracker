@@ -1,6 +1,125 @@
 # NHL LINEMATE DUO CORRELATION TRACKER — STATE.md
-# Source of Truth | Updated: April 24 2026 (Quick Fix v5)
+# Source of Truth | Updated: August 1 2026 (offseason)
 # Format: caveman compression for token efficiency
+
+> This file (`.claude/STATE.md`) is the ONLY source of truth. A stale fork
+> lived at the repo root until Aug 1 2026 and has been replaced by a pointer.
+
+---
+
+## 🏗️ 2026 OFFSEASON — NEXT-SEASON READINESS (Aug 1 2026)
+
+**Pipeline is now season-agnostic. No manual edits needed in October.**
+
+### Done
+- **Regime switch**: `verify_players` + `fetch_advanced_metrics` take
+  `--regime {auto,regular,playoffs}`, default auto-detect from date
+  (Oct–Apr 19 regular, Apr 20–Jun playoffs). Regular season uses NHL API
+  `game_type=2` per-game logs as PRIMARY (HR cumulative skipped — cannot
+  produce last-5/blanks from a 40+ GP season). Playoffs unchanged.
+- **Auto-season**: season code (20262027) and MoneyPuck year derived from
+  the slate date via `scripts/utils.py`. `--season` still overridable.
+- **Regime staleness**: 7d regular / 14d playoffs (was fixed 14d).
+- **Latent bug fixed**: in regular season, DFO goalie records are SEASON
+  W-L-OT — no longer parsed as playoff games (would have applied playoff
+  fallback weight 0.10 to every team all year).
+- **WSH added** to `fetch_postgame` TEAM_SLUGS (was 31 of 32 teams).
+- **CWD-safe paths**: `fetch_postgame` + `fetch_goalies` write to the
+  project `data/` regardless of launch dir (Task Scheduler safe).
+- **tonight.py rewritten**: `input()` prompt removed, dead write_picks/odds
+  block removed, `sys.executable` + `Path` (portable), odds fetch non-fatal.
+- **Batch launchers**: `run_pregame.bat` / `run_postgame.bat` run the full
+  sequences in one double-click.
+- **`verified_*.json`** records `regime`, `season`, `blanks_uncapped`.
+- Tests: 134 across five suites, all passing.
+
+### Still open
+- Odds/CLV logging: `fetch_odds` needs `ODDS_API_KEY`; not in
+  `run_pregame.bat`. Decide if part of the nightly flow.
+- April regime boundary is heuristic (Apr 20). Pass explicit `--regime` on
+  slates near the boundary.
+- Preseason smoke test (~Sept 20): run `run_pregame.bat` on a live
+  preseason slate to catch summer DFO/NHL API/MoneyPuck changes.
+
+---
+
+## 📊 COLD STICK EDGE — MEASURED (Aug 2026)
+
+**First validation of the cold-stick system against a proper control.**
+`scripts/base_rates.py` computes empirical blank rates by lineup role from
+lineups+chains, then compares each pick to the baseline for its OWN role.
+Source: 2026 playoffs, Apr 20 – May 14, 1444 skater-games, 290 picks,
+100% matched to exact composite role.
+
+### Baselines
+| Role | Playoff | Regular | Role | Playoff | Regular |
+|---|---|---|---|---|---|
+| L1 | 51.3 | 54.6 | PP1 | 48.3 | 50.4 |
+| L2 | 52.1 | 58.5 | PP2 | 67.3 | 69.4 |
+| L3 | 71.5 | 71.0 | no PP | 75.9 | 82.0 |
+| L4 | 79.2 | 80.7 | ALL | 63.3 | 66.6 |
+
+Regular-season figures from Apr 9–19, 1851 skater-games. Playoff blank rates
+are LOWER because only the 16 best rosters remain — a selection effect, not a
+regime effect. **Use the regular column for October.**
+
+### THE FINDING — edge is concentrated in HIGH-role picks
+| Group | Observed | Baseline | Edge | Verdict |
+|---|---|---|---|---|
+| ALL HIGH (L1/L2/PP1) | 65/100 = 65.0% | 52.3% | **+12.7pt** | REAL 2.7 SE |
+| ALL DEPTH (L3/L4/PP2) | 156/190 = 82.1% | 75.4% | +6.7pt | REAL 2.4 SE |
+| Tier A | 93/115 = 80.9% | 70.0% | +10.8pt | REAL |
+| Tier B | 128/175 = 73.1% | 65.7% | +7.4pt | REAL |
+
+**Economics — why role class beats tier:**
+- HIGH: 65.0% is worth −186; baseline prices ≈ −110 → **ROI ≈ +24%**
+- DEPTH: 82.1% is worth −459; baseline prices ≈ −307 → ROI ≈ +9%, and the
+  real market for an L4 under sits −400/−600, which **erases the edge**.
+
+**Tier is irrelevant inside HIGH:** Tier A 66.7% (n=30) vs Tier B 64.3%
+(n=70) — indistinguishable. Taking both tiers triples bettable volume at no
+measurable cost. Tier only separates within DEPTH (85.9% vs 79.0%).
+
+### DEPLOYMENT RULES (2026-27)
+1. **LIVE: HIGH-role cold sticks, both tiers.** ~4-5 plays/night. Target
+   better than −150. `verify_players` prints these under ✅ BETTABLE.
+2. **PAPER: DEPTH-role.** Real signal, no exploitable edge after juice.
+   Flip to live only if a book offers better than −300.
+3. **PAPER: all duos** (see PLAYOFF DUO DECOMPOSITION below).
+4. **Stake small until CLV is measured.** Every number above is vs a
+   STATISTICAL baseline, not a market one. Books price coldness too. Log
+   price taken + closing line for every HIGH pick from opening night;
+   `audit_bet_log.py` verifies at 50 bets. The edge is promising, not proven.
+
+### PLAYOFF DUO DECOMPOSITION (Apr 20 – May 14)
+| Tier | pairs | P(both pts) | P(chain\|both) | P(chain) |
+|---|---|---|---|---|
+| PP_LINK | 377 | 27.9% | 55.2% | 15.4% |
+| STRONG | 109 | 29.4% | 65.6% | 19.3% |
+| ELITE | 90 | 33.3% | 93.3% | 31.1% |
+| ELITE_PP2 | 25 | 44.0% | 81.8% | 36.0% |
+
+ELITE's 93.3% conditional is a genuine correlation, but P(both) = 33.3% sits
+AT independence — a two-leg SGP gets no lift from it. Chase same-goal /
+assist-specific markets instead: ELITE chain rate 31.1% needs better than
++222. Does not supersede the REGULAR SEASON DUOS table below, which is a
+separate and larger regular-season sample.
+
+### Blank streak — UNCAPPED (Aug 2026)
+`consecutive_blanks` used to be counted only across `last5`, so it silently
+capped at 5: a 15-game drought looked identical to a 5-game one, and Tier A's
+two conditions (`blanks >= 5 AND l5_pts == 0`) were the same test written
+twice. Now counted over the full qualifying log via `count_blank_streak()`.
+
+**Tier membership is unchanged** — any streak >= 5 still implies 0 points in
+the L5 window — so no historical comparison breaks. `blanks` now carries real
+information. Files from Aug 2026 set `"blanks_uncapped": true`;
+`base_rates.py` warns when a run pools capped and uncapped picks.
+
+**Open question for next offseason:** does a longer drought predict better?
+`base_rates.py` buckets cold-stick edge by streak length (5/6/7/8+). Needs a
+season of uncapped data. If longer streaks carry more edge, that is the basis
+for a Tier A+ sub-tier.
 
 ---
 
@@ -154,8 +273,12 @@ Limits exposure so that one bad game script cannot destroy the entire play sheet
 - Priority: Composite Score desc → stars desc (tiebreaker)
 - Cold stick u0.5 pts plays count toward both the game and team caps
 
-**Implementation:** `scripts/utils.py → apply_correlation_cap(plays, max_per_game=2, max_per_team=3)`  
-Returns `(selected, removed)`. Each removed play includes `cap_reason`.
+**Implementation: MANUAL, applied in the play sheet prompt.** There is no
+code for this. A `apply_correlation_cap()` helper existed in `scripts/utils.py`
+from Apr 25 – Aug 1 2026 but was never called by any pipeline step, and the
+`composite_score` field it ranked on was never populated anywhere. It was
+deleted Aug 1 2026 rather than left looking live. Apply the cap by hand per
+`prompts/nightly_play_sheet_v6.md` § 6.5.
 
 **Output requirement:** Every play sheet must include a CAP APPLIED block listing dropped plays (or confirming none were dropped).
 
