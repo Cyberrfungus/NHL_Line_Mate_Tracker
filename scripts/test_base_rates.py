@@ -178,6 +178,11 @@ with tempfile.TemporaryDirectory() as tmp:
           sorted(p["role"] for p in cs_picks), ["L1", "L1+PP1"])
     check("both picks are HIGH role class",
           {p["role_class"] for p in cs_picks}, {"HIGH"})
+    # VERIFIED has no blanks_uncapped key — a pre-Aug-2026 file
+    check("legacy file flagged as capped",
+          {p["uncapped"] for p in cs_picks}, {False})
+    check("blanks carried onto pick records",
+          sorted(p["blanks"] for p in cs_picks), [5, 5])
 
 
 # ── role class + odds helpers ─────────────────────────────────────────────────
@@ -242,6 +247,19 @@ check("granularity counters tracked",
 
 check("roles_from_lineups derives composite role",
       mod.roles_from_lineups(LINEUPS)["Blank Two"], "L2+PP2")
+
+# ── streak buckets ────────────────────────────────────────────────────────────
+
+print("\n── streak buckets ──")
+check("blanks 3 buckets as '3'",   mod.streak_bucket(3),    "3")
+check("blanks 5 buckets as '5'",   mod.streak_bucket(5),    "5")
+check("blanks 7 buckets as '7'",   mod.streak_bucket(7),    "7")
+check("blanks 8 pools into 8+",    mod.streak_bucket(8),    "8+")
+check("blanks 15 pools into 8+",   mod.streak_bucket(15),   "8+")
+check("missing blanks is '?'",     mod.streak_bucket(None), "?")
+check("non-numeric blanks is '?'", mod.streak_bucket("x"),  "?")
+check("numeric string accepted",   mod.streak_bucket("6"),  "6")
+
 
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

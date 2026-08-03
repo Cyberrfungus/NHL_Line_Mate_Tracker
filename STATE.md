@@ -87,12 +87,27 @@ measurable cost. Tier only separates within DEPTH (85.9% vs 79.0%).
 | ELITE | 90 | 33.3% | 93.3% | 31.1% |
 | ELITE_PP2 | 25 | 44.0% | 81.8% | 36.0% |
 
-### Known model limitation
-`consecutive_blanks` is capped at 5 by construction — the streak is counted
-only across `last5`, so Tier A's `blanks >= 5 AND l5_pts == 0` is two ways
-of saying the same thing, and a 15-game drought is indistinguishable from a
-5-game one. Uncapping it (count back over the full game log) is the most
-promising remaining model improvement.
+### Blank streak — UNCAPPED (Aug 2026)
+`consecutive_blanks` used to be counted only across `last5`, so it silently
+capped at 5: a 15-game drought looked identical to a 5-game one, and Tier A's
+two conditions (`blanks >= 5 AND l5_pts == 0`) were the same test written
+twice. Now counted back over the full qualifying log via
+`count_blank_streak()`.
+
+**Tier membership is unchanged** — any streak >= 5 still implies 0 points in
+the L5 window — so no historical comparison breaks. What changes is that
+`blanks` now carries real information.
+
+Files written from Aug 2026 on set `"blanks_uncapped": true` at the top level
+of `verified_*.json`. `base_rates.py` reads it and warns when a run pools
+capped and uncapped picks, so the new EDGE BY STREAK LENGTH section is not
+read as meaningful before the data supports it.
+
+**Open question for next offseason:** does a longer drought predict better?
+`py scripts/base_rates.py` now buckets cold-stick edge by streak length
+(5 / 6 / 7 / 8+). Needs a season of uncapped data before it says anything.
+If longer streaks do carry more edge, that is the basis for a Tier A+
+sub-tier.
 
 ---
 

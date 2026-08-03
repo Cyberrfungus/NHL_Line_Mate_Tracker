@@ -287,12 +287,25 @@ def cold_stick_edge(dates, by_role, by_es, by_pp, overall):
                 "tier":       cs.get("tier", "?"),
                 "role":       role or "(unknown)",
                 "role_class": role_class(role),
+                "blanks":     cs.get("blanks"),
+                "uncapped":   bool(verified.get("blanks_uncapped")),
                 "won":        cs["name"] not in scored,
                 "baseline":   role_baseline(role, by_role, by_es, by_pp,
                                             overall, sources),
             })
 
     return picks, sources
+
+
+def streak_bucket(blanks):
+    """Group a blank streak for reporting. 8+ is pooled — thin above that."""
+    if blanks is None:
+        return "?"
+    try:
+        b = int(blanks)
+    except (TypeError, ValueError):
+        return "?"
+    return "8+" if b >= 8 else str(b)
 
 
 def summarize(picks):
@@ -488,6 +501,22 @@ def main():
         print(f"  cost for an ordinary player in that role; observed price is what")
         print(f"  your picks actually earned. The gap between them is the edge, and")
         print(f"  it is only bankable if the market is not already charging for it.")
+
+        # ── does a longer drought predict better? ─────────────────────────────
+        section("COLD STICK EDGE BY STREAK LENGTH")
+        capped = [p for p in picks if not p["uncapped"]]
+        if capped:
+            print(f"  ⚠  {len(capped)} of {len(picks)} picks come from files written")
+            print(f"     before consecutive_blanks was uncapped (Aug 2026). Those")
+            print(f"     streaks are truncated at 5, so buckets 5 and 8+ are not")
+            print(f"     comparable yet. This table becomes meaningful once a")
+            print(f"     season of uncapped data exists.\n")
+        print(f"  {'Blanks':<16} {'Observed':>10}  {'Baseline':>9}  {'Edge':>8}  Verdict")
+        print(f"  {'-'*16} {'-'*10}  {'-'*9}  {'-'*8}  {'-'*24}")
+        for bucket in sorted({streak_bucket(p["blanks"]) for p in picks},
+                             key=lambda b: (b == "?", b == "8+", b)):
+            edge_row(f"{bucket} blanks",
+                     [p for p in picks if streak_bucket(p["blanks"]) == bucket])
 
         section("COLD STICK ROLE MIX  (what roles the picks actually occupy)")
         for tier in sorted({p["tier"] for p in picks}):

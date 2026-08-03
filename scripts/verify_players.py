@@ -56,6 +56,16 @@ def cold_sticks_tier(player_data):
         'A' — Locked cold, highest conviction (5+ blanks, 0 pts L5)
         'B' — Structural cold (3-4 blanks, low production)
         None — No play (variance, active, or insufficient signal)
+
+    Note: consecutive_blanks is a true streak over the full qualifying log
+    (uncapped as of Aug 2026). Tier membership is unaffected — a streak of 5
+    or more still implies 0 points in the L5 window — but blanks now
+    distinguishes a 5-game drought from a 15-game one, which is the intended
+    basis for a future sub-tier once a season of uncapped data exists.
+
+    Role class matters more than tier for deployment: HIGH-role picks
+    (L1/L2/PP1) carry roughly double the edge of DEPTH picks and price near
+    even money. See COLD STICK EDGE in STATE.md.
     """
     blanks = player_data.get('consecutive_blanks', 0)
     l5_pts = player_data.get('last5_pts', 0)
@@ -74,6 +84,28 @@ def cold_sticks_tier(player_data):
         return 'B'
 
     return None
+
+
+def count_blank_streak(games) -> int:
+    """
+    True consecutive-blank streak, counted back from the most recent game.
+    `games` must be ordered most-recent-first (as the NHL API returns them).
+
+    Counted over the FULL qualifying log, not just the L5 window. The old
+    implementation only walked the last 5 games, so the streak silently capped
+    at 5 and a 15-game drought was indistinguishable from a 5-game one — which
+    also collapsed Tier A's two conditions (blanks >= 5 AND l5_pts == 0) into
+    the same test. Tier membership is unchanged by uncapping (any streak >= 5
+    still implies 0 points in the L5 window); the value simply carries real
+    information now.
+    """
+    streak = 0
+    for g in games:
+        if g.get("points", 0) == 0:
+            streak += 1
+        else:
+            break
+    return streak
 
 
 def parse_toi_minutes(toi_str: str) -> float:
@@ -431,13 +463,13 @@ def analyze_player(name, session, season="20252026", slate_date=None, hr_map=Non
             "last_game": qualified_games[0]["gameDate"] if qualified_games else "",
         }
 
-    # Last 5 qualifying games (most recent first)
+    # Last 5 qualifying games (most recent first) — the L5 production window
     last5 = qualified_games[:5]
+
+    consecutive_blanks = count_blank_streak(qualified_games)
 
     # Extract stats
     game_entries = []
-    consecutive_blanks = 0
-    blank_streak_broken = False
 
     for g in last5:
         pts = g.get("points", 0)
@@ -455,13 +487,6 @@ def analyze_player(name, session, season="20252026", slate_date=None, hr_map=Non
             "pts": pts,
             "toi": toi
         })
-
-        # Count consecutive blanks from most recent
-        if not blank_streak_broken:
-            if pts == 0:
-                consecutive_blanks += 1
-            else:
-                blank_streak_broken = True
 
     # Total points in last 5
     total_pts = sum(g["pts"] for g in game_entries)
@@ -759,6 +784,9 @@ def main():
         "date": target_date,
         "regime": regime,
         "season": season,
+        # Files written before Aug 2026 capped consecutive_blanks at 5. This
+        # flag lets later analysis avoid pooling capped and uncapped streaks.
+        "blanks_uncapped": True,
         "verified_count": len(results),
         "cold_flags": [{"name": n, "team": t, "blanks": b, "l5_pts": p} for n, t, b, p in cold_players],
         "hot_players": [{"name": n, "team": t, "l5_pts": p, "l5_goals": g} for n, t, p, g in hot_players],
