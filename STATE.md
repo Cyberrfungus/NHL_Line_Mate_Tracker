@@ -21,9 +21,78 @@
 
 ### Still open for next season
 - Correlation cap (`apply_correlation_cap` in utils.py) still not wired into any pipeline step — manual via v6 prompt only. Wire or delete.
-- Duo regime PAUSED (25.6% / 39 playoff obs, paper only). Decide reactivation criteria for regular season before October.
 - Odds/CLV logging: fetch_odds needs ODDS_API_KEY; not in run_pregame.bat. Decide if part of nightly flow.
 - April regime boundary is heuristic (Apr 20). Pass explicit `--regime` on slates near the boundary.
+
+---
+
+## 📊 COLD STICK EDGE — MEASURED (Aug 2026)
+
+**First validation of the cold-stick system against a proper control.**
+`scripts/base_rates.py` computes empirical blank rates by lineup role from
+lineups+chains, then compares each pick to the baseline for its OWN role.
+Source: 2026 playoffs, Apr 20 – May 14, 1444 skater-games, 290 picks,
+100% matched to exact composite role.
+
+### Baselines (playoffs; regular season ~3pt higher for top-6)
+| Role | Blank% | Role | Blank% |
+|---|---|---|---|
+| L1 | 51.3 | PP1 | 48.3 |
+| L2 | 52.1 | PP2 | 67.3 |
+| L3 | 71.5 | no PP | 75.9 |
+| L4 | 79.2 | ALL | 63.3 |
+
+Regular-season reference (Apr 9–19, 1851 skater-games): ALL 66.6, L1 54.6,
+L2 58.5, L3 71.0, L4 80.7, PP1 50.4, PP2 69.4. Playoff blank rates are LOWER
+because only the 16 best rosters remain — a selection effect, not a regime
+effect. **Use the regular-season column for October.**
+
+### THE FINDING — edge is concentrated in HIGH-role picks
+| Group | Observed | Baseline | Edge | Verdict |
+|---|---|---|---|---|
+| ALL HIGH (L1/L2/PP1) | 65/100 = 65.0% | 52.3% | **+12.7pt** | REAL 2.7 SE |
+| ALL DEPTH (L3/L4/PP2) | 156/190 = 82.1% | 75.4% | +6.7pt | REAL 2.4 SE |
+| Tier A | 93/115 = 80.9% | 70.0% | +10.8pt | REAL |
+| Tier B | 128/175 = 73.1% | 65.7% | +7.4pt | REAL |
+
+**Economics — this is why role class matters more than tier:**
+- HIGH: 65.0% is worth −186; baseline prices ≈ −110 → **ROI ≈ +24%**
+- DEPTH: 82.1% is worth −459; baseline prices ≈ −307 → ROI ≈ +9%, and the
+  real market for an L4 under sits −400/−600, which **erases the edge**.
+
+**Tier is irrelevant inside HIGH:** Tier A 66.7% (n=30) vs Tier B 64.3%
+(n=70) — indistinguishable. Taking both tiers triples bettable volume at no
+measurable cost. Tier only separates within DEPTH (85.9% vs 79.0%).
+
+### DEPLOYMENT RULES (2026-27)
+1. **LIVE: HIGH-role cold sticks, both tiers.** ~4-5 plays/night. Target
+   better than −150.
+2. **PAPER: DEPTH-role.** Real signal, no exploitable edge after juice.
+   Flip to live only if a book offers better than −300.
+3. **PAPER: all duos.** P(chain|both) = 93.3% for ELITE is a genuine
+   correlation, but P(both) = 33.3% sits AT independence — a two-leg SGP
+   gets no lift from it. Chase same-goal / assist-specific markets instead:
+   ELITE chain rate 31.1% needs better than +222.
+4. **Stake small until CLV is measured.** Every number above is vs a
+   STATISTICAL baseline, not a market one. Books price coldness too. Log
+   price taken + closing line for every HIGH pick from opening night;
+   `audit_bet_log.py` verifies at 50 bets. Until then the edge is
+   promising, not proven.
+
+### Duo decomposition (playoffs, for reference)
+| Tier | pairs | P(both pts) | P(chain\|both) | P(chain) |
+|---|---|---|---|---|
+| PP_LINK | 377 | 27.9% | 55.2% | 15.4% |
+| STRONG | 109 | 29.4% | 65.6% | 19.3% |
+| ELITE | 90 | 33.3% | 93.3% | 31.1% |
+| ELITE_PP2 | 25 | 44.0% | 81.8% | 36.0% |
+
+### Known model limitation
+`consecutive_blanks` is capped at 5 by construction — the streak is counted
+only across `last5`, so Tier A's `blanks >= 5 AND l5_pts == 0` is two ways
+of saying the same thing, and a 15-game drought is indistinguishable from a
+5-game one. Uncapping it (count back over the full game log) is the most
+promising remaining model improvement.
 
 ---
 

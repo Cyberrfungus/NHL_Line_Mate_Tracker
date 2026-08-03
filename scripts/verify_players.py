@@ -673,7 +673,10 @@ def main():
                     "l5_pts": analysis["last5_pts"],
                     "l5_goals": analysis["last5_goals"],
                     "line_role": line_role or "?",
-                    "high_role": high_role
+                    "high_role": high_role,
+                    # HIGH picks carry roughly double the edge of DEPTH picks and
+                    # price near even money — see COLD STICK EDGE in STATE.md.
+                    "role_class": "HIGH" if high_role else "DEPTH",
                 })
 
         results[name] = analysis
@@ -704,20 +707,38 @@ def main():
             print(f"   {name} ({team}) — {pts}pts ({goals}G) in L5")
 
     if cold_sticks:
+        # Split by role class, not tier. Measured on the 2026 playoffs (n=290,
+        # role-matched baselines): HIGH picks beat their baseline by +12.7pt and
+        # price near even money; DEPTH picks beat theirs by only +6.7pt and need
+        # better than -307 to clear, which the market rarely offers. Within HIGH,
+        # Tier A and Tier B are indistinguishable (66.7% vs 64.3%) — take both.
+        bettable = [c for c in cold_sticks if c.get("role_class") == "HIGH"]
+        paper    = [c for c in cold_sticks if c.get("role_class") != "HIGH"]
+
+        def _stick_line(c):
+            return (f"      {c['name']} ({c['team']}) [{c.get('line_role','?')}] "
+                    f"Tier {c['tier']} — {c['blanks']} blanks, {c['l5_pts']}pts L5")
+
         print()
-        print("❄️  COLD STICKS (under 0.5 pts targets):")
-        tier_a = [c for c in cold_sticks if c["tier"] == "A"]
-        tier_b = [c for c in cold_sticks if c["tier"] == "B"]
-        if tier_a:
-            print(f"   TIER A ({len(tier_a)} plays — 86% WR, u0.5 pts primary prop):")
-            for c in tier_a:
-                flag = " ⚠ HIGH-ROLE" if c.get("high_role") else ""
-                print(f"      {c['name']} ({c['team']}) [{c.get('line_role','?')}] — {c['blanks']} blanks, {c['l5_pts']}pts L5{flag}")
-        if tier_b:
-            print(f"   TIER B ({len(tier_b)} plays — 70% WR, small size only):")
-            for c in tier_b:
-                flag = " ⚠ HIGH-ROLE" if c.get("high_role") else ""
-                print(f"      {c['name']} ({c['team']}) [{c.get('line_role','?')}] — {c['blanks']} blanks, {c['l5_pts']}pts L5{flag}")
+        print("❄️  COLD STICKS (under 0.5 pts targets)")
+        print()
+        print(f"   ✅ BETTABLE — HIGH role: L1/L2/PP1  ({len(bettable)} plays)")
+        print(f"      2026 playoffs: 65.0% vs 52.3% role baseline  (+12.7pt, n=100)")
+        if bettable:
+            for c in sorted(bettable, key=lambda x: (x["tier"], -x["blanks"])):
+                print(_stick_line(c))
+        else:
+            print("      (none tonight)")
+
+        print()
+        print(f"   📋 PAPER — DEPTH role: L3/L4/PP2 only  ({len(paper)} plays)")
+        print(f"      82.1% vs 75.4% baseline (+6.7pt) — real, but needs better")
+        print(f"      than -307 to profit. Track only unless the price is unusual.")
+        if paper:
+            for c in sorted(paper, key=lambda x: (x["tier"], -x["blanks"])):
+                print(_stick_line(c))
+        else:
+            print("      (none tonight)")
 
     if not_found:
         print()
@@ -751,10 +772,11 @@ def main():
 
     print()
     print(f"Saved: {out_path}")
-    tier_a_count = sum(1 for c in cold_sticks if c["tier"] == "A")
-    tier_b_count = sum(1 for c in cold_sticks if c["tier"] == "B")
+    high_count = sum(1 for c in cold_sticks if c.get("role_class") == "HIGH")
+    depth_count = len(cold_sticks) - high_count
     print(f"Total: {len(results)} players | {len(cold_players)} cold | {len(hot_players)} hot | "
-          f"{tier_a_count} sticks-A | {tier_b_count} sticks-B | {len(not_found)} not found")
+          f"{len(not_found)} not found")
+    print(f"Cold sticks: {high_count} BETTABLE (high role) | {depth_count} paper (depth role)")
 
 
 if __name__ == "__main__":
