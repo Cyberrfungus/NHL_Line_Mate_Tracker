@@ -17,12 +17,18 @@ orphaned commit `de0cc56`, which was replaced by a force-push:
 
 | Lineage | Head | Contains |
 |---|---|---|
-| **Duo dashboard** (this spec) | `de0cc56` — orphaned | `NHLTrackerDashboard.jsx`, `scrape_box_scores.py`, `data/chains/`, `pregame_prompt_apr8_2026.md` |
-| **Cold-stick pipeline** (current) | `12d6e1d` — branch head | `verify_players.py`, `score_results.py`, `base_rates.py`, `.claude/STATE.md` |
+| **Duo dashboard** (this spec) | `de0cc56` — `origin/main` + `origin/archive/duo-dashboard-apr2026` | `NHLTrackerDashboard.jsx`, `scrape_box_scores.py`, `data/chains/`, `pregame_prompt_apr8_2026.md` |
+| **Cold-stick pipeline** | `11d58f3` — `origin/claude/init-repo-setup-x14pg` | `verify_players.py`, `score_results.py`, `base_rates.py`, `.claude/STATE.md` |
 
-They share no files and no data. `de0cc56` survives only in the local object
-store; it is reachable now but **not pushed anywhere and will be garbage
-collected.** Recover with `git checkout de0cc56 -- <path>` before that happens.
+They share no files and no data. The force-push rewrote only the
+`claude/init-repo-setup-x14pg` branch; **`main` has pointed at `de0cc56`
+throughout**, so the dashboard was never at risk of garbage collection. An
+explicit archive branch was added Sept 3 2026 so this lineage keeps a stable
+ref even if `main` later advances.
+
+Note that `.claude/STATE.md` differs completely between the two lineages: 58
+lines of repo-setup notes on the dashboard side, 723 lines of pipeline playbook
+on the branch side. Same path, unrelated documents.
 
 ---
 
@@ -203,5 +209,7 @@ determines a recommendation is made by hand and typed into a JavaScript literal.
 The four Andy Frances rules are documentation, not logic — two of them cannot
 even be checked against the data the schema stores.
 
-It has been dormant since Apr 1 2026 and now sits on an orphaned commit that no
-remote holds.
+It has been dormant since Apr 1 2026. It lives on `main` and on
+`archive/duo-dashboard-apr2026`; the cold-stick pipeline on
+`claude/init-repo-setup-x14pg` is a separate project that shares only this
+repository.
