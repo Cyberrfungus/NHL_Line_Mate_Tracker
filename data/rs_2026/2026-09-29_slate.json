@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-29",
+  "weekday": "Tuesday",
+  "season": "2026-27",
+  "regime": "RS",
+  "opening_night": true,
+
+  "locked": false,
+  "missed_open": true,
+  "graded": false,
+  "rec_assigned": false,
+
+  "duos": [],
+  "_duos_note": "Empty by intent. No slate was locked for this date, so no duo set exists and none may be back-filled later.",
+
+  "chains_status": "unavailable",
+  "chains_file": null,
+  "_chains_note": "No chains CSV was written. The scraper could not reach any source, and 27 goals did occur (see goals_implied_by_score) — a zero-row chains file would read as 'no goals' and corrupt any later scoring pass. The path data/rs_2026/2026-09-29_chains.csv is deliberately left absent until real chain rows exist.",
+  "chains_attempts": [
+    {
+      "tool": "scripts/scrape_box_scores.py --date 2026-09-29 --print-only",
+      "host": "www.plaintextsports.com",
+      "result": "CONNECT tunnel rejected, HTTP 403 (gateway policy denial)"
+    },
+    { "host": "api-web.nhle.com", "result": "CONNECT tunnel rejected, HTTP 403" },
+    { "host": "www.hockey-reference.com", "result": "CONNECT tunnel rejected, HTTP 403" }
+  ],
+
+  "games": [
+    { "game": "FLA@CAR", "away": "FLA", "away_score": 1, "home": "CAR", "home_score": 0, "decision": "OT" },
+    { "game": "MTL@TOR", "away": "MTL", "away_score": 3, "home": "TOR", "home_score": 2, "decision": "REG" },
+    { "game": "NYR@BOS", "away": "NYR", "away_score": 0, "home": "BOS", "home_score": 3, "decision": "REG" },
+    { "game": "VAN@EDM", "away": "VAN", "away_score": 6, "home": "EDM", "home_score": 5, "decision": "OT" },
+    { "game": "CHI@VGK", "away": "CHI", "away_score": 2, "home": "VGK", "home_score": 5, "decision": "REG" }
+  ],
+  "games_count": 5,
+  "goals_implied_by_score": 27,
+  "_goals_note": "Derived from the final scores supplied by the operator, not from chain data. Use as a reconciliation target if chains are captured later: a complete chains file for this date should contain 27 goal rows.",
+
+  "source": "final scores supplied by operator; no box score or chain data retrieved",
+  "recorded_on": "2026-09-30"
+}
